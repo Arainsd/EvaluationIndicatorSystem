@@ -11,6 +11,7 @@
 !*.json
 !*.png
 !*.config
+!*.settings
 
 bin/
 /bin
