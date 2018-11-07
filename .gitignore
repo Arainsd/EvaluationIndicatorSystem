@@ -10,6 +10,7 @@
 !*.resx
 !*.json
 !*.png
+!*.config
 
 bin/
 /bin
