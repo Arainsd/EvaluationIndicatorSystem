@@ -16,20 +16,21 @@ namespace EvaluationIndicatorSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SqliteHelper.InitDBFile();
-            using (FormLogin dialog = new FormLogin())
-            {
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    Application.Run(new MainForm());
-                }
-                else
-                {
-                    SqliteHelper.CloseDBFile();
-                    return;
-                }
-            }
-            SqliteHelper.CloseDBFile();
+            Application.Run(new BasicParameterSettings());
+            //SqliteHelper.InitDBFile();
+            //using (FormLogin dialog = new FormLogin())
+            //{
+            //    if (dialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        Application.Run(new MainForm());
+            //    }
+            //    else
+            //    {
+            //        SqliteHelper.CloseDBFile();
+            //        return;
+            //    }
+            //}
+            //SqliteHelper.CloseDBFile();
         }
     }//end of class
 }

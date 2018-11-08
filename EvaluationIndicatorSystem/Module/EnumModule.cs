@@ -10,24 +10,4 @@ namespace EvaluationIndicatorSystem
     {
         User = 0
     }//end of enum
-
-    public enum IndicatorOne
-    {
-
-    }//end of enum
-
-    public enum IndicatorTwo
-    {  
-        
-    }//end of enum
-
-    public enum IndicatorThree
-    {
-
-    }//end of enum
-
-    public enum IndicatorFour
-    {
-
-    }//end of enum
 }

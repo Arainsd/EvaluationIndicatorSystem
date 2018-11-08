@@ -1,0 +1,222 @@
+{
+  "indicators": [
+    {
+      "name": "体系能力",
+      "value": "A1",
+      "indicatorTwo": [
+        {
+          "name": "体系运作管理",
+          "value": "B1",
+          "indicatorThree": [
+            {
+              "name": "高层领导作用发挥",
+              "value": "C1"
+            },
+            {
+              "name": "体系策划与组织建设",
+              "value": "C2"
+            },
+            {
+              "name": "质量战略制定与布署",
+              "value": "C3"
+            },
+            {
+              "name": "质量风险防控",
+              "value": "C4"
+            },
+            {
+              "name": "体系绩效监测和评价",
+              "value": "C5"
+            },
+            {
+              "name": "改进",
+              "value": "C6"
+            }
+          ]
+        },
+        {
+          "name": "体系资格认证",
+          "value": "B2",
+          "indicatorThree": [
+            {
+              "name": "体系认证",
+              "value": "C1"
+            },
+            {
+              "name": "体系外部评价",
+              "value": "C2"
+            },
+            {
+              "name": "体系内部评价",
+              "value": "C3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "系统运行能力",
+      "value": "A2",
+      "indicatorTwo": [
+        {
+          "name": "产品实现过程运行能力",
+          "value": "B1",
+          "indicatorThree": [
+            {
+              "name": "产品质量/实现策划",
+              "value": "C1"
+            },
+            {
+              "name": "顾客管理与市场营销",
+              "value": "C2"
+            },
+            {
+              "name": "设计和开发/技术研发",
+              "value": "C3"
+            },
+            {
+              "name": "外部提供过程、产品和服务",
+              "value": "C4"
+            },
+            {
+              "name": "生产过程控制",
+              "value": "C5"
+            },
+            {
+              "name": "检验放行",
+              "value": "C6"
+            },
+            {
+              "name": "售后服务",
+              "value": "C7"
+            }
+          ]
+        },
+        {
+          "name": "资源支持运行能力",
+          "value": "B2",
+          "indicatorThree": [
+            {
+              "name": "人力资源配置及管理",
+              "value": "C1"
+            },
+            {
+              "name": "基础设施配置及管理",
+              "value": "C2"
+            },
+            {
+              "name": "过程运行环境管理",
+              "value": "C3"
+            },
+            {
+              "name": "监视和测量资源配置及管理",
+              "value": "C4"
+            },
+            {
+              "name": "知识管理",
+              "value": "C5"
+            },
+            {
+              "name": "质量文化建设",
+              "value": "C6"
+            },
+            {
+              "name": "沟通与诚信",
+              "value": "C7"
+            },
+            {
+              "name": "质量信息系统",
+              "value": "C8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "绩效能力",
+      "value": "A3",
+      "indicatorTwo": [
+        {
+          "name": "外部绩效指标",
+          "value": "B1",
+          "indicatorThree": [
+            {
+              "name": "重大质量问题数量",
+              "value": "C1"
+            },
+            {
+              "name": "万小时故障率",
+              "value": "C2"
+            },
+            {
+              "name": "早期故障率(发动机50小时内、飞机及机载设备100小时内的故障)",
+              "value": "C3"
+            },
+            {
+              "name": "故障返厂率(注：返厂装备数量不考虑是否为设计、制造问题)",
+              "value": "C4"
+            },
+            {
+              "name": "修理保障能力",
+              "value": "C5"
+            },
+            {
+              "name": "进口装备首家保障单位",
+              "value": "C6"
+            }
+          ]
+        },
+        {
+          "name": "内部绩效指标",
+          "value": "B2",
+          "indicatorThree": [
+            {
+              "name": "质量测试指标",
+              "value": "C1"
+            },
+            {
+              "name": "交接过程检验指标(关键工序一次合格率)",
+              "value": "C2"
+            }
+          ]
+        },
+        {
+          "name": "财务绩效指标",
+          "value": "B3",
+          "indicatorThree": [
+            {
+              "name": "军品产值增长率",
+              "value": "C1"
+            },
+            {
+              "name": "全员劳动生产率",
+              "value": "C2"
+            },
+            {
+              "name": "损失率",
+              "value": "C3"
+            }
+          ]
+        },
+        {
+          "name": "企业影响力",
+          "value": "B4",
+          "indicatorThree": [
+            {
+              "name": "市场占有率",
+              "value": "C1"
+            },
+            {
+              "name": "各级获奖情况",
+              "value": "C2"
+            },
+            {
+              "name": "全国现场五星级",
+              "value": "C3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
