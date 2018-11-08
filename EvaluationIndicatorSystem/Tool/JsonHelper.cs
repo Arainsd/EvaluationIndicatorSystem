@@ -9,7 +9,7 @@ using System.IO;
 
 namespace EvaluationIndicatorSystem
 {
-    public static class JosnHelper
+    public static class JsonHelper
     {
         private static List<IndicatorOne> indicators = null;
         public static List<IndicatorOne> Indicators { get => indicators; set => indicators = value; }
@@ -23,15 +23,13 @@ namespace EvaluationIndicatorSystem
                 string content = File.ReadAllText(path, Encoding.Default);
                 JObject obj = (JObject)JsonConvert.DeserializeObject(content);
                 var indicators = obj["indicators"];
-                JosnHelper.indicators = new List<IndicatorOne>(indicators.Select(p1 => {
+                JsonHelper.indicators = new List<IndicatorOne>(indicators.Select(p1 => {
                     IndicatorOne one = new IndicatorOne();
-                    one.name = p1["name"].ToString();
-                    one.value = p1["value"].ToString();
+                    one.name = p1["name"].ToString();                    
                     var q1 = p1["indicatorTwo"];
                     one.indicatorTwos = new List<IndicatorTwo>(q1.Select(p2 => {
                         IndicatorTwo two = new IndicatorTwo();
-                        two.name = p2["name"].ToString();
-                        two.value = p2["value"].ToString();
+                        two.name = p2["name"].ToString();                        
                         var q2 = p2["indicatorThree"];
                         two.indicatorThrees = new List<IndicatorThree>(q2.Select(p3 => {
                             IndicatorThree three = new IndicatorThree();
