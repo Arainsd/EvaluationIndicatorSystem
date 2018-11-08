@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace EvaluationIndicatorSystem
 {
-    public partial class BasicParameterSettings : Form
+    public partial class IndicatorDataSettings : Form
     {
-        public BasicParameterSettings()
+        public IndicatorDataSettings()
         {
             InitializeComponent();
             Init();
         }
 
         //choose indicator usercontrol
-        private ParameterSetting parameterSetting = null;
-
+        private ParameterSetting parameterSetting = null;    
+        
         /// <summary>
         /// initialize
         /// </summary>

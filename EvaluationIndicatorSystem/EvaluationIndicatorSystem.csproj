@@ -85,11 +85,17 @@
     <Compile Include="UI\BasicParameterSettings.Designer.cs">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\IndicatorSataSettings.cs">
+    <Compile Include="UI\ParameterSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ParameterSetting.Designer.cs">
+      <DependentUpon>ParameterSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IndicatorDataSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\IndicatorSataSettings.Designer.cs">
-      <DependentUpon>IndicatorSataSettings.cs</DependentUpon>
+    <Compile Include="UI\IndicatorDataSettings.Designer.cs">
+      <DependentUpon>IndicatorDataSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserLogin.cs">
       <SubType>Form</SubType>
@@ -119,8 +125,11 @@
     <EmbeddedResource Include="UI\BasicParameterSettings.resx">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\IndicatorSataSettings.resx">
-      <DependentUpon>IndicatorSataSettings.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ParameterSetting.resx">
+      <DependentUpon>ParameterSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\IndicatorDataSettings.resx">
+      <DependentUpon>IndicatorDataSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>

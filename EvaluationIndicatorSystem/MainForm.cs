@@ -19,18 +19,25 @@ namespace EvaluationIndicatorSystem
         }
 
         BasicParameterSettings basicDialog = null;
+        IndicatorDataSettings dataDialog = null;
         /// <summary>
         /// initialize
         /// </summary>
         private void Init()
         {
             basicDialog = new BasicParameterSettings();
+            dataDialog = new IndicatorDataSettings();
         }
 
         private void btn_basicPara_Click(object sender, EventArgs e)
         {
             basicDialog.ShowDialog();
             
+        }
+
+        private void btn_indicatorData_Click(object sender, EventArgs e)
+        {
+            dataDialog.ShowDialog();
         }
     }//end of class
 }

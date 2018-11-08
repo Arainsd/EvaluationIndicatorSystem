@@ -1,6 +1,6 @@
-﻿namespace EvaluationIndicatorSystem.UI
+﻿namespace EvaluationIndicatorSystem
 {
-    partial class IndicatorSataSettings
+    partial class IndicatorDataSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // IndicatorSataSettings
+            // panel1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(799, 512);
+            this.panel1.TabIndex = 0;
+            // 
+            // IndicatorDataSettings
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "IndicatorSataSettings";
+            this.ClientSize = new System.Drawing.Size(799, 512);
+            this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Name = "IndicatorDataSettings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "指标数据设置";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel1;
     }
 }
