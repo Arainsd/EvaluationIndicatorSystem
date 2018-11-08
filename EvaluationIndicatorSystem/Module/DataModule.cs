@@ -28,11 +28,13 @@ namespace EvaluationIndicatorSystem
     public class IndicatorThree
     {
         public string name { get; set; }
-        public string value { get; set; }        
+        public string value { get; set; }
+        public List<IndicatorFour> indicatorFours { get; set; }
     }//end of class
 
     public class IndicatorFour
     {
-
+        public string name { get; set; }
+        public int value { get; set; } = 0;
     }//end of classs
 }

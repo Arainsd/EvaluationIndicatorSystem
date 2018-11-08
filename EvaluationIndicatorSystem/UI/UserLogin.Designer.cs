@@ -66,6 +66,7 @@
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(220, 25);
             this.txt_name.TabIndex = 2;
+            this.txt_name.Text = "hh";
             // 
             // txt_password
             // 
@@ -75,6 +76,7 @@
             this.txt_password.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(220, 25);
             this.txt_password.TabIndex = 3;
+            this.txt_password.Text = "22";
             // 
             // btn_login
             // 

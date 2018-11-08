@@ -15,6 +15,22 @@ namespace EvaluationIndicatorSystem
         public MainForm()
         {
             InitializeComponent();
+            Init();
         }
-    }
+
+        BasicParameterSettings basicDialog = null;
+        /// <summary>
+        /// initialize
+        /// </summary>
+        private void Init()
+        {
+            basicDialog = new BasicParameterSettings();
+        }
+
+        private void btn_basicPara_Click(object sender, EventArgs e)
+        {
+            basicDialog.ShowDialog();
+            
+        }
+    }//end of class
 }

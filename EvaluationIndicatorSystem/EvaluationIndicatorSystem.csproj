@@ -77,7 +77,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tool\JosnHelper.cs" />
+    <Compile Include="Tool\JsonHelper.cs" />
     <Compile Include="Tool\SqliteHelper.cs" />
     <Compile Include="UI\BasicParameterSettings.cs">
       <SubType>Form</SubType>
@@ -85,17 +85,23 @@
     <Compile Include="UI\BasicParameterSettings.Designer.cs">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormLogin.cs">
+    <Compile Include="UI\IndicatorSataSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <Compile Include="UI\IndicatorSataSettings.Designer.cs">
+      <DependentUpon>IndicatorSataSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormRegister.cs">
+    <Compile Include="UI\UserLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormRegister.Designer.cs">
-      <DependentUpon>FormRegister.cs</DependentUpon>
+    <Compile Include="UI\UserLogin.Designer.cs">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserRegister.Designer.cs">
+      <DependentUpon>UserRegister.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -113,11 +119,14 @@
     <EmbeddedResource Include="UI\BasicParameterSettings.resx">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <EmbeddedResource Include="UI\IndicatorSataSettings.resx">
+      <DependentUpon>IndicatorSataSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormRegister.resx">
-      <DependentUpon>FormRegister.cs</DependentUpon>
+    <EmbeddedResource Include="UI\UserLogin.resx">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserRegister.resx">
+      <DependentUpon>UserRegister.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Indicators.json" />
     <None Include="packages.config" />
