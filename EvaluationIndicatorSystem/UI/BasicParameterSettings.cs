@@ -20,7 +20,8 @@ namespace EvaluationIndicatorSystem
 
         //choose indicator usercontrol
         private ParameterSetting parameterSetting = null;
-
+        //all indicators
+        private List<IndicatorOne> indicatorOnes = null;
         /// <summary>
         /// initialize
         /// </summary>
@@ -29,6 +30,8 @@ namespace EvaluationIndicatorSystem
             parameterSetting = new ParameterSetting();
             parameterSetting.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(parameterSetting);
+            parameterSetting.SetGrp2Text = "四级指标参数设置";
+            indicatorOnes = parameterSetting.IndicatorOnes;
         }
     }//end of class
 }

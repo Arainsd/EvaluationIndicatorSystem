@@ -16,7 +16,13 @@ namespace EvaluationIndicatorSystem
         {
             InitializeComponent();
             Init();
-        }       
+        }
+
+        //set groubox2 Text
+        public string SetGrp2Text { set => this.groupBox2.Text = value; }
+        //all indicators
+        private List<IndicatorOne> indicatorOnes = null;
+        public List<IndicatorOne> IndicatorOnes { get => indicatorOnes; set => indicatorOnes = value; }
 
         /// <summary>
         /// initialize
@@ -27,6 +33,7 @@ namespace EvaluationIndicatorSystem
             {
                 JsonHelper.ReadIndicator();
             }
+            IndicatorOnes = JsonHelper.Indicators;
             LoadIndicators();
         }
 
@@ -35,8 +42,8 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         private void LoadIndicators()
         {
-            if (JsonHelper.Indicators == null) return;
-            foreach (var one in JsonHelper.Indicators)
+            if (IndicatorOnes == null) return;
+            foreach (var one in IndicatorOnes)
             {
                 comb_one.Items.Add(one.name);
             }
@@ -51,7 +58,7 @@ namespace EvaluationIndicatorSystem
         private void comb_one_SelectedIndexChanged(object sender, EventArgs e)
         {
             comb_two.Items.Clear();
-            foreach (var two in JsonHelper.Indicators[comb_one.SelectedIndex].indicatorTwos)
+            foreach (var two in IndicatorOnes[comb_one.SelectedIndex].indicatorTwos)
             {
                 comb_two.Items.Add(two.name);
             }
@@ -66,7 +73,7 @@ namespace EvaluationIndicatorSystem
         private void comb_two_SelectedIndexChanged(object sender, EventArgs e)
         {
             comb_three.Items.Clear();
-            foreach (var three in JsonHelper.Indicators[comb_one.SelectedIndex].indicatorTwos[comb_two.SelectedIndex].indicatorThrees)
+            foreach (var three in IndicatorOnes[comb_one.SelectedIndex].indicatorTwos[comb_two.SelectedIndex].indicatorThrees)
             {
                 comb_three.Items.Add(three.name);
             }
@@ -80,9 +87,9 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void comb_three_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<IndicatorFour> four = JsonHelper.Indicators[comb_one.SelectedIndex].indicatorTwos[comb_two.SelectedIndex].indicatorThrees[comb_three.SelectedIndex].indicatorFours;
+            List<IndicatorFour> four = IndicatorOnes[comb_one.SelectedIndex].indicatorTwos[comb_two.SelectedIndex].indicatorThrees[comb_three.SelectedIndex].indicatorFours;
             dataGridView1.DataSource = four;
             dataGridView1.Refresh();
-        }
+        }               
     }//end of class
 }
