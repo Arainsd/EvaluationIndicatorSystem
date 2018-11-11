@@ -9,5 +9,14 @@ namespace EvaluationIndicatorSystem
     public enum TableName
     {
         User = 0
-    }//end of enum
+    }//end of enum TableName
+
+    public enum CalModule
+    {
+        Switch = 1,//开关型
+        SingleComparison = 2,//单一比较型
+        MulComparison = 3,//多重比较型
+        SegmentCounting = 4,//分段计数型
+        SingleScaleComparison = 5//单一比例比较型
+    }//end of enum CalModule
 }

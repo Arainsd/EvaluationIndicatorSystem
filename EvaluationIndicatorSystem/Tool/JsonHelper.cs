@@ -37,7 +37,12 @@ namespace EvaluationIndicatorSystem
                         {
                             IndicatorThree three = new IndicatorThree();
                             three.name = p3["name"].ToString();
-                            three.value = p3["value"].ToString();
+                            string[] arr = p3["calModule"].ToString().Split(",".ToArray());
+                            three.calModule = new CalModule[arr.Length];
+                            for (int i = 0; i < arr.Length; i++)
+                            {
+                                three.calModule[i] = (CalModule)(int.Parse(arr[i]));
+                            }
                             var q4 = p3["indicatorFour"];
                             three.indicatorFours = new List<IndicatorFour>(q4.Select(p4 =>
                             {

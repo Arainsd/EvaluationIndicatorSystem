@@ -8,7 +8,7 @@
           "indicatorThree": [
             {
               "name": "高层领导作用发挥",
-              "value": "A_1",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "质量安全形势分析会参与度"
@@ -29,7 +29,7 @@
             },
             {
               "name": "体系策划与组织建设",
-              "value": "A_2",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "制定质量管理类文件，并对质量组织与职能进行明确规定"
@@ -47,7 +47,7 @@
             },
             {
               "name": "质量战略制定与布署",
-              "value": "A_3",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "制定单位质量战略目标，并落实"
@@ -65,7 +65,7 @@
             },
             {
               "name": "质量风险防控",
-              "value": "A_4",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "建立风险项目控制相关管理制度，并落实"
@@ -80,7 +80,7 @@
             },
             {
               "name": "体系绩效监测和评价",
-              "value": "A_5",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "每年召开单位管理评审会，并落实会议输出"
@@ -110,7 +110,7 @@
             },
             {
               "name": "改进",
-              "value": "A_6",
+              "calModule": "2,3",
               "indicatorFour": [
                 {
                   "name": "产品故障攻关项目完成率=(完成项目数量/计划项目数量)×100%"
@@ -130,7 +130,7 @@
           "indicatorThree": [
             {
               "name": "体系认证",
-              "value": "A_7",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "必备资质获得情况"
@@ -142,7 +142,7 @@
             },
             {
               "name": "体系外部评价",
-              "value": "A_8",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "二、三方审核一次通过率=(一次通过次数/审核总次数)×100%"
@@ -160,7 +160,7 @@
             },
             {
               "name": "体系内部评价",
-              "value": "A_9",
+              "calModule": "1,2,3",
               "indicatorFour": [
                 {
                   "name": "制定内部年度审核计划，并落实"
@@ -185,7 +185,7 @@
           "indicatorThree": [
             {
               "name": "产品质量/实现策划",
-              "value": "A_10",
+              "calModule": "2,5",
               "indicatorFour": [
                 {
                   "name": "策划输出(通用质量特性工作计划、产品标准化大纲、技术状态管理计划、风险管理计划、软件质量保证计划、质量计划等)齐全性=(已输出文件数/需输出文件数)×100%(实际各研发项目结果占比求和)"
@@ -194,7 +194,7 @@
             },
             {
               "name": "顾客管理与市场营销",
-              "value": "A_11",
+              "calModule": "2,5",
               "indicatorFour": [
                 {
                   "name": "合同评审完成率=(履约前已评审数/需评审数)×100%"
@@ -215,7 +215,7 @@
             },
             {
               "name": "设计和开发/技术研发",
-              "value": "A_12",
+              "calModule": "2,5",
               "indicatorFour": [
                 {
                   "name": "各类设计开发(装备试修、零备件研制、主要设备设施研制改造)计划超期率=(评价时已到节点项目总耗时天数/任务书已到节点计划天数)×100%(实际发生项目结果占比求和)"
@@ -227,7 +227,7 @@
             },
             {
               "name": "外部提供过程、产品和服务",
-              "value": "A_13",
+              "calModule": "2,5",
               "indicatorFour": [
                 {
                   "name": "航空零备件供应商(一类)走访覆盖率=(走访数/AB类供应商总数)×100%"
@@ -266,7 +266,7 @@
             },
             {
               "name": "生产过程控制",
-              "value": "A_14",
+              "calModule": "2,3,5",
               "indicatorFour": [
                 {
                   "name": "修理项目许可"
@@ -302,7 +302,7 @@
             },
             {
               "name": "检验放行",
-              "value": "A_15",
+              "calModule": "2,3",
               "indicatorFour": [
                 {
                   "name": "检验管理"
@@ -314,7 +314,7 @@
             },
             {
               "name": "售后服务",
-              "value": "A_16",
+              "calModule": "2,5",
               "indicatorFour": [
                 {
                   "name": "外场一次排故成功率达到XX%(排故成功且未发生次生故障的数量/外场故障总数)"
@@ -346,7 +346,7 @@
           "indicatorThree": [
             {
               "name": "人力资源配置及管理",
-              "value": "A_17",
+              "calModule": "1,2,3",
               "indicatorFour": [
                 {
                   "name": "中高级职称人员比例"
@@ -400,7 +400,7 @@
             },
             {
               "name": "基础设施配置及管理",
-              "value": "A_18",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "建立基础设施台账"
@@ -415,7 +415,7 @@
             },
             {
               "name": "过程运行环境管理",
-              "value": "A_19",
+              "calModule": "2,5",
               "indicatorFour": [
                 {
                   "name": "与生产环境、安全有关的数据：数据分析及时率100%，(已开展项数/按文件规定要求开展项数)×100%；数据分析结果措施落实率≥95%，(落实项数/分析结论输出改进项数)×100%"
@@ -439,7 +439,7 @@
             },
             {
               "name": "监视和测量资源配置及管理",
-              "value": "A_20",
+              "calModule": "2,3,5",
               "indicatorFour": [
                 {
                   "name": "测量设备工艺评审符合率100%"
@@ -466,7 +466,7 @@
             },
             {
               "name": "知识管理",
-              "value": "A_21",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "建立内外部知识归集和获取方法"
@@ -478,7 +478,7 @@
             },
             {
               "name": "质量文化建设",
-              "value": "A_22",
+              "calModule": "1,4",
               "indicatorFour": [
                 {
                   "name": "运用“大质量”观念开展质量文化建设工作，并形成机制"
@@ -496,7 +496,7 @@
             },
             {
               "name": "沟通与诚信",
-              "value": "A_23",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "建立企业内部、企业与顾客之间的诚信沟通机制"
@@ -517,7 +517,7 @@
             },
             {
               "name": "质量信息系统",
-              "value": "A_24",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "建立质量信息管理机制"
@@ -545,7 +545,7 @@
           "indicatorThree": [
             {
               "name": "重大质量问题数量",
-              "value": "A_25",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "飞行事故、飞行事故征候、地面质量事故和成批性质量问题数量"
@@ -554,7 +554,7 @@
             },
             {
               "name": "万小时故障率",
-              "value": "A_26",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "同机型不同修理单位的万小时故障率排名"
@@ -566,7 +566,7 @@
             },
             {
               "name": "早期故障率(发动机50小时内、飞机及机载设备100小时内的故障)",
-              "value": "A_27",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "同机型不同修理单位的早期故障率排名"
@@ -581,7 +581,7 @@
             },
             {
               "name": "故障返厂率(注：返厂装备数量不考虑是否为设计、制造问题)",
-              "value": "A_28",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "系统内外故障返厂率排名(如中航工业、军队修理系统、民企)"
@@ -593,7 +593,7 @@
             },
             {
               "name": "修理保障能力",
-              "value": "A_29",
+              "calModule": "1,3",
               "indicatorFour": [
                 {
                   "name": "交付准时率"
@@ -602,7 +602,7 @@
             },
             {
               "name": "进口装备首家保障单位",
-              "value": "A_30",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "发生时"
@@ -616,7 +616,7 @@
           "indicatorThree": [
             {
               "name": "质量测试指标",
-              "value": "A_31",
+              "calModule": "3,5",
               "indicatorFour": [
                 {
                   "name": "拳头装备数据各单位统计，专家验证"
@@ -625,7 +625,7 @@
             },
             {
               "name": "交接过程检验指标(关键工序一次合格率)",
-              "value": "A_32",
+              "calModule": "3,5",
               "indicatorFour": [
                 {
                   "name": "拳头装备数据各单位统计，专家验证"
@@ -639,7 +639,7 @@
           "indicatorThree": [
             {
               "name": "军品产值增长率",
-              "value": "A_33",
+              "calModule": "3,5",
               "indicatorFour": [
                 {
                   "name": "产值增长率"
@@ -648,7 +648,7 @@
             },
             {
               "name": "全员劳动生产率",
-              "value": "A_34",
+              "calModule": "3,5",
               "indicatorFour": [
                 {
                   "name": "劳动生产率"
@@ -657,7 +657,7 @@
             },
             {
               "name": "损失率",
-              "value": "A_35",
+              "calModule": "3,5",
               "indicatorFour": [
                 {
                   "name": "内部损失率"
@@ -674,7 +674,7 @@
           "indicatorThree": [
             {
               "name": "市场占有率",
-              "value": "A_36",
+              "calModule": "1,2",
               "indicatorFour": [
                 {
                   "name": "拳头产品市场占有率"
@@ -686,7 +686,7 @@
             },
             {
               "name": "各级获奖情况",
-              "value": "A_37",
+              "calModule": "1",
               "indicatorFour": [
                 {
                   "name": "国家级"
@@ -698,7 +698,7 @@
             },
             {
               "name": "全国现场五星级",
-              "value": "A_38",
+              "calModule": "1",
               "indicatorFour": [
                 {
                   "name": "五星级现场数量"
