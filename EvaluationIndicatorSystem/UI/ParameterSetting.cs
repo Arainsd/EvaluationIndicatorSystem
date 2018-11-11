@@ -29,11 +29,16 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         private void Init()
         {
-            if (JsonHelper.Indicators == null)
+            if (JsonHelper.Indicators == null || JsonHelper.Indicators.Count == 0)
             {
                 JsonHelper.ReadIndicator();
-            }
+            }            
             IndicatorOnes = JsonHelper.Indicators;
+            //if(ExcelHelper.Indicators == null || ExcelHelper.Indicators.Count == 0)
+            //{
+            //    ExcelHelper.ReadIndicator();
+            //}
+            //indicatorOnes = ExcelHelper.Indicators;
             LoadIndicators();
         }
 
