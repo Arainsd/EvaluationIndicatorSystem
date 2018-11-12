@@ -101,6 +101,12 @@
     <Compile Include="UI\BasicParameterSettings.Designer.cs">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LeftMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LeftMenu.Designer.cs">
+      <DependentUpon>LeftMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ParameterSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     <EmbeddedResource Include="UI\BasicParameterSettings.resx">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\LeftMenu.resx">
+      <DependentUpon>LeftMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ParameterSetting.resx">
       <DependentUpon>ParameterSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +181,7 @@
   <ItemGroup>
     <Content Include="Picture\background.png" />
     <Content Include="Picture\FormLogin.png" />
+    <None Include="Picture\Logo.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" />

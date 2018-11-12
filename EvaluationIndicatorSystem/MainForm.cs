@@ -18,26 +18,16 @@ namespace EvaluationIndicatorSystem
             Init();
         }
 
-        BasicParameterSettings basicDialog = null;
-        IndicatorDataSettings dataDialog = null;
+        LeftMenu leftMenu = null;
+
         /// <summary>
         /// initialize
         /// </summary>
         private void Init()
         {
-            basicDialog = new BasicParameterSettings();
-            dataDialog = new IndicatorDataSettings();
-        }
-
-        private void btn_basicPara_Click(object sender, EventArgs e)
-        {
-            basicDialog.ShowDialog();
-            
-        }
-
-        private void btn_indicatorData_Click(object sender, EventArgs e)
-        {
-            dataDialog.ShowDialog();
+            leftMenu = new LeftMenu();
+            leftMenu.Dock = DockStyle.Fill;
+            splitContainer1.Panel1.Controls.Add(leftMenu);
         }
     }//end of class
 }
