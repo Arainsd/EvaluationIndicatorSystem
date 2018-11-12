@@ -17,17 +17,6 @@ namespace EvaluationIndicatorSystem
             InitializeComponent();            
         }
 
-        private void btn_register_Click(object sender, EventArgs e)
-        {
-            using (FormRegister dialog = new FormRegister())
-            {
-                if(dialog.ShowDialog() == DialogResult.OK)
-                {
-                    MessageBox.Show("注册成功", "注册提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
-
         /// <summary>
         /// button log in
         /// </summary>
@@ -55,6 +44,17 @@ namespace EvaluationIndicatorSystem
                 return;
             }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (FormRegister dialog = new FormRegister())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show("注册成功", "注册提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }//end of class
 }

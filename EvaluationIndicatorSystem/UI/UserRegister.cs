@@ -61,7 +61,12 @@ namespace EvaluationIndicatorSystem
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-
+            txt_name.Text = string.Empty;
+            txt_password.Text = string.Empty;
+            txt_password2.Text = string.Empty;
+            lbl_name_msg.Text = string.Empty;
+            lbl_pw_msg.Text = string.Empty;
+            lbl_pw_msg2.Text = string.Empty;
         }
     }//end of class
 }
