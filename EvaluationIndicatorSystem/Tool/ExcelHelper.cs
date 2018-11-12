@@ -82,6 +82,55 @@ namespace EvaluationIndicatorSystem
             catch(Exception ex)
             {
                 indicators = null;
+            }            
+        }
+
+        public static void WriteIndicator(List<IndicatorOne> data)
+        {
+            IWorkbook workbook = null;
+            ISheet sheet = null;
+            IRow row = null;
+            ICell cell = null;
+            FileStream fs = null;
+            try
+            {
+                if (data == null || data.Count == 0) return;
+                workbook = new XSSFWorkbook();
+                sheet = workbook.CreateSheet("sheet1");
+
+                row = sheet.CreateRow(0);
+                for(int i = 0;i<4; i++)
+                {
+                    cell = row.CreateCell(i);
+                    string value = string.Empty;
+                    switch(i)
+                    {
+                        case 0:
+                            value = "一级指标";
+                            break;
+                        case 1:
+                            value = "二级指标";
+                            break;
+                        case 2:
+                            value = "三级指标";
+                            break;
+                        case 3:
+                            value = "四级指标/评价准则内容";
+                            break;
+                        default:                            
+                            break;
+                    }
+                    cell.SetCellValue(value);
+                }
+
+                using (fs = File.OpenWrite("指标模板.xls"))
+                {
+                    workbook.Write(fs);
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }//end of class
