@@ -179,8 +179,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Picture\background.png" />
-    <Content Include="Picture\FormLogin.png" />
     <None Include="Picture\Logo.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
