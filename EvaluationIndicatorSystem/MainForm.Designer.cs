@@ -39,7 +39,7 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Size = new System.Drawing.Size(1184, 662);
-            this.splitContainer1.SplitterDistance = 269;
+            this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 0;
             // 
             // MainForm
