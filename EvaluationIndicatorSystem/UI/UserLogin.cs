@@ -17,6 +17,9 @@ namespace EvaluationIndicatorSystem
             InitializeComponent();            
         }
 
+        private UserModule user = null;
+        public UserModule User { get => user; set => user = value; }
+
         /// <summary>
         /// button log in
         /// </summary>
@@ -43,6 +46,9 @@ namespace EvaluationIndicatorSystem
                 lbl_password_msg.Text = "密码错误";
                 return;
             }
+            user = new UserModule();
+            user.UserName = userName;
+            user.PassWord = passWord;
             this.DialogResult = DialogResult.OK;
         }
 

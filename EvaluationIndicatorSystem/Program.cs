@@ -21,7 +21,7 @@ namespace EvaluationIndicatorSystem
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    Application.Run(new MainForm());
+                    Application.Run(new MainForm(dialog.User));
                 }
                 else
                 {
