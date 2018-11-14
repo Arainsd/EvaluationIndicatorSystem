@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LeftMenu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lbl_user = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_manage = new System.Windows.Forms.Panel();
             this.lbl_manage = new System.Windows.Forms.Label();
             this.panel_export = new System.Windows.Forms.Panel();
@@ -50,9 +53,12 @@
             this.lbl_basic_one = new System.Windows.Forms.Label();
             this.panel_workSurface = new System.Windows.Forms.Panel();
             this.lbl_workSurface = new System.Windows.Forms.Label();
+            this.lbl_name = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_manage.SuspendLayout();
             this.panel_export.SuspendLayout();
             this.panel_result.SuspendLayout();
@@ -81,7 +87,9 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer1.Panel1.BackgroundImage = global::EvaluationIndicatorSystem.Properties.Resources.Logo;
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_name);
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_user);
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
             // 
             // splitContainer1.Panel2
             // 
@@ -92,9 +100,27 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel_basicPara);
             this.splitContainer1.Panel2.Controls.Add(this.panel_workSurface);
             this.splitContainer1.Size = new System.Drawing.Size(200, 600);
-            this.splitContainer1.SplitterDistance = 100;
-            this.splitContainer1.SplitterWidth = 7;
+            this.splitContainer1.SplitterDistance = 120;
+            this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // lbl_user
+            // 
+            this.lbl_user.AutoSize = true;
+            this.lbl_user.Location = new System.Drawing.Point(18, 90);
+            this.lbl_user.Name = "lbl_user";
+            this.lbl_user.Size = new System.Drawing.Size(62, 20);
+            this.lbl_user.TabIndex = 1;
+            this.lbl_user.Text = "用户名 : ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(64, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel_manage
             // 
@@ -302,6 +328,15 @@
             this.lbl_workSurface.TabIndex = 0;
             this.lbl_workSurface.Text = "工作面板";
             // 
+            // lbl_name
+            // 
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.Location = new System.Drawing.Point(86, 90);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(47, 20);
+            this.lbl_name.TabIndex = 2;
+            this.lbl_name.Text = "name";
+            // 
             // LeftMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -314,9 +349,12 @@
             this.Name = "LeftMenu";
             this.Size = new System.Drawing.Size(200, 600);
             this.Load += new System.EventHandler(this.LeftMenu_Load);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_manage.ResumeLayout(false);
             this.panel_manage.PerformLayout();
             this.panel_export.ResumeLayout(false);
@@ -369,5 +407,8 @@
         private System.Windows.Forms.Label lbl_basic_two;
         private System.Windows.Forms.Panel panel_basic_one;
         private System.Windows.Forms.Label lbl_basic_one;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbl_user;
+        private System.Windows.Forms.Label lbl_name;
     }
 }

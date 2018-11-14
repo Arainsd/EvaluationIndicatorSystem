@@ -47,7 +47,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(343, 229);
+            this.btn_cancel.Location = new System.Drawing.Point(325, 226);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -62,7 +62,7 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(102, 229);
+            this.btn_ok.Location = new System.Drawing.Point(84, 226);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
@@ -73,7 +73,7 @@
             // 
             // txt_password
             // 
-            this.txt_password.Location = new System.Drawing.Point(203, 110);
+            this.txt_password.Location = new System.Drawing.Point(185, 107);
             this.txt_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
@@ -82,7 +82,7 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(203, 50);
+            this.txt_name.Location = new System.Drawing.Point(185, 47);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(220, 25);
@@ -92,7 +92,7 @@
             // 
             this.lbl_password.AutoSize = true;
             this.lbl_password.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password.Location = new System.Drawing.Point(98, 113);
+            this.lbl_password.Location = new System.Drawing.Point(80, 110);
             this.lbl_password.Name = "lbl_password";
             this.lbl_password.Size = new System.Drawing.Size(48, 20);
             this.lbl_password.TabIndex = 8;
@@ -102,7 +102,7 @@
             // 
             this.lbl_name.AutoSize = true;
             this.lbl_name.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_name.Location = new System.Drawing.Point(98, 53);
+            this.lbl_name.Location = new System.Drawing.Point(80, 50);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(62, 20);
             this.lbl_name.TabIndex = 7;
@@ -110,7 +110,7 @@
             // 
             // txt_password2
             // 
-            this.txt_password2.Location = new System.Drawing.Point(203, 170);
+            this.txt_password2.Location = new System.Drawing.Point(185, 167);
             this.txt_password2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password2.Name = "txt_password2";
             this.txt_password2.PasswordChar = '*';
@@ -121,7 +121,7 @@
             // 
             this.lbl_password2.AutoSize = true;
             this.lbl_password2.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password2.Location = new System.Drawing.Point(98, 173);
+            this.lbl_password2.Location = new System.Drawing.Point(80, 170);
             this.lbl_password2.Name = "lbl_password2";
             this.lbl_password2.Size = new System.Drawing.Size(48, 20);
             this.lbl_password2.TabIndex = 13;
@@ -131,7 +131,7 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(203, 83);
+            this.lbl_name_msg.Location = new System.Drawing.Point(185, 80);
             this.lbl_name_msg.Name = "lbl_name_msg";
             this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_name_msg.TabIndex = 15;
@@ -140,7 +140,7 @@
             // 
             this.lbl_pw_msg.AutoSize = true;
             this.lbl_pw_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_pw_msg.Location = new System.Drawing.Point(203, 142);
+            this.lbl_pw_msg.Location = new System.Drawing.Point(185, 139);
             this.lbl_pw_msg.Name = "lbl_pw_msg";
             this.lbl_pw_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_pw_msg.TabIndex = 16;
@@ -149,7 +149,7 @@
             // 
             this.lbl_pw_msg2.AutoSize = true;
             this.lbl_pw_msg2.ForeColor = System.Drawing.Color.Red;
-            this.lbl_pw_msg2.Location = new System.Drawing.Point(203, 202);
+            this.lbl_pw_msg2.Location = new System.Drawing.Point(185, 199);
             this.lbl_pw_msg2.Name = "lbl_pw_msg2";
             this.lbl_pw_msg2.Size = new System.Drawing.Size(0, 20);
             this.lbl_pw_msg2.TabIndex = 17;
@@ -159,7 +159,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(534, 312);
+            this.ClientSize = new System.Drawing.Size(503, 303);
             this.Controls.Add(this.lbl_pw_msg2);
             this.Controls.Add(this.lbl_pw_msg);
             this.Controls.Add(this.lbl_name_msg);

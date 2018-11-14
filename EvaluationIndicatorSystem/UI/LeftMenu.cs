@@ -18,7 +18,9 @@ namespace EvaluationIndicatorSystem
         }
         
         Color hoverColor = Color.FromArgb(63, 81, 112);
-        Color defaultColor = Color.FromArgb(51, 66, 91);
+        Color defaultColor = Color.FromArgb(51, 66, 91); 
+        //用户名
+        public string LblUserName { get => lbl_name.Text; set => lbl_name.Text = value; }
 
         private void LeftMenu_Load(object sender, EventArgs e)
         {            

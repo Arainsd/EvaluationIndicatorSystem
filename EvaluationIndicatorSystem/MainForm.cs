@@ -53,11 +53,10 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         private void Init()
         {
-            lbl_user.Text = currentUser.UserName;
-
             leftMenu = new LeftMenu();
             leftMenu.Dock = DockStyle.Fill;
             leftMenu.MenuClick += LeftMenu_MenuClick;
+            leftMenu.LblUserName = currentUser.UserName;
             splitContainer1.Panel1.Controls.Add(leftMenu);
 
             tabDictionary = new Dictionary<TabName, UserControl>();
