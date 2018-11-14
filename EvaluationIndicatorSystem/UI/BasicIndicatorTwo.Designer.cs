@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbl_title = new System.Windows.Forms.Label();
             this.combo_one = new System.Windows.Forms.ComboBox();
+            this.lbl_title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -47,9 +47,17 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.combo_one);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_title);
-            this.splitContainer1.Size = new System.Drawing.Size(914, 535);
+            this.splitContainer1.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // combo_one
+            // 
+            this.combo_one.FormattingEnabled = true;
+            this.combo_one.Location = new System.Drawing.Point(182, 18);
+            this.combo_one.Name = "combo_one";
+            this.combo_one.Size = new System.Drawing.Size(121, 27);
+            this.combo_one.TabIndex = 2;
             // 
             // lbl_title
             // 
@@ -60,14 +68,6 @@
             this.lbl_title.TabIndex = 1;
             this.lbl_title.Text = "基本参数 > 二级指标";
             // 
-            // combo_one
-            // 
-            this.combo_one.FormattingEnabled = true;
-            this.combo_one.Location = new System.Drawing.Point(182, 18);
-            this.combo_one.Name = "combo_one";
-            this.combo_one.Size = new System.Drawing.Size(121, 27);
-            this.combo_one.TabIndex = 2;
-            // 
             // BasicIndicatorTwo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -76,7 +76,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BasicIndicatorTwo";
-            this.Size = new System.Drawing.Size(914, 535);
+            this.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

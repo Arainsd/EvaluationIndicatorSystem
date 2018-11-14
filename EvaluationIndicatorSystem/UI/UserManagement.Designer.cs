@@ -45,8 +45,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.lbl_title);
-            this.splitContainer1.Size = new System.Drawing.Size(918, 543);
-            this.splitContainer1.SplitterDistance = 59;
+            this.splitContainer1.Size = new System.Drawing.Size(960, 640);
+            this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
             // 
             // lbl_title
@@ -66,7 +66,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UserManagement";
-            this.Size = new System.Drawing.Size(918, 543);
+            this.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

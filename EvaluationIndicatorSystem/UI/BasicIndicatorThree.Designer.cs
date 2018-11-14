@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.comb_two = new System.Windows.Forms.ComboBox();
             this.combo_one = new System.Windows.Forms.ComboBox();
             this.lbl_title = new System.Windows.Forms.Label();
-            this.comb_two = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -49,9 +49,17 @@
             this.splitContainer1.Panel1.Controls.Add(this.comb_two);
             this.splitContainer1.Panel1.Controls.Add(this.combo_one);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_title);
-            this.splitContainer1.Size = new System.Drawing.Size(894, 547);
+            this.splitContainer1.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // comb_two
+            // 
+            this.comb_two.FormattingEnabled = true;
+            this.comb_two.Location = new System.Drawing.Point(387, 17);
+            this.comb_two.Name = "comb_two";
+            this.comb_two.Size = new System.Drawing.Size(121, 27);
+            this.comb_two.TabIndex = 5;
             // 
             // combo_one
             // 
@@ -70,14 +78,6 @@
             this.lbl_title.TabIndex = 3;
             this.lbl_title.Text = "基本参数 > 三级指标";
             // 
-            // comb_two
-            // 
-            this.comb_two.FormattingEnabled = true;
-            this.comb_two.Location = new System.Drawing.Point(387, 17);
-            this.comb_two.Name = "comb_two";
-            this.comb_two.Size = new System.Drawing.Size(121, 27);
-            this.comb_two.TabIndex = 5;
-            // 
             // BasicIndicatorThree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -86,7 +86,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BasicIndicatorThree";
-            this.Size = new System.Drawing.Size(894, 547);
+            this.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

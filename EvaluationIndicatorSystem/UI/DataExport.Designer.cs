@@ -46,7 +46,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.lbl_title);
-            this.splitContainer1.Size = new System.Drawing.Size(851, 600);
+            this.splitContainer1.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -65,7 +65,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Name = "DataExport";
-            this.Size = new System.Drawing.Size(851, 600);
+            this.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
