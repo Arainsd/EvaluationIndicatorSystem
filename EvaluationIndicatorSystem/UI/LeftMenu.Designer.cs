@@ -104,7 +104,6 @@
             this.panel_manage.Name = "panel_manage";
             this.panel_manage.Size = new System.Drawing.Size(200, 50);
             this.panel_manage.TabIndex = 5;
-            this.panel_manage.Click += new System.EventHandler(this.panel_manage_Click);
             // 
             // lbl_manage
             // 
@@ -123,7 +122,6 @@
             this.panel_export.Name = "panel_export";
             this.panel_export.Size = new System.Drawing.Size(200, 50);
             this.panel_export.TabIndex = 4;
-            this.panel_export.Click += new System.EventHandler(this.panel_export_Click);
             // 
             // lbl_export
             // 
@@ -142,7 +140,6 @@
             this.panel_result.Name = "panel_result";
             this.panel_result.Size = new System.Drawing.Size(200, 50);
             this.panel_result.TabIndex = 3;
-            this.panel_result.Click += new System.EventHandler(this.panel_result_Click);
             // 
             // lbl_result
             // 
@@ -161,7 +158,6 @@
             this.panel_indicatorData.Name = "panel_indicatorData";
             this.panel_indicatorData.Size = new System.Drawing.Size(200, 50);
             this.panel_indicatorData.TabIndex = 2;
-            this.panel_indicatorData.Click += new System.EventHandler(this.panel_indicatorData_Click);
             // 
             // lbl_indicatorData
             // 
@@ -220,7 +216,6 @@
             this.panel_basic_four.Name = "panel_basic_four";
             this.panel_basic_four.Size = new System.Drawing.Size(200, 40);
             this.panel_basic_four.TabIndex = 3;
-            this.panel_basic_four.Click += new System.EventHandler(this.panel_basic_four_Click);
             // 
             // lbl_basic_four
             // 
@@ -240,7 +235,6 @@
             this.panel_basic_three.Name = "panel_basic_three";
             this.panel_basic_three.Size = new System.Drawing.Size(200, 40);
             this.panel_basic_three.TabIndex = 2;
-            this.panel_basic_three.Click += new System.EventHandler(this.panel_basic_three_Click);
             // 
             // lbl_basic_three
             // 
@@ -260,7 +254,6 @@
             this.panel_basic_two.Name = "panel_basic_two";
             this.panel_basic_two.Size = new System.Drawing.Size(200, 40);
             this.panel_basic_two.TabIndex = 1;
-            this.panel_basic_two.Click += new System.EventHandler(this.panel_basic_two_Click);
             // 
             // lbl_basic_two
             // 
@@ -280,7 +273,6 @@
             this.panel_basic_one.Name = "panel_basic_one";
             this.panel_basic_one.Size = new System.Drawing.Size(200, 40);
             this.panel_basic_one.TabIndex = 0;
-            this.panel_basic_one.Click += new System.EventHandler(this.panel_basic_one_Click);
             // 
             // lbl_basic_one
             // 
@@ -300,7 +292,6 @@
             this.panel_workSurface.Name = "panel_workSurface";
             this.panel_workSurface.Size = new System.Drawing.Size(200, 50);
             this.panel_workSurface.TabIndex = 0;
-            this.panel_workSurface.Click += new System.EventHandler(this.panel_workSurface_Click);
             // 
             // lbl_workSurface
             // 

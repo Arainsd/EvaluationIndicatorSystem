@@ -11,6 +11,17 @@ namespace EvaluationIndicatorSystem
         User = 0
     }//end of enum TableName
 
+    public enum TabName
+    {
+        BasicIndicatorOne = 1,
+        BasicIndicatorTwo = 2,
+        BasicIndicatorThree = 3,
+        BasicIndicatorFour = 4,
+        EvaluationResult = 5,
+        DataExport = 6,
+        UserManagement = 7
+    }//end of enum TabName
+
     public enum CalModule
     {
         Switch = 1,//开关型

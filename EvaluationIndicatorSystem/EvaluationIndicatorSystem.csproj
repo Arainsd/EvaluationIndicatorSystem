@@ -95,11 +95,47 @@
     <Compile Include="Tool\ExcelHelper.cs" />
     <Compile Include="Tool\JsonHelper.cs" />
     <Compile Include="Tool\SqliteHelper.cs" />
+    <Compile Include="UI\BasicIndicatorFour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorFour.Designer.cs">
+      <DependentUpon>BasicIndicatorFour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorOne.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorOne.Designer.cs">
+      <DependentUpon>BasicIndicatorOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorThree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorThree.Designer.cs">
+      <DependentUpon>BasicIndicatorThree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorTwo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorTwo.Designer.cs">
+      <DependentUpon>BasicIndicatorTwo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\BasicParameterSettings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\BasicParameterSettings.Designer.cs">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataExport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DataExport.Designer.cs">
+      <DependentUpon>DataExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EvaluationResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EvaluationResult.Designer.cs">
+      <DependentUpon>EvaluationResult.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LeftMenu.cs">
       <SubType>UserControl</SubType>
@@ -125,6 +161,12 @@
     <Compile Include="UI\UserLogin.Designer.cs">
       <DependentUpon>UserLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,8 +186,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\BasicIndicatorFour.resx">
+      <DependentUpon>BasicIndicatorFour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BasicIndicatorOne.resx">
+      <DependentUpon>BasicIndicatorOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BasicIndicatorThree.resx">
+      <DependentUpon>BasicIndicatorThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BasicIndicatorTwo.resx">
+      <DependentUpon>BasicIndicatorTwo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\BasicParameterSettings.resx">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataExport.resx">
+      <DependentUpon>DataExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EvaluationResult.resx">
+      <DependentUpon>EvaluationResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LeftMenu.resx">
       <DependentUpon>LeftMenu.cs</DependentUpon>
@@ -158,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserRegister.resx">
       <DependentUpon>UserRegister.cs</DependentUpon>

@@ -23,7 +23,7 @@ namespace EvaluationIndicatorSystem
         private void LeftMenu_Load(object sender, EventArgs e)
         {            
             AddMenuEvent();
-            AddMenuClick(this.splitContainer2.Panel1);
+            MenuOneClick(this.splitContainer2.Panel1);
         }
 
         /// <summary>
@@ -43,25 +43,34 @@ namespace EvaluationIndicatorSystem
                     foreach (Panel item2 in panels2)
                     {
                         AddMouseHover(item2);
+                        AddMouseClick(item2);
                     }
-                    container.Panel1.Click += Panel_Click;
-                    container.Panel1.Controls[0].Click += Label_Click;
+                    container.Panel1.Click += Panel_One_Click;
+                    container.Panel1.Controls[0].Click += Label_One_Click;
+                }
+                else
+                {
+                    AddMouseClick(item);
                 }
             }
         }
 
-        #region menu click
-        void Label_Click(object sender, EventArgs e)
+        #region menu one click
+        void Label_One_Click(object sender, EventArgs e)
         {
-            AddMenuClick(((Label)sender).Parent);
+            MenuOneClick(((Label)sender).Parent);            
         }
 
-        void Panel_Click(object sender, EventArgs e)
+        void Panel_One_Click(object sender, EventArgs e)
         {
-            AddMenuClick(sender);
+            MenuOneClick(sender);            
         }
 
-        private void AddMenuClick(object sender)
+        /// <summary>
+        /// 一级菜单单击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        private void MenuOneClick(object sender)
         {
             Panel panel1 = (Panel)sender;
             SplitContainer control2 = (SplitContainer)panel1.GetContainerControl();
@@ -83,7 +92,15 @@ namespace EvaluationIndicatorSystem
         }
         #endregion
 
-        #region menu hover
+        /// <summary>
+        /// 菜单点击事件handler
+        /// </summary>
+        public event EventHandler MenuClick;
+        #region menu event
+        /// <summary>
+        /// 菜单添加鼠标悬停事件
+        /// </summary>
+        /// <param name="item"></param>
         private void AddMouseHover(Panel item)
         {
             item.MouseHover += Panel_MouseHover;
@@ -118,96 +135,67 @@ namespace EvaluationIndicatorSystem
             Panel panel = (Panel)sender;
             panel.BackColor = defaultColor;            
         }
+
+        /// <summary>
+        /// 菜单添加鼠标点击事件
+        /// </summary>
+        /// <param name="item"></param>
+        private void AddMouseClick(Panel item)
+        {
+            item.Click += Panel_Click;
+            if (item.Controls[0] is Label)
+            {
+                item.Controls[0].Click += Label_Click;
+            }
+        }
+
+        void Label_Click(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            MenuClickEvent((Panel)label.Parent, e);
+        }
+
+        void Panel_Click(object sender, EventArgs e)
+        {
+            Panel panel = (Panel)sender;
+            MenuClickEvent(panel, e);
+        }
+
+        private void MenuClickEvent(Panel panel, EventArgs e)
+        {
+            object sender = null;
+            switch (panel.Name)
+            {
+                case "panel_workSurface":
+                    break;
+                case "panel_basic_one":
+                    sender = TabName.BasicIndicatorOne;
+                    break;
+                case "panel_basic_two":
+                    sender = TabName.BasicIndicatorTwo;
+                    break;
+                case "panel_basic_three":
+                    sender = TabName.BasicIndicatorThree;
+                    break;
+                case "panel_basic_four":
+                    sender = TabName.BasicIndicatorFour;
+                    break;
+                case "panel_indicatorData":
+                    break;
+                case "panel_result":
+                    sender = TabName.EvaluationResult;
+                    break;
+                case "panel_export":
+                    sender = TabName.DataExport;
+                    break;
+                case "panel_manage":
+                    sender = TabName.UserManagement;
+                    break;
+            }
+            if (sender == null)
+                return;
+            MenuClick?.Invoke(sender, e);
+        }
         #endregion
-
-        /// <summary>
-        /// 工作面板
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_workSurface_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 一级指标
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_basic_one_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 二级指标
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_basic_two_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 三级指标
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_basic_three_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 四级指标
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_basic_four_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 数据指标
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_indicatorData_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 评价结果
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_result_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 数据导出
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_export_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 账号管理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel_manage_Click(object sender, EventArgs e)
-        {
-
-        }
     }//end of class
 }
