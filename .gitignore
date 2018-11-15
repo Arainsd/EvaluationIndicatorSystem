@@ -12,6 +12,7 @@
 !*.png
 !*.config
 !*.settings
+!data.sqlite
 
 bin/
 /bin
