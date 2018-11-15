@@ -10,7 +10,27 @@ namespace EvaluationIndicatorSystem
     {
         public string UserName { get; set; }
         public string PassWord { get; set; }
-    }//end of class
+    }//end of class UserModule
+
+    public class BasicDataModule
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int Grade { get; set; }
+        public int ParentId { get; set; }
+    }//end of class BasicDataModule
+
+    public class BasicFourModule
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int ParentId { get; set; }
+        public string BasicRule { get; set; }
+        public string BasicSub { get; set; }
+        public string BasicAdd { get; set; }
+    }//end of class BasicFourModule
 
     public class IndicatorOne
     {

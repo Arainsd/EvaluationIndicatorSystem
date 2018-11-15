@@ -35,34 +35,6 @@ namespace EvaluationIndicatorSystem
             {
                 conn.Open();
             }
-            CreateTable();            
-        }
-
-        /// <summary>
-        /// create table
-        /// </summary>
-        private static void CreateTable()
-        {
-            //create user table
-            if(!CheckTable("User"))
-            {
-                cmd.CommandText = "CREATE TABLE User(name varchar, password varchar)";
-                cmd.ExecuteNonQuery();
-            }            
-        }
-
-        /// <summary>
-        /// check table exit
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <returns></returns>
-        private static bool CheckTable(string tableName) {
-            cmd.CommandText = $"SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = '{tableName}'";
-            if(Convert.ToInt32(cmd.ExecuteScalar())>0)
-            {
-                return true;
-            }
-            return false;
         }
 
         public static bool ValidUser(string userName, string password)
@@ -111,6 +83,27 @@ namespace EvaluationIndicatorSystem
                         }
                     }                        
                     break;
+                case TableName.BasicData:
+                    BasicDataModule basicData = (BasicDataModule)data;
+                    if (CheckRowData(tableName.ToString(), basicData.Name))
+                    {
+                        result = false;
+                        msg = "指标已存在";
+                    }
+                    else
+                    {
+                        cmd.CommandText = $"INSERT INTO '{tableName.ToString()}'(name, level, grade, parent_id) VALUES('{basicData.Name}', '{basicData.Level}', '{basicData.Grade}', '{basicData.ParentId}')";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
+                        else
+                        {
+                            result = false;
+                            msg = "数据写入失败";
+                        }
+                    }
+                    break;
                 default:
                     msg = "table is not exist";
                     break;
@@ -136,6 +129,36 @@ namespace EvaluationIndicatorSystem
                 return false;
             }
         }
+        
+        public static object Select(TableName tableName)
+        {
+            switch(tableName)
+            {
+                case TableName.BasicData:
+                    cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
+                    SQLiteDataReader reader = cmd.ExecuteReader();
+                    List<BasicDataModule> modules = new List<BasicDataModule>();
+                    while (reader.Read())
+                    {
+                        BasicDataModule module = new BasicDataModule();
+                        module.ID = int.Parse(reader["id"].ToString());
+                        module.Name = reader["name"].ToString();
+                        module.Level = int.Parse(reader["level"].ToString());
+                        module.Grade = int.Parse(reader["grade"].ToString());
+                        module.ParentId = int.Parse(reader["parent_id"].ToString());
+                        modules.Add(module);
+                    }
+                    reader.Close();
+                    return modules;
+            }
+            return null;
+        }
+
+        public static int ImportBasicData()
+        {
+            int result = 0;
+            return result;
+        }
 
         /// <summary>
         /// close db file and connection
@@ -147,4 +170,30 @@ namespace EvaluationIndicatorSystem
             conn?.Dispose();
         }
     }//end of class
+     ///// <summary>
+     ///// create table
+     ///// </summary>
+     //private static void CreateTable()
+     //{
+     //    //create user table
+     //    if(!CheckTable("User"))
+     //    {
+     //        cmd.CommandText = "CREATE TABLE User(name varchar, password varchar)";
+     //        cmd.ExecuteNonQuery();
+     //    }            
+     //}
+
+    ///// <summary>
+    ///// check table exit
+    ///// </summary>
+    ///// <param name="tableName"></param>
+    ///// <returns></returns>
+    //private static bool CheckTable(string tableName) {
+    //    cmd.CommandText = $"SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = '{tableName}'";
+    //    if(Convert.ToInt32(cmd.ExecuteScalar())>0)
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
 }

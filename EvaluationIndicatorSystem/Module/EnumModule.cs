@@ -8,7 +8,9 @@ namespace EvaluationIndicatorSystem
 {
     public enum TableName
     {
-        User = 0
+        User = 0,
+        BasicData = 1,
+        BasicFour = 2
     }//end of enum TableName
 
     public enum TabName
