@@ -18,18 +18,18 @@ namespace EvaluationIndicatorSystem
         }
 
         //指标名称
-        public string IndicatorName { get => lbl_indicatorName.Text; set => lbl_indicatorName.Text = value; }
+        public string IndicatorName { get => lbl_indicatorName.Text; set => lbl_indicatorName.Text = value; }       
 
-        public event EventHandler UpdateClick;
+        public event EventHandler<string> UpdateClick;
         private void btn_update_Click(object sender, EventArgs e)
         {
-            UpdateClick?.Invoke(sender, e);
+            UpdateClick?.Invoke(sender, this.Name);
         }
 
-        public event EventHandler DeleteClick;
+        public event EventHandler<string> DeleteClick;
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            DeleteClick?.Invoke(sender, e);
+            DeleteClick?.Invoke(sender, this.Name);
         }
 
     }//end of class

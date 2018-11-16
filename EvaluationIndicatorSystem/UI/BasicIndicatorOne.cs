@@ -18,11 +18,11 @@ namespace EvaluationIndicatorSystem
             Init();
         }
 
-        Dictionary<int, BasicDataModule> modules = null;
+        Dictionary<string, BasicDataModule> modules = null;
 
         private void Init()
         {
-            modules = new Dictionary<int, BasicDataModule>();
+            modules = new Dictionary<string, BasicDataModule>();
             DataRefresh();
         }
 
@@ -35,23 +35,38 @@ namespace EvaluationIndicatorSystem
             {
                 foreach (var item in obj)
                 {
-                    int count = modules.Count;
-                    modules.Add(count++, item);
+                    modules.Add(item.ID.ToString(), item);
                     IndicatorControl control = new IndicatorControl();
                     control.IndicatorName = item.Name;
                     control.UpdateClick += Control_UpdateClick;
                     control.DeleteClick += Control_DeleteClick;
+                    control.Name = item.ID.ToString();
                     tableLayoutPanel1.Controls.Add(control);
                 }
             }
         }
 
-        private void Control_UpdateClick(object sender, EventArgs e)
+        private void Control_UpdateClick(object sender, string e)
         {
-            
+            BasicDataModule module = modules[e];
+            using (ChangeIndicatorOne dialog = new ChangeIndicatorOne(module))
+            {
+                dialog.ChangeTitle = "修改 一级指标";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    BasicDataModule module1 = dialog.GetModule;
+                    bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
+                    if (!result)
+                    {
+                        MessageBox.Show("更新失败", "修改提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    DataRefresh();
+                }
+            }
         }
 
-        private void Control_DeleteClick(object sender, EventArgs e)
+        private void Control_DeleteClick(object sender, string e)
         {
             
         }

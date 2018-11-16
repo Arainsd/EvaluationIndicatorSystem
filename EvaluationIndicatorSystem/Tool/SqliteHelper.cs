@@ -111,6 +111,31 @@ namespace EvaluationIndicatorSystem
             return result;
         }
 
+        public static bool Update(TableName tableName,int id, object data)
+        {
+            bool result = false;
+            switch (tableName)
+            {
+                case TableName.User:
+                    break;
+                case TableName.BasicData:
+                    BasicDataModule basicData = (BasicDataModule)data;
+                    //cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade}, WHERE id={basicData.ID})";
+                    //if (cmd.ExecuteNonQuery() > 0)
+                    //{
+                    //    result = true;
+                    //}
+                    //else
+                    //{
+                    //    result = false;
+                    //}
+                    break;
+                default:
+                    break;
+            }
+            return result;
+        }
+
         /// <summary>
         /// check data exit
         /// </summary>

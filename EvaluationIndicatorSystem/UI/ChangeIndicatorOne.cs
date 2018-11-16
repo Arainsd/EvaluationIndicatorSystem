@@ -12,9 +12,14 @@ namespace EvaluationIndicatorSystem
 {
     public partial class ChangeIndicatorOne : Form
     {
-        public ChangeIndicatorOne()
+        public ChangeIndicatorOne(params BasicDataModule[] module)
         {
             InitializeComponent();
+            if (module.Length > 0)
+            {
+                this.txt_name.Text = module[0].Name;
+                this.txt_grade.Text = module[0].Grade.ToString();
+            }
         }
 
         public string ChangeTitle { set => this.Text = value; }
