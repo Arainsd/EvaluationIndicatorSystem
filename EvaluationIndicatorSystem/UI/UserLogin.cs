@@ -58,7 +58,7 @@ namespace EvaluationIndicatorSystem
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("注册成功", "注册提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("注册成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

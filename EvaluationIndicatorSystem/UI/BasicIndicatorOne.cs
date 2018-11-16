@@ -26,6 +26,9 @@ namespace EvaluationIndicatorSystem
             DataRefresh();
         }
 
+        /// <summary>
+        /// 刷新数据
+        /// </summary>
         private void DataRefresh()
         {
             modules.Clear();
@@ -35,6 +38,8 @@ namespace EvaluationIndicatorSystem
             {
                 foreach (var item in obj)
                 {
+                    if (item.Level != 1)
+                        continue;
                     modules.Add(item.ID.ToString(), item);
                     IndicatorControl control = new IndicatorControl();
                     control.IndicatorName = item.Name;
@@ -46,6 +51,35 @@ namespace EvaluationIndicatorSystem
             }
         }
 
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            using (ChangeIndicatorOne dialog = new ChangeIndicatorOne())
+            {
+                dialog.ChangeTitle = "新增 一级指标";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    BasicDataModule module = dialog.GetModule;
+                    SqliteHelper.Insert(TableName.BasicData, module, out string msg);
+                    if(!string.IsNullOrEmpty(msg))
+                    {
+                        MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    DataRefresh();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Control_UpdateClick(object sender, string e)
         {
             BasicDataModule module = modules[e];
@@ -58,7 +92,7 @@ namespace EvaluationIndicatorSystem
                     bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
                     if (!result)
                     {
-                        MessageBox.Show("更新失败", "修改提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     DataRefresh();
@@ -66,27 +100,17 @@ namespace EvaluationIndicatorSystem
             }
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Control_DeleteClick(object sender, string e)
         {
-            
-        }
-
-        private void btn_add_Click(object sender, EventArgs e)
-        {
-            using (ChangeIndicatorOne dialog = new ChangeIndicatorOne())
+            if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                dialog.ChangeTitle = "新增 一级指标";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    BasicDataModule module = dialog.GetModule;
-                    SqliteHelper.Insert(TableName.BasicData, module, out string msg);
-                    if(!string.IsNullOrEmpty(msg))
-                    {
-                        MessageBox.Show(msg, "新增提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    DataRefresh();
-                }
+                SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
+                DataRefresh();
             }
         }
     }//end of class

@@ -37,6 +37,12 @@ namespace EvaluationIndicatorSystem
             }
         }
 
+        /// <summary>
+        /// valid user password
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static bool ValidUser(string userName, string password)
         {
             cmd.CommandText = $"SELECT password from User WHERE name = '{userName}'";
@@ -50,6 +56,7 @@ namespace EvaluationIndicatorSystem
                 return false;
             }            
         }
+
         /// <summary>
         /// insert data to table
         /// </summary>
@@ -92,7 +99,7 @@ namespace EvaluationIndicatorSystem
                     }
                     else
                     {
-                        cmd.CommandText = $"INSERT INTO '{tableName.ToString()}'(name, level, grade, parent_id) VALUES('{basicData.Name}', '{basicData.Level}', '{basicData.Grade}', '{basicData.ParentId}')";
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, level, grade, parent_id) VALUES('{basicData.Name}', {basicData.Level}, {basicData.Grade}, {basicData.ParentId})";
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             result = true;
@@ -111,6 +118,13 @@ namespace EvaluationIndicatorSystem
             return result;
         }
 
+        /// <summary>
+        /// update data
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="id"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static bool Update(TableName tableName,int id, object data)
         {
             bool result = false;
@@ -120,15 +134,45 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.BasicData:
                     BasicDataModule basicData = (BasicDataModule)data;
-                    //cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade}, WHERE id={basicData.ID})";
-                    //if (cmd.ExecuteNonQuery() > 0)
-                    //{
-                    //    result = true;
-                    //}
-                    //else
-                    //{
-                    //    result = false;
-                    //}
+                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade} WHERE id={id}";
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// delete data
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static bool Delete(TableName tableName, int id)
+        {
+            bool result = false;
+            switch (tableName)
+            {
+                case TableName.User:
+                    break;
+                case TableName.BasicData:                    
+                    cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={id}";
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
                     break;
                 default:
                     break;

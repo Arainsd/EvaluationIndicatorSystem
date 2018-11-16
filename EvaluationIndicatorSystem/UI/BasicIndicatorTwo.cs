@@ -15,6 +15,146 @@ namespace EvaluationIndicatorSystem
         public BasicIndicatorTwo()
         {
             InitializeComponent();
+            Init();
         }
-    }
+
+        Dictionary<string, BasicDataModule> modules = null;
+
+        private void Init()
+        {
+            modules = new Dictionary<string, BasicDataModule>();
+            DataRefresh();
+        }
+
+        /// <summary>
+        /// 刷新数据
+        /// </summary>
+        private void DataRefresh()
+        {
+            modules.Clear();
+            combo_one.Items.Clear();
+            tableLayoutPanel1.Controls.Clear();
+            List<BasicDataModule> obj = (List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData);
+            if (obj != null && obj.Count > 0)
+            {
+                foreach (var item in obj)
+                {
+                    if (item.Level == 1)
+                    {
+                        modules.Add(item.ID.ToString(), item);
+                        combo_one.Items.Add(item.Name);
+                    } else if(item.Level == 2)
+                    {
+                        modules.Add(item.ID.ToString(), item);
+                    }                    
+                }
+                if(combo_one.Items.Count > 0)
+                {
+                    combo_one.SelectedIndex = 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            if(combo_one.Items.Count == 0)
+            {
+                MessageBox.Show("请先添加一级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            using (ChangeIndicatorTwo dialog = new ChangeIndicatorTwo(modules))
+            {
+                dialog.ChangeTitle = "新增 二级指标";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    BasicDataModule module = dialog.GetModule;
+                    SqliteHelper.Insert(TableName.BasicData, module, out string msg);
+                    if (!string.IsNullOrEmpty(msg))
+                    {
+                        MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    DataRefresh();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 一级指标改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void combo_one_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            if (modules.Count == 0) return;
+            tableLayoutPanel1.Controls.Clear();
+            int id = -1;
+            foreach (var module in modules)
+            {
+                if (((ComboBox)sender).SelectedItem.Equals(module.Value.Name))
+                {
+                    id = module.Value.ID;
+                    break;
+                }
+            }
+            if (id == -1) return;
+            foreach (var module in modules)
+            {
+                if (module.Value.ParentId == id)
+                {
+                    IndicatorControl control = new IndicatorControl();
+                    control.IndicatorName = module.Value.Name;
+                    control.UpdateClick += Control_UpdateClick;
+                    control.DeleteClick += Control_DeleteClick;
+                    control.Name = module.Value.ID.ToString();
+                    tableLayoutPanel1.Controls.Add(control);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Control_UpdateClick(object sender, string e)
+        {
+            BasicDataModule module = modules[e];
+            using (ChangeIndicatorOne dialog = new ChangeIndicatorOne(module))
+            {
+                dialog.ChangeTitle = "修改 二级指标";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    BasicDataModule module1 = dialog.GetModule;
+                    bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
+                    if (!result)
+                    {
+                        MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    DataRefresh();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Control_DeleteClick(object sender, string e)
+        {
+            if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
+                DataRefresh();
+            }
+        }
+    }//end of class
 }
+

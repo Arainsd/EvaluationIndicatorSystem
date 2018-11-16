@@ -58,7 +58,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(950, 630);
-            this.splitContainer1.SplitterDistance = 59;
+            this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -66,7 +66,7 @@
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_title.Location = new System.Drawing.Point(14, 17);
+            this.lbl_title.Location = new System.Drawing.Point(15, 17);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(139, 20);
             this.lbl_title.TabIndex = 0;
@@ -85,7 +85,7 @@
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(950, 520);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(950, 519);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
