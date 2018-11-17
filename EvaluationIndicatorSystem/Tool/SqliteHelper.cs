@@ -134,7 +134,7 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.BasicData:
                     BasicDataModule basicData = (BasicDataModule)data;
-                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade} WHERE id={id}";
+                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade}, parent_id={basicData.ParentId} WHERE id={id}";
                     if (cmd.ExecuteNonQuery() > 0)
                     {
                         result = true;

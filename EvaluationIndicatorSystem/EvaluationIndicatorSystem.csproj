@@ -125,6 +125,12 @@
     <Compile Include="UI\BasicParameterSettings.Designer.cs">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ChangeIndicatorThree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ChangeIndicatorThree.Designer.cs">
+      <DependentUpon>ChangeIndicatorThree.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ChangeIndicatorTwo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BasicParameterSettings.resx">
       <DependentUpon>BasicParameterSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ChangeIndicatorThree.resx">
+      <DependentUpon>ChangeIndicatorThree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangeIndicatorTwo.resx">
       <DependentUpon>ChangeIndicatorTwo.cs</DependentUpon>

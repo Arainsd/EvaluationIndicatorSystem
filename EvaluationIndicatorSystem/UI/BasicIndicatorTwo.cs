@@ -56,13 +56,45 @@ namespace EvaluationIndicatorSystem
         }
 
         /// <summary>
+        /// 一级指标改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void combo_one_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            tableLayoutPanel1.Controls.Clear();
+            int id = -1;
+            foreach (var item in modules)
+            {
+                if (((ComboBox)sender).SelectedItem.Equals(item.Value.Name))
+                {
+                    id = item.Value.ID;
+                    break;
+                }
+            }
+            if (id == -1) return;
+            foreach (var item in modules)
+            {
+                if (item.Value.ParentId == id)
+                {
+                    IndicatorControl control = new IndicatorControl();
+                    control.IndicatorName = item.Value.Name;
+                    control.UpdateClick += Control_UpdateClick;
+                    control.DeleteClick += Control_DeleteClick;
+                    control.Name = item.Value.ID.ToString();
+                    tableLayoutPanel1.Controls.Add(control);
+                }
+            }
+        }
+
+        /// <summary>
         /// 新增
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if(combo_one.Items.Count == 0)
+            if (combo_one.Items.Count == 0)
             {
                 MessageBox.Show("请先添加一级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -85,39 +117,6 @@ namespace EvaluationIndicatorSystem
         }
 
         /// <summary>
-        /// 一级指标改变事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void combo_one_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            if (modules.Count == 0) return;
-            tableLayoutPanel1.Controls.Clear();
-            int id = -1;
-            foreach (var module in modules)
-            {
-                if (((ComboBox)sender).SelectedItem.Equals(module.Value.Name))
-                {
-                    id = module.Value.ID;
-                    break;
-                }
-            }
-            if (id == -1) return;
-            foreach (var module in modules)
-            {
-                if (module.Value.ParentId == id)
-                {
-                    IndicatorControl control = new IndicatorControl();
-                    control.IndicatorName = module.Value.Name;
-                    control.UpdateClick += Control_UpdateClick;
-                    control.DeleteClick += Control_DeleteClick;
-                    control.Name = module.Value.ID.ToString();
-                    tableLayoutPanel1.Controls.Add(control);
-                }
-            }
-        }
-
-        /// <summary>
         /// 修改
         /// </summary>
         /// <param name="sender"></param>
@@ -125,7 +124,7 @@ namespace EvaluationIndicatorSystem
         private void Control_UpdateClick(object sender, string e)
         {
             BasicDataModule module = modules[e];
-            using (ChangeIndicatorOne dialog = new ChangeIndicatorOne(module))
+            using (ChangeIndicatorTwo dialog = new ChangeIndicatorTwo(modules, module))
             {
                 dialog.ChangeTitle = "修改 二级指标";
                 if (dialog.ShowDialog() == DialogResult.OK)
