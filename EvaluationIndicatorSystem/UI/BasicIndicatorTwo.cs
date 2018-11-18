@@ -19,9 +19,11 @@ namespace EvaluationIndicatorSystem
         }
 
         Dictionary<string, BasicDataModule> modules = null;
+        DataHelper dataHelper = null;
 
         private void Init()
         {
+            dataHelper = new DataHelper();
             modules = new Dictionary<string, BasicDataModule>();
             DataRefresh();
         }
@@ -64,14 +66,7 @@ namespace EvaluationIndicatorSystem
         {            
             tableLayoutPanel1.Controls.Clear();
             int id = -1;
-            foreach (var item in modules)
-            {
-                if (((ComboBox)sender).SelectedItem.Equals(item.Value.Name))
-                {
-                    id = item.Value.ID;
-                    break;
-                }
-            }
+            id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             foreach (var item in modules)
             {

@@ -19,9 +19,11 @@ namespace EvaluationIndicatorSystem
         }
 
         Dictionary<string, BasicDataModule> modules = null;
+        DataHelper dataHelper = null;
 
         private void Init()
         {
+            dataHelper = new DataHelper();
             modules = new Dictionary<string, BasicDataModule>();
             DataRefresh();
         }
@@ -45,12 +47,7 @@ namespace EvaluationIndicatorSystem
                         modules.Add(item.ID.ToString(), item);
                         combo_one.Items.Add(item.Name);
                     }
-                    else if (item.Level == 2)
-                    {
-                        modules.Add(item.ID.ToString(), item);
-                        combo_two.Items.Add(item.Name);
-                    }
-                    else if (item.Level == 3)
+                    else if (item.Level == 2 || item.Level == 3)
                     {
                         modules.Add(item.ID.ToString(), item);
                     }
@@ -58,10 +55,6 @@ namespace EvaluationIndicatorSystem
                 if(combo_one.Items.Count > 0)
                 {
                     combo_one.SelectedIndex = 0;
-                    if(combo_two.Items.Count > 0)
-                    {
-                        combo_two.SelectedIndex = 0;
-                    }
                 }
             }
         }
@@ -77,26 +70,9 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             tableLayoutPanel1.Controls.Clear();
             int id = -1;
-            foreach (var item in modules)
-            {
-                if (((ComboBox)sender).SelectedItem.Equals(item.Value.Name))
-                {
-                    id = item.Value.ID;
-                    break;
-                }
-            }
+            id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            foreach (var item in modules)
-            {
-                if (item.Value.ParentId == id)
-                {
-                    combo_two.Items.Add(item.Value.Name);
-                }
-            }
-            if (combo_two.Items.Count > 0)
-            {
-                combo_two.SelectedIndex = 0;
-            }
+            dataHelper.SetComboItem(modules, combo_two, id);
         }
 
         /// <summary>
@@ -108,14 +84,7 @@ namespace EvaluationIndicatorSystem
         {
             tableLayoutPanel1.Controls.Clear();
             int id = -1;
-            foreach (var module in modules)
-            {
-                if (((ComboBox)sender).SelectedItem.Equals(module.Value.Name))
-                {
-                    id = module.Value.ID;
-                    break;
-                }
-            }
+            id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             foreach (var module in modules)
             {
@@ -143,16 +112,8 @@ namespace EvaluationIndicatorSystem
                 MessageBox.Show("请先添加一级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            bool hasTwo = false;
-            foreach(var item in modules)
-            {
-                if(item.Value.Level == 2)
-                {
-                    hasTwo = true;
-                    break;
-                }
-            }
-            if (!hasTwo)
+            string msg = dataHelper.CheckComboItem(modules, 2);
+            if (!string.IsNullOrEmpty(msg))
             {
                 MessageBox.Show("请先添加二级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

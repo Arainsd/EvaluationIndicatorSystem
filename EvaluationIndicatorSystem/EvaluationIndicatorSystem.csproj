@@ -92,20 +92,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tool\DataHelper.cs" />
     <Compile Include="Tool\ExcelHelper.cs" />
     <Compile Include="Tool\JsonHelper.cs" />
     <Compile Include="Tool\SqliteHelper.cs" />
-    <Compile Include="UI\BasicIndicatorFour.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\BasicIndicatorFour.Designer.cs">
-      <DependentUpon>BasicIndicatorFour.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\BasicIndicatorOne.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\BasicIndicatorOne.Designer.cs">
       <DependentUpon>BasicIndicatorOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorFour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BasicIndicatorFour.Designer.cs">
+      <DependentUpon>BasicIndicatorFour.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\BasicIndicatorThree.cs">
       <SubType>UserControl</SubType>
@@ -210,11 +211,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\BasicIndicatorFour.resx">
-      <DependentUpon>BasicIndicatorFour.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\BasicIndicatorOne.resx">
       <DependentUpon>BasicIndicatorOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BasicIndicatorFour.resx">
+      <DependentUpon>BasicIndicatorFour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BasicIndicatorThree.resx">
       <DependentUpon>BasicIndicatorThree.cs</DependentUpon>
