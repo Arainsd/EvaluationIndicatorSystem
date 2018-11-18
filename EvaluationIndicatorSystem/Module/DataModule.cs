@@ -32,6 +32,8 @@ namespace EvaluationIndicatorSystem
         public string BasicAdd { get; set; }
         public CalModule[] CalModules { get; set; }
         public string StrCalModules { get; set; }
+        public string Update { get => "修改"; }
+        public string Delete { get => "删除"; }
     }//end of class BasicFourModule
 
     public class IndicatorOne

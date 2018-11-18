@@ -174,44 +174,56 @@ namespace EvaluationIndicatorSystem
             }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (((DataGridView)sender).CurrentCell.Value.ToString() == "修改")
+            {
+                RowUpdateClick(sender, e);
+            }
+            else if (((DataGridView)sender).CurrentCell.Value.ToString() == "删除")
+            {
+                RowDeleteClick(sender, e);
+            }
+        }
+
         /// <summary>
         /// 修改
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        //private void Control_UpdateClick(object sender, string e)
-        //{
-        //    BasicDataModule module = modules[e];
-        //    using (ChangeIndicatorThree dialog = new ChangeIndicatorThree(modules, module))
-        //    {
-        //        dialog.ChangeTitle = "修改 四级级指标";
-        //        if (dialog.ShowDialog() == DialogResult.OK)
-        //        {
-        //            BasicDataModule module1 = dialog.GetModule;
-        //            bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
-        //            if (!result)
-        //            {
-        //                MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                return;
-        //            }
-        //            DataRefresh();
-        //        }
-        //    }
-        //}
+        private void RowUpdateClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //    BasicDataModule module = modules[e];
+            //    using (ChangeIndicatorThree dialog = new ChangeIndicatorThree(modules, module))
+            //    {
+            //        dialog.ChangeTitle = "修改 四级级指标";
+            //        if (dialog.ShowDialog() == DialogResult.OK)
+            //        {
+            //            BasicDataModule module1 = dialog.GetModule;
+            //            bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
+            //            if (!result)
+            //            {
+            //                MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                return;
+            //            }
+            //            DataRefresh();
+            //        }
+            //    }
+        }
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        //private void Control_DeleteClick(object sender, string e)
-        //{
-        //    if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-        //    {
-        //        SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
-        //        DataRefresh();
-        //    }
-        //}
+        private void RowDeleteClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //    if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //    {
+            //        SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
+            //        DataRefresh();
+            //    }
+        }
     }//end of class
 }
 
