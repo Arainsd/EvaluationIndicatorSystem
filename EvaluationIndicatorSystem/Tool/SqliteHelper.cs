@@ -111,6 +111,40 @@ namespace EvaluationIndicatorSystem
                         }
                     }
                     break;
+                case TableName.BasicFour:
+                    BasicFourModule fourData = (BasicFourModule)data;
+                    if (CheckRowData(tableName.ToString(), fourData.Name))
+                    {
+                        result = false;
+                        msg = "指标已存在";
+                    }
+                    else
+                    {
+                        string strCalModule = string.Empty;
+                        for (int i = 0; i < fourData.CalModules.Length; i++)
+                        {
+                            if (i == 0)
+                            {
+                                strCalModule += (int)fourData.CalModules[i];
+                            }
+                            else
+                            {
+                                strCalModule += "," + (int)fourData.CalModules[i];
+
+                            }
+                        }
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, level, parent_id, basic_rule, basic_sub, basic_add, cal_module) VALUES('{fourData.Name}', {fourData.Level}, {fourData.ParentId}, '{fourData.BasicRule}', '{fourData.BasicSub}', '{fourData.BasicAdd}', '{strCalModule}')";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
+                        else
+                        {
+                            result = false;
+                            msg = "数据写入失败";
+                        }
+                    }
+                    break;
                 default:
                     msg = "table is not exist";
                     break;
@@ -219,6 +253,31 @@ namespace EvaluationIndicatorSystem
                     }
                     reader.Close();
                     return modules;
+                case TableName.BasicFour:
+                    cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
+                    SQLiteDataReader fourReader = cmd.ExecuteReader();
+                    List<BasicFourModule> fourModules = new List<BasicFourModule>();
+                    while (fourReader.Read())
+                    {
+                        BasicFourModule fourModule = new BasicFourModule();
+                        fourModule.ID = int.Parse(fourReader["id"].ToString());
+                        fourModule.Name = fourReader["name"].ToString();
+                        fourModule.Level = int.Parse(fourReader["level"].ToString());
+                        fourModule.ParentId = int.Parse(fourReader["parent_id"].ToString());
+                        fourModule.BasicRule = fourReader["basic_rule"].ToString();
+                        fourModule.BasicAdd = fourReader["basic_sub"].ToString();
+                        fourModule.BasicSub = fourReader["basic_add"].ToString();
+                        string cals = fourReader["cal_module"].ToString();
+                        string[] arrCals = cals.Split(",".ToArray());
+                        fourModule.CalModules = new CalModule[arrCals.Length];
+                        for (int i = 0;i <arrCals.Length;i++)
+                        {
+                            fourModule.CalModules[i] = (CalModule)int.Parse(arrCals[i]);
+                        }
+                        fourModules.Add(fourModule);
+                    }
+                    fourReader.Close();
+                    return fourModules;
             }
             return null;
         }

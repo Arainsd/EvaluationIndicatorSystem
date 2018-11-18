@@ -23,13 +23,15 @@ namespace EvaluationIndicatorSystem
 
     public class BasicFourModule
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public int Level { get; set; }
         public int ParentId { get; set; }
         public string BasicRule { get; set; }
         public string BasicSub { get; set; }
         public string BasicAdd { get; set; }
+        public CalModule[] CalModules { get; set; }
+        public string StrCalModules { get; set; }
     }//end of class BasicFourModule
 
     public class IndicatorOne

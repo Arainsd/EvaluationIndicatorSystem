@@ -101,7 +101,7 @@ namespace EvaluationIndicatorSystem
 
             module = new BasicDataModule();
             module.Name = indicator;
-            module.Level = 2;
+            module.Level = 3;
             module.Grade = grade;
             module.ParentId = parentId;
 

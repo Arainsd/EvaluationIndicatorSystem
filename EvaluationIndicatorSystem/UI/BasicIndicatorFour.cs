@@ -19,12 +19,15 @@ namespace EvaluationIndicatorSystem
         }
 
         Dictionary<string, BasicDataModule> modules = null;
+        List<BasicFourModule> fourModules = null;
         DataHelper dataHelper = null;
+        string[] calModule = { "开关型", "单一比较型", "多重比较型", "分段计数型", "单一比例比较型" };
 
         private void Init()
         {
             dataHelper = new DataHelper();
             modules = new Dictionary<string, BasicDataModule>();
+            fourModules = new List<BasicFourModule>();
             DataRefresh();
         }
 
@@ -37,12 +40,13 @@ namespace EvaluationIndicatorSystem
             combo_one.Items.Clear();
             combo_two.Items.Clear();
             combo_three.Items.Clear();
-            tableLayoutPanel1.Controls.Clear();
+            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
+            fourModules = (List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour);
             List<BasicDataModule> obj = (List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData);
             if (obj != null && obj.Count > 0)
             {
                 foreach (var item in obj)
-                {                    
+                {                         
                     modules.Add(item.ID.ToString(), item);
                     if (item.Level == 1)
                     {
@@ -67,7 +71,7 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            tableLayoutPanel1.Controls.Clear();
+            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
             int id = -1;
             id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
@@ -83,7 +87,7 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            tableLayoutPanel1.Controls.Clear();
+            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
             int id = -1;
             id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
@@ -97,22 +101,37 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tableLayoutPanel1.Controls.Clear();
+            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
             int id = -1;
             id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            foreach (var module in modules)
+            List<BasicFourModule> currentModule = new List<BasicFourModule>();
+            for(int i  = 0;i < fourModules.Count;i ++)
             {
-                if (module.Value.ParentId == id)
+                if (fourModules[i].ParentId == id)
                 {
-                    IndicatorControl control = new IndicatorControl();
-                    control.IndicatorName = module.Value.Name;
-                    control.UpdateClick += Control_UpdateClick;
-                    control.DeleteClick += Control_DeleteClick;
-                    control.Name = module.Value.ID.ToString();
-                    tableLayoutPanel1.Controls.Add(control);
+                    fourModules[i].StrCalModules = GetCalModuleStr(fourModules[i].CalModules);
+                    currentModule.Add(fourModules[i]);
                 }
             }
+            dataGridView1.DataSource = currentModule;
+            dataGridView1.Refresh();
+        }
+
+        private string GetCalModuleStr(CalModule[] data)
+        {
+            string str = string.Empty;
+            for(int i= 0;i < data.Length;i++)
+            {
+                if (i == 0)
+                {
+                    str += calModule[(int)data[i] - 1];
+                } else
+                {
+                    str += "," + calModule[(int)data[i] - 1];
+                }
+            }
+            return str;
         }
 
         /// <summary>
@@ -127,53 +146,27 @@ namespace EvaluationIndicatorSystem
                 MessageBox.Show("请先添加一级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            string msg = dataHelper.CheckComboItem(modules, 2);
-            if (!string.IsNullOrEmpty(msg))
+            if (combo_two.Items.Count == 0)
             {
                 MessageBox.Show("请先添加二级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            msg = dataHelper.CheckComboItem(modules, 2);
-            if (!string.IsNullOrEmpty(msg))
+            if (combo_three.Items.Count == 0)
             {
                 MessageBox.Show("请先添加三级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            //using (ChangeIndicatorThree dialog = new ChangeIndicatorThree(modules))
-            //{
-            //    dialog.ChangeTitle = "新增 四级指标";
-            //    if (dialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        BasicDataModule module = dialog.GetModule;
-            //        SqliteHelper.Insert(TableName.BasicData, module, out string msg);
-            //        if (!string.IsNullOrEmpty(msg))
-            //        {
-            //            MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            return;
-            //        }
-            //        DataRefresh();
-            //    }
-            //}
-        }
-
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Control_UpdateClick(object sender, string e)
-        {
-            BasicDataModule module = modules[e];
-            using (ChangeIndicatorThree dialog = new ChangeIndicatorThree(modules, module))
+            using (ChangeIndicatorFour dialog = new ChangeIndicatorFour())
             {
-                dialog.ChangeTitle = "修改 三级指标";
+                dialog.ChangeTitle = $"新增 四级指标 : {combo_one.SelectedItem} > {combo_two.SelectedItem} > {combo_three.SelectedItem}";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    BasicDataModule module1 = dialog.GetModule;
-                    bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
-                    if (!result)
+                    BasicFourModule fourModule = dialog.GetModule;
+                    fourModule.ParentId = dataHelper.GetParentId(modules, combo_three.SelectedItem.ToString());
+                    SqliteHelper.Insert(TableName.BasicFour, fourModule, out string msg);
+                    if (!string.IsNullOrEmpty(msg))
                     {
-                        MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     DataRefresh();
@@ -182,18 +175,43 @@ namespace EvaluationIndicatorSystem
         }
 
         /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //private void Control_UpdateClick(object sender, string e)
+        //{
+        //    BasicDataModule module = modules[e];
+        //    using (ChangeIndicatorThree dialog = new ChangeIndicatorThree(modules, module))
+        //    {
+        //        dialog.ChangeTitle = "修改 四级级指标";
+        //        if (dialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            BasicDataModule module1 = dialog.GetModule;
+        //            bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
+        //            if (!result)
+        //            {
+        //                MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                return;
+        //            }
+        //            DataRefresh();
+        //        }
+        //    }
+        //}
+
+        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Control_DeleteClick(object sender, string e)
-        {
-            if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
-                DataRefresh();
-            }
-        }
+        //private void Control_DeleteClick(object sender, string e)
+        //{
+        //    if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+        //    {
+        //        SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
+        //        DataRefresh();
+        //    }
+        //}
     }//end of class
 }
 

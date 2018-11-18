@@ -42,14 +42,10 @@ namespace EvaluationIndicatorSystem
             {
                 foreach (var item in obj)
                 {
+                    modules.Add(item.ID.ToString(), item);
                     if (item.Level == 1)
                     {
-                        modules.Add(item.ID.ToString(), item);
                         combo_one.Items.Add(item.Name);
-                    }
-                    else if (item.Level == 2 || item.Level == 3)
-                    {
-                        modules.Add(item.ID.ToString(), item);
                     }
                 }
                 if(combo_one.Items.Count > 0)
@@ -112,8 +108,8 @@ namespace EvaluationIndicatorSystem
                 MessageBox.Show("请先添加一级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            string msg = dataHelper.CheckComboItem(modules, 2);
-            if (!string.IsNullOrEmpty(msg))
+            string message = dataHelper.CheckComboItem(modules, 2);
+            if (!string.IsNullOrEmpty(message))
             {
                 MessageBox.Show("请先添加二级指标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

@@ -41,17 +41,25 @@ namespace EvaluationIndicatorSystem
         public string CheckComboItem(Dictionary<string, BasicDataModule> modules, int level)
         {
             string msg = string.Empty;
+            bool hasLevel = false;
             foreach (var item in modules)
             {
                 if (item.Value.Level == level)
                 {
-                    switch (level)
-                    {
-                        case 2:
-                            msg = "请先添加二级指标";
-                            break;
-                    }
+                    hasLevel = true;
                     break;
+                }
+            }
+            if(!hasLevel)
+            {
+                switch (level)
+                {
+                    case 2:
+                        msg = "请先添加二级指标";
+                        break;
+                    case 3:
+                        msg = "请先添加三级指标";
+                        break;
                 }
             }
             return msg;
