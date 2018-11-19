@@ -178,6 +178,31 @@ namespace EvaluationIndicatorSystem
                         result = false;
                     }
                     break;
+                case TableName.BasicFour:
+                    BasicFourModule fourData = (BasicFourModule)data;
+                    string strCalModule = string.Empty;
+                    for (int i = 0; i < fourData.CalModules.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            strCalModule += (int)fourData.CalModules[i];
+                        }
+                        else
+                        {
+                            strCalModule += "," + (int)fourData.CalModules[i];
+
+                        }
+                    }
+                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{fourData.Name}', basic_rule='{fourData.BasicRule}', basic_sub='{fourData.BasicSub}', basic_add='{fourData.BasicAdd}', cal_module='{strCalModule}' WHERE id={id}";
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -198,6 +223,7 @@ namespace EvaluationIndicatorSystem
                 case TableName.User:
                     break;
                 case TableName.BasicData:                    
+                case TableName.BasicFour:
                     cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={id}";
                     if (cmd.ExecuteNonQuery() > 0)
                     {

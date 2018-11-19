@@ -193,22 +193,32 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void RowUpdateClick(object sender, DataGridViewCellEventArgs e)
         {
-            //    BasicDataModule module = modules[e];
-            //    using (ChangeIndicatorThree dialog = new ChangeIndicatorThree(modules, module))
-            //    {
-            //        dialog.ChangeTitle = "修改 四级级指标";
-            //        if (dialog.ShowDialog() == DialogResult.OK)
-            //        {
-            //            BasicDataModule module1 = dialog.GetModule;
-            //            bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
-            //            if (!result)
-            //            {
-            //                MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //                return;
-            //            }
-            //            DataRefresh();
-            //        }
-            //    }
+            int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
+            BasicFourModule module = null;
+            foreach(var item in fourModules)
+            {
+                if(item.ID == id)
+                {
+                    module = item;
+                }
+            }
+            if (module == null)
+                return;
+            using (ChangeIndicatorFour dialog = new ChangeIndicatorFour(module))
+            {
+                dialog.ChangeTitle = "修改 四级级指标";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    BasicFourModule module1 = dialog.GetModule;
+                    bool result = SqliteHelper.Update(TableName.BasicFour, module.ID, module1);
+                    if (!result)
+                    {
+                        MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    DataRefresh();
+                }
+            }
         }
 
         /// <summary>
@@ -218,11 +228,12 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void RowDeleteClick(object sender, DataGridViewCellEventArgs e)
         {
-            //    if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            //    {
-            //        SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
-            //        DataRefresh();
-            //    }
+            int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
+            if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                SqliteHelper.Delete(TableName.BasicFour, id);
+                DataRefresh();
+            }
         }
     }//end of class
 }

@@ -26,6 +26,11 @@ namespace EvaluationIndicatorSystem
                 this.txt_basicRule.Text = module[0].BasicRule;
                 this.txt_sub.Text = module[0].BasicSub;
                 this.txt_add.Text = module[0].BasicAdd;
+                CalModule[] cals = module[0].CalModules;
+                foreach (var item in cals)
+                {
+                    clb_calModule.SetItemChecked((int)item - 1, true);
+                }
             }
         }
 
