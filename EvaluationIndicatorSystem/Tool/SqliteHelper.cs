@@ -20,18 +20,18 @@ namespace EvaluationIndicatorSystem
         public static void InitDBFile()
         {
             path = AppDomain.CurrentDomain.BaseDirectory + "Data";
-            if(!Directory.Exists(path))
+            if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
             path += "/data.sqlite";
-            if(!File.Exists(path))
+            if (!File.Exists(path))
             {
                 SQLiteConnection.CreateFile(path);
             }
             conn = new SQLiteConnection("data source=" + path);
             cmd = new SQLiteCommand(conn);
-            if(conn.State != System.Data.ConnectionState.Open)
+            if (conn.State != System.Data.ConnectionState.Open)
             {
                 conn.Open();
             }
@@ -51,10 +51,7 @@ namespace EvaluationIndicatorSystem
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }            
+            return false;
         }
 
         /// <summary>
@@ -69,7 +66,7 @@ namespace EvaluationIndicatorSystem
             msg = string.Empty;
             switch (tableName)
             {
-                case TableName.User:                    
+                case TableName.User:
                     UserModule user = (UserModule)data;
                     if (CheckRowData(tableName.ToString(), user.UserName))
                     {
@@ -79,7 +76,7 @@ namespace EvaluationIndicatorSystem
                     else
                     {
                         cmd.CommandText = $"INSERT INTO '{tableName.ToString()}' VALUES('{user.UserName}', '{user.PassWord}')";
-                        if(cmd.ExecuteNonQuery()>0)
+                        if (cmd.ExecuteNonQuery() > 0)
                         {
                             result = true;
                         }
@@ -88,7 +85,7 @@ namespace EvaluationIndicatorSystem
                             result = false;
                             msg = "数据写入失败";
                         }
-                    }                        
+                    }
                     break;
                 case TableName.BasicData:
                     BasicDataModule basicData = (BasicDataModule)data;
@@ -130,7 +127,6 @@ namespace EvaluationIndicatorSystem
                             else
                             {
                                 strCalModule += "," + (int)fourData.CalModules[i];
-
                             }
                         }
                         cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, level, parent_id, basic_rule, basic_sub, basic_add, cal_module) VALUES('{fourData.Name}', {fourData.Level}, {fourData.ParentId}, '{fourData.BasicRule}', '{fourData.BasicSub}', '{fourData.BasicAdd}', '{strCalModule}')";
@@ -159,7 +155,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="id"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static bool Update(TableName tableName,int id, object data)
+        public static bool Update(TableName tableName, int id, object data)
         {
             bool result = false;
             switch (tableName)
@@ -172,10 +168,6 @@ namespace EvaluationIndicatorSystem
                     if (cmd.ExecuteNonQuery() > 0)
                     {
                         result = true;
-                    }
-                    else
-                    {
-                        result = false;
                     }
                     break;
                 case TableName.BasicFour:
@@ -190,7 +182,6 @@ namespace EvaluationIndicatorSystem
                         else
                         {
                             strCalModule += "," + (int)fourData.CalModules[i];
-
                         }
                     }
                     cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{fourData.Name}', basic_rule='{fourData.BasicRule}', basic_sub='{fourData.BasicSub}', basic_add='{fourData.BasicAdd}', cal_module='{strCalModule}' WHERE id={id}";
@@ -198,15 +189,36 @@ namespace EvaluationIndicatorSystem
                     {
                         result = true;
                     }
-                    else
-                    {
-                        result = false;
-                    }
                     break;
                 default:
                     break;
             }
             return result;
+        }
+
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public static void Delete(TableName tableName, List<int> ids)
+        {
+            try
+            {
+                using (SQLiteTransaction transaction = conn.BeginTransaction())
+                {
+                    foreach (var item in ids)
+                    {
+                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={item}";
+                        cmd.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         /// <summary>
@@ -218,24 +230,17 @@ namespace EvaluationIndicatorSystem
         public static bool Delete(TableName tableName, int id)
         {
             bool result = false;
-            switch (tableName)
+            try
             {
-                case TableName.User:
-                    break;
-                case TableName.BasicData:                    
-                case TableName.BasicFour:
-                    cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={id}";
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        result = true;
-                    }
-                    else
-                    {
-                        result = false;
-                    }
-                    break;
-                default:
-                    break;
+                cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={id}";
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
             return result;
         }
@@ -253,65 +258,68 @@ namespace EvaluationIndicatorSystem
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
         
+        /// <summary>
+        /// 数据查询
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
         public static object Select(TableName tableName)
         {
-            switch(tableName)
+            try
             {
-                case TableName.BasicData:
-                    cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
-                    SQLiteDataReader reader = cmd.ExecuteReader();
-                    List<BasicDataModule> modules = new List<BasicDataModule>();
-                    while (reader.Read())
-                    {
-                        BasicDataModule module = new BasicDataModule();
-                        module.ID = int.Parse(reader["id"].ToString());
-                        module.Name = reader["name"].ToString();
-                        module.Level = int.Parse(reader["level"].ToString());
-                        module.Grade = int.Parse(reader["grade"].ToString());
-                        module.ParentId = int.Parse(reader["parent_id"].ToString());
-                        modules.Add(module);
-                    }
-                    reader.Close();
-                    return modules;
-                case TableName.BasicFour:
-                    cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
-                    SQLiteDataReader fourReader = cmd.ExecuteReader();
-                    List<BasicFourModule> fourModules = new List<BasicFourModule>();
-                    while (fourReader.Read())
-                    {
-                        BasicFourModule fourModule = new BasicFourModule();
-                        fourModule.ID = int.Parse(fourReader["id"].ToString());
-                        fourModule.Name = fourReader["name"].ToString();
-                        fourModule.Level = int.Parse(fourReader["level"].ToString());
-                        fourModule.ParentId = int.Parse(fourReader["parent_id"].ToString());
-                        fourModule.BasicRule = fourReader["basic_rule"].ToString();
-                        fourModule.BasicAdd = fourReader["basic_sub"].ToString();
-                        fourModule.BasicSub = fourReader["basic_add"].ToString();
-                        string cals = fourReader["cal_module"].ToString();
-                        string[] arrCals = cals.Split(",".ToArray());
-                        fourModule.CalModules = new CalModule[arrCals.Length];
-                        for (int i = 0;i <arrCals.Length;i++)
+                switch (tableName)
+                {
+                    case TableName.BasicData:
+                        cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
+                        SQLiteDataReader reader = cmd.ExecuteReader();
+                        List<BasicDataModule> modules = new List<BasicDataModule>();
+                        while (reader.Read())
                         {
-                            fourModule.CalModules[i] = (CalModule)int.Parse(arrCals[i]);
+                            BasicDataModule module = new BasicDataModule();
+                            module.ID = int.Parse(reader["id"].ToString());
+                            module.Name = reader["name"].ToString();
+                            module.Level = int.Parse(reader["level"].ToString());
+                            module.Grade = int.Parse(reader["grade"].ToString());
+                            module.ParentId = int.Parse(reader["parent_id"].ToString());
+                            modules.Add(module);
                         }
-                        fourModules.Add(fourModule);
-                    }
-                    fourReader.Close();
-                    return fourModules;
+                        reader.Close();
+                        return modules;
+                    case TableName.BasicFour:
+                        cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
+                        SQLiteDataReader fourReader = cmd.ExecuteReader();
+                        List<BasicFourModule> fourModules = new List<BasicFourModule>();
+                        while (fourReader.Read())
+                        {
+                            BasicFourModule fourModule = new BasicFourModule();
+                            fourModule.ID = int.Parse(fourReader["id"].ToString());
+                            fourModule.Name = fourReader["name"].ToString();
+                            fourModule.Level = int.Parse(fourReader["level"].ToString());
+                            fourModule.ParentId = int.Parse(fourReader["parent_id"].ToString());
+                            fourModule.BasicRule = fourReader["basic_rule"].ToString();
+                            fourModule.BasicAdd = fourReader["basic_sub"].ToString();
+                            fourModule.BasicSub = fourReader["basic_add"].ToString();
+                            string cals = fourReader["cal_module"].ToString();
+                            string[] arrCals = cals.Split(",".ToArray());
+                            fourModule.CalModules = new CalModule[arrCals.Length];
+                            for (int i = 0; i < arrCals.Length; i++)
+                            {
+                                fourModule.CalModules[i] = (CalModule)int.Parse(arrCals[i]);
+                            }
+                            fourModules.Add(fourModule);
+                        }
+                        fourReader.Close();
+                        return fourModules;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
             return null;
-        }
-
-        public static int ImportBasicData()
-        {
-            int result = 0;
-            return result;
         }
 
         /// <summary>

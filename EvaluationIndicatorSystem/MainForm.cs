@@ -105,6 +105,22 @@ namespace EvaluationIndicatorSystem
         {
             Control[] controls = tabControl1.Controls.Find(tabName.ToString(), false);
             tabControl1.SelectedIndex = controls[0].TabIndex;
+            switch(tabName)
+            {
+                case TabName.BasicIndicatorOne:
+                    basicIndicatorOne.DataRefresh();
+                    break;
+                case TabName.BasicIndicatorTwo:
+                    basicIndicatorTwo.DataRefresh();
+                    break;
+                case TabName.BasicIndicatorThree:
+                    basicIndicatorThree.DataRefresh();
+                    break;
+                case TabName.BasicIndicatorFour:
+                    basicIndicatorFour.DataRefresh();
+                    break;
+            }
+            
         }
     }//end of class
 }

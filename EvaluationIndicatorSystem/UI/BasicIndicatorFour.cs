@@ -34,7 +34,7 @@ namespace EvaluationIndicatorSystem
         /// <summary>
         /// 刷新数据
         /// </summary>
-        private void DataRefresh()
+        public void DataRefresh()
         {
             modules.Clear();
             combo_one.Items.Clear();
