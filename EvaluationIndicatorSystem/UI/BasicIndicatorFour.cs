@@ -71,7 +71,7 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
+            dataGridView1.DataSource = new List<BasicFourModule>();
             int id = -1;
             id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
@@ -87,7 +87,7 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
+            dataGridView1.DataSource = new List<BasicFourModule>();
             int id = -1;
             id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
