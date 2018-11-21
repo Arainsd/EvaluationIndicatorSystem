@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LeftMenu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbl_name = new System.Windows.Forms.Label();
             this.lbl_user = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_manage = new System.Windows.Forms.Panel();
@@ -53,11 +55,11 @@
             this.lbl_basic_one = new System.Windows.Forms.Label();
             this.panel_workSurface = new System.Windows.Forms.Panel();
             this.lbl_workSurface = new System.Windows.Forms.Label();
-            this.lbl_name = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_manage.SuspendLayout();
             this.panel_export.SuspendLayout();
@@ -87,6 +89,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox2);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_name);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_user);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
@@ -103,6 +106,25 @@
             this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(170, 90);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // lbl_name
+            // 
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.Location = new System.Drawing.Point(86, 90);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(47, 20);
+            this.lbl_name.TabIndex = 2;
+            this.lbl_name.Text = "name";
             // 
             // lbl_user
             // 
@@ -328,15 +350,6 @@
             this.lbl_workSurface.TabIndex = 0;
             this.lbl_workSurface.Text = "工作面板";
             // 
-            // lbl_name
-            // 
-            this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(86, 90);
-            this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(47, 20);
-            this.lbl_name.TabIndex = 2;
-            this.lbl_name.Text = "name";
-            // 
             // LeftMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -354,6 +367,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_manage.ResumeLayout(false);
             this.panel_manage.PerformLayout();
@@ -410,5 +424,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_user;
         private System.Windows.Forms.Label lbl_name;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

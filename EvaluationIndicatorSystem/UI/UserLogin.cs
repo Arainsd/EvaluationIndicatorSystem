@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EvaluationIndicatorSystem
 {
-    public partial class FormLogin : Form
+    public partial class UserLogin : Form
     {
-        public FormLogin()
+        public UserLogin()
         {
             InitializeComponent();            
         }
@@ -54,7 +54,7 @@ namespace EvaluationIndicatorSystem
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using (FormRegister dialog = new FormRegister())
+            using (UserRegister dialog = new UserRegister())
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {

@@ -1,6 +1,6 @@
 ﻿namespace EvaluationIndicatorSystem
 {
-    partial class FormLogin
+    partial class UserLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -105,7 +105,7 @@
             // 
             this.lbl_password_msg.AutoSize = true;
             this.lbl_password_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_password_msg.Location = new System.Drawing.Point(197, 215);
+            this.lbl_password_msg.Location = new System.Drawing.Point(185, 140);
             this.lbl_password_msg.Name = "lbl_password_msg";
             this.lbl_password_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_password_msg.TabIndex = 8;
@@ -122,7 +122,7 @@
             this.linkLabel1.Text = "注册";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // FormLogin
+            // UserLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +138,7 @@
             this.Controls.Add(this.lbl_name);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormLogin";
+            this.Name = "UserLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "登录";
             this.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace EvaluationIndicatorSystem
 {
-    partial class UserRegister
+    partial class ChangePassword
     {
         /// <summary>
         /// Required designer variable.
@@ -36,25 +36,27 @@
             this.lbl_name = new System.Windows.Forms.Label();
             this.txt_password2 = new System.Windows.Forms.TextBox();
             this.lbl_password2 = new System.Windows.Forms.Label();
-            this.lbl_name_msg = new System.Windows.Forms.Label();
             this.lbl_pw_msg = new System.Windows.Forms.Label();
             this.lbl_pw_msg2 = new System.Windows.Forms.Label();
+            this.txt_prePassword = new System.Windows.Forms.TextBox();
+            this.lbl_prePassword = new System.Windows.Forms.Label();
+            this.lbl_prePassword_msg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(325, 226);
+            this.btn_cancel.Location = new System.Drawing.Point(325, 286);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
             this.btn_cancel.TabIndex = 12;
-            this.btn_cancel.Text = "重置";
+            this.btn_cancel.Text = "取消";
             this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_ok
             // 
@@ -62,18 +64,18 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(84, 226);
+            this.btn_ok.Location = new System.Drawing.Point(84, 286);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
             this.btn_ok.TabIndex = 11;
-            this.btn_ok.Text = "注册";
+            this.btn_ok.Text = "修改";
             this.btn_ok.UseVisualStyleBackColor = false;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
             // txt_password
             // 
-            this.txt_password.Location = new System.Drawing.Point(185, 107);
+            this.txt_password.Location = new System.Drawing.Point(185, 167);
             this.txt_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
@@ -82,6 +84,7 @@
             // 
             // txt_name
             // 
+            this.txt_name.Enabled = false;
             this.txt_name.Location = new System.Drawing.Point(185, 47);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Name = "txt_name";
@@ -92,11 +95,11 @@
             // 
             this.lbl_password.AutoSize = true;
             this.lbl_password.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password.Location = new System.Drawing.Point(80, 110);
+            this.lbl_password.Location = new System.Drawing.Point(80, 170);
             this.lbl_password.Name = "lbl_password";
-            this.lbl_password.Size = new System.Drawing.Size(48, 20);
+            this.lbl_password.Size = new System.Drawing.Size(62, 20);
             this.lbl_password.TabIndex = 8;
-            this.lbl_password.Text = "密码 : ";
+            this.lbl_password.Text = "新密码 : ";
             // 
             // lbl_name
             // 
@@ -110,7 +113,7 @@
             // 
             // txt_password2
             // 
-            this.txt_password2.Location = new System.Drawing.Point(185, 167);
+            this.txt_password2.Location = new System.Drawing.Point(185, 227);
             this.txt_password2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password2.Name = "txt_password2";
             this.txt_password2.PasswordChar = '*';
@@ -121,26 +124,17 @@
             // 
             this.lbl_password2.AutoSize = true;
             this.lbl_password2.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password2.Location = new System.Drawing.Point(80, 170);
+            this.lbl_password2.Location = new System.Drawing.Point(80, 230);
             this.lbl_password2.Name = "lbl_password2";
-            this.lbl_password2.Size = new System.Drawing.Size(48, 20);
+            this.lbl_password2.Size = new System.Drawing.Size(62, 20);
             this.lbl_password2.TabIndex = 13;
-            this.lbl_password2.Text = "密码 : ";
-            // 
-            // lbl_name_msg
-            // 
-            this.lbl_name_msg.AutoSize = true;
-            this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(185, 80);
-            this.lbl_name_msg.Name = "lbl_name_msg";
-            this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
-            this.lbl_name_msg.TabIndex = 15;
+            this.lbl_password2.Text = "新密码 : ";
             // 
             // lbl_pw_msg
             // 
             this.lbl_pw_msg.AutoSize = true;
             this.lbl_pw_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_pw_msg.Location = new System.Drawing.Point(185, 139);
+            this.lbl_pw_msg.Location = new System.Drawing.Point(185, 199);
             this.lbl_pw_msg.Name = "lbl_pw_msg";
             this.lbl_pw_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_pw_msg.TabIndex = 16;
@@ -149,20 +143,50 @@
             // 
             this.lbl_pw_msg2.AutoSize = true;
             this.lbl_pw_msg2.ForeColor = System.Drawing.Color.Red;
-            this.lbl_pw_msg2.Location = new System.Drawing.Point(185, 199);
+            this.lbl_pw_msg2.Location = new System.Drawing.Point(185, 259);
             this.lbl_pw_msg2.Name = "lbl_pw_msg2";
             this.lbl_pw_msg2.Size = new System.Drawing.Size(0, 20);
             this.lbl_pw_msg2.TabIndex = 17;
             // 
-            // FormRegister
+            // txt_prePassword
+            // 
+            this.txt_prePassword.Location = new System.Drawing.Point(185, 107);
+            this.txt_prePassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_prePassword.Name = "txt_prePassword";
+            this.txt_prePassword.PasswordChar = '*';
+            this.txt_prePassword.Size = new System.Drawing.Size(220, 25);
+            this.txt_prePassword.TabIndex = 19;
+            // 
+            // lbl_prePassword
+            // 
+            this.lbl_prePassword.AutoSize = true;
+            this.lbl_prePassword.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_prePassword.Location = new System.Drawing.Point(80, 110);
+            this.lbl_prePassword.Name = "lbl_prePassword";
+            this.lbl_prePassword.Size = new System.Drawing.Size(62, 20);
+            this.lbl_prePassword.TabIndex = 18;
+            this.lbl_prePassword.Text = "原密码 : ";
+            // 
+            // lbl_prePassword_msg
+            // 
+            this.lbl_prePassword_msg.AutoSize = true;
+            this.lbl_prePassword_msg.ForeColor = System.Drawing.Color.Red;
+            this.lbl_prePassword_msg.Location = new System.Drawing.Point(185, 140);
+            this.lbl_prePassword_msg.Name = "lbl_prePassword_msg";
+            this.lbl_prePassword_msg.Size = new System.Drawing.Size(0, 20);
+            this.lbl_prePassword_msg.TabIndex = 20;
+            // 
+            // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(503, 303);
+            this.ClientSize = new System.Drawing.Size(503, 362);
+            this.Controls.Add(this.lbl_prePassword_msg);
+            this.Controls.Add(this.txt_prePassword);
+            this.Controls.Add(this.lbl_prePassword);
             this.Controls.Add(this.lbl_pw_msg2);
             this.Controls.Add(this.lbl_pw_msg);
-            this.Controls.Add(this.lbl_name_msg);
             this.Controls.Add(this.txt_password2);
             this.Controls.Add(this.lbl_password2);
             this.Controls.Add(this.btn_cancel);
@@ -173,7 +197,7 @@
             this.Controls.Add(this.lbl_name);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormRegister";
+            this.Name = "ChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "注册";
             this.ResumeLayout(false);
@@ -191,8 +215,10 @@
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.TextBox txt_password2;
         private System.Windows.Forms.Label lbl_password2;
-        private System.Windows.Forms.Label lbl_name_msg;
         private System.Windows.Forms.Label lbl_pw_msg;
         private System.Windows.Forms.Label lbl_pw_msg2;
+        private System.Windows.Forms.TextBox txt_prePassword;
+        private System.Windows.Forms.Label lbl_prePassword;
+        private System.Windows.Forms.Label lbl_prePassword_msg;
     }
 }

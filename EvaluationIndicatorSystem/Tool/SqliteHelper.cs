@@ -17,8 +17,9 @@ namespace EvaluationIndicatorSystem
         /// <summary>
         /// initialze db file
         /// </summary>
-        public static void InitDBFile()
+        public static void InitDBFile(out string msg)
         {
+            msg = string.Empty;
             path = AppDomain.CurrentDomain.BaseDirectory + "Data";
             if (!Directory.Exists(path))
             {
@@ -27,7 +28,9 @@ namespace EvaluationIndicatorSystem
             path += "/data.sqlite";
             if (!File.Exists(path))
             {
-                SQLiteConnection.CreateFile(path);
+                msg = "数据库文件不存在";
+                return;
+                //SQLiteConnection.CreateFile(path);
             }
             conn = new SQLiteConnection("data source=" + path);
             cmd = new SQLiteCommand(conn);
@@ -161,6 +164,12 @@ namespace EvaluationIndicatorSystem
             switch (tableName)
             {
                 case TableName.User:
+                    UserModule user = (UserModule)data;
+                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET password='{user.PassWord}' WHERE name='{user.UserName}'";
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        result = true;
+                    }
                     break;
                 case TableName.BasicData:
                     BasicDataModule basicData = (BasicDataModule)data;

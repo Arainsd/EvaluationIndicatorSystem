@@ -56,6 +56,7 @@ namespace EvaluationIndicatorSystem
             leftMenu = new LeftMenu();
             leftMenu.Dock = DockStyle.Fill;
             leftMenu.MenuClick += LeftMenu_MenuClick;
+            leftMenu.ChangePasswordClick += LeftMenu_ChangePasswordClick;
             leftMenu.LblUserName = currentUser.UserName;
             splitContainer1.Panel1.Controls.Add(leftMenu);
 
@@ -75,6 +76,28 @@ namespace EvaluationIndicatorSystem
             tabDictionary.Add(TabName.DataExport, dataExport);
             userManagement = new UserManagement();
             tabDictionary.Add(TabName.UserManagement, userManagement);
+        }
+
+        private void LeftMenu_ChangePasswordClick(object sender, EventArgs e)
+        {
+            using (ChangePassword dialog = new ChangePassword(currentUser))
+            {                
+                if(dialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.Hide();
+                    using (UserLogin dialog2 = new UserLogin())
+                    {
+                        if (dialog2.ShowDialog() == DialogResult.OK)
+                        {
+                            this.Show();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
+                    }
+                }
+            }
         }
 
         private void LeftMenu_MenuClick(object sender, EventArgs e)

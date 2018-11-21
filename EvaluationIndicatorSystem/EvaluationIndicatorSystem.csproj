@@ -44,6 +44,10 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -120,12 +124,6 @@
     <Compile Include="UI\BasicIndicatorTwo.Designer.cs">
       <DependentUpon>BasicIndicatorTwo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\BasicParameterSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\BasicParameterSettings.Designer.cs">
-      <DependentUpon>BasicParameterSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ChangeIndicatorFour.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,18 +172,6 @@
     <Compile Include="UI\LeftMenu.Designer.cs">
       <DependentUpon>LeftMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ParameterSetting.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\ParameterSetting.Designer.cs">
-      <DependentUpon>ParameterSetting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\IndicatorDataSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\IndicatorDataSettings.Designer.cs">
-      <DependentUpon>IndicatorDataSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\UserLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +183,12 @@
     </Compile>
     <Compile Include="UI\UserManagement.Designer.cs">
       <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserRegister.cs">
       <SubType>Form</SubType>
@@ -229,9 +221,6 @@
     <EmbeddedResource Include="UI\BasicIndicatorTwo.resx">
       <DependentUpon>BasicIndicatorTwo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\BasicParameterSettings.resx">
-      <DependentUpon>BasicParameterSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangeIndicatorFour.resx">
       <DependentUpon>ChangeIndicatorFour.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,17 +245,14 @@
     <EmbeddedResource Include="UI\LeftMenu.resx">
       <DependentUpon>LeftMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ParameterSetting.resx">
-      <DependentUpon>ParameterSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\IndicatorDataSettings.resx">
-      <DependentUpon>IndicatorDataSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserManagement.resx">
       <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserRegister.resx">
       <DependentUpon>UserRegister.cs</DependentUpon>

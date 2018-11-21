@@ -16,8 +16,13 @@ namespace EvaluationIndicatorSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SqliteHelper.InitDBFile();
-            using (FormLogin dialog = new FormLogin())
+            SqliteHelper.InitDBFile(out string msg);
+            if(!string.IsNullOrEmpty(msg))
+            {
+                MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            using (UserLogin dialog = new UserLogin())
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {

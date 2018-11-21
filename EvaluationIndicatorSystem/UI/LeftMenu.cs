@@ -199,5 +199,11 @@ namespace EvaluationIndicatorSystem
             MenuClick?.Invoke(sender, e);
         }
         #endregion
+
+        public event EventHandler ChangePasswordClick;
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            ChangePasswordClick?.Invoke(sender, e);
+        }
     }//end of class
 }
