@@ -199,7 +199,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "注册";
+            this.Text = "修改密码";
             this.ResumeLayout(false);
             this.PerformLayout();
 
