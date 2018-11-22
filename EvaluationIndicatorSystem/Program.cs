@@ -22,7 +22,7 @@ namespace EvaluationIndicatorSystem
                 MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            using (UserLogin dialog = new UserLogin())
+            using (UserLogin dialog = new UserLogin(false))
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {

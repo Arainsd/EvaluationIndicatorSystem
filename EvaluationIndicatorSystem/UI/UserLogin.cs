@@ -12,9 +12,13 @@ namespace EvaluationIndicatorSystem
 {
     public partial class UserLogin : Form
     {
-        public UserLogin()
+        public UserLogin(bool isChange)
         {
-            InitializeComponent();            
+            InitializeComponent(); 
+            if(isChange)
+            {
+                linkLabel1.Visible = false;
+            }
         }
 
         private UserModule user = null;

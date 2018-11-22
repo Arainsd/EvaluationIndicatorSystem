@@ -85,7 +85,7 @@ namespace EvaluationIndicatorSystem
                 if(dialog.ShowDialog() == DialogResult.OK)
                 {
                     this.Hide();
-                    using (UserLogin dialog2 = new UserLogin())
+                    using (UserLogin dialog2 = new UserLogin(true))
                     {
                         if (dialog2.ShowDialog() == DialogResult.OK)
                         {
