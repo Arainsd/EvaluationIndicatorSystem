@@ -88,6 +88,7 @@ namespace EvaluationIndicatorSystem
                 {
                     IndicatorControl control = new IndicatorControl();
                     control.IndicatorName = module.Value.Name;
+                    control.IndicatorGrade = module.Value.Grade.ToString();
                     control.UpdateClick += Control_UpdateClick;
                     control.DeleteClick += Control_DeleteClick;
                     control.Name = module.Value.ID.ToString();

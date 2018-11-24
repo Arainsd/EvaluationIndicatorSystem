@@ -43,6 +43,7 @@ namespace EvaluationIndicatorSystem
                     modules.Add(item.ID.ToString(), item);
                     IndicatorControl control = new IndicatorControl();
                     control.IndicatorName = item.Name;
+                    control.IndicatorGrade = item.Grade.ToString();
                     control.UpdateClick += Control_UpdateClick;
                     control.DeleteClick += Control_DeleteClick;
                     control.Name = item.ID.ToString();

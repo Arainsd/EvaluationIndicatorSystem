@@ -18,7 +18,8 @@ namespace EvaluationIndicatorSystem
         }
 
         //指标名称
-        public string IndicatorName { get => lbl_indicatorName.Text; set => lbl_indicatorName.Text = value; }       
+        public string IndicatorName { get => lbl_name.Text; set => lbl_name.Text = value; }
+        public string IndicatorGrade { get => lbl_grade.Text; set => lbl_grade.Text = value; }
 
         public event EventHandler<string> UpdateClick;
         private void btn_update_Click(object sender, EventArgs e)

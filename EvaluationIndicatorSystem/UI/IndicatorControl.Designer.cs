@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbl_indicatorName = new System.Windows.Forms.Label();
+            this.lbl_name = new System.Windows.Forms.Label();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
+            this.lbl_grade = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -50,7 +51,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Panel1.Controls.Add(this.lbl_indicatorName);
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_grade);
+            this.splitContainer1.Panel1.Controls.Add(this.lbl_name);
             // 
             // splitContainer1.Panel2
             // 
@@ -62,14 +64,13 @@
             this.splitContainer1.SplitterWidth = 7;
             this.splitContainer1.TabIndex = 0;
             // 
-            // lbl_indicatorName
+            // lbl_name
             // 
-            this.lbl_indicatorName.AutoSize = true;
-            this.lbl_indicatorName.Location = new System.Drawing.Point(129, 69);
-            this.lbl_indicatorName.Name = "lbl_indicatorName";
-            this.lbl_indicatorName.Size = new System.Drawing.Size(50, 20);
-            this.lbl_indicatorName.TabIndex = 0;
-            this.lbl_indicatorName.Text = "label1";
+            this.lbl_name.Location = new System.Drawing.Point(2, 2);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(285, 80);
+            this.lbl_name.TabIndex = 0;
+            this.lbl_name.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // btn_update
             // 
@@ -103,6 +104,14 @@
             this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
+            // lbl_grade
+            // 
+            this.lbl_grade.Location = new System.Drawing.Point(2, 87);
+            this.lbl_grade.Name = "lbl_grade";
+            this.lbl_grade.Size = new System.Drawing.Size(285, 20);
+            this.lbl_grade.TabIndex = 1;
+            this.lbl_grade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // IndicatorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -115,7 +124,6 @@
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Size = new System.Drawing.Size(300, 200);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -128,6 +136,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.Label lbl_indicatorName;
+        private System.Windows.Forms.Label lbl_name;
+        private System.Windows.Forms.Label lbl_grade;
     }
 }
