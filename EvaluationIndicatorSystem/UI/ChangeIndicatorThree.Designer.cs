@@ -45,7 +45,7 @@
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(45, 140);
+            this.lbl_name.Location = new System.Drawing.Point(45, 130);
             this.lbl_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(76, 20);
@@ -55,7 +55,7 @@
             // lbl_grade
             // 
             this.lbl_grade.AutoSize = true;
-            this.lbl_grade.Location = new System.Drawing.Point(45, 195);
+            this.lbl_grade.Location = new System.Drawing.Point(45, 205);
             this.lbl_grade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_grade.Name = "lbl_grade";
             this.lbl_grade.Size = new System.Drawing.Size(76, 20);
@@ -64,15 +64,17 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(145, 137);
+            this.txt_name.Location = new System.Drawing.Point(145, 127);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(220, 25);
+            this.txt_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_name.Size = new System.Drawing.Size(220, 50);
             this.txt_name.TabIndex = 3;
             // 
             // txt_grade
             // 
-            this.txt_grade.Location = new System.Drawing.Point(145, 192);
+            this.txt_grade.Location = new System.Drawing.Point(145, 202);
             this.txt_grade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_grade.Name = "txt_grade";
             this.txt_grade.Size = new System.Drawing.Size(220, 25);
@@ -85,7 +87,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(285, 270);
+            this.btn_cancel.Location = new System.Drawing.Point(285, 260);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -99,7 +101,7 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(50, 270);
+            this.btn_ok.Location = new System.Drawing.Point(50, 260);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
@@ -112,7 +114,7 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(145, 159);
+            this.lbl_name_msg.Location = new System.Drawing.Point(30, 155);
             this.lbl_name_msg.Name = "lbl_name_msg";
             this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_name_msg.TabIndex = 15;
@@ -121,7 +123,7 @@
             // 
             this.lbl_grade_msg.AutoSize = true;
             this.lbl_grade_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_grade_msg.Location = new System.Drawing.Point(149, 235);
+            this.lbl_grade_msg.Location = new System.Drawing.Point(30, 230);
             this.lbl_grade_msg.Name = "lbl_grade_msg";
             this.lbl_grade_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_grade_msg.TabIndex = 16;
@@ -147,7 +149,7 @@
             // combo_two
             // 
             this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(145, 85);
+            this.combo_two.Location = new System.Drawing.Point(145, 80);
             this.combo_two.Name = "combo_two";
             this.combo_two.Size = new System.Drawing.Size(220, 27);
             this.combo_two.TabIndex = 20;
@@ -155,7 +157,7 @@
             // lbl_two
             // 
             this.lbl_two.AutoSize = true;
-            this.lbl_two.Location = new System.Drawing.Point(45, 85);
+            this.lbl_two.Location = new System.Drawing.Point(45, 80);
             this.lbl_two.Name = "lbl_two";
             this.lbl_two.Size = new System.Drawing.Size(76, 20);
             this.lbl_two.TabIndex = 19;
@@ -166,7 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(419, 332);
+            this.ClientSize = new System.Drawing.Size(419, 312);
             this.Controls.Add(this.combo_two);
             this.Controls.Add(this.lbl_two);
             this.Controls.Add(this.comb_one);

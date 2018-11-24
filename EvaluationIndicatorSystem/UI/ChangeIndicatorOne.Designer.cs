@@ -51,7 +51,7 @@
             // lbl_grade
             // 
             this.lbl_grade.AutoSize = true;
-            this.lbl_grade.Location = new System.Drawing.Point(45, 123);
+            this.lbl_grade.Location = new System.Drawing.Point(45, 130);
             this.lbl_grade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_grade.Name = "lbl_grade";
             this.lbl_grade.Size = new System.Drawing.Size(76, 20);
@@ -62,13 +62,15 @@
             // 
             this.txt_name.Location = new System.Drawing.Point(145, 47);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(220, 25);
+            this.txt_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_name.Size = new System.Drawing.Size(220, 50);
             this.txt_name.TabIndex = 3;
             // 
             // txt_grade
             // 
-            this.txt_grade.Location = new System.Drawing.Point(145, 120);
+            this.txt_grade.Location = new System.Drawing.Point(145, 127);
             this.txt_grade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_grade.Name = "txt_grade";
             this.txt_grade.Size = new System.Drawing.Size(220, 25);
@@ -108,7 +110,7 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(145, 80);
+            this.lbl_name_msg.Location = new System.Drawing.Point(30, 65);
             this.lbl_name_msg.Name = "lbl_name_msg";
             this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_name_msg.TabIndex = 15;
@@ -117,7 +119,7 @@
             // 
             this.lbl_grade_msg.AutoSize = true;
             this.lbl_grade_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_grade_msg.Location = new System.Drawing.Point(149, 153);
+            this.lbl_grade_msg.Location = new System.Drawing.Point(30, 155);
             this.lbl_grade_msg.Name = "lbl_grade_msg";
             this.lbl_grade_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_grade_msg.TabIndex = 16;
@@ -127,7 +129,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(419, 272);
+            this.ClientSize = new System.Drawing.Size(419, 262);
             this.Controls.Add(this.lbl_grade_msg);
             this.Controls.Add(this.lbl_name_msg);
             this.Controls.Add(this.btn_cancel);
