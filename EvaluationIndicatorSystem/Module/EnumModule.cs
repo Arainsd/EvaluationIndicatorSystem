@@ -19,9 +19,7 @@ namespace EvaluationIndicatorSystem
         BasicIndicatorTwo = 2,
         BasicIndicatorThree = 3,
         BasicIndicatorFour = 4,
-        EvaluationResult = 5,
-        DataExport = 6,
-        UserManagement = 7
+        EvalutationData = 5
     }//end of enum TabName
 
     public enum CalModule

@@ -32,12 +32,7 @@ namespace EvaluationIndicatorSystem
         BasicIndicatorThree basicIndicatorThree = null;
         BasicIndicatorFour basicIndicatorFour = null;
         //指标数据
-        //评价结果
-        EvaluationResult evaluationResult = null;
-        //数据导出
-        DataExport dataExport = null;
-        //账号管理
-        UserManagement userManagement = null;
+        EvalutationData evalutationData = null;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -70,12 +65,8 @@ namespace EvaluationIndicatorSystem
             tabDictionary.Add(TabName.BasicIndicatorThree, basicIndicatorThree);
             basicIndicatorFour = new BasicIndicatorFour();
             tabDictionary.Add(TabName.BasicIndicatorFour, basicIndicatorFour);
-            evaluationResult = new EvaluationResult();
-            tabDictionary.Add(TabName.EvaluationResult, evaluationResult);
-            dataExport = new DataExport();
-            tabDictionary.Add(TabName.DataExport, dataExport);
-            userManagement = new UserManagement();
-            tabDictionary.Add(TabName.UserManagement, userManagement);
+            evalutationData = new EvalutationData();
+            tabDictionary.Add(TabName.EvalutationData, evalutationData);
         }
 
         private void LeftMenu_ChangePasswordClick(object sender, EventArgs e)

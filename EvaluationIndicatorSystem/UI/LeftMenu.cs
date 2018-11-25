@@ -182,16 +182,8 @@ namespace EvaluationIndicatorSystem
                 case "panel_basic_four":
                     sender = TabName.BasicIndicatorFour;
                     break;
-                case "panel_indicatorData":
-                    break;
-                case "panel_result":
-                    sender = TabName.EvaluationResult;
-                    break;
-                case "panel_export":
-                    sender = TabName.DataExport;
-                    break;
-                case "panel_manage":
-                    sender = TabName.UserManagement;
+                case "panel_evalutationData":
+                    sender = TabName.EvalutationData;
                     break;
             }
             if (sender == null)

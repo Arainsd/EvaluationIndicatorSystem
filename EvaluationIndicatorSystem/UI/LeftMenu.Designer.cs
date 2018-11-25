@@ -40,7 +40,7 @@
             this.lbl_export = new System.Windows.Forms.Label();
             this.panel_result = new System.Windows.Forms.Panel();
             this.lbl_result = new System.Windows.Forms.Label();
-            this.panel_indicatorData = new System.Windows.Forms.Panel();
+            this.panel_evalutationData = new System.Windows.Forms.Panel();
             this.lbl_indicatorData = new System.Windows.Forms.Label();
             this.panel_basicPara = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -64,7 +64,7 @@
             this.panel_manage.SuspendLayout();
             this.panel_export.SuspendLayout();
             this.panel_result.SuspendLayout();
-            this.panel_indicatorData.SuspendLayout();
+            this.panel_evalutationData.SuspendLayout();
             this.panel_basicPara.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -99,7 +99,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel_manage);
             this.splitContainer1.Panel2.Controls.Add(this.panel_export);
             this.splitContainer1.Panel2.Controls.Add(this.panel_result);
-            this.splitContainer1.Panel2.Controls.Add(this.panel_indicatorData);
+            this.splitContainer1.Panel2.Controls.Add(this.panel_evalutationData);
             this.splitContainer1.Panel2.Controls.Add(this.panel_basicPara);
             this.splitContainer1.Panel2.Controls.Add(this.panel_workSurface);
             this.splitContainer1.Size = new System.Drawing.Size(200, 600);
@@ -198,14 +198,14 @@
             this.lbl_result.TabIndex = 0;
             this.lbl_result.Text = "评价结果";
             // 
-            // panel_indicatorData
+            // panel_evalutationData
             // 
-            this.panel_indicatorData.Controls.Add(this.lbl_indicatorData);
-            this.panel_indicatorData.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_indicatorData.Location = new System.Drawing.Point(0, 260);
-            this.panel_indicatorData.Name = "panel_indicatorData";
-            this.panel_indicatorData.Size = new System.Drawing.Size(200, 50);
-            this.panel_indicatorData.TabIndex = 2;
+            this.panel_evalutationData.Controls.Add(this.lbl_indicatorData);
+            this.panel_evalutationData.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_evalutationData.Location = new System.Drawing.Point(0, 260);
+            this.panel_evalutationData.Name = "panel_evalutationData";
+            this.panel_evalutationData.Size = new System.Drawing.Size(200, 50);
+            this.panel_evalutationData.TabIndex = 2;
             // 
             // lbl_indicatorData
             // 
@@ -375,8 +375,8 @@
             this.panel_export.PerformLayout();
             this.panel_result.ResumeLayout(false);
             this.panel_result.PerformLayout();
-            this.panel_indicatorData.ResumeLayout(false);
-            this.panel_indicatorData.PerformLayout();
+            this.panel_evalutationData.ResumeLayout(false);
+            this.panel_evalutationData.PerformLayout();
             this.panel_basicPara.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
@@ -403,7 +403,7 @@
         private System.Windows.Forms.Panel panel_workSurface;
         private System.Windows.Forms.Label lbl_workSurface;
         private System.Windows.Forms.Panel panel_basicPara;
-        private System.Windows.Forms.Panel panel_indicatorData;
+        private System.Windows.Forms.Panel panel_evalutationData;
         private System.Windows.Forms.Label lbl_indicatorData;
         private System.Windows.Forms.Panel panel_export;
         private System.Windows.Forms.Label lbl_export;

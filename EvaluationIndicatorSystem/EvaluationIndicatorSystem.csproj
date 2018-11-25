@@ -148,18 +148,6 @@
     <Compile Include="UI\ChangeIndicatorOne.Designer.cs">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\DataExport.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\DataExport.Designer.cs">
-      <DependentUpon>DataExport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\EvaluationResult.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\EvaluationResult.Designer.cs">
-      <DependentUpon>EvaluationResult.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\EvalutationData.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,12 +171,6 @@
     </Compile>
     <Compile Include="UI\UserLogin.Designer.cs">
       <DependentUpon>UserLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserManagement.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserManagement.Designer.cs">
-      <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ChangePassword.cs">
       <SubType>Form</SubType>
@@ -239,12 +221,6 @@
     <EmbeddedResource Include="UI\ChangeIndicatorOne.resx">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\DataExport.resx">
-      <DependentUpon>DataExport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\EvaluationResult.resx">
-      <DependentUpon>EvaluationResult.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\EvalutationData.resx">
       <DependentUpon>EvalutationData.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,9 +232,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserManagement.resx">
-      <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>

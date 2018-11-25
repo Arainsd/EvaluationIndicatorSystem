@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EvaluationIndicatorSystem
 {
-    public partial class DataExport : UserControl
+    public partial class EvalutationData : UserControl
     {
-        public DataExport()
+        public EvalutationData()
         {
             InitializeComponent();
         }
