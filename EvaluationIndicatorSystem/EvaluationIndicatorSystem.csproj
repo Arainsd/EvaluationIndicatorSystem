@@ -160,6 +160,12 @@
     <Compile Include="UI\EvaluationResult.Designer.cs">
       <DependentUpon>EvaluationResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\EvalutationData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EvalutationData.Designer.cs">
+      <DependentUpon>EvalutationData.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\IndicatorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EvaluationResult.resx">
       <DependentUpon>EvaluationResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EvalutationData.resx">
+      <DependentUpon>EvalutationData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\IndicatorControl.resx">
       <DependentUpon>IndicatorControl.cs</DependentUpon>
