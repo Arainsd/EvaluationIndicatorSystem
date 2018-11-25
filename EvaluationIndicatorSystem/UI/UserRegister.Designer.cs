@@ -73,19 +73,21 @@
             // 
             // txt_password
             // 
-            this.txt_password.Location = new System.Drawing.Point(185, 107);
+            this.txt_password.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_password.Location = new System.Drawing.Point(185, 101);
             this.txt_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
-            this.txt_password.Size = new System.Drawing.Size(220, 25);
+            this.txt_password.Size = new System.Drawing.Size(220, 34);
             this.txt_password.TabIndex = 10;
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(185, 47);
+            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_name.Location = new System.Drawing.Point(185, 41);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(220, 25);
+            this.txt_name.Size = new System.Drawing.Size(220, 34);
             this.txt_name.TabIndex = 9;
             // 
             // lbl_password
@@ -110,11 +112,12 @@
             // 
             // txt_password2
             // 
-            this.txt_password2.Location = new System.Drawing.Point(185, 167);
+            this.txt_password2.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_password2.Location = new System.Drawing.Point(185, 161);
             this.txt_password2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password2.Name = "txt_password2";
             this.txt_password2.PasswordChar = '*';
-            this.txt_password2.Size = new System.Drawing.Size(220, 25);
+            this.txt_password2.Size = new System.Drawing.Size(220, 34);
             this.txt_password2.TabIndex = 14;
             // 
             // lbl_password2
@@ -131,7 +134,7 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(185, 80);
+            this.lbl_name_msg.Location = new System.Drawing.Point(70, 70);
             this.lbl_name_msg.Name = "lbl_name_msg";
             this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_name_msg.TabIndex = 15;
@@ -140,7 +143,7 @@
             // 
             this.lbl_pw_msg.AutoSize = true;
             this.lbl_pw_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_pw_msg.Location = new System.Drawing.Point(185, 139);
+            this.lbl_pw_msg.Location = new System.Drawing.Point(70, 130);
             this.lbl_pw_msg.Name = "lbl_pw_msg";
             this.lbl_pw_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_pw_msg.TabIndex = 16;
@@ -149,12 +152,12 @@
             // 
             this.lbl_pw_msg2.AutoSize = true;
             this.lbl_pw_msg2.ForeColor = System.Drawing.Color.Red;
-            this.lbl_pw_msg2.Location = new System.Drawing.Point(185, 199);
+            this.lbl_pw_msg2.Location = new System.Drawing.Point(70, 190);
             this.lbl_pw_msg2.Name = "lbl_pw_msg2";
             this.lbl_pw_msg2.Size = new System.Drawing.Size(0, 20);
             this.lbl_pw_msg2.TabIndex = 17;
             // 
-            // FormRegister
+            // UserRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -173,7 +176,7 @@
             this.Controls.Add(this.lbl_name);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormRegister";
+            this.Name = "UserRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "注册";
             this.ResumeLayout(false);

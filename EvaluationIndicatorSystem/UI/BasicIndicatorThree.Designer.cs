@@ -82,12 +82,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 60);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(960, 529);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(960, 519);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -99,24 +99,26 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(960, 50);
+            this.panel1.Size = new System.Drawing.Size(960, 60);
             this.panel1.TabIndex = 0;
             // 
             // combo_two
             // 
+            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(210, 12);
+            this.combo_two.Location = new System.Drawing.Point(270, 12);
             this.combo_two.Name = "combo_two";
-            this.combo_two.Size = new System.Drawing.Size(150, 27);
+            this.combo_two.Size = new System.Drawing.Size(200, 35);
             this.combo_two.TabIndex = 3;
             this.combo_two.SelectedIndexChanged += new System.EventHandler(this.combo_two_SelectedIndexChanged);
             // 
             // combo_one
             // 
+            this.combo_one.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.combo_one.FormattingEnabled = true;
-            this.combo_one.Location = new System.Drawing.Point(19, 12);
+            this.combo_one.Location = new System.Drawing.Point(20, 12);
             this.combo_one.Name = "combo_one";
-            this.combo_one.Size = new System.Drawing.Size(150, 27);
+            this.combo_one.Size = new System.Drawing.Size(200, 35);
             this.combo_one.TabIndex = 2;
             this.combo_one.SelectedIndexChanged += new System.EventHandler(this.combo_one_SelectedIndexChanged);
             // 
@@ -126,7 +128,7 @@
             this.btn_add.FlatAppearance.BorderSize = 0;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(399, 7);
+            this.btn_add.Location = new System.Drawing.Point(510, 12);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 35);
             this.btn_add.TabIndex = 1;

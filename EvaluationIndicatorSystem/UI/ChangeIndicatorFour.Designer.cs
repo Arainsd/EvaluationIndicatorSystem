@@ -46,12 +46,13 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(170, 37);
+            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_name.Location = new System.Drawing.Point(170, 31);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
             this.txt_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_name.Size = new System.Drawing.Size(300, 50);
+            this.txt_name.Size = new System.Drawing.Size(550, 68);
             this.txt_name.TabIndex = 5;
             // 
             // lbl_name
@@ -71,7 +72,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(390, 388);
+            this.btn_cancel.Location = new System.Drawing.Point(640, 500);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -85,7 +86,7 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(49, 388);
+            this.btn_ok.Location = new System.Drawing.Point(45, 500);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
@@ -96,18 +97,19 @@
             // 
             // txt_basicRule
             // 
-            this.txt_basicRule.Location = new System.Drawing.Point(170, 107);
+            this.txt_basicRule.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_basicRule.Location = new System.Drawing.Point(170, 121);
             this.txt_basicRule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_basicRule.Multiline = true;
             this.txt_basicRule.Name = "txt_basicRule";
             this.txt_basicRule.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_basicRule.Size = new System.Drawing.Size(300, 50);
+            this.txt_basicRule.Size = new System.Drawing.Size(550, 68);
             this.txt_basicRule.TabIndex = 18;
             // 
             // lbl_basicGrade
             // 
             this.lbl_basicGrade.AutoSize = true;
-            this.lbl_basicGrade.Location = new System.Drawing.Point(45, 110);
+            this.lbl_basicGrade.Location = new System.Drawing.Point(45, 130);
             this.lbl_basicGrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_basicGrade.Name = "lbl_basicGrade";
             this.lbl_basicGrade.Size = new System.Drawing.Size(76, 20);
@@ -116,18 +118,19 @@
             // 
             // txt_sub
             // 
-            this.txt_sub.Location = new System.Drawing.Point(170, 177);
+            this.txt_sub.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_sub.Location = new System.Drawing.Point(170, 211);
             this.txt_sub.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_sub.Multiline = true;
             this.txt_sub.Name = "txt_sub";
             this.txt_sub.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_sub.Size = new System.Drawing.Size(300, 50);
+            this.txt_sub.Size = new System.Drawing.Size(550, 68);
             this.txt_sub.TabIndex = 20;
             // 
             // lbl_sub
             // 
             this.lbl_sub.AutoSize = true;
-            this.lbl_sub.Location = new System.Drawing.Point(45, 180);
+            this.lbl_sub.Location = new System.Drawing.Point(45, 220);
             this.lbl_sub.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_sub.Name = "lbl_sub";
             this.lbl_sub.Size = new System.Drawing.Size(48, 20);
@@ -136,18 +139,19 @@
             // 
             // txt_add
             // 
-            this.txt_add.Location = new System.Drawing.Point(170, 246);
+            this.txt_add.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_add.Location = new System.Drawing.Point(170, 301);
             this.txt_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_add.Multiline = true;
             this.txt_add.Name = "txt_add";
             this.txt_add.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_add.Size = new System.Drawing.Size(300, 50);
+            this.txt_add.Size = new System.Drawing.Size(550, 68);
             this.txt_add.TabIndex = 22;
             // 
             // lbl_add
             // 
             this.lbl_add.AutoSize = true;
-            this.lbl_add.Location = new System.Drawing.Point(45, 249);
+            this.lbl_add.Location = new System.Drawing.Point(45, 310);
             this.lbl_add.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_add.Name = "lbl_add";
             this.lbl_add.Size = new System.Drawing.Size(48, 20);
@@ -166,7 +170,7 @@
             // lbl_calModule
             // 
             this.lbl_calModule.AutoSize = true;
-            this.lbl_calModule.Location = new System.Drawing.Point(45, 319);
+            this.lbl_calModule.Location = new System.Drawing.Point(45, 396);
             this.lbl_calModule.Name = "lbl_calModule";
             this.lbl_calModule.Size = new System.Drawing.Size(76, 20);
             this.lbl_calModule.TabIndex = 24;
@@ -175,12 +179,15 @@
             // clb_calModule
             // 
             this.clb_calModule.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.clb_calModule.ColumnWidth = 150;
+            this.clb_calModule.ColumnWidth = 200;
+            this.clb_calModule.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.clb_calModule.FormattingEnabled = true;
-            this.clb_calModule.Location = new System.Drawing.Point(170, 319);
+            this.clb_calModule.Items.AddRange(new object[] {
+            "1"});
+            this.clb_calModule.Location = new System.Drawing.Point(170, 396);
             this.clb_calModule.MultiColumn = true;
             this.clb_calModule.Name = "clb_calModule";
-            this.clb_calModule.Size = new System.Drawing.Size(300, 60);
+            this.clb_calModule.Size = new System.Drawing.Size(550, 87);
             this.clb_calModule.TabIndex = 25;
             // 
             // lbl_calModule_msg
@@ -197,7 +204,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(534, 437);
+            this.ClientSize = new System.Drawing.Size(776, 552);
             this.Controls.Add(this.lbl_calModule_msg);
             this.Controls.Add(this.clb_calModule);
             this.Controls.Add(this.lbl_calModule);

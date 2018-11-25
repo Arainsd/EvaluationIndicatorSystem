@@ -52,7 +52,7 @@
             // 
             this.lbl_password.AutoSize = true;
             this.lbl_password.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password.Location = new System.Drawing.Point(80, 110);
+            this.lbl_password.Location = new System.Drawing.Point(80, 120);
             this.lbl_password.Name = "lbl_password";
             this.lbl_password.Size = new System.Drawing.Size(48, 20);
             this.lbl_password.TabIndex = 1;
@@ -60,20 +60,22 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(185, 47);
+            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_name.Location = new System.Drawing.Point(185, 41);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(220, 25);
+            this.txt_name.Size = new System.Drawing.Size(220, 34);
             this.txt_name.TabIndex = 2;
             this.txt_name.Text = "admin";
             // 
             // txt_password
             // 
-            this.txt_password.Location = new System.Drawing.Point(185, 107);
+            this.txt_password.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_password.Location = new System.Drawing.Point(185, 111);
             this.txt_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
-            this.txt_password.Size = new System.Drawing.Size(220, 25);
+            this.txt_password.Size = new System.Drawing.Size(220, 34);
             this.txt_password.TabIndex = 3;
             this.txt_password.Text = "admin";
             // 
@@ -83,7 +85,7 @@
             this.btn_login.FlatAppearance.BorderSize = 0;
             this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_login.ForeColor = System.Drawing.Color.White;
-            this.btn_login.Location = new System.Drawing.Point(84, 191);
+            this.btn_login.Location = new System.Drawing.Point(84, 201);
             this.btn_login.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(321, 35);
@@ -96,7 +98,7 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(185, 79);
+            this.lbl_name_msg.Location = new System.Drawing.Point(70, 70);
             this.lbl_name_msg.Name = "lbl_name_msg";
             this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_name_msg.TabIndex = 7;
@@ -105,7 +107,7 @@
             // 
             this.lbl_password_msg.AutoSize = true;
             this.lbl_password_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_password_msg.Location = new System.Drawing.Point(185, 140);
+            this.lbl_password_msg.Location = new System.Drawing.Point(70, 140);
             this.lbl_password_msg.Name = "lbl_password_msg";
             this.lbl_password_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_password_msg.TabIndex = 8;
@@ -113,10 +115,11 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.linkLabel1.Location = new System.Drawing.Point(368, 155);
+            this.linkLabel1.Location = new System.Drawing.Point(368, 165);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(37, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(42, 21);
             this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "注册";
