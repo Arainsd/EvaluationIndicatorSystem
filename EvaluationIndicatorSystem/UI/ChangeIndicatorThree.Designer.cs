@@ -64,22 +64,22 @@
             // 
             // txt_name
             // 
-            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_name.Location = new System.Drawing.Point(145, 136);
+            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_name.Location = new System.Drawing.Point(145, 139);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
             this.txt_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_name.Size = new System.Drawing.Size(220, 68);
+            this.txt_name.Size = new System.Drawing.Size(220, 60);
             this.txt_name.TabIndex = 3;
             // 
             // txt_grade
             // 
-            this.txt_grade.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_grade.Location = new System.Drawing.Point(145, 226);
+            this.txt_grade.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_grade.Location = new System.Drawing.Point(145, 229);
             this.txt_grade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_grade.Name = "txt_grade";
-            this.txt_grade.Size = new System.Drawing.Size(220, 34);
+            this.txt_grade.Size = new System.Drawing.Size(220, 30);
             this.txt_grade.TabIndex = 4;
             // 
             // btn_cancel
@@ -141,21 +141,21 @@
             // 
             // comb_one
             // 
-            this.comb_one.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.comb_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.comb_one.FormattingEnabled = true;
-            this.comb_one.Location = new System.Drawing.Point(145, 21);
+            this.comb_one.Location = new System.Drawing.Point(145, 24);
             this.comb_one.Name = "comb_one";
-            this.comb_one.Size = new System.Drawing.Size(220, 35);
+            this.comb_one.Size = new System.Drawing.Size(220, 31);
             this.comb_one.TabIndex = 18;
             this.comb_one.SelectedIndexChanged += new System.EventHandler(this.comb_one_SelectedIndexChanged);
             // 
             // combo_two
             // 
-            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(145, 76);
+            this.combo_two.Location = new System.Drawing.Point(145, 79);
             this.combo_two.Name = "combo_two";
-            this.combo_two.Size = new System.Drawing.Size(220, 35);
+            this.combo_two.Size = new System.Drawing.Size(220, 31);
             this.combo_two.TabIndex = 20;
             // 
             // lbl_two

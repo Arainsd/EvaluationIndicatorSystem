@@ -104,21 +104,21 @@
             // 
             // combo_two
             // 
-            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(270, 12);
+            this.combo_two.Location = new System.Drawing.Point(270, 14);
             this.combo_two.Name = "combo_two";
-            this.combo_two.Size = new System.Drawing.Size(200, 35);
+            this.combo_two.Size = new System.Drawing.Size(200, 31);
             this.combo_two.TabIndex = 3;
             this.combo_two.SelectedIndexChanged += new System.EventHandler(this.combo_two_SelectedIndexChanged);
             // 
             // combo_one
             // 
-            this.combo_one.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_one.FormattingEnabled = true;
-            this.combo_one.Location = new System.Drawing.Point(20, 12);
+            this.combo_one.Location = new System.Drawing.Point(20, 14);
             this.combo_one.Name = "combo_one";
-            this.combo_one.Size = new System.Drawing.Size(200, 35);
+            this.combo_one.Size = new System.Drawing.Size(200, 31);
             this.combo_one.TabIndex = 2;
             this.combo_one.SelectedIndexChanged += new System.EventHandler(this.combo_one_SelectedIndexChanged);
             // 
@@ -128,7 +128,7 @@
             this.btn_add.FlatAppearance.BorderSize = 0;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(510, 12);
+            this.btn_add.Location = new System.Drawing.Point(515, 10);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 35);
             this.btn_add.TabIndex = 1;

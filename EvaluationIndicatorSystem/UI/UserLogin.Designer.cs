@@ -60,22 +60,22 @@
             // 
             // txt_name
             // 
-            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_name.Location = new System.Drawing.Point(185, 41);
+            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_name.Location = new System.Drawing.Point(185, 44);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(220, 34);
+            this.txt_name.Size = new System.Drawing.Size(220, 30);
             this.txt_name.TabIndex = 2;
             this.txt_name.Text = "admin";
             // 
             // txt_password
             // 
-            this.txt_password.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_password.Location = new System.Drawing.Point(185, 111);
+            this.txt_password.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_password.Location = new System.Drawing.Point(185, 114);
             this.txt_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
-            this.txt_password.Size = new System.Drawing.Size(220, 34);
+            this.txt_password.Size = new System.Drawing.Size(220, 30);
             this.txt_password.TabIndex = 3;
             this.txt_password.Text = "admin";
             // 
@@ -115,11 +115,11 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.linkLabel1.Location = new System.Drawing.Point(368, 165);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(42, 21);
+            this.linkLabel1.Size = new System.Drawing.Size(37, 20);
             this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "注册";

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbl_title = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -105,14 +105,14 @@
             this.Column6,
             this.Column7,
             this.Column9});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 60);
             this.dataGridView1.Name = "dataGridView1";
@@ -219,31 +219,31 @@
             // 
             // combo_three
             // 
-            this.combo_three.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.combo_three.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_three.FormattingEnabled = true;
-            this.combo_three.Location = new System.Drawing.Point(520, 12);
+            this.combo_three.Location = new System.Drawing.Point(520, 14);
             this.combo_three.Name = "combo_three";
-            this.combo_three.Size = new System.Drawing.Size(200, 35);
+            this.combo_three.Size = new System.Drawing.Size(200, 31);
             this.combo_three.TabIndex = 4;
             this.combo_three.SelectedIndexChanged += new System.EventHandler(this.combo_three_SelectedIndexChanged);
             // 
             // combo_two
             // 
-            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(270, 12);
+            this.combo_two.Location = new System.Drawing.Point(270, 14);
             this.combo_two.Name = "combo_two";
-            this.combo_two.Size = new System.Drawing.Size(200, 35);
+            this.combo_two.Size = new System.Drawing.Size(200, 31);
             this.combo_two.TabIndex = 3;
             this.combo_two.SelectedIndexChanged += new System.EventHandler(this.combo_two_SelectedIndexChanged);
             // 
             // combo_one
             // 
-            this.combo_one.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_one.FormattingEnabled = true;
-            this.combo_one.Location = new System.Drawing.Point(20, 12);
+            this.combo_one.Location = new System.Drawing.Point(20, 14);
             this.combo_one.Name = "combo_one";
-            this.combo_one.Size = new System.Drawing.Size(200, 35);
+            this.combo_one.Size = new System.Drawing.Size(200, 31);
             this.combo_one.TabIndex = 2;
             this.combo_one.SelectedIndexChanged += new System.EventHandler(this.combo_one_SelectedIndexChanged);
             // 
@@ -253,7 +253,7 @@
             this.btn_add.FlatAppearance.BorderSize = 0;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(755, 12);
+            this.btn_add.Location = new System.Drawing.Point(760, 12);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 35);
             this.btn_add.TabIndex = 1;

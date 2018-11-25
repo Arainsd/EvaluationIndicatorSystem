@@ -73,21 +73,21 @@
             // 
             // txt_password
             // 
-            this.txt_password.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_password.Location = new System.Drawing.Point(185, 101);
+            this.txt_password.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_password.Location = new System.Drawing.Point(185, 104);
             this.txt_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
-            this.txt_password.Size = new System.Drawing.Size(220, 34);
+            this.txt_password.Size = new System.Drawing.Size(220, 30);
             this.txt_password.TabIndex = 10;
             // 
             // txt_name
             // 
-            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_name.Location = new System.Drawing.Point(185, 41);
+            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_name.Location = new System.Drawing.Point(185, 44);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(220, 34);
+            this.txt_name.Size = new System.Drawing.Size(220, 30);
             this.txt_name.TabIndex = 9;
             // 
             // lbl_password
@@ -112,12 +112,12 @@
             // 
             // txt_password2
             // 
-            this.txt_password2.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_password2.Location = new System.Drawing.Point(185, 161);
+            this.txt_password2.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_password2.Location = new System.Drawing.Point(185, 164);
             this.txt_password2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password2.Name = "txt_password2";
             this.txt_password2.PasswordChar = '*';
-            this.txt_password2.Size = new System.Drawing.Size(220, 34);
+            this.txt_password2.Size = new System.Drawing.Size(220, 30);
             this.txt_password2.TabIndex = 14;
             // 
             // lbl_password2

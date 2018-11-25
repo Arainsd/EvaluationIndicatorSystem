@@ -51,7 +51,7 @@
             // lbl_grade
             // 
             this.lbl_grade.AutoSize = true;
-            this.lbl_grade.Location = new System.Drawing.Point(45, 140);
+            this.lbl_grade.Location = new System.Drawing.Point(45, 137);
             this.lbl_grade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_grade.Name = "lbl_grade";
             this.lbl_grade.Size = new System.Drawing.Size(76, 20);
@@ -60,22 +60,22 @@
             // 
             // txt_name
             // 
-            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.txt_name.Location = new System.Drawing.Point(145, 41);
+            this.txt_name.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_name.Location = new System.Drawing.Point(145, 44);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
             this.txt_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_name.Size = new System.Drawing.Size(220, 68);
+            this.txt_name.Size = new System.Drawing.Size(220, 60);
             this.txt_name.TabIndex = 3;
             // 
             // txt_grade
             // 
-            this.txt_grade.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.txt_grade.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.txt_grade.Location = new System.Drawing.Point(145, 131);
             this.txt_grade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_grade.Name = "txt_grade";
-            this.txt_grade.Size = new System.Drawing.Size(220, 34);
+            this.txt_grade.Size = new System.Drawing.Size(220, 30);
             this.txt_grade.TabIndex = 4;
             // 
             // btn_cancel
@@ -85,7 +85,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(285, 200);
+            this.btn_cancel.Location = new System.Drawing.Point(285, 197);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -99,7 +99,7 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(49, 200);
+            this.btn_ok.Location = new System.Drawing.Point(49, 197);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
@@ -121,7 +121,7 @@
             // 
             this.lbl_grade_msg.AutoSize = true;
             this.lbl_grade_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_grade_msg.Location = new System.Drawing.Point(30, 165);
+            this.lbl_grade_msg.Location = new System.Drawing.Point(30, 162);
             this.lbl_grade_msg.Name = "lbl_grade_msg";
             this.lbl_grade_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_grade_msg.TabIndex = 16;
