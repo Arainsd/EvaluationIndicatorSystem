@@ -31,7 +31,7 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         public void DataRefresh()
         {
-            cycleModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle);
+            cycleModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, 0);
             dataGridView1.DataSource = cycleModules;
             dataGridView1.Refresh();
         }

@@ -153,7 +153,7 @@ namespace EvaluationIndicatorSystem
                     }
                     else
                     {
-                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}')";
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time, state) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}', 0)";
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             result = true;
@@ -349,7 +349,7 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        public static object Select(TableName tableName)
+        public static object Select(TableName tableName, params object[] para)
         {
             try
             {
@@ -397,7 +397,7 @@ namespace EvaluationIndicatorSystem
                         fourReader.Close();
                         return fourModules;
                     case TableName.TimeCycle:
-                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE state={(int)para[0]}";
                         SQLiteDataReader timeReader = cmd.ExecuteReader();
                         List<TimeCycleModule> timeModules = new List<TimeCycleModule>();
                         while (timeReader.Read())
@@ -409,6 +409,7 @@ namespace EvaluationIndicatorSystem
                             timeModule.EndTime = DateTime.Parse(timeReader["end_time"].ToString());
                             timeModule.CreateTime = DateTime.Parse(timeReader["create_time"].ToString());
                             timeModule.LatestCommitTime = DateTime.Parse(timeReader["latest_commit_time"].ToString());
+                            timeModule.State = int.Parse(timeReader["state"].ToString());
                             timeModules.Add(timeModule);
                         }
                         timeReader.Close();

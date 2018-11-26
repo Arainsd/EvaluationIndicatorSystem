@@ -28,7 +28,7 @@ namespace EvaluationIndicatorSystem
 
         private void TimeCycleRefresh()
         {
-            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle);
+            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, 0);
             if (timeModules.Count == 0)
             {
                 this.lbl_timePeriods.Text = string.Empty;
