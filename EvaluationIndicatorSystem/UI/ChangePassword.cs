@@ -28,11 +28,12 @@ namespace EvaluationIndicatorSystem
             lbl_pw_msg2.Text = string.Empty;
 
             string prePassword = txt_prePassword.Text.Trim();
-            if(string.IsNullOrEmpty(prePassword))
+            if (string.IsNullOrEmpty(prePassword))
             {
                 lbl_prePassword_msg.Text = "请输入原密码";
                 return;
-            } else if(!prePassword.Equals(currentUser.PassWord))
+            }
+            else if (!prePassword.Equals(currentUser.PassWord))
             {
                 lbl_prePassword_msg.Text = "密码错误";
                 return;
@@ -56,23 +57,15 @@ namespace EvaluationIndicatorSystem
             }
 
             currentUser.PassWord = password;
-            bool result = SqliteHelper.Update(TableName.User, 0, currentUser, out string msg);
-            if (result)
+            SqliteHelper.Update(TableName.User, 0, currentUser, out string msg);
+            if (string.IsNullOrEmpty(msg))
             {
                 MessageBox.Show("修改密码成功，请重新登录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
             }
             else
             {
-                if (string.IsNullOrEmpty(msg))
-                {
-                    MessageBox.Show("修改密码失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                return;
+                MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }//end of class

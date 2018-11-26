@@ -55,7 +55,6 @@ namespace EvaluationIndicatorSystem
         public int IndicatorTwo { get; set; }
         public int IndicatorThree { get; set; }
         public List<EvalutationFourModule> EvalutationDataObj { get; set; }
-        public int IsCommit { get; set; }
     }//end of class EvalutationDataModule
 
     public class EvalutationFourModule

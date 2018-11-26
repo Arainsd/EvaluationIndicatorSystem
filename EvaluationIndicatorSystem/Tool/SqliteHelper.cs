@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Data.SQLite;
+using Newtonsoft.Json;
 
 namespace EvaluationIndicatorSystem
 {
@@ -63,9 +64,8 @@ namespace EvaluationIndicatorSystem
         /// <param name="tableName">table name</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static bool Insert(TableName tableName, object data, out string msg)
+        public static void Insert(TableName tableName, object data, out string msg)
         {
-            bool result = false;
             msg = string.Empty;
             switch (tableName)
             {
@@ -73,19 +73,13 @@ namespace EvaluationIndicatorSystem
                     UserModule user = (UserModule)data;
                     if (CheckRowData(tableName.ToString(), user.UserName))
                     {
-                        result = false;
                         msg = "用户名已存在";
                     }
                     else
                     {
                         cmd.CommandText = $"INSERT INTO '{tableName.ToString()}' VALUES('{user.UserName}', '{user.PassWord}')";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
-                        }
-                        else
-                        {
-                            result = false;
                             msg = "数据写入失败";
                         }
                     }
@@ -94,19 +88,13 @@ namespace EvaluationIndicatorSystem
                     BasicDataModule basicData = (BasicDataModule)data;
                     if (CheckRowData(tableName.ToString(), basicData.Name))
                     {
-                        result = false;
                         msg = "指标已存在";
                     }
                     else
                     {
                         cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, level, grade, parent_id) VALUES('{basicData.Name}', {basicData.Level}, {basicData.Grade}, {basicData.ParentId})";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
-                        }
-                        else
-                        {
-                            result = false;
                             msg = "数据写入失败";
                         }
                     }
@@ -115,7 +103,6 @@ namespace EvaluationIndicatorSystem
                     BasicFourModule fourData = (BasicFourModule)data;
                     if (CheckRowData(tableName.ToString(), fourData.Name))
                     {
-                        result = false;
                         msg = "指标已存在";
                     }
                     else
@@ -133,13 +120,8 @@ namespace EvaluationIndicatorSystem
                             }
                         }
                         cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, level, parent_id, basic_rule, basic_sub, basic_add, cal_module) VALUES('{fourData.Name}', {fourData.Level}, {fourData.ParentId}, '{fourData.BasicRule}', '{fourData.BasicSub}', '{fourData.BasicAdd}', '{strCalModule}')";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
-                        }
-                        else
-                        {
-                            result = false;
                             msg = "数据写入失败";
                         }
                     }
@@ -148,28 +130,33 @@ namespace EvaluationIndicatorSystem
                     TimeCycleModule timeData = (TimeCycleModule)data;
                     if (CheckRowData(tableName.ToString(), timeData.Name))
                     {
-                        result = false;
                         msg = "评价周期已存在";
                     }
                     else
                     {
                         cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time, state) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}', 0)";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
-                        }
-                        else
-                        {
-                            result = false;
                             msg = "数据写入失败";
                         }
+                    }
+                    break;
+                case TableName.EvalutationData:
+                    List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)data;
+                    using (SQLiteTransaction transaction = conn.BeginTransaction())
+                    {
+                        foreach (var item in evalutationDatas)
+                        {
+                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_one, indicator_two, indicator_three, evalutation_data) VALUES({item.TimeCycle}, {item.IndicatorOne},{item.IndicatorTwo},{item.IndicatorThree},'{JsonConvert.SerializeObject(item.EvalutationDataObj)}')";
+                            cmd.ExecuteNonQuery();
+                        }
+                        transaction.Commit();
                     }
                     break;
                 default:
                     msg = "table is not exist";
                     break;
             }
-            return result;
         }
 
         /// <summary>
@@ -179,10 +166,9 @@ namespace EvaluationIndicatorSystem
         /// <param name="id"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static bool Update(TableName tableName, int id, object data, out string msg)
+        public static void Update(TableName tableName, int id, object data, out string msg)
         {
             msg = string.Empty;
-            bool result = false;
             switch (tableName)
             {
                 case TableName.User:
@@ -194,9 +180,9 @@ namespace EvaluationIndicatorSystem
                     else
                     {
                         cmd.CommandText = $"UPDATE {tableName.ToString()} SET password='{user.PassWord}' WHERE name='{user.UserName}'";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
+                            msg = "更新失败";
                         }
                     }
                     break;
@@ -209,9 +195,9 @@ namespace EvaluationIndicatorSystem
                     else
                     {
                         cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade}, parent_id={basicData.ParentId} WHERE id={id}";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
+                            msg = "更新失败";
                         }
                     }
                     break;
@@ -236,9 +222,9 @@ namespace EvaluationIndicatorSystem
                             }
                         }
                         cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{fourData.Name}', basic_rule='{fourData.BasicRule}', basic_sub='{fourData.BasicSub}', basic_add='{fourData.BasicAdd}', cal_module='{strCalModule}' WHERE id={id}";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
+                            msg = "更新失败";
                         }
                     }
                     break;
@@ -251,16 +237,15 @@ namespace EvaluationIndicatorSystem
                     else
                     {
                         cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{timeData.Name}', start_time='{timeData.StartTime}', end_time='{timeData.EndTime}' WHERE id={id}";
-                        if (cmd.ExecuteNonQuery() > 0)
+                        if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            result = true;
+                            msg = "更新失败";
                         }
                     }
                     break;
                 default:
                     break;
             }
-            return result;
         }
 
         /// <summary>
@@ -356,7 +341,11 @@ namespace EvaluationIndicatorSystem
                 switch (tableName)
                 {
                     case TableName.BasicData:
-                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE 1=1";
+                        if (para.Length > 0)
+                        {
+                            cmd.CommandText += $" AND level={(int)para[0]}";
+                        }
                         SQLiteDataReader reader = cmd.ExecuteReader();
                         List<BasicDataModule> modules = new List<BasicDataModule>();
                         while (reader.Read())
@@ -398,6 +387,10 @@ namespace EvaluationIndicatorSystem
                         return fourModules;
                     case TableName.TimeCycle:
                         cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE state={(int)para[0]}";
+                        if (para.Length > 1)
+                        {
+                            cmd.CommandText += $" AND name='{(string)para[1]}'";
+                        }
                         SQLiteDataReader timeReader = cmd.ExecuteReader();
                         List<TimeCycleModule> timeModules = new List<TimeCycleModule>();
                         while (timeReader.Read())

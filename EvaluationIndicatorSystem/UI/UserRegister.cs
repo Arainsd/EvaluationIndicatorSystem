@@ -47,8 +47,8 @@ namespace EvaluationIndicatorSystem
                 return;
             }
 
-            bool result = SqliteHelper.Insert(TableName.User, new UserModule { UserName = name, PassWord = password }, out string msg);
-            if (result)
+            SqliteHelper.Insert(TableName.User, new UserModule { UserName = name, PassWord = password }, out string msg);
+            if(string.IsNullOrEmpty(msg))
             {
                 this.DialogResult = DialogResult.OK;
             }
