@@ -40,14 +40,16 @@ namespace EvaluationIndicatorSystem
     {
         public int ID { get; set; }             
         public string Name { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime LatestCommitTime { get; set; }
     }//end of class TimeCycle
 
     public class EvalutationDataModule
     {
         public int ID { get; set; }
-        public int TimeCycle { get; set; }
-        public DateTime TimeStart { get; set; }
-        public DateTime TimeEnd { get; set; }
+        public int TimeCycle { get; set; }        
         public int IndicatorOne { get; set; }
         public int IndicatorTwo { get; set; }
         public int IndicatorThree { get; set; }

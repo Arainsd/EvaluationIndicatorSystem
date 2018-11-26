@@ -31,12 +31,11 @@
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_timePeriods = new System.Windows.Forms.Label();
+            this.btn_add = new System.Windows.Forms.Button();
             this.btn_query = new System.Windows.Forms.Button();
             this.btn_timeCycleMange = new System.Windows.Forms.Button();
             this.lbl_indicator = new System.Windows.Forms.Label();
-            this.dtp_end = new System.Windows.Forms.DateTimePicker();
-            this.dtp_start = new System.Windows.Forms.DateTimePicker();
             this.lbl_timePeriod = new System.Windows.Forms.Label();
             this.combo_timeCycle = new System.Windows.Forms.ComboBox();
             this.lbl_timeCycle = new System.Windows.Forms.Label();
@@ -46,7 +45,6 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.btn_commit = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,13 +76,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lbl_timePeriods);
             this.panel1.Controls.Add(this.btn_add);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btn_query);
             this.panel1.Controls.Add(this.btn_timeCycleMange);
             this.panel1.Controls.Add(this.lbl_indicator);
-            this.panel1.Controls.Add(this.dtp_end);
-            this.panel1.Controls.Add(this.dtp_start);
             this.panel1.Controls.Add(this.lbl_timePeriod);
             this.panel1.Controls.Add(this.combo_timeCycle);
             this.panel1.Controls.Add(this.lbl_timeCycle);
@@ -97,14 +93,27 @@
             this.panel1.Size = new System.Drawing.Size(960, 120);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // lbl_timePeriods
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(635, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "-";
+            this.lbl_timePeriods.AutoSize = true;
+            this.lbl_timePeriods.Location = new System.Drawing.Point(389, 23);
+            this.lbl_timePeriods.Name = "lbl_timePeriods";
+            this.lbl_timePeriods.Size = new System.Drawing.Size(183, 20);
+            this.lbl_timePeriods.TabIndex = 14;
+            this.lbl_timePeriods.Text = "2018-11-26  -  2018-11-26";
+            // 
+            // btn_add
+            // 
+            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_add.FlatAppearance.BorderSize = 0;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.ForeColor = System.Drawing.Color.White;
+            this.btn_add.Location = new System.Drawing.Point(860, 72);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 35);
+            this.btn_add.TabIndex = 13;
+            this.btn_add.Text = "新增";
+            this.btn_add.UseVisualStyleBackColor = false;
             // 
             // btn_query
             // 
@@ -125,7 +134,7 @@
             this.btn_timeCycleMange.FlatAppearance.BorderSize = 0;
             this.btn_timeCycleMange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_timeCycleMange.ForeColor = System.Drawing.Color.White;
-            this.btn_timeCycleMange.Location = new System.Drawing.Point(325, 15);
+            this.btn_timeCycleMange.Location = new System.Drawing.Point(599, 15);
             this.btn_timeCycleMange.Name = "btn_timeCycleMange";
             this.btn_timeCycleMange.Size = new System.Drawing.Size(75, 35);
             this.btn_timeCycleMange.TabIndex = 10;
@@ -143,32 +152,11 @@
             this.lbl_indicator.TabIndex = 9;
             this.lbl_indicator.Text = "评价指标 : ";
             // 
-            // dtp_end
-            // 
-            this.dtp_end.CustomFormat = "yyyy-MM-dd";
-            this.dtp_end.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.dtp_end.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_end.Location = new System.Drawing.Point(655, 20);
-            this.dtp_end.Name = "dtp_end";
-            this.dtp_end.Size = new System.Drawing.Size(140, 30);
-            this.dtp_end.TabIndex = 8;
-            // 
-            // dtp_start
-            // 
-            this.dtp_start.Checked = false;
-            this.dtp_start.CustomFormat = "yyyy-MM-dd";
-            this.dtp_start.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_start.Location = new System.Drawing.Point(490, 20);
-            this.dtp_start.Name = "dtp_start";
-            this.dtp_start.Size = new System.Drawing.Size(140, 30);
-            this.dtp_start.TabIndex = 7;
-            // 
             // lbl_timePeriod
             // 
             this.lbl_timePeriod.AutoSize = true;
             this.lbl_timePeriod.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_timePeriod.Location = new System.Drawing.Point(421, 23);
+            this.lbl_timePeriod.Location = new System.Drawing.Point(321, 21);
             this.lbl_timePeriod.Name = "lbl_timePeriod";
             this.lbl_timePeriod.Size = new System.Drawing.Size(62, 20);
             this.lbl_timePeriod.TabIndex = 6;
@@ -182,6 +170,7 @@
             this.combo_timeCycle.Name = "combo_timeCycle";
             this.combo_timeCycle.Size = new System.Drawing.Size(200, 31);
             this.combo_timeCycle.TabIndex = 5;
+            this.combo_timeCycle.SelectedIndexChanged += new System.EventHandler(this.combo_timeCycle_SelectedIndexChanged);
             // 
             // lbl_timeCycle
             // 
@@ -282,19 +271,6 @@
             this.btn_save.Text = "保存";
             this.btn_save.UseVisualStyleBackColor = false;
             // 
-            // btn_add
-            // 
-            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.btn_add.FlatAppearance.BorderSize = 0;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(860, 72);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(75, 35);
-            this.btn_add.TabIndex = 13;
-            this.btn_add.Text = "新增";
-            this.btn_add.UseVisualStyleBackColor = false;
-            // 
             // EvalutationData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -329,15 +305,13 @@
         private System.Windows.Forms.Label lbl_timeCycle;
         private System.Windows.Forms.ComboBox combo_timeCycle;
         private System.Windows.Forms.Label lbl_timePeriod;
-        private System.Windows.Forms.DateTimePicker dtp_end;
-        private System.Windows.Forms.DateTimePicker dtp_start;
         private System.Windows.Forms.Label lbl_indicator;
         private System.Windows.Forms.Button btn_timeCycleMange;
         private System.Windows.Forms.Button btn_query;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button btn_commit;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Label lbl_timePeriods;
     }
 }

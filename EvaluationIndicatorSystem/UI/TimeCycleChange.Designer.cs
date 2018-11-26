@@ -33,12 +33,16 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
             this.lbl_name_msg = new System.Windows.Forms.Label();
+            this.lbl_endTime = new System.Windows.Forms.Label();
+            this.lbl_startTime = new System.Windows.Forms.Label();
+            this.dtp_startTime = new System.Windows.Forms.DateTimePicker();
+            this.dtp_endTime = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // txt_name
             // 
             this.txt_name.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.txt_name.Location = new System.Drawing.Point(154, 52);
+            this.txt_name.Location = new System.Drawing.Point(140, 34);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(300, 30);
             this.txt_name.TabIndex = 0;
@@ -46,7 +50,7 @@
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(40, 55);
+            this.lbl_name.Location = new System.Drawing.Point(40, 40);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(76, 20);
             this.lbl_name.TabIndex = 1;
@@ -59,7 +63,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(375, 120);
+            this.btn_cancel.Location = new System.Drawing.Point(360, 245);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -73,7 +77,7 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(45, 120);
+            this.btn_ok.Location = new System.Drawing.Point(45, 245);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
@@ -86,19 +90,61 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(150, 85);
+            this.lbl_name_msg.Location = new System.Drawing.Point(136, 67);
             this.lbl_name_msg.Name = "lbl_name_msg";
             this.lbl_name_msg.Size = new System.Drawing.Size(135, 20);
             this.lbl_name_msg.TabIndex = 15;
             this.lbl_name_msg.Text = "请输入评价周期名称";
             this.lbl_name_msg.Visible = false;
             // 
+            // lbl_endTime
+            // 
+            this.lbl_endTime.AutoSize = true;
+            this.lbl_endTime.Location = new System.Drawing.Point(40, 170);
+            this.lbl_endTime.Name = "lbl_endTime";
+            this.lbl_endTime.Size = new System.Drawing.Size(76, 20);
+            this.lbl_endTime.TabIndex = 16;
+            this.lbl_endTime.Text = "截止时间 : ";
+            // 
+            // lbl_startTime
+            // 
+            this.lbl_startTime.AutoSize = true;
+            this.lbl_startTime.Location = new System.Drawing.Point(40, 105);
+            this.lbl_startTime.Name = "lbl_startTime";
+            this.lbl_startTime.Size = new System.Drawing.Size(76, 20);
+            this.lbl_startTime.TabIndex = 17;
+            this.lbl_startTime.Text = "开始时间 : ";
+            // 
+            // dtp_startTime
+            // 
+            this.dtp_startTime.CustomFormat = "yyyy-MM-dd";
+            this.dtp_startTime.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.dtp_startTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_startTime.Location = new System.Drawing.Point(140, 100);
+            this.dtp_startTime.Name = "dtp_startTime";
+            this.dtp_startTime.Size = new System.Drawing.Size(300, 30);
+            this.dtp_startTime.TabIndex = 18;
+            // 
+            // dtp_endTime
+            // 
+            this.dtp_endTime.CustomFormat = "yyyy-MM-dd";
+            this.dtp_endTime.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.dtp_endTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_endTime.Location = new System.Drawing.Point(140, 161);
+            this.dtp_endTime.Name = "dtp_endTime";
+            this.dtp_endTime.Size = new System.Drawing.Size(300, 30);
+            this.dtp_endTime.TabIndex = 19;
+            // 
             // TimeCycleChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(520, 191);
+            this.ClientSize = new System.Drawing.Size(520, 316);
+            this.Controls.Add(this.dtp_endTime);
+            this.Controls.Add(this.dtp_startTime);
+            this.Controls.Add(this.lbl_startTime);
+            this.Controls.Add(this.lbl_endTime);
             this.Controls.Add(this.lbl_name_msg);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_ok);
@@ -121,5 +167,9 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button btn_ok;
         private System.Windows.Forms.Label lbl_name_msg;
+        private System.Windows.Forms.Label lbl_endTime;
+        private System.Windows.Forms.Label lbl_startTime;
+        private System.Windows.Forms.DateTimePicker dtp_startTime;
+        private System.Windows.Forms.DateTimePicker dtp_endTime;
     }
 }

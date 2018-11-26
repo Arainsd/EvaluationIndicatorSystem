@@ -153,7 +153,7 @@ namespace EvaluationIndicatorSystem
                     }
                     else
                     {
-                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name) VALUES('{timeData.Name}')";
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}')";
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             result = true;
@@ -187,7 +187,7 @@ namespace EvaluationIndicatorSystem
             {
                 case TableName.User:
                     UserModule user = (UserModule)data;
-                    if (CheckRowData(tableName.ToString(), user.UserName))
+                    if (CheckRowDataUpdate(tableName.ToString(), user.UserName, id))
                     {
                         msg = "用户名已存在";
                     }
@@ -202,7 +202,7 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.BasicData:
                     BasicDataModule basicData = (BasicDataModule)data;
-                    if (CheckRowData(tableName.ToString(), basicData.Name))
+                    if (CheckRowDataUpdate(tableName.ToString(), basicData.Name, id))
                     {
                         msg = "指标已存在";
                     }
@@ -217,7 +217,7 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.BasicFour:
                     BasicFourModule fourData = (BasicFourModule)data;
-                    if (CheckRowData(tableName.ToString(), fourData.Name))
+                    if (CheckRowDataUpdate(tableName.ToString(), fourData.Name, id))
                     {
                         msg = "指标已存在";
                     }
@@ -244,13 +244,13 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.TimeCycle:
                     TimeCycleModule timeData = (TimeCycleModule)data;
-                    if (CheckRowData(tableName.ToString(), timeData.Name))
+                    if (CheckRowDataUpdate(tableName.ToString(), timeData.Name, id))
                     {
                         msg = "评价周期已存在";
                     }
                     else
                     {
-                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{timeData.Name}' WHERE id={id}";
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{timeData.Name}', start_time='{timeData.StartTime}', end_time='{timeData.EndTime}' WHERE id={id}";
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             result = true;
@@ -327,7 +327,23 @@ namespace EvaluationIndicatorSystem
             }
             return false;
         }
-        
+
+        /// <summary>
+        /// check data exit
+        /// </summary>
+        /// <param name="tableName">table name</param>
+        /// <param name="colData">column check data</param>
+        /// <returns>true:exist, false:not exist</returns>
+        private static bool CheckRowDataUpdate(string tableName, string colData, int id)
+        {
+            cmd.CommandText = $"SELECT count(*) FROM '{tableName}' WHERE name = '{colData}' and id != {id}";
+            if (Convert.ToInt32(cmd.ExecuteScalar()) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// 数据查询
         /// </summary>
@@ -389,6 +405,10 @@ namespace EvaluationIndicatorSystem
                             TimeCycleModule timeModule = new TimeCycleModule();
                             timeModule.ID = int.Parse(timeReader["id"].ToString());
                             timeModule.Name = timeReader["name"].ToString();
+                            timeModule.StartTime = DateTime.Parse(timeReader["start_time"].ToString());
+                            timeModule.EndTime = DateTime.Parse(timeReader["end_time"].ToString());
+                            timeModule.CreateTime = DateTime.Parse(timeReader["create_time"].ToString());
+                            timeModule.LatestCommitTime = DateTime.Parse(timeReader["latest_commit_time"].ToString());
                             timeModules.Add(timeModule);
                         }
                         timeReader.Close();

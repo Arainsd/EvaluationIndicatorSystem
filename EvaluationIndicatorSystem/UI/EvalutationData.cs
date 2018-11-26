@@ -30,7 +30,10 @@ namespace EvaluationIndicatorSystem
         {
             timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle);
             if (timeModules.Count == 0)
+            {
+                this.lbl_timePeriods.Text = string.Empty;
                 return;
+            }
             combo_timeCycle.Items.Clear();
             foreach (var item in timeModules)
             {
@@ -39,15 +42,26 @@ namespace EvaluationIndicatorSystem
             combo_timeCycle.SelectedIndex = 0;
         }
 
+        private void combo_timeCycle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach(var item in timeModules)
+            {
+                if(item.Name == ((ComboBox)sender).SelectedItem.ToString())
+                {
+                    lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " - " + item.EndTime.ToString("yyyy-MM-dd");
+                    break;
+                }
+            }
+        }
+
         private void btn_timeCycleMange_Click(object sender, EventArgs e)
         {
             using (TimeCycleManage dialog = new TimeCycleManage())
             {
-                if(dialog.ShowDialog() == DialogResult.OK)
-                {
-
-                }
+                dialog.ShowDialog();
+                TimeCycleRefresh();
             }
         }
+
     }//end of class
 }

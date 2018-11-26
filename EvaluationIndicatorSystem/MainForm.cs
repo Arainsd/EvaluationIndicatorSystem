@@ -133,8 +133,9 @@ namespace EvaluationIndicatorSystem
                 case TabName.BasicIndicatorFour:
                     basicIndicatorFour.DataRefresh();
                     break;
+                case TabName.EvalutationData:
+                    break;
             }
-            
         }
     }//end of class
 }

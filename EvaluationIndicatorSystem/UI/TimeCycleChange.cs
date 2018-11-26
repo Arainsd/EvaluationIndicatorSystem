@@ -12,12 +12,14 @@ namespace EvaluationIndicatorSystem
 {
     public partial class TimeCycleChange : Form
     {
-        public TimeCycleChange(params string[] para)
+        public TimeCycleChange(params TimeCycleModule[] para)
         {
             InitializeComponent();
             if(para.Length > 0)
             {
-                this.txt_name.Text = para[0];
+                this.txt_name.Text = para[0].Name;
+                this.dtp_startTime.Value = para[0].StartTime;
+                this.dtp_endTime.Value = para[0].EndTime;
             }
         }
 
@@ -35,6 +37,10 @@ namespace EvaluationIndicatorSystem
             }
             module = new TimeCycleModule();
             module.Name = this.txt_name.Text.Trim();
+            module.StartTime = this.dtp_startTime.Value.Date;
+            module.EndTime = this.dtp_endTime.Value.Date;
+            module.CreateTime = DateTime.Now.Date;
+            module.LatestCommitTime = module.CreateTime;
             this.DialogResult = DialogResult.OK;
         }
     }//end of class

@@ -36,6 +36,11 @@ namespace EvaluationIndicatorSystem
             dataGridView1.Refresh();
         }
 
+        /// <summary>
+        /// add time cycle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_add_Click(object sender, EventArgs e)
         {
             using (TimeCycleChange dialog = new TimeCycleChange())
@@ -55,6 +60,11 @@ namespace EvaluationIndicatorSystem
             }
         }
 
+        /// <summary>
+        /// update time cycle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_update_Click(object sender, EventArgs e)
         {
             var row = dataGridView1.CurrentRow;
@@ -75,7 +85,7 @@ namespace EvaluationIndicatorSystem
             }
             if (preModule == null)
                 return;            
-            using (TimeCycleChange dialog = new TimeCycleChange(preModule.Name))
+            using (TimeCycleChange dialog = new TimeCycleChange(preModule))
             {
                 dialog.ChangeTitle = "修改评价指标";
                 if (dialog.ShowDialog() == DialogResult.OK)
