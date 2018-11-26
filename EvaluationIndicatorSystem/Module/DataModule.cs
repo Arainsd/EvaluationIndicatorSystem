@@ -36,6 +36,32 @@ namespace EvaluationIndicatorSystem
         public string Delete { get => "删除"; }
     }//end of class BasicFourModule
 
+    public class TimeCycleModule
+    {
+        public int ID { get; set; }             
+        public string Name { get; set; }
+    }//end of class TimeCycle
+
+    public class EvalutationDataModule
+    {
+        public int ID { get; set; }
+        public int TimeCycle { get; set; }
+        public DateTime TimeStart { get; set; }
+        public DateTime TimeEnd { get; set; }
+        public int IndicatorOne { get; set; }
+        public int IndicatorTwo { get; set; }
+        public int IndicatorThree { get; set; }
+        public List<EvalutationFourModule> EvalutationDataObj { get; set; }
+        public int IsCommit { get; set; }
+    }//end of class EvalutationDataModule
+
+    public class EvalutationFourModule
+    {
+        public int ID { get; set; }
+        public List<string> DataSource { get; set; }
+        public string Remark { get; set; }
+    }//end of class EvalutationFourModule
+
     public class IndicatorOne
     {
         public string name { get; set; }

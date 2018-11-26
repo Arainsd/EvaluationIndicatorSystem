@@ -56,7 +56,7 @@ namespace EvaluationIndicatorSystem
             }
 
             currentUser.PassWord = password;
-            bool result = SqliteHelper.Update(TableName.User, 0, currentUser);
+            bool result = SqliteHelper.Update(TableName.User, 0, currentUser, out string msg);
             if (result)
             {
                 MessageBox.Show("修改密码成功，请重新登录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -64,7 +64,14 @@ namespace EvaluationIndicatorSystem
             }
             else
             {
-                MessageBox.Show("修改密码失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(msg))
+                {
+                    MessageBox.Show("修改密码失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 return;
             }
         }

@@ -144,6 +144,27 @@ namespace EvaluationIndicatorSystem
                         }
                     }
                     break;
+                case TableName.TimeCycle:
+                    TimeCycleModule timeData = (TimeCycleModule)data;
+                    if (CheckRowData(tableName.ToString(), timeData.Name))
+                    {
+                        result = false;
+                        msg = "评价周期已存在";
+                    }
+                    else
+                    {
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name) VALUES('{timeData.Name}')";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
+                        else
+                        {
+                            result = false;
+                            msg = "数据写入失败";
+                        }
+                    }
+                    break;
                 default:
                     msg = "table is not exist";
                     break;
@@ -158,45 +179,82 @@ namespace EvaluationIndicatorSystem
         /// <param name="id"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static bool Update(TableName tableName, int id, object data)
+        public static bool Update(TableName tableName, int id, object data, out string msg)
         {
+            msg = string.Empty;
             bool result = false;
             switch (tableName)
             {
                 case TableName.User:
                     UserModule user = (UserModule)data;
-                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET password='{user.PassWord}' WHERE name='{user.UserName}'";
-                    if (cmd.ExecuteNonQuery() > 0)
+                    if (CheckRowData(tableName.ToString(), user.UserName))
                     {
-                        result = true;
+                        msg = "用户名已存在";
+                    }
+                    else
+                    {
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET password='{user.PassWord}' WHERE name='{user.UserName}'";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
                     }
                     break;
                 case TableName.BasicData:
                     BasicDataModule basicData = (BasicDataModule)data;
-                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade}, parent_id={basicData.ParentId} WHERE id={id}";
-                    if (cmd.ExecuteNonQuery() > 0)
+                    if (CheckRowData(tableName.ToString(), basicData.Name))
                     {
-                        result = true;
+                        msg = "指标已存在";
+                    }
+                    else
+                    {
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{basicData.Name}', grade={basicData.Grade}, parent_id={basicData.ParentId} WHERE id={id}";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
                     }
                     break;
                 case TableName.BasicFour:
                     BasicFourModule fourData = (BasicFourModule)data;
-                    string strCalModule = string.Empty;
-                    for (int i = 0; i < fourData.CalModules.Length; i++)
+                    if (CheckRowData(tableName.ToString(), fourData.Name))
                     {
-                        if (i == 0)
+                        msg = "指标已存在";
+                    }
+                    else
+                    {
+                        string strCalModule = string.Empty;
+                        for (int i = 0; i < fourData.CalModules.Length; i++)
                         {
-                            strCalModule += (int)fourData.CalModules[i];
+                            if (i == 0)
+                            {
+                                strCalModule += (int)fourData.CalModules[i];
+                            }
+                            else
+                            {
+                                strCalModule += "," + (int)fourData.CalModules[i];
+                            }
                         }
-                        else
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{fourData.Name}', basic_rule='{fourData.BasicRule}', basic_sub='{fourData.BasicSub}', basic_add='{fourData.BasicAdd}', cal_module='{strCalModule}' WHERE id={id}";
+                        if (cmd.ExecuteNonQuery() > 0)
                         {
-                            strCalModule += "," + (int)fourData.CalModules[i];
+                            result = true;
                         }
                     }
-                    cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{fourData.Name}', basic_rule='{fourData.BasicRule}', basic_sub='{fourData.BasicSub}', basic_add='{fourData.BasicAdd}', cal_module='{strCalModule}' WHERE id={id}";
-                    if (cmd.ExecuteNonQuery() > 0)
+                    break;
+                case TableName.TimeCycle:
+                    TimeCycleModule timeData = (TimeCycleModule)data;
+                    if (CheckRowData(tableName.ToString(), timeData.Name))
                     {
-                        result = true;
+                        msg = "评价周期已存在";
+                    }
+                    else
+                    {
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{timeData.Name}' WHERE id={id}";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
                     }
                     break;
                 default:
@@ -282,7 +340,7 @@ namespace EvaluationIndicatorSystem
                 switch (tableName)
                 {
                     case TableName.BasicData:
-                        cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
                         SQLiteDataReader reader = cmd.ExecuteReader();
                         List<BasicDataModule> modules = new List<BasicDataModule>();
                         while (reader.Read())
@@ -298,7 +356,7 @@ namespace EvaluationIndicatorSystem
                         reader.Close();
                         return modules;
                     case TableName.BasicFour:
-                        cmd.CommandText = $"SELECT * FROM '{tableName.ToString()}'";
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
                         SQLiteDataReader fourReader = cmd.ExecuteReader();
                         List<BasicFourModule> fourModules = new List<BasicFourModule>();
                         while (fourReader.Read())
@@ -322,6 +380,19 @@ namespace EvaluationIndicatorSystem
                         }
                         fourReader.Close();
                         return fourModules;
+                    case TableName.TimeCycle:
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
+                        SQLiteDataReader timeReader = cmd.ExecuteReader();
+                        List<TimeCycleModule> timeModules = new List<TimeCycleModule>();
+                        while (timeReader.Read())
+                        {
+                            TimeCycleModule timeModule = new TimeCycleModule();
+                            timeModule.ID = int.Parse(timeReader["id"].ToString());
+                            timeModule.Name = timeReader["name"].ToString();
+                            timeModules.Add(timeModule);
+                        }
+                        timeReader.Close();
+                        return timeModules;
                 }
             }
             catch(Exception ex)

@@ -10,7 +10,8 @@ namespace EvaluationIndicatorSystem
     {
         User = 0,
         BasicData = 1,
-        BasicFour = 2
+        BasicFour = 2,
+        TimeCycle = 3
     }//end of enum TableName
 
     public enum TabName

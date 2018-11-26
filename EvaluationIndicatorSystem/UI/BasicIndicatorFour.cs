@@ -194,26 +194,34 @@ namespace EvaluationIndicatorSystem
         private void RowUpdateClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
-            BasicFourModule module = null;
+            BasicFourModule preModule = null;
             foreach(var item in fourModules)
             {
                 if(item.ID == id)
                 {
-                    module = item;
+                    preModule = item;
+                    break;
                 }
             }
-            if (module == null)
+            if (preModule == null)
                 return;
-            using (ChangeIndicatorFour dialog = new ChangeIndicatorFour(module))
+            using (ChangeIndicatorFour dialog = new ChangeIndicatorFour(preModule))
             {
                 dialog.ChangeTitle = "修改 四级级指标";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    BasicFourModule module1 = dialog.GetModule;
-                    bool result = SqliteHelper.Update(TableName.BasicFour, module.ID, module1);
+                    BasicFourModule currentModule = dialog.GetModule;
+                    bool result = SqliteHelper.Update(TableName.BasicFour, preModule.ID, currentModule, out string msg);
                     if (!result)
                     {
-                        MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (string.IsNullOrEmpty(msg))
+                        {
+                            MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         return;
                     }
                     DataRefresh();

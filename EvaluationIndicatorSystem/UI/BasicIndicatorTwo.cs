@@ -126,10 +126,17 @@ namespace EvaluationIndicatorSystem
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     BasicDataModule module1 = dialog.GetModule;
-                    bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1);
+                    bool result = SqliteHelper.Update(TableName.BasicData, module.ID, module1, out string msg);
                     if (!result)
                     {
-                        MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (string.IsNullOrEmpty(msg))
+                        {
+                            MessageBox.Show("修改失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         return;
                     }
                     DataRefresh();
