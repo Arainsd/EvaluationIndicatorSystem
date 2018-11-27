@@ -45,6 +45,7 @@
             this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LatestCommitTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -125,7 +126,8 @@
             this.StartTime,
             this.EndTime,
             this.CreateTime,
-            this.LatestCommitTime});
+            this.LatestCommitTime,
+            this.State});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 10F);
@@ -195,7 +197,14 @@
             this.LatestCommitTime.Name = "LatestCommitTime";
             this.LatestCommitTime.ReadOnly = true;
             // 
-            // TimeCycleManagement
+            // State
+            // 
+            this.State.DataPropertyName = "State";
+            this.State.HeaderText = "State";
+            this.State.Name = "State";
+            this.State.Visible = false;
+            // 
+            // TimeCycleManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -205,7 +214,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "TimeCycleManagement";
+            this.Name = "TimeCycleManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "评价周期管理";
             this.panel1.ResumeLayout(false);
@@ -229,5 +238,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn LatestCommitTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
     }
 }

@@ -60,7 +60,7 @@ namespace EvaluationIndicatorSystem
     public class EvalutationFourModule
     {
         public int ID { get; set; }
-        public List<string> DataSource { get; set; }
+        public string[] DataSource { get; set; }
         public string Remark { get; set; }
     }//end of class EvalutationFourModule
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Data.SQLite;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EvaluationIndicatorSystem
 {
@@ -346,67 +347,100 @@ namespace EvaluationIndicatorSystem
                         {
                             cmd.CommandText += $" AND level={(int)para[0]}";
                         }
-                        SQLiteDataReader reader = cmd.ExecuteReader();
-                        List<BasicDataModule> modules = new List<BasicDataModule>();
-                        while (reader.Read())
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
                         {
-                            BasicDataModule module = new BasicDataModule();
-                            module.ID = int.Parse(reader["id"].ToString());
-                            module.Name = reader["name"].ToString();
-                            module.Level = int.Parse(reader["level"].ToString());
-                            module.Grade = int.Parse(reader["grade"].ToString());
-                            module.ParentId = int.Parse(reader["parent_id"].ToString());
-                            modules.Add(module);
+                            List<BasicDataModule> modules = new List<BasicDataModule>();
+                            while (reader.Read())
+                            {
+                                BasicDataModule module = new BasicDataModule();
+                                module.ID = int.Parse(reader["id"].ToString());
+                                module.Name = reader["name"].ToString();
+                                module.Level = int.Parse(reader["level"].ToString());
+                                module.Grade = int.Parse(reader["grade"].ToString());
+                                module.ParentId = int.Parse(reader["parent_id"].ToString());
+                                modules.Add(module);
+                            }
+                            reader.Close();
+                            return modules;
                         }
-                        reader.Close();
-                        return modules;
                     case TableName.BasicFour:
                         cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
-                        SQLiteDataReader fourReader = cmd.ExecuteReader();
-                        List<BasicFourModule> fourModules = new List<BasicFourModule>();
-                        while (fourReader.Read())
+                        using (SQLiteDataReader fourReader = cmd.ExecuteReader())
                         {
-                            BasicFourModule fourModule = new BasicFourModule();
-                            fourModule.ID = int.Parse(fourReader["id"].ToString());
-                            fourModule.Name = fourReader["name"].ToString();
-                            fourModule.Level = int.Parse(fourReader["level"].ToString());
-                            fourModule.ParentId = int.Parse(fourReader["parent_id"].ToString());
-                            fourModule.BasicRule = fourReader["basic_rule"].ToString();
-                            fourModule.BasicAdd = fourReader["basic_sub"].ToString();
-                            fourModule.BasicSub = fourReader["basic_add"].ToString();
-                            string cals = fourReader["cal_module"].ToString();
-                            string[] arrCals = cals.Split(",".ToArray());
-                            fourModule.CalModules = new CalModule[arrCals.Length];
-                            for (int i = 0; i < arrCals.Length; i++)
+                            List<BasicFourModule> fourModules = new List<BasicFourModule>();
+                            while (fourReader.Read())
                             {
-                                fourModule.CalModules[i] = (CalModule)int.Parse(arrCals[i]);
+                                BasicFourModule fourModule = new BasicFourModule();
+                                fourModule.ID = int.Parse(fourReader["id"].ToString());
+                                fourModule.Name = fourReader["name"].ToString();
+                                fourModule.Level = int.Parse(fourReader["level"].ToString());
+                                fourModule.ParentId = int.Parse(fourReader["parent_id"].ToString());
+                                fourModule.BasicRule = fourReader["basic_rule"].ToString();
+                                fourModule.BasicAdd = fourReader["basic_sub"].ToString();
+                                fourModule.BasicSub = fourReader["basic_add"].ToString();
+                                string cals = fourReader["cal_module"].ToString();
+                                string[] arrCals = cals.Split(",".ToArray());
+                                fourModule.CalModules = new CalModule[arrCals.Length];
+                                for (int i = 0; i < arrCals.Length; i++)
+                                {
+                                    fourModule.CalModules[i] = (CalModule)int.Parse(arrCals[i]);
+                                }
+                                fourModules.Add(fourModule);
                             }
-                            fourModules.Add(fourModule);
+                            fourReader.Close();
+                            return fourModules;
                         }
-                        fourReader.Close();
-                        return fourModules;
                     case TableName.TimeCycle:
                         cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE state={(int)para[0]}";
                         if (para.Length > 1)
                         {
                             cmd.CommandText += $" AND name='{(string)para[1]}'";
                         }
-                        SQLiteDataReader timeReader = cmd.ExecuteReader();
-                        List<TimeCycleModule> timeModules = new List<TimeCycleModule>();
-                        while (timeReader.Read())
+                        using (SQLiteDataReader timeReader = cmd.ExecuteReader())
                         {
-                            TimeCycleModule timeModule = new TimeCycleModule();
-                            timeModule.ID = int.Parse(timeReader["id"].ToString());
-                            timeModule.Name = timeReader["name"].ToString();
-                            timeModule.StartTime = DateTime.Parse(timeReader["start_time"].ToString());
-                            timeModule.EndTime = DateTime.Parse(timeReader["end_time"].ToString());
-                            timeModule.CreateTime = DateTime.Parse(timeReader["create_time"].ToString());
-                            timeModule.LatestCommitTime = DateTime.Parse(timeReader["latest_commit_time"].ToString());
-                            timeModule.State = int.Parse(timeReader["state"].ToString());
-                            timeModules.Add(timeModule);
+                            List<TimeCycleModule> timeModules = new List<TimeCycleModule>();
+                            while (timeReader.Read())
+                            {
+                                TimeCycleModule timeModule = new TimeCycleModule();
+                                timeModule.ID = int.Parse(timeReader["id"].ToString());
+                                timeModule.Name = timeReader["name"].ToString();
+                                timeModule.StartTime = DateTime.Parse(timeReader["start_time"].ToString());
+                                timeModule.EndTime = DateTime.Parse(timeReader["end_time"].ToString());
+                                timeModule.CreateTime = DateTime.Parse(timeReader["create_time"].ToString());
+                                timeModule.LatestCommitTime = DateTime.Parse(timeReader["latest_commit_time"].ToString());
+                                timeModule.State = int.Parse(timeReader["state"].ToString());
+                                timeModules.Add(timeModule);
+                            }
+                            timeReader.Close();
+                            return timeModules;
                         }
-                        timeReader.Close();
-                        return timeModules;
+                    case TableName.EvalutationData:
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE time_cycle={(int)para[0]}";
+                        using (SQLiteDataReader evalutationReader = cmd.ExecuteReader())//reader is active exception
+                        {                            
+                            List<EvalutationDataModule> evalutationModules = new List<EvalutationDataModule>();
+                            while (evalutationReader.Read())
+                            {
+                                EvalutationDataModule evalutationModule = new EvalutationDataModule();
+                                evalutationModule.ID = int.Parse(evalutationReader["id"].ToString());
+                                evalutationModule.TimeCycle = int.Parse(evalutationReader["time_cycle"].ToString());
+                                evalutationModule.IndicatorOne = int.Parse(evalutationReader["indicator_one"].ToString());
+                                evalutationModule.IndicatorTwo = int.Parse(evalutationReader["indicator_two"].ToString());
+                                evalutationModule.IndicatorThree = int.Parse(evalutationReader["indicator_three"].ToString());
+                                JArray jarr = (JArray)JsonConvert.DeserializeObject(evalutationReader["evalutation_data"].ToString());
+                                evalutationModule.EvalutationDataObj = new List<EvalutationFourModule>(jarr.Select(p =>
+                                {
+                                    EvalutationFourModule ef = new EvalutationFourModule();
+                                    ef.ID = int.Parse(p["ID"].ToString());
+                                    ef.Remark = p["Remark"].ToString();
+                                    ef.DataSource = p["DataSource"].ToString().Split(",".ToArray(), StringSplitOptions.RemoveEmptyEntries);//empty string
+                                    return ef;
+                                }));
+                                evalutationModules.Add(evalutationModule);
+                            }
+                            evalutationReader.Close();
+                            return evalutationModules;
+                        }
                 }
             }
             catch(Exception ex)

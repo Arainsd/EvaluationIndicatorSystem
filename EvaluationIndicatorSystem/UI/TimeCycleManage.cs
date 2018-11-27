@@ -78,7 +78,6 @@ namespace EvaluationIndicatorSystem
             if (ones.Count == 0 || twos.Count == 0 || threes.Count == 0 || fours.Count == 0)
                 return;
             List<EvalutationDataModule> datas = new List<EvalutationDataModule>();
-            return;
             foreach (var one in ones)
             {
                 foreach (var two in twos)
@@ -104,14 +103,11 @@ namespace EvaluationIndicatorSystem
                                         fourModule.DataSource = null;
                                         fourModule.Remark = string.Empty;
                                         data.EvalutationDataObj.Add(fourModule);
-                                        fours.Remove(four);
                                     }
                                 }                                
                                 datas.Add(data);
-                                threes.Remove(three);
                             }
                         }
-                        twos.Remove(two);
                     }
                 }
             }
