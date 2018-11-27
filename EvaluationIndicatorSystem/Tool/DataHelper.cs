@@ -9,7 +9,7 @@ namespace EvaluationIndicatorSystem
 {
     public class DataHelper
     {
-        public void SetComboItem(Dictionary<string, BasicDataModule> modules, ComboBox combo, int id)
+        public void SetComboItem(Dictionary<int, BasicDataModule> modules, ComboBox combo, int id)
         {
             foreach (var item in modules)
             {
@@ -24,7 +24,7 @@ namespace EvaluationIndicatorSystem
             }
         }
 
-        public int GetParentId(Dictionary<string, BasicDataModule> modules, string parentName)
+        public int GetParentId(Dictionary<int, BasicDataModule> modules, string parentName)
         {
             int result = -1;
             foreach (var item in modules)
@@ -38,7 +38,7 @@ namespace EvaluationIndicatorSystem
             return result;
         }
 
-        public string CheckComboItem(Dictionary<string, BasicDataModule> modules, int level)
+        public string CheckComboItem(Dictionary<int, BasicDataModule> modules, int level)
         {
             string msg = string.Empty;
             bool hasLevel = false;

@@ -18,13 +18,13 @@ namespace EvaluationIndicatorSystem
             Init();
         }
 
-        Dictionary<string, BasicDataModule> modules = null;
+        Dictionary<int, BasicDataModule> modules = null;
         DataHelper dataHelper = null;
 
         private void Init()
         {
             dataHelper = new DataHelper();
-            modules = new Dictionary<string, BasicDataModule>();
+            modules = new Dictionary<int, BasicDataModule>();
             DataRefresh();
         }
 
@@ -42,7 +42,7 @@ namespace EvaluationIndicatorSystem
             {
                 foreach (var item in obj)
                 {
-                    modules.Add(item.ID.ToString(), item);
+                    modules.Add(item.ID, item);
                     if (item.Level == 1)
                     {
                         combo_one.Items.Add(item.Name);
@@ -137,7 +137,7 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Control_UpdateClick(object sender, string e)
+        private void Control_UpdateClick(object sender, int e)
         {
             BasicDataModule module = modules[e];
             using (ChangeIndicatorThree dialog = new ChangeIndicatorThree(modules, module))
@@ -178,12 +178,12 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Control_DeleteClick(object sender, string e)
+        private void Control_DeleteClick(object sender, int e)
         {
             if (MessageBox.Show("将删除此指标下的所有子指标，确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                List<int> fourIds = GetAllChildren(int.Parse(e));
-                SqliteHelper.Delete(TableName.BasicData, int.Parse(e));
+                List<int> fourIds = GetAllChildren(e);
+                SqliteHelper.Delete(TableName.BasicData, e);
                 SqliteHelper.Delete(TableName.BasicFour, fourIds);
                 DataRefresh();
             }

@@ -12,10 +12,10 @@ namespace EvaluationIndicatorSystem
 {
     public partial class ChangeIndicatorThree : Form
     {
-        public ChangeIndicatorThree(Dictionary<string, BasicDataModule> data, params BasicDataModule[] module)
+        public ChangeIndicatorThree(Dictionary<int, BasicDataModule> data, params BasicDataModule[] module)
         {
             InitializeComponent();
-            modules = new Dictionary<string, BasicDataModule>();
+            modules = new Dictionary<int, BasicDataModule>();
             foreach (var item in data)
             {
                 if (item.Value.Level == 1)
@@ -31,15 +31,15 @@ namespace EvaluationIndicatorSystem
             comb_one.SelectedIndex = 0;               
             if (module.Length > 0)
             {
-                this.comb_one.SelectedItem = modules[modules[module[0].ParentId.ToString()].ParentId.ToString()].Name;
-                this.combo_two.SelectedItem = modules[module[0].ParentId.ToString()].Name;
+                this.comb_one.SelectedItem = modules[modules[module[0].ParentId].ParentId].Name;
+                this.combo_two.SelectedItem = modules[module[0].ParentId].Name;
                 this.txt_name.Text = module[0].Name;
                 this.txt_grade.Text = module[0].Grade.ToString();
             }
         }
 
         public string ChangeTitle { set => this.Text = value; }
-        Dictionary<string, BasicDataModule> modules = null;
+        Dictionary<int, BasicDataModule> modules = null;
         BasicDataModule module = null;
         public BasicDataModule GetModule { get => module; set => module = value; }
 

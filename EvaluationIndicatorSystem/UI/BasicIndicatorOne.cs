@@ -18,11 +18,11 @@ namespace EvaluationIndicatorSystem
             Init();
         }
 
-        Dictionary<string, BasicDataModule> modules = null;
+        Dictionary<int, BasicDataModule> modules = null;
 
         private void Init()
         {
-            modules = new Dictionary<string, BasicDataModule>();
+            modules = new Dictionary<int, BasicDataModule>();
             DataRefresh();
         }
 
@@ -40,7 +40,7 @@ namespace EvaluationIndicatorSystem
                 {
                     if (item.Level != 1)
                         continue;
-                    modules.Add(item.ID.ToString(), item);
+                    modules.Add(item.ID, item);
                     IndicatorControl control = new IndicatorControl();
                     control.IndicatorName = item.Name;
                     control.IndicatorGrade = item.Grade.ToString();
@@ -81,7 +81,7 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Control_UpdateClick(object sender, string e)
+        private void Control_UpdateClick(object sender, int e)
         {
             BasicDataModule module = modules[e];
             using (ChangeIndicatorOne dialog = new ChangeIndicatorOne(module))
@@ -137,13 +137,13 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Control_DeleteClick(object sender, string e)
+        private void Control_DeleteClick(object sender, int e)
         {
             if (MessageBox.Show("将删除此指标下的所有子指标，确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 List<int> allID = new List<int>();
-                allID.Add(int.Parse(e));
-                List<int> fourIds = GetAllChildren(allID, int.Parse(e));
+                allID.Add(e);
+                List<int> fourIds = GetAllChildren(allID, e);
                 SqliteHelper.Delete(TableName.BasicData, allID);
                 SqliteHelper.Delete(TableName.BasicFour, fourIds);
                 //SqliteHelper.Delete(TableName.BasicData, int.Parse(e));

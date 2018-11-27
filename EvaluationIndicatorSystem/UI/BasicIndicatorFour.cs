@@ -18,7 +18,7 @@ namespace EvaluationIndicatorSystem
             Init();
         }
 
-        Dictionary<string, BasicDataModule> modules = null;
+        Dictionary<int, BasicDataModule> modules = null;
         List<BasicFourModule> fourModules = null;
         DataHelper dataHelper = null;
         string[] calModule = { "开关型", "单一比较型", "多重比较型", "分段计数型", "单一比例比较型" };
@@ -26,7 +26,7 @@ namespace EvaluationIndicatorSystem
         private void Init()
         {
             dataHelper = new DataHelper();
-            modules = new Dictionary<string, BasicDataModule>();
+            modules = new Dictionary<int, BasicDataModule>();
             fourModules = new List<BasicFourModule>();
             DataRefresh();
         }
@@ -47,7 +47,7 @@ namespace EvaluationIndicatorSystem
             {
                 foreach (var item in obj)
                 {                         
-                    modules.Add(item.ID.ToString(), item);
+                    modules.Add(item.ID, item);
                     if (item.Level == 1)
                     {
                         combo_one.Items.Add(item.Name);
