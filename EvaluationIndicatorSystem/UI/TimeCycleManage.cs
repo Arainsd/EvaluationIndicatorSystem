@@ -71,45 +71,18 @@ namespace EvaluationIndicatorSystem
         /// <param name="id">time cycle id</param>
         private void InitEvalutationData(int id)
         {
-            List<BasicDataModule> ones = (List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData, 1);
-            List<BasicDataModule> twos = (List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData, 2);
-            List<BasicDataModule> threes = (List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData, 3);
             List<BasicFourModule> fours = (List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour);
-            if (ones.Count == 0 || twos.Count == 0 || threes.Count == 0 || fours.Count == 0)
+            if (fours.Count == 0)
                 return;
             List<EvalutationDataModule> datas = new List<EvalutationDataModule>();
-            foreach (var one in ones)
+            foreach (var four in fours)
             {
-                foreach (var two in twos)
-                {
-                    if (two.ParentId == one.ID)
-                    {
-                        foreach (var three in threes)
-                        {
-                            if (three.ParentId == two.ID)
-                            {
-                                EvalutationDataModule data = new EvalutationDataModule();
-                                data.TimeCycle = id;
-                                data.IndicatorOne = one.ID;
-                                data.IndicatorTwo = two.ID;
-                                data.IndicatorThree = three.ID;
-                                data.EvalutationDataObj = new List<EvalutationFourModule>();                                    
-                                foreach (var four in fours)
-                                {
-                                    if (four.ParentId == three.ID)
-                                    {
-                                        EvalutationFourModule fourModule = new EvalutationFourModule();
-                                        fourModule.ID = four.ID;
-                                        fourModule.DataSource = null;
-                                        fourModule.Remark = string.Empty;
-                                        data.EvalutationDataObj.Add(fourModule);
-                                    }
-                                }                                
-                                datas.Add(data);
-                            }
-                        }
-                    }
-                }
+                EvalutationDataModule dataModule = new EvalutationDataModule();
+                dataModule.TimeCycle = id;
+                dataModule.IndicatorFour = four.ID;
+                dataModule.DataSource = null;
+                dataModule.Remark = string.Empty;
+                datas.Add(dataModule);
             }
             if(datas.Count > 0)
             {

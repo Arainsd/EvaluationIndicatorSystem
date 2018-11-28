@@ -44,9 +44,6 @@ namespace EvaluationIndicatorSystem
         {
             combo_timeCycle.Items.Clear();
             combo_timeCycle.Text = string.Empty;
-            basicModules.Clear();
-            fourModules.Clear();
-            evalutationDatas.Clear();
             this.lbl_timePeriods.Text = string.Empty;
             this.combo_one.Items.Clear();
             combo_one.Text = string.Empty;
@@ -54,7 +51,11 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            
+            dataGridView1.DataSource = null;
+            basicModules.Clear();
+            fourModules.Clear();
+            evalutationDatas.Clear();
+
             timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, 0);
             if (timeModules.Count == 0) return;
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
@@ -74,17 +75,21 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_timeCycle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach(var item in timeModules)
+            this.lbl_timePeriods.Text = string.Empty;
+            this.combo_one.Items.Clear();
+            combo_one.Text = string.Empty;
+            this.combo_two.Items.Clear();
+            combo_two.Text = string.Empty;
+            this.combo_three.Items.Clear();
+            combo_three.Text = string.Empty;
+            evalutationDatas.Clear();
+            dataGridView1.DataSource = null;
+
+            foreach (var item in timeModules)
             {
                 if(item.Name == ((ComboBox)sender).SelectedItem.ToString())
                 {
                     lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " - " + item.EndTime.ToString("yyyy-MM-dd");
-                    this.combo_one.Items.Clear();
-                    combo_one.Text = string.Empty;
-                    this.combo_two.Items.Clear();
-                    combo_two.Text = string.Empty;
-                    this.combo_three.Items.Clear();
-                    combo_three.Text = string.Empty;
                     DataRefresh(item.ID);
                     break;
                 }
@@ -112,22 +117,16 @@ namespace EvaluationIndicatorSystem
         {
             if (basicModules.Count == 0 || fourModules.Count == 0) return;
             evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, id);
-            int[] oneIds = evalutationDatas.Select(p => p.IndicatorOne).Distinct().ToArray();
-            SetComboItems(oneIds, combo_one);
-        }
-
-        private void SetComboItems(int[] ids, ComboBox combo)
-        {
-            if (ids != null || ids.Length > 0)
+            foreach(var item in basicModules)
             {
-                for (int i = 0; i < ids.Length; i++)
+                if (item.Value.Level == 1)
                 {
-                    combo.Items.Add(basicModules[ids[i]]?.Name);
+                    combo_one.Items.Add(item.Value.Name);
                 }
-                if (combo.Items.Count > 0)
-                {
-                    combo.SelectedIndex = 0;
-                }
+            }
+            if (combo_one.Items.Count > 0)
+            {
+                combo_one.SelectedIndex = 0;
             }
         }
 
@@ -142,10 +141,10 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            int id = dataHelper.GetParentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
+            dataGridView1.DataSource = null;
+            int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            int[] twoIds = evalutationDatas.Where(p => p.IndicatorOne == id).Select(p => p.IndicatorTwo).Distinct().ToArray();
-            SetComboItems(twoIds, combo_two);
+            dataHelper.SetComboItem(basicModules, combo_two, id);
         }
 
         /// <summary>
@@ -157,10 +156,10 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            int id = dataHelper.GetParentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
+            dataGridView1.DataSource = null;
+            int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            int[] threeIds = evalutationDatas.Where(p => p.IndicatorTwo == id).Select(p => p.IndicatorThree).Distinct().ToArray();
-            SetComboItems(threeIds, combo_three);
+            dataHelper.SetComboItem(basicModules, combo_three, id);
         }
 
         /// <summary>
@@ -170,6 +169,10 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
+            int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
+            if (id == -1) return;
+            
         }
     }//end of class
 }

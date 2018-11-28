@@ -44,6 +44,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeCycle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IndicatorFour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -240,12 +246,56 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.TimeCycle,
+            this.IndicatorFour,
+            this.DataSource,
+            this.Remark,
+            this.Column1});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 10);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(940, 439);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // TimeCycle
+            // 
+            this.TimeCycle.HeaderText = "TimeCycle";
+            this.TimeCycle.Name = "TimeCycle";
+            this.TimeCycle.Visible = false;
+            // 
+            // IndicatorFour
+            // 
+            this.IndicatorFour.HeaderText = "IndicatorFour";
+            this.IndicatorFour.Name = "IndicatorFour";
+            this.IndicatorFour.Visible = false;
+            // 
+            // DataSource
+            // 
+            this.DataSource.HeaderText = "DataSource";
+            this.DataSource.Name = "DataSource";
+            this.DataSource.Visible = false;
+            // 
+            // Remark
+            // 
+            this.Remark.HeaderText = "Remark";
+            this.Remark.Name = "Remark";
+            this.Remark.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "修改";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // EvalutationData
             // 
@@ -287,5 +337,11 @@
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeCycle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IndicatorFour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
     }
 }

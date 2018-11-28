@@ -148,7 +148,12 @@ namespace EvaluationIndicatorSystem
                     {
                         foreach (var item in evalutationDatas)
                         {
-                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_one, indicator_two, indicator_three, evalutation_data) VALUES({item.TimeCycle}, {item.IndicatorOne},{item.IndicatorTwo},{item.IndicatorThree},'{JsonConvert.SerializeObject(item.EvalutationDataObj)}')";
+                            string dataSource = string.Empty;
+                            if (item.DataSource != null)
+                            {
+                                dataSource = string.Join("|", item.DataSource);
+                            }
+                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_four, data_source, remark) VALUES({item.TimeCycle}, {item.IndicatorFour},'{dataSource}','{item.Remark}')";
                             cmd.ExecuteNonQuery();
                         }
                         transaction.Commit();
@@ -424,18 +429,9 @@ namespace EvaluationIndicatorSystem
                                 EvalutationDataModule evalutationModule = new EvalutationDataModule();
                                 evalutationModule.ID = int.Parse(evalutationReader["id"].ToString());
                                 evalutationModule.TimeCycle = int.Parse(evalutationReader["time_cycle"].ToString());
-                                evalutationModule.IndicatorOne = int.Parse(evalutationReader["indicator_one"].ToString());
-                                evalutationModule.IndicatorTwo = int.Parse(evalutationReader["indicator_two"].ToString());
-                                evalutationModule.IndicatorThree = int.Parse(evalutationReader["indicator_three"].ToString());
-                                JArray jarr = (JArray)JsonConvert.DeserializeObject(evalutationReader["evalutation_data"].ToString());
-                                evalutationModule.EvalutationDataObj = new List<EvalutationFourModule>(jarr.Select(p =>
-                                {
-                                    EvalutationFourModule ef = new EvalutationFourModule();
-                                    ef.ID = int.Parse(p["ID"].ToString());
-                                    ef.Remark = p["Remark"].ToString();
-                                    ef.DataSource = p["DataSource"].ToString().Split(",".ToArray(), StringSplitOptions.RemoveEmptyEntries);//empty string
-                                    return ef;
-                                }));
+                                evalutationModule.IndicatorFour = int.Parse(evalutationReader["indicator_four"].ToString());
+                                evalutationModule.DataSource = evalutationReader["data_source"].ToString().Split("|".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
+                                evalutationModule.Remark = evalutationReader["remark"].ToString();
                                 evalutationModules.Add(evalutationModule);
                             }
                             evalutationReader.Close();

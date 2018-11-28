@@ -24,7 +24,7 @@ namespace EvaluationIndicatorSystem
             }
         }
 
-        public int GetParentId(Dictionary<int, BasicDataModule> modules, string parentName)
+        public int GetCurrentId(Dictionary<int, BasicDataModule> modules, string parentName)
         {
             int result = -1;
             foreach (var item in modules)

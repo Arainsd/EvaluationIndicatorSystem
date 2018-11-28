@@ -73,7 +73,7 @@ namespace EvaluationIndicatorSystem
             combo_three.Text = string.Empty;
             dataGridView1.DataSource = new List<BasicFourModule>();
             int id = -1;
-            id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
+            id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(modules, combo_two, id);
         }
@@ -89,7 +89,7 @@ namespace EvaluationIndicatorSystem
             combo_three.Text = string.Empty;
             dataGridView1.DataSource = new List<BasicFourModule>();
             int id = -1;
-            id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
+            id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(modules, combo_three, id);
         }
@@ -103,7 +103,7 @@ namespace EvaluationIndicatorSystem
         {
             dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
             int id = -1;
-            id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
+            id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             List<BasicFourModule> currentModule = new List<BasicFourModule>();
             for(int i  = 0;i < fourModules.Count;i ++)
@@ -162,7 +162,7 @@ namespace EvaluationIndicatorSystem
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     BasicFourModule fourModule = dialog.GetModule;
-                    fourModule.ParentId = dataHelper.GetParentId(modules, combo_three.SelectedItem.ToString());
+                    fourModule.ParentId = dataHelper.GetCurrentId(modules, combo_three.SelectedItem.ToString());
                     SqliteHelper.Insert(TableName.BasicFour, fourModule, out string msg);
                     if (!string.IsNullOrEmpty(msg))
                     {

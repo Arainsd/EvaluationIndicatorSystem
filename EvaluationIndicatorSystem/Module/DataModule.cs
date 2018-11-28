@@ -50,19 +50,11 @@ namespace EvaluationIndicatorSystem
     public class EvalutationDataModule
     {
         public int ID { get; set; }
-        public int TimeCycle { get; set; }        
-        public int IndicatorOne { get; set; }
-        public int IndicatorTwo { get; set; }
-        public int IndicatorThree { get; set; }
-        public List<EvalutationFourModule> EvalutationDataObj { get; set; }
-    }//end of class EvalutationDataModule
-
-    public class EvalutationFourModule
-    {
-        public int ID { get; set; }
+        public int TimeCycle { get; set; }                
+        public int IndicatorFour { get; set; }
         public string[] DataSource { get; set; }
         public string Remark { get; set; }
-    }//end of class EvalutationFourModule
+    }//end of class EvalutationDataModule
 
     public class IndicatorOne
     {

@@ -66,7 +66,7 @@ namespace EvaluationIndicatorSystem
         {            
             tableLayoutPanel1.Controls.Clear();
             int id = -1;
-            id = dataHelper.GetParentId(modules, ((ComboBox)sender).SelectedItem.ToString());
+            id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             foreach (var item in modules)
             {
