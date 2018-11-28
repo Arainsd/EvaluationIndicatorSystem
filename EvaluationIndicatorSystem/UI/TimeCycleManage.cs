@@ -82,6 +82,7 @@ namespace EvaluationIndicatorSystem
                 dataModule.IndicatorFour = four.ID;
                 dataModule.DataSource = null;
                 dataModule.Remark = string.Empty;
+                dataModule.Grade = 0;
                 datas.Add(dataModule);
             }
             if(datas.Count > 0)
@@ -151,6 +152,7 @@ namespace EvaluationIndicatorSystem
             if (MessageBox.Show("删除后，关于此周期的数据将一并删除，确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 SqliteHelper.Delete(TableName.TimeCycle, id);
+                SqliteHelper.Delete(TableName.EvalutationData, id);
                 DataRefresh();
             }
         }

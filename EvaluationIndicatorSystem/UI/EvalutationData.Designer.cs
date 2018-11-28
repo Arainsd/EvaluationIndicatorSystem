@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,9 +49,17 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeCycle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IndicatorFour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BasicRule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BasicSub = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BasicAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StrCalModules = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CalModules = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -244,58 +254,152 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeight = 40;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.TimeCycle,
             this.IndicatorFour,
-            this.DataSource,
+            this.Column12,
             this.Remark,
-            this.Column1});
+            this.Column1,
+            this.ParentId,
+            this.BasicRule,
+            this.BasicSub,
+            this.BasicAdd,
+            this.StrCalModules,
+            this.Grade,
+            this.Operate,
+            this.CalModules});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 10);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(940, 439);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 3;
             // 
             // ID
             // 
+            this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.Visible = false;
             // 
             // TimeCycle
             // 
+            this.TimeCycle.DataPropertyName = "TimeCycle";
             this.TimeCycle.HeaderText = "TimeCycle";
             this.TimeCycle.Name = "TimeCycle";
             this.TimeCycle.Visible = false;
             // 
             // IndicatorFour
             // 
+            this.IndicatorFour.DataPropertyName = "IndicatorFour";
             this.IndicatorFour.HeaderText = "IndicatorFour";
             this.IndicatorFour.Name = "IndicatorFour";
             this.IndicatorFour.Visible = false;
             // 
-            // DataSource
+            // Column12
             // 
-            this.DataSource.HeaderText = "DataSource";
-            this.DataSource.Name = "DataSource";
-            this.DataSource.Visible = false;
+            this.Column12.DataPropertyName = "DataSource";
+            this.Column12.HeaderText = "DataSource";
+            this.Column12.Name = "Column12";
+            this.Column12.Visible = false;
             // 
             // Remark
             // 
+            this.Remark.DataPropertyName = "Remark";
             this.Remark.HeaderText = "Remark";
             this.Remark.Name = "Remark";
             this.Remark.Visible = false;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "修改";
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.FillWeight = 415.3284F;
+            this.Column1.HeaderText = "评价准则内容";
             this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column1.ReadOnly = true;
+            // 
+            // ParentId
+            // 
+            this.ParentId.DataPropertyName = "ParentId";
+            this.ParentId.HeaderText = "ParentId";
+            this.ParentId.Name = "ParentId";
+            this.ParentId.Visible = false;
+            // 
+            // BasicRule
+            // 
+            this.BasicRule.DataPropertyName = "BasicRule";
+            this.BasicRule.FillWeight = 41.89048F;
+            this.BasicRule.HeaderText = "基础分值";
+            this.BasicRule.Name = "BasicRule";
+            this.BasicRule.ReadOnly = true;
+            this.BasicRule.Width = 200;
+            // 
+            // BasicSub
+            // 
+            this.BasicSub.DataPropertyName = "BasicSub";
+            this.BasicSub.FillWeight = 36.60332F;
+            this.BasicSub.HeaderText = "扣分";
+            this.BasicSub.Name = "BasicSub";
+            this.BasicSub.ReadOnly = true;
+            // 
+            // BasicAdd
+            // 
+            this.BasicAdd.DataPropertyName = "BasicAdd";
+            this.BasicAdd.FillWeight = 44.69057F;
+            this.BasicAdd.HeaderText = "加分";
+            this.BasicAdd.Name = "BasicAdd";
+            this.BasicAdd.ReadOnly = true;
+            // 
+            // StrCalModules
+            // 
+            this.StrCalModules.DataPropertyName = "StrCalModules";
+            this.StrCalModules.FillWeight = 75.854F;
+            this.StrCalModules.HeaderText = "计算模型";
+            this.StrCalModules.Name = "StrCalModules";
+            this.StrCalModules.ReadOnly = true;
+            this.StrCalModules.Width = 150;
+            // 
+            // Grade
+            // 
+            this.Grade.DataPropertyName = "Grade";
+            dataGridViewCellStyle1.Format = "string.Format(\"{0}\",e.Value .ToString ());";
+            this.Grade.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Grade.HeaderText = "得分";
+            this.Grade.Name = "Grade";
+            this.Grade.Width = 60;
+            // 
+            // Operate
+            // 
+            this.Operate.DataPropertyName = "Operate";
+            this.Operate.FillWeight = 40.09032F;
+            this.Operate.HeaderText = "备注";
+            this.Operate.Name = "Operate";
+            this.Operate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Operate.Text = "";
+            this.Operate.Width = 60;
+            // 
+            // CalModules
+            // 
+            this.CalModules.DataPropertyName = "CalModules";
+            this.CalModules.HeaderText = "CalModules";
+            this.CalModules.Name = "CalModules";
+            this.CalModules.Visible = false;
             // 
             // EvalutationData
             // 
@@ -340,8 +444,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeCycle;
         private System.Windows.Forms.DataGridViewTextBoxColumn IndicatorFour;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
-        private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BasicRule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BasicSub;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BasicAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StrCalModules;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Grade;
+        private System.Windows.Forms.DataGridViewButtonColumn Operate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CalModules;
     }
 }

@@ -15,6 +15,7 @@ namespace EvaluationIndicatorSystem
         static string path = string.Empty;
         static SQLiteConnection conn = null;
         static SQLiteCommand cmd = null;
+        static string[] calModule = { "开关型", "单一比较型", "多重比较型", "分段计数型", "单一比例比较型" };
 
         /// <summary>
         /// initialze db file
@@ -153,7 +154,7 @@ namespace EvaluationIndicatorSystem
                             {
                                 dataSource = string.Join("|", item.DataSource);
                             }
-                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_four, data_source, remark) VALUES({item.TimeCycle}, {item.IndicatorFour},'{dataSource}','{item.Remark}')";
+                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_four, data_source, remark, grade) VALUES({item.TimeCycle}, {item.IndicatorFour},'{dataSource}','{item.Remark}',{item.Grade})";
                             cmd.ExecuteNonQuery();
                         }
                         transaction.Commit();
@@ -290,10 +291,22 @@ namespace EvaluationIndicatorSystem
             bool result = false;
             try
             {
-                cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={id}";
-                if (cmd.ExecuteNonQuery() > 0)
+                switch (tableName)
                 {
-                    result = true;
+                    case TableName.EvalutationData:
+                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE time_cycle={id}";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
+                        break;
+                    default:
+                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={id}";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
+                        break;
                 }
             }
             catch (Exception ex)
@@ -390,6 +403,7 @@ namespace EvaluationIndicatorSystem
                                 {
                                     fourModule.CalModules[i] = (CalModule)int.Parse(arrCals[i]);
                                 }
+                                fourModule.StrCalModules = GetCalModuleStr(fourModule.CalModules);
                                 fourModules.Add(fourModule);
                             }
                             fourReader.Close();
@@ -420,7 +434,7 @@ namespace EvaluationIndicatorSystem
                             return timeModules;
                         }
                     case TableName.EvalutationData:
-                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE time_cycle={(int)para[0]}";
+                        cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
                         using (SQLiteDataReader evalutationReader = cmd.ExecuteReader())//reader is active exception
                         {                            
                             List<EvalutationDataModule> evalutationModules = new List<EvalutationDataModule>();
@@ -432,6 +446,20 @@ namespace EvaluationIndicatorSystem
                                 evalutationModule.IndicatorFour = int.Parse(evalutationReader["indicator_four"].ToString());
                                 evalutationModule.DataSource = evalutationReader["data_source"].ToString().Split("|".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
                                 evalutationModule.Remark = evalutationReader["remark"].ToString();
+                                evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());
+                                evalutationModule.Name = evalutationReader["name"].ToString();
+                                evalutationModule.ParentId = int.Parse(evalutationReader["parent_id"].ToString());
+                                evalutationModule.BasicRule = evalutationReader["basic_rule"].ToString();
+                                evalutationModule.BasicAdd = evalutationReader["basic_sub"].ToString();
+                                evalutationModule.BasicSub = evalutationReader["basic_add"].ToString();
+                                string cals = evalutationReader["cal_module"].ToString();
+                                string[] arrCals = cals.Split(",".ToArray());
+                                evalutationModule.CalModules = new CalModule[arrCals.Length];
+                                for (int i = 0; i < arrCals.Length; i++)
+                                {
+                                    evalutationModule.CalModules[i] = (CalModule)int.Parse(arrCals[i]);
+                                }
+                                evalutationModule.StrCalModules = GetCalModuleStr(evalutationModule.CalModules);
                                 evalutationModules.Add(evalutationModule);
                             }
                             evalutationReader.Close();
@@ -444,6 +472,23 @@ namespace EvaluationIndicatorSystem
 
             }
             return null;
+        }
+
+        private static string GetCalModuleStr(CalModule[] data)
+        {
+            string str = string.Empty;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (i == 0)
+                {
+                    str += calModule[(int)data[i] - 1];
+                }
+                else
+                {
+                    str += "," + calModule[(int)data[i] - 1];
+                }
+            }
+            return str;
         }
 
         /// <summary>

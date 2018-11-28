@@ -54,6 +54,15 @@ namespace EvaluationIndicatorSystem
         public int IndicatorFour { get; set; }
         public string[] DataSource { get; set; }
         public string Remark { get; set; }
+        public int Grade { get; set; }
+        public string Name { get; set; }
+        public int ParentId { get; set; }
+        public string BasicRule { get; set; }
+        public string BasicSub { get; set; }
+        public string BasicAdd { get; set; }
+        public CalModule[] CalModules { get; set; }
+        public string StrCalModules { get; set; }
+        public string Operate { get => "备注"; }
     }//end of class EvalutationDataModule
 
     public class IndicatorOne

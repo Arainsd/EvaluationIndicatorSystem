@@ -40,7 +40,7 @@ namespace EvaluationIndicatorSystem
             combo_one.Items.Clear();
             combo_two.Items.Clear();
             combo_three.Items.Clear();
-            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
+            dataGridView1.DataSource = new List<BasicFourModule>();
             fourModules = (List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour);
             List<BasicDataModule> obj = (List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData);
             if (obj != null && obj.Count > 0)
@@ -101,7 +101,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = new List<BasicFourModule> { new BasicFourModule() };
+            dataGridView1.DataSource = new List<BasicFourModule>();
             int id = -1;
             id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
@@ -110,30 +110,13 @@ namespace EvaluationIndicatorSystem
             {
                 if (fourModules[i].ParentId == id)
                 {
-                    fourModules[i].StrCalModules = GetCalModuleStr(fourModules[i].CalModules);
                     currentModule.Add(fourModules[i]);
                 }
             }
             dataGridView1.DataSource = currentModule;
             dataGridView1.Refresh();
         }
-
-        private string GetCalModuleStr(CalModule[] data)
-        {
-            string str = string.Empty;
-            for(int i= 0;i < data.Length;i++)
-            {
-                if (i == 0)
-                {
-                    str += calModule[(int)data[i] - 1];
-                } else
-                {
-                    str += "," + calModule[(int)data[i] - 1];
-                }
-            }
-            return str;
-        }
-
+        
         /// <summary>
         /// 新增
         /// </summary>
