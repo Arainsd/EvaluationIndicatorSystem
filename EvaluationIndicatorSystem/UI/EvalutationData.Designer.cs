@@ -43,8 +43,9 @@
             this.combo_one = new System.Windows.Forms.ComboBox();
             this.lbl_title = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.listBox_remark = new System.Windows.Forms.ListBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,14 +59,14 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listBox_remark = new System.Windows.Forms.ListBox();
+            this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // combo_three
@@ -243,15 +244,6 @@
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 1;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.listBox_remark);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(10, 469);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(940, 100);
-            this.panel3.TabIndex = 2;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -271,7 +263,8 @@
             this.Column10,
             this.Column11,
             this.Column12,
-            this.Column13});
+            this.Column13,
+            this.Column14});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
@@ -288,6 +281,25 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(940, 339);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.listBox_remark);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(10, 469);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(940, 100);
+            this.panel3.TabIndex = 2;
+            // 
+            // listBox_remark
+            // 
+            this.listBox_remark.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox_remark.FormattingEnabled = true;
+            this.listBox_remark.ItemHeight = 19;
+            this.listBox_remark.Location = new System.Drawing.Point(0, 0);
+            this.listBox_remark.Name = "listBox_remark";
+            this.listBox_remark.Size = new System.Drawing.Size(940, 100);
+            this.listBox_remark.TabIndex = 0;
             // 
             // Column1
             // 
@@ -383,15 +395,12 @@
             this.Column13.Name = "Column13";
             this.Column13.Visible = false;
             // 
-            // listBox_remark
+            // Column14
             // 
-            this.listBox_remark.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox_remark.FormattingEnabled = true;
-            this.listBox_remark.ItemHeight = 19;
-            this.listBox_remark.Location = new System.Drawing.Point(0, 0);
-            this.listBox_remark.Name = "listBox_remark";
-            this.listBox_remark.Size = new System.Drawing.Size(940, 100);
-            this.listBox_remark.TabIndex = 0;
+            this.Column14.DataPropertyName = "Operate";
+            this.Column14.HeaderText = "备注";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
             // 
             // EvalutationData
             // 
@@ -409,8 +418,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -433,6 +442,7 @@
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ListBox listBox_remark;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -446,6 +456,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.ListBox listBox_remark;
+        private System.Windows.Forms.DataGridViewButtonColumn Column14;
     }
 }
