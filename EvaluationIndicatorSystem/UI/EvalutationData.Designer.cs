@@ -378,7 +378,6 @@
             // Grade
             // 
             this.Grade.DataPropertyName = "Grade";
-            dataGridViewCellStyle1.Format = "string.Format(\"{0}\",e.Value .ToString ());";
             this.Grade.DefaultCellStyle = dataGridViewCellStyle1;
             this.Grade.HeaderText = "得分";
             this.Grade.Name = "Grade";
