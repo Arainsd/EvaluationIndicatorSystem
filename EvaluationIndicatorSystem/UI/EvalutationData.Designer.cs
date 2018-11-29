@@ -52,7 +52,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,7 +116,7 @@
             this.btn_commit.FlatAppearance.BorderSize = 0;
             this.btn_commit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_commit.ForeColor = System.Drawing.Color.White;
-            this.btn_commit.Location = new System.Drawing.Point(840, 72);
+            this.btn_commit.Location = new System.Drawing.Point(850, 72);
             this.btn_commit.Name = "btn_commit";
             this.btn_commit.Size = new System.Drawing.Size(75, 35);
             this.btn_commit.TabIndex = 16;
@@ -130,7 +130,7 @@
             this.btn_save.FlatAppearance.BorderSize = 0;
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.ForeColor = System.Drawing.Color.White;
-            this.btn_save.Location = new System.Drawing.Point(748, 72);
+            this.btn_save.Location = new System.Drawing.Point(760, 72);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 35);
             this.btn_save.TabIndex = 15;
@@ -257,7 +257,7 @@
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Column7,
+            this.ID,
             this.Column8,
             this.Column9,
             this.Column10,
@@ -277,10 +277,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(10, 130);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(940, 339);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // panel3
             // 
@@ -346,12 +346,12 @@
             this.Column6.Name = "Column6";
             this.Column6.Width = 60;
             // 
-            // Column7
+            // ID
             // 
-            this.Column7.DataPropertyName = "ID";
-            this.Column7.HeaderText = "ID";
-            this.Column7.Name = "Column7";
-            this.Column7.Visible = false;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
             // 
             // Column8
             // 
@@ -449,7 +449,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;

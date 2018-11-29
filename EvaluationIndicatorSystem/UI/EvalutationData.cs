@@ -171,7 +171,17 @@ namespace EvaluationIndicatorSystem
             if (currentTableData != null && currentTableData.Count > 0)
             {
                 dataGridView1.DataSource = currentTableData;
-            }
+            }            
+        }
+
+        int preIndex = -1;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int currentRow = ((DataGridView)sender).CurrentRow.Index;
+            if (preIndex == currentRow) return;
+            preIndex = currentRow;
+            listBox_remark.Items.Clear();
+            int currentId = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
         }
     }//end of class
 }
