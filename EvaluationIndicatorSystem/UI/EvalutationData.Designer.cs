@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
@@ -44,28 +43,28 @@
             this.combo_one = new System.Windows.Forms.ComboBox();
             this.lbl_title = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeCycle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IndicatorFour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BasicRule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BasicSub = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BasicAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StrCalModules = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Operate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.CalModules = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBox_remark = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,9 +103,9 @@
             this.panel1.Controls.Add(this.combo_two);
             this.panel1.Controls.Add(this.combo_one);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(960, 120);
+            this.panel1.Size = new System.Drawing.Size(940, 120);
             this.panel1.TabIndex = 0;
             // 
             // btn_commit
@@ -116,7 +115,7 @@
             this.btn_commit.FlatAppearance.BorderSize = 0;
             this.btn_commit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_commit.ForeColor = System.Drawing.Color.White;
-            this.btn_commit.Location = new System.Drawing.Point(860, 72);
+            this.btn_commit.Location = new System.Drawing.Point(840, 72);
             this.btn_commit.Name = "btn_commit";
             this.btn_commit.Size = new System.Drawing.Size(75, 35);
             this.btn_commit.TabIndex = 16;
@@ -130,7 +129,7 @@
             this.btn_save.FlatAppearance.BorderSize = 0;
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.ForeColor = System.Drawing.Color.White;
-            this.btn_save.Location = new System.Drawing.Point(768, 72);
+            this.btn_save.Location = new System.Drawing.Point(748, 72);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 35);
             this.btn_save.TabIndex = 15;
@@ -235,22 +234,23 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel2.Controls.Add(this.panel3);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10);
             this.splitContainer1.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 1;
             // 
-            // panel2
+            // panel3
             // 
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 120);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.panel2.Size = new System.Drawing.Size(960, 459);
-            this.panel2.TabIndex = 1;
+            this.panel3.Controls.Add(this.listBox_remark);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(10, 469);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(940, 100);
+            this.panel3.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -259,146 +259,139 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeight = 40;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.TimeCycle,
-            this.IndicatorFour,
-            this.Column12,
-            this.Remark,
             this.Column1,
-            this.ParentId,
-            this.BasicRule,
-            this.BasicSub,
-            this.BasicAdd,
-            this.StrCalModules,
-            this.Grade,
-            this.Operate,
-            this.CalModules});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 10);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 130);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(940, 439);
+            this.dataGridView1.Size = new System.Drawing.Size(940, 339);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // TimeCycle
-            // 
-            this.TimeCycle.DataPropertyName = "TimeCycle";
-            this.TimeCycle.HeaderText = "TimeCycle";
-            this.TimeCycle.Name = "TimeCycle";
-            this.TimeCycle.Visible = false;
-            // 
-            // IndicatorFour
-            // 
-            this.IndicatorFour.DataPropertyName = "IndicatorFour";
-            this.IndicatorFour.HeaderText = "IndicatorFour";
-            this.IndicatorFour.Name = "IndicatorFour";
-            this.IndicatorFour.Visible = false;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "DataSource";
-            this.Column12.HeaderText = "DataSource";
-            this.Column12.Name = "Column12";
-            this.Column12.Visible = false;
-            // 
-            // Remark
-            // 
-            this.Remark.DataPropertyName = "Remark";
-            this.Remark.HeaderText = "Remark";
-            this.Remark.Name = "Remark";
-            this.Remark.Visible = false;
             // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.DataPropertyName = "Name";
-            this.Column1.FillWeight = 415.3284F;
             this.Column1.HeaderText = "评价准则内容";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
-            // ParentId
+            // Column2
             // 
-            this.ParentId.DataPropertyName = "ParentId";
-            this.ParentId.HeaderText = "ParentId";
-            this.ParentId.Name = "ParentId";
-            this.ParentId.Visible = false;
+            this.Column2.DataPropertyName = "BasicRule";
+            this.Column2.HeaderText = "基础分值";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
             // 
-            // BasicRule
+            // Column3
             // 
-            this.BasicRule.DataPropertyName = "BasicRule";
-            this.BasicRule.FillWeight = 41.89048F;
-            this.BasicRule.HeaderText = "基础分值";
-            this.BasicRule.Name = "BasicRule";
-            this.BasicRule.ReadOnly = true;
-            this.BasicRule.Width = 200;
+            this.Column3.DataPropertyName = "BasicSub";
+            this.Column3.HeaderText = "扣分";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
-            // BasicSub
+            // Column4
             // 
-            this.BasicSub.DataPropertyName = "BasicSub";
-            this.BasicSub.FillWeight = 36.60332F;
-            this.BasicSub.HeaderText = "扣分";
-            this.BasicSub.Name = "BasicSub";
-            this.BasicSub.ReadOnly = true;
+            this.Column4.DataPropertyName = "BasicAdd";
+            this.Column4.HeaderText = "加分";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
-            // BasicAdd
+            // Column5
             // 
-            this.BasicAdd.DataPropertyName = "BasicAdd";
-            this.BasicAdd.FillWeight = 44.69057F;
-            this.BasicAdd.HeaderText = "加分";
-            this.BasicAdd.Name = "BasicAdd";
-            this.BasicAdd.ReadOnly = true;
+            this.Column5.DataPropertyName = "StrCalModules";
+            this.Column5.HeaderText = "计算模型";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 150;
             // 
-            // StrCalModules
+            // Column6
             // 
-            this.StrCalModules.DataPropertyName = "StrCalModules";
-            this.StrCalModules.FillWeight = 75.854F;
-            this.StrCalModules.HeaderText = "计算模型";
-            this.StrCalModules.Name = "StrCalModules";
-            this.StrCalModules.ReadOnly = true;
-            this.StrCalModules.Width = 150;
+            this.Column6.DataPropertyName = "Grade";
+            this.Column6.HeaderText = "得分";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 60;
             // 
-            // Grade
+            // Column7
             // 
-            this.Grade.DataPropertyName = "Grade";
-            this.Grade.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Grade.HeaderText = "得分";
-            this.Grade.Name = "Grade";
-            this.Grade.Width = 60;
+            this.Column7.DataPropertyName = "ID";
+            this.Column7.HeaderText = "ID";
+            this.Column7.Name = "Column7";
+            this.Column7.Visible = false;
             // 
-            // Operate
+            // Column8
             // 
-            this.Operate.DataPropertyName = "Operate";
-            this.Operate.FillWeight = 40.09032F;
-            this.Operate.HeaderText = "备注";
-            this.Operate.Name = "Operate";
-            this.Operate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Operate.Text = "";
-            this.Operate.Width = 60;
+            this.Column8.DataPropertyName = "TimeCycle";
+            this.Column8.HeaderText = "TimeCycle";
+            this.Column8.Name = "Column8";
+            this.Column8.Visible = false;
             // 
-            // CalModules
+            // Column9
             // 
-            this.CalModules.DataPropertyName = "CalModules";
-            this.CalModules.HeaderText = "CalModules";
-            this.CalModules.Name = "CalModules";
-            this.CalModules.Visible = false;
+            this.Column9.DataPropertyName = "IndicatorFour";
+            this.Column9.HeaderText = "IndicatorFour";
+            this.Column9.Name = "Column9";
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "DataSource";
+            this.Column10.HeaderText = "DataSource";
+            this.Column10.Name = "Column10";
+            this.Column10.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Remark";
+            this.Column11.HeaderText = "Remark";
+            this.Column11.Name = "Column11";
+            this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "ParentId";
+            this.Column12.HeaderText = "ParentId";
+            this.Column12.Name = "Column12";
+            this.Column12.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "CalModules";
+            this.Column13.HeaderText = "CalModules";
+            this.Column13.Name = "Column13";
+            this.Column13.Visible = false;
+            // 
+            // listBox_remark
+            // 
+            this.listBox_remark.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox_remark.FormattingEnabled = true;
+            this.listBox_remark.ItemHeight = 19;
+            this.listBox_remark.Location = new System.Drawing.Point(0, 0);
+            this.listBox_remark.Name = "listBox_remark";
+            this.listBox_remark.Size = new System.Drawing.Size(940, 100);
+            this.listBox_remark.TabIndex = 0;
             // 
             // EvalutationData
             // 
@@ -416,7 +409,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -438,21 +431,21 @@
         private System.Windows.Forms.Label lbl_timePeriods;
         private System.Windows.Forms.Button btn_commit;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeCycle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IndicatorFour;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BasicRule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BasicSub;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BasicAdd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StrCalModules;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Grade;
-        private System.Windows.Forms.DataGridViewButtonColumn Operate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CalModules;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.ListBox listBox_remark;
     }
 }

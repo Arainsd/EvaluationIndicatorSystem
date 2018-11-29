@@ -51,7 +51,6 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
             basicModules.Clear();
             fourModules.Clear();
             evalutationDatas?.Clear();
@@ -83,7 +82,6 @@ namespace EvaluationIndicatorSystem
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
             evalutationDatas?.Clear();
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
 
             foreach (var item in timeModules)
             {
@@ -141,7 +139,6 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_two, id);
@@ -156,7 +153,6 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_three, id);
@@ -169,13 +165,12 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            var currentTableData = evalutationDatas?.Where(p => p.ParentId == id).ToArray();
-            if (currentTableData != null && currentTableData.Length > 0)
+            List<EvalutationDataModule> currentTableData = evalutationDatas?.Where(p => p.ParentId == id).ToList();
+            if (currentTableData != null && currentTableData.Count > 0)
             {
-                dataGridView1.DataSource = currentTableData;                
+                dataGridView1.DataSource = currentTableData;
             }
         }
     }//end of class
