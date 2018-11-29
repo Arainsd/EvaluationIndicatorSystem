@@ -256,6 +256,35 @@ namespace EvaluationIndicatorSystem
         }
 
         /// <summary>
+        /// 批量更新
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="data"></param>
+        public static void Update(TableName tableName, object data)
+        {
+            switch(tableName)
+            {
+                case TableName.EvalutationData:
+                    using (SQLiteTransaction transaction = conn.BeginTransaction())
+                    {
+                        Dictionary<int, EvalutationDataModule> datas = (Dictionary<int, EvalutationDataModule>)data;
+                        foreach (var item in datas)
+                        {
+                            string dataSource = string.Empty;
+                            if (item.Value.DataSource != null)
+                            {
+                                dataSource = string.Join("|", item.Value.DataSource);
+                            }
+                            cmd.CommandText = $"UPDATE {tableName.ToString()} SET data_source='{dataSource}', remark='{item.Value.Remark}', grade={item.Value.Grade} WHERE id={item.Key}";
+                            cmd.ExecuteNonQuery();
+                        }
+                        transaction.Commit();
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
         /// 批量删除
         /// </summary>
         /// <param name="tableName"></param>
@@ -434,7 +463,7 @@ namespace EvaluationIndicatorSystem
                             return timeModules;
                         }
                     case TableName.EvalutationData:
-                        cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
+                        cmd.CommandText = $"SELECT a.id, a.time_cycle, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
                         using (SQLiteDataReader evalutationReader = cmd.ExecuteReader())//reader is active exception
                         {                            
                             List<EvalutationDataModule> evalutationModules = new List<EvalutationDataModule>();
@@ -443,7 +472,6 @@ namespace EvaluationIndicatorSystem
                                 EvalutationDataModule evalutationModule = new EvalutationDataModule();
                                 evalutationModule.ID = int.Parse(evalutationReader["id"].ToString());
                                 evalutationModule.TimeCycle = int.Parse(evalutationReader["time_cycle"].ToString());
-                                evalutationModule.IndicatorFour = int.Parse(evalutationReader["indicator_four"].ToString());
                                 evalutationModule.DataSource = evalutationReader["data_source"].ToString().Split("|".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
                                 evalutationModule.Remark = evalutationReader["remark"].ToString();
                                 evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,8 +44,6 @@
             this.lbl_title = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.listBox_remark = new System.Windows.Forms.ListBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +58,8 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.listBox_remark = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -122,6 +122,7 @@
             this.btn_commit.TabIndex = 16;
             this.btn_commit.Text = "提交";
             this.btn_commit.UseVisualStyleBackColor = false;
+            this.btn_commit.Click += new System.EventHandler(this.btn_commit_Click);
             // 
             // btn_save
             // 
@@ -136,6 +137,7 @@
             this.btn_save.TabIndex = 15;
             this.btn_save.Text = "保存";
             this.btn_save.UseVisualStyleBackColor = false;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // lbl_timePeriods
             // 
@@ -265,14 +267,14 @@
             this.Column12,
             this.Column13,
             this.Column14});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 130);
             this.dataGridView1.MultiSelect = false;
@@ -281,25 +283,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(940, 339);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.listBox_remark);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(10, 469);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(940, 100);
-            this.panel3.TabIndex = 2;
-            // 
-            // listBox_remark
-            // 
-            this.listBox_remark.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox_remark.FormattingEnabled = true;
-            this.listBox_remark.ItemHeight = 19;
-            this.listBox_remark.Location = new System.Drawing.Point(0, 0);
-            this.listBox_remark.Name = "listBox_remark";
-            this.listBox_remark.Size = new System.Drawing.Size(940, 100);
-            this.listBox_remark.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -401,6 +385,25 @@
             this.Column14.HeaderText = "备注";
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.listBox_remark);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(10, 469);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(940, 100);
+            this.panel3.TabIndex = 2;
+            // 
+            // listBox_remark
+            // 
+            this.listBox_remark.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox_remark.FormattingEnabled = true;
+            this.listBox_remark.ItemHeight = 19;
+            this.listBox_remark.Location = new System.Drawing.Point(0, 0);
+            this.listBox_remark.Name = "listBox_remark";
+            this.listBox_remark.Size = new System.Drawing.Size(940, 100);
+            this.listBox_remark.TabIndex = 0;
             // 
             // EvalutationData
             // 

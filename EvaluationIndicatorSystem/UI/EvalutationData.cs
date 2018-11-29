@@ -21,8 +21,7 @@ namespace EvaluationIndicatorSystem
         DataHelper dataHelper = null;
         List<TimeCycleModule> timeModules = null;
         Dictionary<int, BasicDataModule> basicModules = null;
-        Dictionary<int, BasicFourModule> fourModules = null;
-        List<EvalutationDataModule> evalutationDatas = null;
+        Dictionary<int, EvalutationDataModule> evalutationModules = null;
 
         /// <summary>
         /// initialize
@@ -32,8 +31,7 @@ namespace EvaluationIndicatorSystem
             dataHelper = new DataHelper();
             timeModules = new List<TimeCycleModule>();
             basicModules = new Dictionary<int, BasicDataModule>();
-            fourModules = new Dictionary<int, BasicFourModule>();
-            evalutationDatas = new List<EvalutationDataModule>();
+            evalutationModules = new Dictionary<int, EvalutationDataModule>();
             TimeCycleRefresh();
         }
 
@@ -51,14 +49,14 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
+            dataGridView1.DataSource = new List<EvalutationDataModule>();
+            listBox_remark.Items.Clear();
             basicModules.Clear();
-            fourModules.Clear();
-            evalutationDatas?.Clear();
+            evalutationModules?.Clear();
 
             timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, 0);
             if (timeModules.Count == 0) return;
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
-            fourModules = ((List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour)).ToDictionary(key => key.ID, fourModule => fourModule);
 
             foreach (var item in timeModules)
             {
@@ -81,7 +79,9 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            evalutationDatas?.Clear();
+            dataGridView1.DataSource = new List<EvalutationDataModule>();
+            listBox_remark.Items.Clear();
+            evalutationModules?.Clear();
 
             foreach (var item in timeModules)
             {
@@ -113,8 +113,8 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         private void DataRefresh(int id)
         {
-            if (basicModules.Count == 0 || fourModules.Count == 0) return;
-            evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, id);
+            if (basicModules.Count == 0) return;
+            evalutationModules = ((List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, id)).ToDictionary(key => key.ID, data => data);
             foreach(var item in basicModules)
             {
                 if (item.Value.Level == 1)
@@ -139,6 +139,8 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
+            dataGridView1.DataSource = new List<EvalutationDataModule>();
+            listBox_remark.Items.Clear();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_two, id);
@@ -153,6 +155,8 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
+            dataGridView1.DataSource = new List<EvalutationDataModule>();
+            listBox_remark.Items.Clear();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_three, id);
@@ -165,23 +169,94 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = new List<EvalutationDataModule>();
+            listBox_remark.Items.Clear();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            List<EvalutationDataModule> currentTableData = evalutationDatas?.Where(p => p.ParentId == id).ToList();
-            if (currentTableData != null && currentTableData.Count > 0)
+            var data = evalutationModules.Where(p => p.Value.ParentId == id).ToArray();
+            if (data != null && data.Length > 0)
             {
+                List<EvalutationDataModule> currentTableData = new List<EvalutationDataModule>();
+                foreach (var item in data)
+                {
+                    currentTableData.Add(item.Value);
+                }
                 dataGridView1.DataSource = currentTableData;
+                dataGridView1.Refresh();
+                RefreshRemark(currentTableData[0]);
             }            
         }
 
         int preIndex = -1;
+        /// <summary>
+        /// 行点击事件，更新备注
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int currentRow = ((DataGridView)sender).CurrentRow.Index;
             if (preIndex == currentRow) return;
-            preIndex = currentRow;
-            listBox_remark.Items.Clear();
+            preIndex = currentRow;            
             int currentId = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
+            RefreshRemark(evalutationModules[currentId]);
+        }
+
+        /// <summary>
+        /// 更新备注展示内容
+        /// </summary>
+        /// <param name="evalutationData"></param>
+        private void RefreshRemark(EvalutationDataModule evalutationData)
+        {
+            listBox_remark.Items.Clear();
+            listBox_remark.Items.Add("数据源：");
+            foreach (var item in evalutationData.DataSource)
+            {
+                listBox_remark.Items.Add(item);
+            }
+            listBox_remark.Items.Add("备注：");
+            listBox_remark.Items.Add(evalutationData.Remark);
+        }
+
+        /// <summary>
+        /// 备注按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (((DataGridView)sender).CurrentCell.Value.ToString() == "备注")
+            {
+                int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
+                EvalutationDataModule preModule = evalutationModules[id];
+                using (RemarkEdit dialog = new RemarkEdit(preModule))
+                {
+                    if(dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        evalutationModules[id] = dialog.CurrentModule;
+                        RefreshRemark(dialog.CurrentModule);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 更新当前周期所有数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            if (evalutationModules == null || evalutationModules.Count == 0) return;
+            SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
+            MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btn_commit_Click(object sender, EventArgs e)
+        {
+            //if (evalutationModules == null || evalutationModules.Count == 0) return;
+            //SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
+            //MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }//end of class
 }

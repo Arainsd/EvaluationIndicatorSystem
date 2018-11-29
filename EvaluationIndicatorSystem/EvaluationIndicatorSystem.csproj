@@ -166,6 +166,12 @@
     <Compile Include="UI\LeftMenu.Designer.cs">
       <DependentUpon>LeftMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\RemarkEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RemarkEdit.Designer.cs">
+      <DependentUpon>RemarkEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\TimeCycleChange.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LeftMenu.resx">
       <DependentUpon>LeftMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RemarkEdit.resx">
+      <DependentUpon>RemarkEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TimeCycleChange.resx">
       <DependentUpon>TimeCycleChange.cs</DependentUpon>
