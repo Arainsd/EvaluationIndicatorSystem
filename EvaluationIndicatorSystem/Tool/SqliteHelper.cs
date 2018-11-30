@@ -243,7 +243,7 @@ namespace EvaluationIndicatorSystem
                     }
                     else
                     {
-                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{timeData.Name}', start_time='{timeData.StartTime}', end_time='{timeData.EndTime}' WHERE id={id}";
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{timeData.Name}', start_time='{timeData.StartTime}', end_time='{timeData.EndTime}', state={timeData.State} WHERE id={id}";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
                             msg = "更新失败";

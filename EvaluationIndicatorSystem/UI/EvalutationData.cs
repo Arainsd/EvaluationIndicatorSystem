@@ -252,11 +252,36 @@ namespace EvaluationIndicatorSystem
             MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// 提交当前周期所有数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_commit_Click(object sender, EventArgs e)
         {
-            //if (evalutationModules == null || evalutationModules.Count == 0) return;
-            //SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
-            //MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (evalutationModules == null || evalutationModules.Count == 0) return;
+            if (MessageBox.Show("提交后，改评价周期将不能修改，确认提交？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
+                foreach (var item in timeModules)
+                {
+                    if (item.Name == combo_timeCycle.SelectedItem.ToString())
+                    {
+                        item.State = 1;
+                        SqliteHelper.Update(TableName.TimeCycle, item.ID, item, out string msg);
+                        if (string.IsNullOrEmpty(msg))
+                        {
+                            MessageBox.Show("提交成功，请在评价结果中查看", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            TimeCycleRefresh();
+                        }
+                        else
+                        {
+                            MessageBox.Show("周期提交失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    }
+                }
+            }
         }
     }//end of class
 }
