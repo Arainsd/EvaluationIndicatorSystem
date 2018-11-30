@@ -62,7 +62,7 @@ namespace EvaluationIndicatorSystem
         public string BasicAdd { get; set; }
         public CalModule[] CalModules { get; set; }
         public string StrCalModules { get; set; }
-        public string Operate { get => "备注"; }
+        public string Operate { get => "附件"; }
     }//end of class EvalutationDataModule
 
     public class IndicatorOne

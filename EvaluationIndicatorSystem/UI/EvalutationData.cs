@@ -225,7 +225,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (((DataGridView)sender).CurrentCell.Value.ToString() == "备注")
+            if (((DataGridView)sender).CurrentCell.OwningColumn.Name == "Operate")
             {
                 int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
                 EvalutationDataModule preModule = evalutationModules[id];
