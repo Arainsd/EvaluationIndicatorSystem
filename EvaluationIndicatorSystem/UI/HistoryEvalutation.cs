@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EvaluationIndicatorSystem
 {
-    public partial class EvalutationData : UserControl
+    public partial class HistoryEvalutation : UserControl
     {
-        public EvalutationData()
+        public HistoryEvalutation()
         {
             InitializeComponent();
             Init();
@@ -38,7 +39,7 @@ namespace EvaluationIndicatorSystem
         /// <summary>
         /// 刷新评价周期
         /// </summary>
-        private void TimeCycleRefresh()
+        public void TimeCycleRefresh()
         {
             combo_timeCycle.Items.Clear();
             combo_timeCycle.Text = string.Empty;
@@ -54,7 +55,7 @@ namespace EvaluationIndicatorSystem
             basicModules.Clear();
             evalutationModules?.Clear();
 
-            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Local);
+            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
             if (timeModules.Count == 0) return;
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
 
@@ -219,82 +220,27 @@ namespace EvaluationIndicatorSystem
         }
 
         /// <summary>
-        /// 备注按钮点击事件
+        /// 打开选中的数据源文件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void listBox_remark_DoubleClick(object sender, EventArgs e)
         {
-            if (((DataGridView)sender).CurrentCell.OwningColumn.Name == "Operate")
+            string file  = ((ListBox)sender).SelectedItem.ToString();
+            if (File.Exists(file))
             {
-                int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
-                EvalutationDataModule preModule = evalutationModules[id];
-                using (RemarkEdit dialog = new RemarkEdit(preModule))
-                {
-                    if(dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        evalutationModules[id] = dialog.CurrentModule;
-                        RefreshRemark(dialog.CurrentModule);
-                    }
-                }
+                System.Diagnostics.Process.Start(file);
             }
         }
 
         /// <summary>
-        /// 更新当前周期所有数据
+        /// 导出当前周期数据为EXCEL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btn_save_Click(object sender, EventArgs e)
+        private void btn_export_Click(object sender, EventArgs e)
         {
-            if (evalutationModules == null || evalutationModules.Count == 0) return;
-            SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
-            MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
-        /// <summary>
-        /// 提交当前周期所有数据
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_commit_Click(object sender, EventArgs e)
-        {
-            if (evalutationModules == null || evalutationModules.Count == 0) return;
-            if (MessageBox.Show("提交后，改评价周期将不能修改，确认提交？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
-                foreach (var item in timeModules)
-                {
-                    if (item.Name == combo_timeCycle.SelectedItem.ToString())
-                    {
-                        item.State = 1;
-                        SqliteHelper.Update(TableName.TimeCycle, item.ID, item, out string msg);
-                        if (string.IsNullOrEmpty(msg))
-                        {
-                            MessageBox.Show("提交成功，请在 往期评价 中查看", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            TimeCycleRefresh();
-                        }
-                        else
-                        {
-                            MessageBox.Show("周期提交失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-
-        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            TextBox tx = e.Control as TextBox;
-            tx.KeyPress -= new KeyPressEventHandler(tx_KeyPress);
-            tx.KeyPress += new KeyPressEventHandler(tx_KeyPress);
-        }
-
-        private void tx_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
-                e.Handled = true;
         }
     }//end of class
 }

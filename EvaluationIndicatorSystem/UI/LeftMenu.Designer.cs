@@ -34,12 +34,8 @@
             this.lbl_name = new System.Windows.Forms.Label();
             this.lbl_user = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel_manage = new System.Windows.Forms.Panel();
-            this.lbl_manage = new System.Windows.Forms.Label();
-            this.panel_export = new System.Windows.Forms.Panel();
-            this.lbl_export = new System.Windows.Forms.Label();
-            this.panel_result = new System.Windows.Forms.Panel();
-            this.lbl_result = new System.Windows.Forms.Label();
+            this.panel_historyEvalutation = new System.Windows.Forms.Panel();
+            this.lbl_historyEvalutation = new System.Windows.Forms.Label();
             this.panel_evalutationData = new System.Windows.Forms.Panel();
             this.lbl_indicatorData = new System.Windows.Forms.Label();
             this.panel_basicPara = new System.Windows.Forms.Panel();
@@ -53,17 +49,13 @@
             this.lbl_basic_two = new System.Windows.Forms.Label();
             this.panel_basic_one = new System.Windows.Forms.Panel();
             this.lbl_basic_one = new System.Windows.Forms.Label();
-            this.panel_workSurface = new System.Windows.Forms.Panel();
-            this.lbl_workSurface = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel_manage.SuspendLayout();
-            this.panel_export.SuspendLayout();
-            this.panel_result.SuspendLayout();
+            this.panel_historyEvalutation.SuspendLayout();
             this.panel_evalutationData.SuspendLayout();
             this.panel_basicPara.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -74,7 +66,6 @@
             this.panel_basic_three.SuspendLayout();
             this.panel_basic_two.SuspendLayout();
             this.panel_basic_one.SuspendLayout();
-            this.panel_workSurface.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -96,12 +87,9 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel_manage);
-            this.splitContainer1.Panel2.Controls.Add(this.panel_export);
-            this.splitContainer1.Panel2.Controls.Add(this.panel_result);
+            this.splitContainer1.Panel2.Controls.Add(this.panel_historyEvalutation);
             this.splitContainer1.Panel2.Controls.Add(this.panel_evalutationData);
             this.splitContainer1.Panel2.Controls.Add(this.panel_basicPara);
-            this.splitContainer1.Panel2.Controls.Add(this.panel_workSurface);
             this.splitContainer1.Size = new System.Drawing.Size(200, 600);
             this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.SplitterWidth = 1;
@@ -144,65 +132,29 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel_manage
+            // panel_historyEvalutation
             // 
-            this.panel_manage.Controls.Add(this.lbl_manage);
-            this.panel_manage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_manage.Location = new System.Drawing.Point(0, 410);
-            this.panel_manage.Name = "panel_manage";
-            this.panel_manage.Size = new System.Drawing.Size(200, 50);
-            this.panel_manage.TabIndex = 5;
+            this.panel_historyEvalutation.Controls.Add(this.lbl_historyEvalutation);
+            this.panel_historyEvalutation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_historyEvalutation.Location = new System.Drawing.Point(0, 260);
+            this.panel_historyEvalutation.Name = "panel_historyEvalutation";
+            this.panel_historyEvalutation.Size = new System.Drawing.Size(200, 50);
+            this.panel_historyEvalutation.TabIndex = 3;
             // 
-            // lbl_manage
+            // lbl_historyEvalutation
             // 
-            this.lbl_manage.AutoSize = true;
-            this.lbl_manage.Location = new System.Drawing.Point(60, 14);
-            this.lbl_manage.Name = "lbl_manage";
-            this.lbl_manage.Size = new System.Drawing.Size(65, 20);
-            this.lbl_manage.TabIndex = 0;
-            this.lbl_manage.Text = "账号管理";
-            // 
-            // panel_export
-            // 
-            this.panel_export.Controls.Add(this.lbl_export);
-            this.panel_export.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_export.Location = new System.Drawing.Point(0, 360);
-            this.panel_export.Name = "panel_export";
-            this.panel_export.Size = new System.Drawing.Size(200, 50);
-            this.panel_export.TabIndex = 4;
-            // 
-            // lbl_export
-            // 
-            this.lbl_export.AutoSize = true;
-            this.lbl_export.Location = new System.Drawing.Point(60, 14);
-            this.lbl_export.Name = "lbl_export";
-            this.lbl_export.Size = new System.Drawing.Size(65, 20);
-            this.lbl_export.TabIndex = 0;
-            this.lbl_export.Text = "数据导出";
-            // 
-            // panel_result
-            // 
-            this.panel_result.Controls.Add(this.lbl_result);
-            this.panel_result.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_result.Location = new System.Drawing.Point(0, 310);
-            this.panel_result.Name = "panel_result";
-            this.panel_result.Size = new System.Drawing.Size(200, 50);
-            this.panel_result.TabIndex = 3;
-            // 
-            // lbl_result
-            // 
-            this.lbl_result.AutoSize = true;
-            this.lbl_result.Location = new System.Drawing.Point(60, 14);
-            this.lbl_result.Name = "lbl_result";
-            this.lbl_result.Size = new System.Drawing.Size(65, 20);
-            this.lbl_result.TabIndex = 0;
-            this.lbl_result.Text = "评价结果";
+            this.lbl_historyEvalutation.AutoSize = true;
+            this.lbl_historyEvalutation.Location = new System.Drawing.Point(60, 14);
+            this.lbl_historyEvalutation.Name = "lbl_historyEvalutation";
+            this.lbl_historyEvalutation.Size = new System.Drawing.Size(65, 20);
+            this.lbl_historyEvalutation.TabIndex = 0;
+            this.lbl_historyEvalutation.Text = "往期评价";
             // 
             // panel_evalutationData
             // 
             this.panel_evalutationData.Controls.Add(this.lbl_indicatorData);
             this.panel_evalutationData.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_evalutationData.Location = new System.Drawing.Point(0, 260);
+            this.panel_evalutationData.Location = new System.Drawing.Point(0, 210);
             this.panel_evalutationData.Name = "panel_evalutationData";
             this.panel_evalutationData.Size = new System.Drawing.Size(200, 50);
             this.panel_evalutationData.TabIndex = 2;
@@ -220,7 +172,7 @@
             // 
             this.panel_basicPara.Controls.Add(this.splitContainer2);
             this.panel_basicPara.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_basicPara.Location = new System.Drawing.Point(0, 50);
+            this.panel_basicPara.Location = new System.Drawing.Point(0, 0);
             this.panel_basicPara.Name = "panel_basicPara";
             this.panel_basicPara.Size = new System.Drawing.Size(200, 210);
             this.panel_basicPara.TabIndex = 1;
@@ -331,25 +283,6 @@
             this.lbl_basic_one.TabIndex = 0;
             this.lbl_basic_one.Text = "一级指标";
             // 
-            // panel_workSurface
-            // 
-            this.panel_workSurface.BackColor = System.Drawing.Color.Transparent;
-            this.panel_workSurface.Controls.Add(this.lbl_workSurface);
-            this.panel_workSurface.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_workSurface.Location = new System.Drawing.Point(0, 0);
-            this.panel_workSurface.Name = "panel_workSurface";
-            this.panel_workSurface.Size = new System.Drawing.Size(200, 50);
-            this.panel_workSurface.TabIndex = 0;
-            // 
-            // lbl_workSurface
-            // 
-            this.lbl_workSurface.AutoSize = true;
-            this.lbl_workSurface.Location = new System.Drawing.Point(60, 14);
-            this.lbl_workSurface.Name = "lbl_workSurface";
-            this.lbl_workSurface.Size = new System.Drawing.Size(65, 20);
-            this.lbl_workSurface.TabIndex = 0;
-            this.lbl_workSurface.Text = "工作面板";
-            // 
             // LeftMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -369,12 +302,8 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel_manage.ResumeLayout(false);
-            this.panel_manage.PerformLayout();
-            this.panel_export.ResumeLayout(false);
-            this.panel_export.PerformLayout();
-            this.panel_result.ResumeLayout(false);
-            this.panel_result.PerformLayout();
+            this.panel_historyEvalutation.ResumeLayout(false);
+            this.panel_historyEvalutation.PerformLayout();
             this.panel_evalutationData.ResumeLayout(false);
             this.panel_evalutationData.PerformLayout();
             this.panel_basicPara.ResumeLayout(false);
@@ -391,8 +320,6 @@
             this.panel_basic_two.PerformLayout();
             this.panel_basic_one.ResumeLayout(false);
             this.panel_basic_one.PerformLayout();
-            this.panel_workSurface.ResumeLayout(false);
-            this.panel_workSurface.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -400,17 +327,11 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel panel_workSurface;
-        private System.Windows.Forms.Label lbl_workSurface;
         private System.Windows.Forms.Panel panel_basicPara;
         private System.Windows.Forms.Panel panel_evalutationData;
         private System.Windows.Forms.Label lbl_indicatorData;
-        private System.Windows.Forms.Panel panel_export;
-        private System.Windows.Forms.Label lbl_export;
-        private System.Windows.Forms.Panel panel_result;
-        private System.Windows.Forms.Label lbl_result;
-        private System.Windows.Forms.Panel panel_manage;
-        private System.Windows.Forms.Label lbl_manage;
+        private System.Windows.Forms.Panel panel_historyEvalutation;
+        private System.Windows.Forms.Label lbl_historyEvalutation;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label lbl_basicPara;
         private System.Windows.Forms.Panel panel_basic_four;

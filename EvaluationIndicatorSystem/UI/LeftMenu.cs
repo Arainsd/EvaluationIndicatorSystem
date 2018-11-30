@@ -168,8 +168,6 @@ namespace EvaluationIndicatorSystem
             object sender = null;
             switch (panel.Name)
             {
-                case "panel_workSurface":
-                    break;
                 case "panel_basic_one":
                     sender = TabName.BasicIndicatorOne;
                     break;
@@ -184,6 +182,9 @@ namespace EvaluationIndicatorSystem
                     break;
                 case "panel_evalutationData":
                     sender = TabName.EvalutationData;
+                    break;
+                case "panel_historyEvalutation":
+                    sender = TabName.HistoryEvalutation;
                     break;
             }
             if (sender == null)

@@ -1,6 +1,6 @@
 ﻿namespace EvaluationIndicatorSystem
 {
-    partial class EvalutationData
+    partial class HistoryEvalutation
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_commit = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_export = new System.Windows.Forms.Button();
             this.lbl_timePeriods = new System.Windows.Forms.Label();
-            this.btn_timeCycleMange = new System.Windows.Forms.Button();
             this.lbl_indicator = new System.Windows.Forms.Label();
             this.lbl_timePeriod = new System.Windows.Forms.Label();
             this.combo_timeCycle = new System.Windows.Forms.ComboBox();
@@ -92,10 +90,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btn_commit);
-            this.panel1.Controls.Add(this.btn_save);
+            this.panel1.Controls.Add(this.btn_export);
             this.panel1.Controls.Add(this.lbl_timePeriods);
-            this.panel1.Controls.Add(this.btn_timeCycleMange);
             this.panel1.Controls.Add(this.lbl_indicator);
             this.panel1.Controls.Add(this.lbl_timePeriod);
             this.panel1.Controls.Add(this.combo_timeCycle);
@@ -109,35 +105,20 @@
             this.panel1.Size = new System.Drawing.Size(940, 120);
             this.panel1.TabIndex = 0;
             // 
-            // btn_commit
+            // btn_export
             // 
-            this.btn_commit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_commit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.btn_commit.FlatAppearance.BorderSize = 0;
-            this.btn_commit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_commit.ForeColor = System.Drawing.Color.White;
-            this.btn_commit.Location = new System.Drawing.Point(850, 72);
-            this.btn_commit.Name = "btn_commit";
-            this.btn_commit.Size = new System.Drawing.Size(75, 35);
-            this.btn_commit.TabIndex = 16;
-            this.btn_commit.Text = "提交";
-            this.btn_commit.UseVisualStyleBackColor = false;
-            this.btn_commit.Click += new System.EventHandler(this.btn_commit_Click);
-            // 
-            // btn_save
-            // 
-            this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.btn_save.FlatAppearance.BorderSize = 0;
-            this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.ForeColor = System.Drawing.Color.White;
-            this.btn_save.Location = new System.Drawing.Point(760, 72);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(75, 35);
-            this.btn_save.TabIndex = 15;
-            this.btn_save.Text = "保存";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btn_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_export.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_export.FlatAppearance.BorderSize = 0;
+            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_export.ForeColor = System.Drawing.Color.White;
+            this.btn_export.Location = new System.Drawing.Point(760, 72);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(75, 35);
+            this.btn_export.TabIndex = 15;
+            this.btn_export.Text = "导出";
+            this.btn_export.UseVisualStyleBackColor = false;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // lbl_timePeriods
             // 
@@ -147,20 +128,6 @@
             this.lbl_timePeriods.Size = new System.Drawing.Size(183, 20);
             this.lbl_timePeriods.TabIndex = 14;
             this.lbl_timePeriods.Text = "2018-11-26  -  2018-11-26";
-            // 
-            // btn_timeCycleMange
-            // 
-            this.btn_timeCycleMange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.btn_timeCycleMange.FlatAppearance.BorderSize = 0;
-            this.btn_timeCycleMange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_timeCycleMange.ForeColor = System.Drawing.Color.White;
-            this.btn_timeCycleMange.Location = new System.Drawing.Point(599, 15);
-            this.btn_timeCycleMange.Name = "btn_timeCycleMange";
-            this.btn_timeCycleMange.Size = new System.Drawing.Size(75, 35);
-            this.btn_timeCycleMange.TabIndex = 10;
-            this.btn_timeCycleMange.Text = "周期管理";
-            this.btn_timeCycleMange.UseVisualStyleBackColor = false;
-            this.btn_timeCycleMange.Click += new System.EventHandler(this.btn_timeCycleMange_Click);
             // 
             // lbl_indicator
             // 
@@ -266,14 +233,14 @@
             this.Column12,
             this.Column13,
             this.Operate});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 130);
             this.dataGridView1.MultiSelect = false;
@@ -282,8 +249,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(940, 339);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
             // Column1
             // 
@@ -328,6 +293,7 @@
             this.Column6.DataPropertyName = "Grade";
             this.Column6.HeaderText = "得分";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.Width = 60;
             // 
             // ID
@@ -385,6 +351,7 @@
             this.Operate.HeaderText = "附件";
             this.Operate.Name = "Operate";
             this.Operate.ReadOnly = true;
+            this.Operate.Visible = false;
             // 
             // panel3
             // 
@@ -404,15 +371,16 @@
             this.listBox_remark.Name = "listBox_remark";
             this.listBox_remark.Size = new System.Drawing.Size(940, 100);
             this.listBox_remark.TabIndex = 0;
+            this.listBox_remark.DoubleClick += new System.EventHandler(this.listBox_remark_DoubleClick);
             // 
-            // EvalutationData
+            // HistoryEvalutation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "EvalutationData";
+            this.Name = "HistoryEvalutation";
             this.Size = new System.Drawing.Size(960, 640);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -439,10 +407,8 @@
         private System.Windows.Forms.ComboBox combo_timeCycle;
         private System.Windows.Forms.Label lbl_timePeriod;
         private System.Windows.Forms.Label lbl_indicator;
-        private System.Windows.Forms.Button btn_timeCycleMange;
         private System.Windows.Forms.Label lbl_timePeriods;
-        private System.Windows.Forms.Button btn_commit;
-        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ListBox listBox_remark;

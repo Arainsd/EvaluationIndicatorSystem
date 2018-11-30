@@ -148,6 +148,12 @@
     <Compile Include="UI\ChangeIndicatorOne.Designer.cs">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\HistoryEvalutation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\HistoryEvalutation.Designer.cs">
+      <DependentUpon>HistoryEvalutation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EvalutationData.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangeIndicatorOne.resx">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\HistoryEvalutation.resx">
+      <DependentUpon>HistoryEvalutation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EvalutationData.resx">
       <DependentUpon>EvalutationData.cs</DependentUpon>

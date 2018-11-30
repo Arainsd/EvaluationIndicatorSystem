@@ -21,7 +21,8 @@ namespace EvaluationIndicatorSystem
         BasicIndicatorTwo = 2,
         BasicIndicatorThree = 3,
         BasicIndicatorFour = 4,
-        EvalutationData = 5
+        EvalutationData = 5,
+        HistoryEvalutation = 6
     }//end of enum TabName
 
     public enum CalModule
@@ -32,4 +33,10 @@ namespace EvaluationIndicatorSystem
         SegmentCounting = 4,//分段计数型
         SingleScaleComparison = 5//单一比例比较型
     }//end of enum CalModule
+
+    public enum TimeCycleState
+    {
+        Local = 0,
+        Commit = 1
+    }
 }
