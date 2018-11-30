@@ -215,7 +215,7 @@ namespace EvaluationIndicatorSystem
         private void RowDeleteClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
-            if (MessageBox.Show("确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("可能会影响指标数据及评价结果的显示，确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 SqliteHelper.Delete(TableName.BasicFour, id);
                 DataRefresh();

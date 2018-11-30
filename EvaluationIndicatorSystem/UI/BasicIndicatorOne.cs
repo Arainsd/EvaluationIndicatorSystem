@@ -139,7 +139,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void Control_DeleteClick(object sender, int e)
         {
-            if (MessageBox.Show("将删除此指标下的所有子指标，确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("将删除此指标下的所有子指标，且可能会影响指标数据及评价结果的显示，确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 List<int> allID = new List<int>();
                 allID.Add(e);
