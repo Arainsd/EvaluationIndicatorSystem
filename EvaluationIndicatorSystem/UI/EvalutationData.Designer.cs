@@ -200,7 +200,7 @@
             this.lbl_timeCycle.Name = "lbl_timeCycle";
             this.lbl_timeCycle.Size = new System.Drawing.Size(76, 20);
             this.lbl_timeCycle.TabIndex = 2;
-            this.lbl_timeCycle.Text = "评级周期 : ";
+            this.lbl_timeCycle.Text = "评价周期 : ";
             // 
             // combo_one
             // 

@@ -240,7 +240,17 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void btn_export_Click(object sender, EventArgs e)
         {
-
+            TimeCycleModule currentTimeCycle = null;
+            foreach (var item in timeModules)
+            {
+                if (item.Name == combo_timeCycle.SelectedItem.ToString())
+                {
+                    currentTimeCycle = item;
+                    break;
+                }
+            }
+            if (currentTimeCycle == null || evalutationModules == null || evalutationModules.Count == 0) return;
+            ExcelHelper.ExportData(currentTimeCycle, evalutationModules.Values.ToList());
         }
     }//end of class
 }

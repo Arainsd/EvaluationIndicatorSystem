@@ -5,6 +5,7 @@ using NPOI.SS.UserModel;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 using System.IO;
+using NPOI.SS.Util;
 
 namespace EvaluationIndicatorSystem
 {
@@ -79,59 +80,184 @@ namespace EvaluationIndicatorSystem
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 indicators = null;
-            }            
+            }
         }
 
-        public static void WriteIndicator(List<IndicatorOne> data)
+        public static void ExportData(TimeCycleModule timeCycle, List<EvalutationDataModule> data)
         {
             IWorkbook workbook = null;
             ISheet sheet = null;
-            IRow row = null;
-            ICell cell = null;
             FileStream fs = null;
             try
             {
-                if (data == null || data.Count == 0) return;
                 workbook = new XSSFWorkbook();
                 sheet = workbook.CreateSheet("sheet1");
+                ICellStyle titleStyle = SetTitleStyle(workbook);
 
-                row = sheet.CreateRow(0);
-                for(int i = 0;i<4; i++)
-                {
-                    cell = row.CreateCell(i);
-                    string value = string.Empty;
-                    switch(i)
-                    {
-                        case 0:
-                            value = "一级指标";
-                            break;
-                        case 1:
-                            value = "二级指标";
-                            break;
-                        case 2:
-                            value = "三级指标";
-                            break;
-                        case 3:
-                            value = "四级指标/评价准则内容";
-                            break;
-                        default:                            
-                            break;
-                    }
-                    cell.SetCellValue(value);
-                }
+                CreateTimeRows(timeCycle, sheet, workbook, titleStyle);
+                CreateDataTitleRows(sheet, workbook, titleStyle);
+                CreateDataRows();
+
+                sheet.SetColumnWidth(0, 35 * 256);
+                sheet.SetColumnWidth(1, 35 * 256);
+                sheet.SetColumnWidth(2, 35 * 256);
+                sheet.SetColumnWidth(3, 35 * 256);
+                sheet.SetColumnWidth(4, 35 * 256);
+                sheet.SetColumnWidth(5, 35 * 256);
+                sheet.SetColumnWidth(6, 35 * 256);
+                sheet.SetColumnWidth(7, 35 * 256);
+                sheet.SetColumnWidth(8, 35 * 256);
+                sheet.SetColumnWidth(9, 35 * 256);
 
                 using (fs = File.OpenWrite("指标模板.xls"))
                 {
                     workbook.Write(fs);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
+        }
+
+        private static void CreateTimeRows(TimeCycleModule timeCycle, ISheet sheet, IWorkbook workbook, ICellStyle titleStyle)
+        {
+            ICellStyle cellStyle = SetDateStyle(workbook);
+
+            IRow row = sheet.CreateRow(0);
+            ICell cell = row.CreateCell(0);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("评价周期");
+            cell = row.CreateCell(1);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("开始时间");
+            cell = row.CreateCell(2);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("截止时间");
+            cell = row.CreateCell(3);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("创建时间");
+            cell = row.CreateCell(4);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("最近提交时间");
+
+            row = sheet.CreateRow(1);
+            cell = row.CreateCell(0);
+            cell.SetCellValue(timeCycle.Name);
+            cell = row.CreateCell(1);
+            cell.CellStyle = cellStyle;
+            cell.SetCellValue(timeCycle.StartTime);
+            cell = row.CreateCell(2);
+            cell.CellStyle = cellStyle;
+            cell.SetCellValue(timeCycle.EndTime);
+            cell = row.CreateCell(3);
+            cell.CellStyle = cellStyle;
+            cell.SetCellValue(timeCycle.CreateTime);
+            cell = row.CreateCell(4);
+            cell.CellStyle = cellStyle;
+            cell.SetCellValue(timeCycle.LatestCommitTime);
+
+            row = null;
+            cell = null;
+            cellStyle = null;
+        }
+
+        private static ICellStyle SetDateStyle(IWorkbook workbook)
+        {
+            ICellStyle cellStyle = workbook.CreateCellStyle();
+            IDataFormat dataFormat = workbook.CreateDataFormat();
+            cellStyle.DataFormat = dataFormat.GetFormat("yyyy-MM-dd");
+            return cellStyle;
+        }
+
+        private static void CreateDataTitleRows(ISheet sheet, IWorkbook workbook, ICellStyle titleStyle)
+        {
+            IRow row = sheet.CreateRow(3);
+            ICell cell = null;
+
+            cell = row.CreateCell(0);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("一级指标");
+            cell = row.CreateCell(1);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("二级指标");
+            cell = row.CreateCell(2);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("三级指标");
+            cell = row.CreateCell(3);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("四级指标/评价准则内容");
+            cell = row.CreateCell(4);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("评价方式");
+            cell = row.CreateCell(5);
+            cell.CellStyle = titleStyle;
+            cell = row.CreateCell(6);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 3, 4, 6));
+            cell = row.CreateCell(7);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("数据来源");
+            cell = row.CreateCell(8);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("备注");
+            cell = row.CreateCell(9);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("得分");
+
+            row = sheet.CreateRow(4);
+            cell = row.CreateCell(0);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 0, 0));
+            cell = row.CreateCell(1);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 1, 1));
+            cell = row.CreateCell(2);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 2, 2));
+            cell = row.CreateCell(3);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 3, 3));
+            cell = row.CreateCell(4);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("基础分值");
+            cell = row.CreateCell(5);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("扣分");
+            cell = row.CreateCell(6);
+            cell.CellStyle = titleStyle;
+            cell.SetCellValue("加分");
+            cell = row.CreateCell(7);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 7, 7));
+            cell = row.CreateCell(8);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 8, 8));
+            cell = row.CreateCell(9);
+            cell.CellStyle = titleStyle;
+            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 9, 9));
+
+            row = null;
+            cell = null;
+        }
+
+        private static ICellStyle SetTitleStyle(IWorkbook workbook)
+        {
+            ICellStyle style = workbook.CreateCellStyle();
+            style.Alignment = HorizontalAlignment.Center;
+            IFont font = workbook.CreateFont();
+            font.FontHeightInPoints = 12;
+            font.Boldweight = (short)FontBoldWeight.Bold;
+            style.SetFont(font);
+            return style;
+        }
+
+        private static void CreateDataRows()
+        {
+
         }
     }//end of class
 }
