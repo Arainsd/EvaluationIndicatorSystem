@@ -93,13 +93,13 @@ namespace EvaluationIndicatorSystem
             FileStream fs = null;
             try
             {
-                workbook = new XSSFWorkbook();
+                workbook = new HSSFWorkbook();
                 sheet = workbook.CreateSheet("sheet1");
                 ICellStyle titleStyle = SetTitleStyle(workbook);
 
                 CreateTimeRows(timeCycle, sheet, workbook, titleStyle);
                 CreateDataTitleRows(sheet, workbook, titleStyle);
-                CreateDataRows();
+                CreateDataRows(sheet, data);
 
                 sheet.SetColumnWidth(0, 35 * 256);
                 sheet.SetColumnWidth(1, 35 * 256);
@@ -112,7 +112,7 @@ namespace EvaluationIndicatorSystem
                 sheet.SetColumnWidth(8, 35 * 256);
                 sheet.SetColumnWidth(9, 35 * 256);
 
-                using (fs = File.OpenWrite("指标模板.xls"))
+                using (fs = File.OpenWrite($"{timeCycle.Name}.xls"))
                 {
                     workbook.Write(fs);
                 }
@@ -255,9 +255,46 @@ namespace EvaluationIndicatorSystem
             return style;
         }
 
-        private static void CreateDataRows()
+        private static void CreateDataRows(ISheet sheet, List<EvalutationDataModule> data)
         {
+            IRow row = null;
+            ICell cell = null;
 
+            for (int i = 0; i < data.Count; i++)
+            {                
+                row = sheet.CreateRow(i + 4);
+                for (int j = 0; j < 9; j++)
+                {
+                    cell = row.CreateCell(i);
+                    switch (j)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:                            
+                            break;
+                        case 4:
+                            cell.SetCellValue(data[i].BasicRule);
+                            break;
+                        case 5:
+                            cell.SetCellValue(data[i].BasicSub);
+                            break;
+                        case 6:
+                            cell.SetCellValue(data[i].BasicAdd);
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        case 9:
+                            break;
+
+                    }
+                }
+            }
         }
     }//end of class
 }
