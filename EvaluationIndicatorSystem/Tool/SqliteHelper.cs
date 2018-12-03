@@ -463,7 +463,7 @@ namespace EvaluationIndicatorSystem
                             return timeModules;
                         }
                     case TableName.EvalutationData:
-                        cmd.CommandText = $"SELECT a.id, a.time_cycle, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
+                        cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
                         using (SQLiteDataReader evalutationReader = cmd.ExecuteReader())//reader is active exception
                         {                            
                             List<EvalutationDataModule> evalutationModules = new List<EvalutationDataModule>();
@@ -472,6 +472,7 @@ namespace EvaluationIndicatorSystem
                                 EvalutationDataModule evalutationModule = new EvalutationDataModule();
                                 evalutationModule.ID = int.Parse(evalutationReader["id"].ToString());
                                 evalutationModule.TimeCycle = int.Parse(evalutationReader["time_cycle"].ToString());
+                                evalutationModule.IndicatorFour = int.Parse(evalutationReader["indicator_four"].ToString());
                                 evalutationModule.DataSource = evalutationReader["data_source"].ToString().Split("|".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
                                 evalutationModule.Remark = evalutationReader["remark"].ToString();
                                 evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());

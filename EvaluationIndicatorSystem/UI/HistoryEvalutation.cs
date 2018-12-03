@@ -250,7 +250,9 @@ namespace EvaluationIndicatorSystem
                 }
             }
             if (currentTimeCycle == null || evalutationModules == null || evalutationModules.Count == 0) return;
-            ExcelHelper.ExportData(currentTimeCycle, evalutationModules.Values.ToList());
+            Dictionary<int, BasicFourModule> fourModules = ((List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour)).ToDictionary(key => key.ID, fourModule => fourModule);
+            ExcelHelper.ExportData(currentTimeCycle, evalutationModules.Values.ToList(), basicModules, fourModules);
+            MessageBox.Show("导出成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }//end of class
 }

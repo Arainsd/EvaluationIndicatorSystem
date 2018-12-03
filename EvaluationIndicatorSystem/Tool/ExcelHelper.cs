@@ -6,6 +6,7 @@ using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 using System.IO;
 using NPOI.SS.Util;
+using System.Windows.Forms;
 
 namespace EvaluationIndicatorSystem
 {
@@ -86,7 +87,7 @@ namespace EvaluationIndicatorSystem
             }
         }
 
-        public static void ExportData(TimeCycleModule timeCycle, List<EvalutationDataModule> data)
+        public static void ExportData(TimeCycleModule timeCycle, List<EvalutationDataModule> data, Dictionary<int, BasicDataModule> basicModules, Dictionary<int, BasicFourModule> fourModules)
         {
             IWorkbook workbook = null;
             ISheet sheet = null;
@@ -99,7 +100,7 @@ namespace EvaluationIndicatorSystem
 
                 CreateTimeRows(timeCycle, sheet, workbook, titleStyle);
                 CreateDataTitleRows(sheet, workbook, titleStyle);
-                CreateDataRows(sheet, data);
+                CreateDataRows(workbook,sheet, data, basicModules, fourModules);
 
                 sheet.SetColumnWidth(0, 35 * 256);
                 sheet.SetColumnWidth(1, 35 * 256);
@@ -119,7 +120,7 @@ namespace EvaluationIndicatorSystem
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("导出失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -165,11 +166,31 @@ namespace EvaluationIndicatorSystem
             cellStyle = null;
         }
 
+        private static ICellStyle SetTitleStyle(IWorkbook workbook)
+        {
+            ICellStyle style = workbook.CreateCellStyle();
+            style.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
+            IFont font = workbook.CreateFont();
+            font.FontHeightInPoints = 12;
+            font.Boldweight = (short)FontBoldWeight.Bold;
+            style.SetFont(font);
+            return style;
+        }
+
         private static ICellStyle SetDateStyle(IWorkbook workbook)
         {
             ICellStyle cellStyle = workbook.CreateCellStyle();
             IDataFormat dataFormat = workbook.CreateDataFormat();
             cellStyle.DataFormat = dataFormat.GetFormat("yyyy-MM-dd");
+            return cellStyle;
+        }
+
+        private static ICellStyle SetDataStyle(IWorkbook workbook)
+        {
+            ICellStyle cellStyle = workbook.CreateCellStyle();
+            cellStyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Left;
+            cellStyle.VerticalAlignment = VerticalAlignment.Center;
+            cellStyle.WrapText = true;
             return cellStyle;
         }
 
@@ -244,37 +265,59 @@ namespace EvaluationIndicatorSystem
             cell = null;
         }
 
-        private static ICellStyle SetTitleStyle(IWorkbook workbook)
-        {
-            ICellStyle style = workbook.CreateCellStyle();
-            style.Alignment = HorizontalAlignment.Center;
-            IFont font = workbook.CreateFont();
-            font.FontHeightInPoints = 12;
-            font.Boldweight = (short)FontBoldWeight.Bold;
-            style.SetFont(font);
-            return style;
-        }
-
-        private static void CreateDataRows(ISheet sheet, List<EvalutationDataModule> data)
+        private static void CreateDataRows(IWorkbook workbook, ISheet sheet, List<EvalutationDataModule> data, Dictionary<int, BasicDataModule> basicModules, Dictionary<int, BasicFourModule> fourModules)
         {
             IRow row = null;
             ICell cell = null;
+            ICellStyle cellStyle = SetDataStyle(workbook);
+
+            int[] rowIndex = new int[] { 5, 5, 5 };//one first row, two first row, three first row
+            int[] ids = new int[] { -1, -1, -1 ,-1};//current one id, current two id, current three id, current four id;
 
             for (int i = 0; i < data.Count; i++)
             {                
-                row = sheet.CreateRow(i + 4);
-                for (int j = 0; j < 9; j++)
+                row = sheet.CreateRow(i + 5);
+                
+                ids[3] = data[i].IndicatorFour;
+                if (ids[2] != -1 && ids[2] != fourModules[ids[3]].ParentId)
                 {
-                    cell = row.CreateCell(i);
+                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 4, 2, 2));
+                    rowIndex[2] = i + 5;
+                }
+                ids[2] = fourModules[ids[3]].ParentId;
+                if (ids[1] != -1 && ids[1] != basicModules[ids[2]].ParentId)
+                {
+                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 4, 1, 1));
+                    rowIndex[1] = i + 5;
+                }
+                ids[1] = basicModules[ids[2]].ParentId;
+                if (ids[0] != -1 && ids[0] != basicModules[ids[1]].ParentId)
+                {
+                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 4, 0, 0));
+                    rowIndex[0] = i + 5;
+                }
+                ids[0] = basicModules[ids[1]].ParentId;
+
+                for (int j = 0; j < 10; j++)
+                {
+                    cell = row.CreateCell(j);
+                    cell.CellStyle = cellStyle;
                     switch (j)
                     {
                         case 0:
+                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 5, 0, 0));
+                            cell.SetCellValue($"{basicModules[ids[0]].Name}({basicModules[ids[0]].Grade})");
                             break;
                         case 1:
+                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 5, 1, 1));
+                            cell.SetCellValue($"{basicModules[ids[1]].Name}({basicModules[ids[1]].Grade})");
                             break;
                         case 2:
+                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 5, 2, 2));
+                            cell.SetCellValue($"{basicModules[ids[2]].Name}({basicModules[ids[2]].Grade})");
                             break;
                         case 3:                            
+                            cell.SetCellValue(fourModules[data[i].IndicatorFour].Name);
                             break;
                         case 4:
                             cell.SetCellValue(data[i].BasicRule);
@@ -286,12 +329,17 @@ namespace EvaluationIndicatorSystem
                             cell.SetCellValue(data[i].BasicAdd);
                             break;
                         case 7:
+                            cell.SetCellValue(string.Join("\r\n", data[i].DataSource));
                             break;
                         case 8:
+                            cell.SetCellValue(data[i].Remark);
                             break;
                         case 9:
+                            cell.SetCellValue(data[i].Grade);
                             break;
-
+                        default:
+                            cell.SetCellValue("");
+                            break;
                     }
                 }
             }
