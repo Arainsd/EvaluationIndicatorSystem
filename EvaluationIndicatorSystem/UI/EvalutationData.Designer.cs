@@ -144,9 +144,8 @@
             this.lbl_timePeriods.AutoSize = true;
             this.lbl_timePeriods.Location = new System.Drawing.Point(389, 23);
             this.lbl_timePeriods.Name = "lbl_timePeriods";
-            this.lbl_timePeriods.Size = new System.Drawing.Size(183, 20);
+            this.lbl_timePeriods.Size = new System.Drawing.Size(0, 20);
             this.lbl_timePeriods.TabIndex = 14;
-            this.lbl_timePeriods.Text = "2018-11-26  -  2018-11-26";
             // 
             // btn_timeCycleMange
             // 

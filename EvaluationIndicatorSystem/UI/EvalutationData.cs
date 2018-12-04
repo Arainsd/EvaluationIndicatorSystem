@@ -87,7 +87,7 @@ namespace EvaluationIndicatorSystem
             {
                 if(item.Name == ((ComboBox)sender).SelectedItem.ToString())
                 {
-                    lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " - " + item.EndTime.ToString("yyyy-MM-dd");
+                    lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " / " + item.EndTime.ToString("yyyy-MM-dd");
                     DataRefresh(item.ID);
                     break;
                 }

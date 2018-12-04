@@ -88,7 +88,7 @@ namespace EvaluationIndicatorSystem
             {
                 if(item.Name == ((ComboBox)sender).SelectedItem.ToString())
                 {
-                    lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " - " + item.EndTime.ToString("yyyy-MM-dd");
+                    lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " / " + item.EndTime.ToString("yyyy-MM-dd");
                     DataRefresh(item.ID);
                     break;
                 }
@@ -253,6 +253,19 @@ namespace EvaluationIndicatorSystem
             Dictionary<int, BasicFourModule> fourModules = ((List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour)).ToDictionary(key => key.ID, fourModule => fourModule);
             ExcelHelper.ExportData(currentTimeCycle, evalutationModules.Values.ToList(), basicModules, fourModules);
             MessageBox.Show("导出成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btn_import_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.Filter = "excel | *.xls; *.xlsx";
+                if(dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ExcelHelper.ImportData(dialog.FileName, out string msg);
+                    MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }//end of class
 }

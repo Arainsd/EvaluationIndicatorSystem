@@ -58,6 +58,7 @@
             this.Operate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.listBox_remark = new System.Windows.Forms.ListBox();
+            this.btn_import = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -90,6 +91,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btn_import);
             this.panel1.Controls.Add(this.btn_export);
             this.panel1.Controls.Add(this.lbl_timePeriods);
             this.panel1.Controls.Add(this.lbl_indicator);
@@ -125,9 +127,8 @@
             this.lbl_timePeriods.AutoSize = true;
             this.lbl_timePeriods.Location = new System.Drawing.Point(389, 23);
             this.lbl_timePeriods.Name = "lbl_timePeriods";
-            this.lbl_timePeriods.Size = new System.Drawing.Size(183, 20);
+            this.lbl_timePeriods.Size = new System.Drawing.Size(0, 20);
             this.lbl_timePeriods.TabIndex = 14;
-            this.lbl_timePeriods.Text = "2018-11-26  -  2018-11-26";
             // 
             // lbl_indicator
             // 
@@ -373,6 +374,21 @@
             this.listBox_remark.TabIndex = 0;
             this.listBox_remark.DoubleClick += new System.EventHandler(this.listBox_remark_DoubleClick);
             // 
+            // btn_import
+            // 
+            this.btn_import.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_import.FlatAppearance.BorderSize = 0;
+            this.btn_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_import.ForeColor = System.Drawing.Color.White;
+            this.btn_import.Location = new System.Drawing.Point(850, 72);
+            this.btn_import.Name = "btn_import";
+            this.btn_import.Size = new System.Drawing.Size(75, 35);
+            this.btn_import.TabIndex = 16;
+            this.btn_import.Text = "导入";
+            this.btn_import.UseVisualStyleBackColor = false;
+            this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
+            // 
             // HistoryEvalutation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -426,5 +442,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewButtonColumn Operate;
+        private System.Windows.Forms.Button btn_import;
     }
 }

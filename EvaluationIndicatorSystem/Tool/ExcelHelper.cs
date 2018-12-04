@@ -12,16 +12,11 @@ namespace EvaluationIndicatorSystem
 {
     public static class ExcelHelper
     {
-        private static List<IndicatorOne> indicators = new List<IndicatorOne>();
-        public static List<IndicatorOne> Indicators { get => indicators; set => indicators = value; }
-
-        public static void ReadIndicator()
+        public static void ImportData(string path, out string msg)
         {
+            msg = "导入成功";
             try
             {
-                string path = AppDomain.CurrentDomain.BaseDirectory + "/维修质量竞争力指标0729B.xls";
-                string sheetName = "完善";
-                if (!File.Exists(path)) return;
                 FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
                 IWorkbook workbook = null;
                 if (Path.GetExtension(path).Equals(".xls"))
@@ -34,56 +29,27 @@ namespace EvaluationIndicatorSystem
                 }
                 else
                 {
+                    msg = "错误的文件类型";
+                    return;
+                }
+                                
+                ISheet sheet = workbook.GetSheet("sheet1");
+                if (sheet == null)
+                {
+                    msg = "不包含sheet1工作簿";
                     return;
                 }
 
-                if (workbook == null) return;
-                ISheet sheet = workbook.GetSheet(sheetName);
-                if (sheet == null) return;
                 int rowCount = sheet.LastRowNum;
-
-                for (int i = 2; i <= rowCount; i++)
+                if (rowCount < 6)
                 {
-                    IRow row = sheet.GetRow(i);
-                    if (row == null) continue;
-                    for (int j = 1; j <= 4; j++)
-                    {
-                        ICell cell = row.GetCell(j);
-                        if (string.IsNullOrEmpty(cell.StringCellValue)) continue;
-                        switch (j)
-                        {
-                            case 1:
-                                IndicatorOne one = new IndicatorOne();
-                                one.name = cell.StringCellValue;
-                                one.indicatorTwos = new List<IndicatorTwo>();
-                                indicators.Add(one);
-                                break;
-                            case 2:
-                                IndicatorTwo two = new IndicatorTwo();
-                                two.name = cell.StringCellValue;
-                                two.indicatorThrees = new List<IndicatorThree>();
-                                indicators.Last().indicatorTwos.Add(two);
-                                break;
-                            case 3:
-                                IndicatorThree three = new IndicatorThree();
-                                three.name = cell.StringCellValue;
-                                three.indicatorFours = new List<IndicatorFour>();
-                                indicators.Last().indicatorTwos.Last().indicatorThrees.Add(three);
-                                break;
-                            case 4:
-                                IndicatorFour four = new IndicatorFour();
-                                four.name = cell.StringCellValue;
-                                indicators.Last().indicatorTwos.Last().indicatorThrees.Last().indicatorFours.Add(four);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
+                    msg = "无可用数据";
+                    return;
+                }                
             }
             catch (Exception ex)
             {
-                indicators = null;
+                msg = "导入失败";
             }
         }
 

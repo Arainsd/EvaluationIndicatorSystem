@@ -37,6 +37,7 @@
             this.lbl_startTime = new System.Windows.Forms.Label();
             this.dtp_startTime = new System.Windows.Forms.DateTimePicker();
             this.dtp_endTime = new System.Windows.Forms.DateTimePicker();
+            this.lbl_time_msg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_name
@@ -90,11 +91,10 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(136, 67);
+            this.lbl_name_msg.Location = new System.Drawing.Point(5, 65);
             this.lbl_name_msg.Name = "lbl_name_msg";
-            this.lbl_name_msg.Size = new System.Drawing.Size(135, 20);
+            this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_name_msg.TabIndex = 15;
-            this.lbl_name_msg.Text = "请输入评价周期名称";
             this.lbl_name_msg.Visible = false;
             // 
             // lbl_endTime
@@ -135,12 +135,22 @@
             this.dtp_endTime.Size = new System.Drawing.Size(300, 30);
             this.dtp_endTime.TabIndex = 19;
             // 
+            // lbl_time_msg
+            // 
+            this.lbl_time_msg.AutoSize = true;
+            this.lbl_time_msg.ForeColor = System.Drawing.Color.Red;
+            this.lbl_time_msg.Location = new System.Drawing.Point(5, 135);
+            this.lbl_time_msg.Name = "lbl_time_msg";
+            this.lbl_time_msg.Size = new System.Drawing.Size(0, 20);
+            this.lbl_time_msg.TabIndex = 20;
+            // 
             // TimeCycleChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(520, 316);
+            this.Controls.Add(this.lbl_time_msg);
             this.Controls.Add(this.dtp_endTime);
             this.Controls.Add(this.dtp_startTime);
             this.Controls.Add(this.lbl_startTime);
@@ -171,5 +181,6 @@
         private System.Windows.Forms.Label lbl_startTime;
         private System.Windows.Forms.DateTimePicker dtp_startTime;
         private System.Windows.Forms.DateTimePicker dtp_endTime;
+        private System.Windows.Forms.Label lbl_time_msg;
     }
 }

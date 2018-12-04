@@ -29,12 +29,21 @@ namespace EvaluationIndicatorSystem
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            this.lbl_name_msg.Visible = false;
+            lbl_name_msg.Text = string.Empty;
+            lbl_time_msg.Text = string.Empty;
+
             if (string.IsNullOrEmpty(this.txt_name.Text.Trim()))
             {
-                this.lbl_name_msg.Visible = true;
+                this.lbl_name_msg.Text = "请输入评价周期";
                 return;
             }
+
+            if(dtp_startTime.Value.Date > dtp_endTime.Value.Date)
+            {
+                lbl_time_msg.Text = "开始时间不能大于截止时间";
+                return;
+            }
+
             module = new TimeCycleModule();
             module.Name = this.txt_name.Text.Trim();
             module.StartTime = this.dtp_startTime.Value.Date;
