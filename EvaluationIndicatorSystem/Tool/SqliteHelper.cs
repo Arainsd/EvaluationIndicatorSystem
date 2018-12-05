@@ -136,7 +136,7 @@ namespace EvaluationIndicatorSystem
                     }
                     else
                     {
-                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time, state) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}', 0)";
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time, state, user_name) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}', 0, '{timeData.UserName}')";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
                             msg = "数据写入失败";
@@ -388,6 +388,18 @@ namespace EvaluationIndicatorSystem
             {
                 switch (tableName)
                 {
+                    case TableName.User:
+                        cmd.CommandText = $"SELECT name FROM {tableName.ToString()}";
+                        List<string> users = new List<string>();
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                users.Add(reader["name"].ToString());
+                            }
+                            reader.Close();
+                        }
+                        return users;
                     case TableName.BasicData:
                         cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE 1=1";
                         if (para.Length > 0)
@@ -439,10 +451,13 @@ namespace EvaluationIndicatorSystem
                             return fourModules;
                         }
                     case TableName.TimeCycle:
-                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE state={(int)para[0]}";
-                        if (para.Length > 1)
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE state={(int)para[0]}";                       
+                        if (para.Length == 2)
                         {
                             cmd.CommandText += $" AND name='{(string)para[1]}'";
+                        } else if(para.Length == 3)
+                        {
+                            cmd.CommandText += $" AND user_name='{(string)para[2]}'";
                         }
                         using (SQLiteDataReader timeReader = cmd.ExecuteReader())
                         {
@@ -457,6 +472,7 @@ namespace EvaluationIndicatorSystem
                                 timeModule.CreateTime = DateTime.Parse(timeReader["create_time"].ToString());
                                 timeModule.LatestCommitTime = DateTime.Parse(timeReader["latest_commit_time"].ToString());
                                 timeModule.State = int.Parse(timeReader["state"].ToString());
+                                timeModule.UserName = timeReader["user_name"].ToString();
                                 timeModules.Add(timeModule);
                             }
                             timeReader.Close();

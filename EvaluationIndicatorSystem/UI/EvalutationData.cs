@@ -12,12 +12,14 @@ namespace EvaluationIndicatorSystem
 {
     public partial class EvalutationData : UserControl
     {
-        public EvalutationData()
+        public EvalutationData(UserModule user)
         {
             InitializeComponent();
+            currentUser = user;
             Init();
         }
-
+        
+        UserModule currentUser = null;
         DataHelper dataHelper = null;
         List<TimeCycleModule> timeModules = null;
         Dictionary<int, BasicDataModule> basicModules = null;
@@ -54,7 +56,7 @@ namespace EvaluationIndicatorSystem
             basicModules.Clear();
             evalutationModules?.Clear();
 
-            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Local);
+            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Local, null, currentUser.UserName);
             if (timeModules.Count == 0) return;
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
 
@@ -101,7 +103,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void btn_timeCycleMange_Click(object sender, EventArgs e)
         {
-            using (TimeCycleManage dialog = new TimeCycleManage())
+            using (TimeCycleManage dialog = new TimeCycleManage(currentUser))
             {
                 dialog.ShowDialog();
                 TimeCycleRefresh();

@@ -67,7 +67,7 @@ namespace EvaluationIndicatorSystem
             tabDictionary.Add(TabName.BasicIndicatorThree, basicIndicatorThree);
             basicIndicatorFour = new BasicIndicatorFour();
             tabDictionary.Add(TabName.BasicIndicatorFour, basicIndicatorFour);
-            evalutationData = new EvalutationData();
+            evalutationData = new EvalutationData(currentUser);
             tabDictionary.Add(TabName.EvalutationData, evalutationData);
             historyEvalutation = new HistoryEvalutation();
             tabDictionary.Add(TabName.HistoryEvalutation, historyEvalutation);
@@ -140,7 +140,7 @@ namespace EvaluationIndicatorSystem
                 case TabName.EvalutationData:                    
                     break;
                 case TabName.HistoryEvalutation:
-                    historyEvalutation.TimeCycleRefresh();
+                    historyEvalutation.TimeCycleRefresh(currentUser.UserName);
                     break;
             }
         }

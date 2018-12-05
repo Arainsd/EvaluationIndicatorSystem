@@ -62,7 +62,15 @@ namespace EvaluationIndicatorSystem
             {
                 workbook = new HSSFWorkbook();
                 sheet = workbook.CreateSheet("sheet1");
-                ICellStyle titleStyle = SetTitleStyle(workbook);
+                ICellStyle titleStyle = SetTitleStyle(workbook);                
+
+                IRow row = sheet.CreateRow(0);
+                ICell cell = row.CreateCell(0);
+                cell.CellStyle = titleStyle;
+                cell.SetCellValue("用户");
+                cell = row.CreateCell(1);
+                cell.CellStyle = SetDataStyle(workbook);
+                cell.SetCellValue(timeCycle.UserName);
 
                 CreateTimeRows(timeCycle, sheet, workbook, titleStyle);
                 CreateDataTitleRows(sheet, workbook, titleStyle);
@@ -79,7 +87,7 @@ namespace EvaluationIndicatorSystem
                 sheet.SetColumnWidth(8, 35 * 256);
                 sheet.SetColumnWidth(9, 35 * 256);
 
-                using (fs = File.OpenWrite($"{timeCycle.Name}.xls"))
+                using (fs = File.OpenWrite($"{timeCycle.UserName}-{timeCycle.Name}.xls"))
                 {
                     workbook.Write(fs);
                 }
@@ -94,7 +102,7 @@ namespace EvaluationIndicatorSystem
         {
             ICellStyle cellStyle = SetDateStyle(workbook);
 
-            IRow row = sheet.CreateRow(0);
+            IRow row = sheet.CreateRow(2);
             ICell cell = row.CreateCell(0);
             cell.CellStyle = titleStyle;
             cell.SetCellValue("评价周期");
@@ -111,7 +119,7 @@ namespace EvaluationIndicatorSystem
             cell.CellStyle = titleStyle;
             cell.SetCellValue("最近提交时间");
 
-            row = sheet.CreateRow(1);
+            row = sheet.CreateRow(3);
             cell = row.CreateCell(0);
             cell.SetCellValue(timeCycle.Name);
             cell = row.CreateCell(1);
@@ -162,7 +170,7 @@ namespace EvaluationIndicatorSystem
 
         private static void CreateDataTitleRows(ISheet sheet, IWorkbook workbook, ICellStyle titleStyle)
         {
-            IRow row = sheet.CreateRow(3);
+            IRow row = sheet.CreateRow(5);
             ICell cell = null;
 
             cell = row.CreateCell(0);
@@ -184,7 +192,7 @@ namespace EvaluationIndicatorSystem
             cell.CellStyle = titleStyle;
             cell = row.CreateCell(6);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 3, 4, 6));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 5, 4, 6));
             cell = row.CreateCell(7);
             cell.CellStyle = titleStyle;
             cell.SetCellValue("数据来源");
@@ -195,19 +203,19 @@ namespace EvaluationIndicatorSystem
             cell.CellStyle = titleStyle;
             cell.SetCellValue("得分");
 
-            row = sheet.CreateRow(4);
+            row = sheet.CreateRow(6);
             cell = row.CreateCell(0);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 0, 0));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 6, 0, 0));
             cell = row.CreateCell(1);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 1, 1));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 6, 1, 1));
             cell = row.CreateCell(2);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 2, 2));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 6, 2, 2));
             cell = row.CreateCell(3);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 3, 3));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 6, 3, 3));
             cell = row.CreateCell(4);
             cell.CellStyle = titleStyle;
             cell.SetCellValue("基础分值");
@@ -219,13 +227,13 @@ namespace EvaluationIndicatorSystem
             cell.SetCellValue("加分");
             cell = row.CreateCell(7);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 7, 7));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 6, 7, 7));
             cell = row.CreateCell(8);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 8, 8));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 6, 8, 8));
             cell = row.CreateCell(9);
             cell.CellStyle = titleStyle;
-            sheet.AddMergedRegion(new CellRangeAddress(3, 4, 9, 9));
+            sheet.AddMergedRegion(new CellRangeAddress(5, 6, 9, 9));
 
             row = null;
             cell = null;
@@ -237,30 +245,30 @@ namespace EvaluationIndicatorSystem
             ICell cell = null;
             ICellStyle cellStyle = SetDataStyle(workbook);
 
-            int[] rowIndex = new int[] { 5, 5, 5 };//one first row, two first row, three first row
+            int[] rowIndex = new int[] { 7, 7, 7 };//one first row, two first row, three first row
             int[] ids = new int[] { -1, -1, -1 ,-1};//current one id, current two id, current three id, current four id;
 
             for (int i = 0; i < data.Count; i++)
             {                
-                row = sheet.CreateRow(i + 5);
+                row = sheet.CreateRow(i + 7);
                 
                 ids[3] = data[i].IndicatorFour;
                 if (ids[2] != -1 && ids[2] != fourModules[ids[3]].ParentId)
                 {
-                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 4, 2, 2));
-                    rowIndex[2] = i + 5;
+                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 6, 2, 2));
+                    rowIndex[2] = i + 7;
                 }
                 ids[2] = fourModules[ids[3]].ParentId;
                 if (ids[1] != -1 && ids[1] != basicModules[ids[2]].ParentId)
                 {
-                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 4, 1, 1));
-                    rowIndex[1] = i + 5;
+                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 6, 1, 1));
+                    rowIndex[1] = i + 7;
                 }
                 ids[1] = basicModules[ids[2]].ParentId;
                 if (ids[0] != -1 && ids[0] != basicModules[ids[1]].ParentId)
                 {
-                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 4, 0, 0));
-                    rowIndex[0] = i + 5;
+                    sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 6, 0, 0));
+                    rowIndex[0] = i + 7;
                 }
                 ids[0] = basicModules[ids[1]].ParentId;
 
@@ -271,15 +279,15 @@ namespace EvaluationIndicatorSystem
                     switch (j)
                     {
                         case 0:
-                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 5, 0, 0));
+                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 7, 0, 0));
                             cell.SetCellValue($"{basicModules[ids[0]].Name}({basicModules[ids[0]].Grade})");
                             break;
                         case 1:
-                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 5, 1, 1));
+                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 7, 1, 1));
                             cell.SetCellValue($"{basicModules[ids[1]].Name}({basicModules[ids[1]].Grade})");
                             break;
                         case 2:
-                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 5, 2, 2));
+                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 7, 2, 2));
                             cell.SetCellValue($"{basicModules[ids[2]].Name}({basicModules[ids[2]].Grade})");
                             break;
                         case 3:                            

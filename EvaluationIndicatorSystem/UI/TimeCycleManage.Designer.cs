@@ -46,6 +46,7 @@
             this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LatestCommitTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -127,7 +128,8 @@
             this.EndTime,
             this.CreateTime,
             this.LatestCommitTime,
-            this.State});
+            this.State,
+            this.UserName});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 10F);
@@ -204,6 +206,13 @@
             this.State.Name = "State";
             this.State.Visible = false;
             // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "UserName";
+            this.UserName.Name = "UserName";
+            this.UserName.Visible = false;
+            // 
             // TimeCycleManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -239,5 +248,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn LatestCommitTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
     }
 }

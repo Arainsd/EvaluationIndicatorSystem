@@ -12,12 +12,14 @@ namespace EvaluationIndicatorSystem
 {
     public partial class TimeCycleManage : Form
     {
-        public TimeCycleManage()
+        public TimeCycleManage(UserModule user)
         {
             InitializeComponent();
+            currentUser = user;
             Init();
         }
 
+        UserModule currentUser = null;
         List<TimeCycleModule> cycleModules = null;
 
         private void Init()
@@ -31,7 +33,7 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         public void DataRefresh()
         {
-            cycleModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, 0);
+            cycleModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, TimeCycleState.Local);
             dataGridView1.DataSource = cycleModules;
             dataGridView1.Refresh();
         }
@@ -49,13 +51,14 @@ namespace EvaluationIndicatorSystem
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     TimeCycleModule module = dialog.GetModule;
+                    module.UserName = currentUser.UserName;
                     SqliteHelper.Insert(TableName.TimeCycle, module, out string msg);
                     if (!string.IsNullOrEmpty(msg))
                     {
                         MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    List<TimeCycleModule> timeModule = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, 0, module.Name);
+                    List<TimeCycleModule> timeModule = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, TimeCycleState.Local, module.Name);
                     if (timeModule.Count > 0)
                     {
                         InitEvalutationData(timeModule[0].ID);

@@ -45,6 +45,7 @@ namespace EvaluationIndicatorSystem
         public DateTime CreateTime { get; set; }
         public DateTime LatestCommitTime { get; set; }
         public int State { get; set; }
+        public string UserName { get; set; }
     }//end of class TimeCycle
 
     public class EvalutationDataModule

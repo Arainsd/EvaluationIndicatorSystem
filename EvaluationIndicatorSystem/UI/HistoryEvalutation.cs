@@ -20,6 +20,7 @@ namespace EvaluationIndicatorSystem
         }
 
         DataHelper dataHelper = null;
+        List<string> users = null;
         List<TimeCycleModule> timeModules = null;
         Dictionary<int, BasicDataModule> basicModules = null;
         Dictionary<int, EvalutationDataModule> evalutationModules = null;
@@ -30,16 +31,35 @@ namespace EvaluationIndicatorSystem
         private void Init()
         {
             dataHelper = new DataHelper();
+            users = new List<string>();
             timeModules = new List<TimeCycleModule>();
             basicModules = new Dictionary<int, BasicDataModule>();
             evalutationModules = new Dictionary<int, EvalutationDataModule>();
-            TimeCycleRefresh();
+
+            users = (List<string>)SqliteHelper.Select(TableName.User);
+            if (users == null || users.Count == 0) return;
+            combo_user.Items.Add("全部");
+            foreach (var item in users)
+            {
+                combo_user.Items.Add(item);
+            }
+            combo_user.SelectedIndex = 0;            
+        }
+
+        /// <summary>
+        /// 用户改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void combo_user_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TimeCycleRefresh(((ComboBox)sender).SelectedItem.ToString());
         }
 
         /// <summary>
         /// 刷新评价周期
         /// </summary>
-        public void TimeCycleRefresh()
+        public void TimeCycleRefresh(string userName)
         {
             combo_timeCycle.Items.Clear();
             combo_timeCycle.Text = string.Empty;
@@ -55,8 +75,17 @@ namespace EvaluationIndicatorSystem
             basicModules.Clear();
             evalutationModules?.Clear();
 
-            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
+            if (userName == "全部")
+            {
+                timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
+            }
+            else
+            {
+                timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit, null, userName);
+            }
+
             if (timeModules.Count == 0) return;
+            
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
 
             foreach (var item in timeModules)
@@ -92,20 +121,6 @@ namespace EvaluationIndicatorSystem
                     DataRefresh(item.ID);
                     break;
                 }
-            }
-        }
-
-        /// <summary>
-        /// 评价周期管理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_timeCycleMange_Click(object sender, EventArgs e)
-        {
-            using (TimeCycleManage dialog = new TimeCycleManage())
-            {
-                dialog.ShowDialog();
-                TimeCycleRefresh();
             }
         }
 
