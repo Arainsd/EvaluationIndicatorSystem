@@ -32,20 +32,27 @@ namespace EvaluationIndicatorSystem
                     msg = "错误的文件类型";
                     return;
                 }
-                                
-                ISheet sheet = workbook.GetSheet("sheet1");
+
+                ISheet sheet = workbook.GetSheetAt(0);
                 if (sheet == null)
                 {
-                    msg = "不包含sheet1工作簿";
+                    msg = "无可用工作簿";
                     return;
                 }
 
                 int rowCount = sheet.LastRowNum;
-                if (rowCount < 6)
+                for (int i = 0; i < rowCount; i++)
                 {
-                    msg = "无可用数据";
-                    return;
-                }                
+                    if (i == 0)//用户名
+                    {
+                    }
+                    else if (i == 3)//评价周期
+                    {
+                    }
+                    else if (i > 6)
+                    {
+                    }
+                }
             }
             catch (Exception ex)
             {
