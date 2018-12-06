@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -61,6 +61,7 @@
             this.Operate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.listBox_remark = new System.Windows.Forms.ListBox();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -74,7 +75,7 @@
             // 
             this.combo_three.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_three.FormattingEnabled = true;
-            this.combo_three.Location = new System.Drawing.Point(545, 74);
+            this.combo_three.Location = new System.Drawing.Point(535, 74);
             this.combo_three.Name = "combo_three";
             this.combo_three.Size = new System.Drawing.Size(200, 31);
             this.combo_three.TabIndex = 4;
@@ -84,7 +85,7 @@
             // 
             this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(325, 74);
+            this.combo_two.Location = new System.Drawing.Point(310, 74);
             this.combo_two.Name = "combo_two";
             this.combo_two.Size = new System.Drawing.Size(200, 31);
             this.combo_two.TabIndex = 3;
@@ -93,6 +94,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btn_delete);
             this.panel1.Controls.Add(this.lbl_user);
             this.panel1.Controls.Add(this.combo_user);
             this.panel1.Controls.Add(this.btn_import);
@@ -115,7 +117,7 @@
             // 
             this.lbl_user.AutoSize = true;
             this.lbl_user.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_user.Location = new System.Drawing.Point(20, 22);
+            this.lbl_user.Location = new System.Drawing.Point(5, 25);
             this.lbl_user.Name = "lbl_user";
             this.lbl_user.Size = new System.Drawing.Size(48, 20);
             this.lbl_user.TabIndex = 18;
@@ -125,7 +127,7 @@
             // 
             this.combo_user.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_user.FormattingEnabled = true;
-            this.combo_user.Location = new System.Drawing.Point(105, 16);
+            this.combo_user.Location = new System.Drawing.Point(87, 19);
             this.combo_user.Name = "combo_user";
             this.combo_user.Size = new System.Drawing.Size(200, 31);
             this.combo_user.TabIndex = 17;
@@ -138,7 +140,7 @@
             this.btn_import.FlatAppearance.BorderSize = 0;
             this.btn_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_import.ForeColor = System.Drawing.Color.White;
-            this.btn_import.Location = new System.Drawing.Point(850, 72);
+            this.btn_import.Location = new System.Drawing.Point(755, 72);
             this.btn_import.Name = "btn_import";
             this.btn_import.Size = new System.Drawing.Size(75, 35);
             this.btn_import.TabIndex = 16;
@@ -153,7 +155,7 @@
             this.btn_export.FlatAppearance.BorderSize = 0;
             this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_export.ForeColor = System.Drawing.Color.White;
-            this.btn_export.Location = new System.Drawing.Point(760, 72);
+            this.btn_export.Location = new System.Drawing.Point(850, 72);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(75, 35);
             this.btn_export.TabIndex = 15;
@@ -164,7 +166,7 @@
             // lbl_timePeriods
             // 
             this.lbl_timePeriods.AutoSize = true;
-            this.lbl_timePeriods.Location = new System.Drawing.Point(690, 22);
+            this.lbl_timePeriods.Location = new System.Drawing.Point(668, 25);
             this.lbl_timePeriods.Name = "lbl_timePeriods";
             this.lbl_timePeriods.Size = new System.Drawing.Size(0, 20);
             this.lbl_timePeriods.TabIndex = 14;
@@ -173,7 +175,7 @@
             // 
             this.lbl_indicator.AutoSize = true;
             this.lbl_indicator.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_indicator.Location = new System.Drawing.Point(20, 80);
+            this.lbl_indicator.Location = new System.Drawing.Point(5, 80);
             this.lbl_indicator.Name = "lbl_indicator";
             this.lbl_indicator.Size = new System.Drawing.Size(76, 20);
             this.lbl_indicator.TabIndex = 9;
@@ -183,7 +185,7 @@
             // 
             this.lbl_timePeriod.AutoSize = true;
             this.lbl_timePeriod.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_timePeriod.Location = new System.Drawing.Point(622, 20);
+            this.lbl_timePeriod.Location = new System.Drawing.Point(600, 25);
             this.lbl_timePeriod.Name = "lbl_timePeriod";
             this.lbl_timePeriod.Size = new System.Drawing.Size(62, 20);
             this.lbl_timePeriod.TabIndex = 6;
@@ -193,7 +195,7 @@
             // 
             this.combo_timeCycle.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_timeCycle.FormattingEnabled = true;
-            this.combo_timeCycle.Location = new System.Drawing.Point(406, 16);
+            this.combo_timeCycle.Location = new System.Drawing.Point(387, 19);
             this.combo_timeCycle.Name = "combo_timeCycle";
             this.combo_timeCycle.Size = new System.Drawing.Size(200, 31);
             this.combo_timeCycle.TabIndex = 5;
@@ -203,7 +205,7 @@
             // 
             this.lbl_timeCycle.AutoSize = true;
             this.lbl_timeCycle.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_timeCycle.Location = new System.Drawing.Point(321, 22);
+            this.lbl_timeCycle.Location = new System.Drawing.Point(305, 25);
             this.lbl_timeCycle.Name = "lbl_timeCycle";
             this.lbl_timeCycle.Size = new System.Drawing.Size(76, 20);
             this.lbl_timeCycle.TabIndex = 2;
@@ -213,7 +215,7 @@
             // 
             this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_one.FormattingEnabled = true;
-            this.combo_one.Location = new System.Drawing.Point(105, 74);
+            this.combo_one.Location = new System.Drawing.Point(87, 74);
             this.combo_one.Name = "combo_one";
             this.combo_one.Size = new System.Drawing.Size(200, 31);
             this.combo_one.TabIndex = 2;
@@ -273,14 +275,14 @@
             this.Column12,
             this.Column13,
             this.Operate});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 130);
             this.dataGridView1.MultiSelect = false;
@@ -413,6 +415,21 @@
             this.listBox_remark.TabIndex = 0;
             this.listBox_remark.DoubleClick += new System.EventHandler(this.listBox_remark_DoubleClick);
             // 
+            // btn_delete
+            // 
+            this.btn_delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_delete.FlatAppearance.BorderSize = 0;
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.ForeColor = System.Drawing.Color.White;
+            this.btn_delete.Location = new System.Drawing.Point(850, 17);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 35);
+            this.btn_delete.TabIndex = 19;
+            this.btn_delete.Text = "删除";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
             // HistoryEvalutation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -469,5 +486,6 @@
         private System.Windows.Forms.Button btn_import;
         private System.Windows.Forms.Label lbl_user;
         private System.Windows.Forms.ComboBox combo_user;
+        private System.Windows.Forms.Button btn_delete;
     }
 }

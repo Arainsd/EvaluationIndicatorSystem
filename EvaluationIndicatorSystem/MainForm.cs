@@ -140,7 +140,7 @@ namespace EvaluationIndicatorSystem
                 case TabName.EvalutationData:                    
                     break;
                 case TabName.HistoryEvalutation:
-                    historyEvalutation.TimeCycleRefresh(currentUser.UserName);
+                    historyEvalutation.UserRefresh();
                     break;
             }
         }

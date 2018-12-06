@@ -38,7 +38,7 @@ namespace EvaluationIndicatorSystem
             UserRefresh();
         }
 
-        private void UserRefresh()
+        public void UserRefresh()
         {
             users.Clear();
             combo_user.Items.Clear();
@@ -65,7 +65,7 @@ namespace EvaluationIndicatorSystem
         /// <summary>
         /// 刷新评价周期
         /// </summary>
-        public void TimeCycleRefresh(string userName)
+        private void TimeCycleRefresh(string userName)
         {
             combo_timeCycle.Items.Clear();
             combo_timeCycle.Text = string.Empty;
@@ -80,13 +80,13 @@ namespace EvaluationIndicatorSystem
             listBox_remark.Items.Clear();
             basicModules.Clear();
             evalutationModules?.Clear();
-
+            
             if (userName == "全部")
             {
                 timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
             }
             else
-            {
+            {                
                 timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit, null, userName);
             }
 
@@ -119,15 +119,9 @@ namespace EvaluationIndicatorSystem
             listBox_remark.Items.Clear();
             evalutationModules?.Clear();
 
-            foreach (var item in timeModules)
-            {
-                if(item.Name == ((ComboBox)sender).SelectedItem.ToString())
-                {
-                    lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " / " + item.EndTime.ToString("yyyy-MM-dd");
-                    DataRefresh(item.ID);
-                    break;
-                }
-            }
+            TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
+            lbl_timePeriods.Text = currentTime.StartTime.ToString("yyyy-MM-dd") + " / " + currentTime.EndTime.ToString("yyyy-MM-dd");
+            DataRefresh(currentTime.ID);
         }
 
         /// <summary>
@@ -238,6 +232,27 @@ namespace EvaluationIndicatorSystem
             }
             listBox_remark.Items.Add("备注：");
             listBox_remark.Items.Add(evalutationData.Remark);
+        }
+
+        /// <summary>
+        /// 删除当前周期
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_delete_Click(object sender, EventArgs e)
+        {          
+            if(timeModules.Count == 0)
+            {
+                MessageBox.Show("没有可以删除的数据", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("删除后，关于此周期的数据将一并删除，确定要删除吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                TimeCycleModule currentTime = timeModules[combo_timeCycle.SelectedIndex];
+                SqliteHelper.Delete(TableName.TimeCycle, currentTime.ID);
+                SqliteHelper.Delete(TableName.EvalutationData, currentTime.ID);
+                UserRefresh();
+            }
         }
 
         /// <summary>
