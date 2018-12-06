@@ -14,7 +14,7 @@ namespace EvaluationIndicatorSystem
     {
         public static void ImportData(string path, out string msg)
         {
-            msg = "导入成功";
+            msg = string.Empty;
             try
             {
                 FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
@@ -41,18 +41,69 @@ namespace EvaluationIndicatorSystem
                 }
 
                 int rowCount = sheet.LastRowNum;
-                for (int i = 0; i < rowCount; i++)
+                if (rowCount <= 6)
+                {
+                    msg = "无有效评价数据";
+                    return;
+                }
+
+                IRow row = null;
+                TimeCycleModule timeCycle = new TimeCycleModule();
+                int timeCycleId = -1;
+                List<EvalutationDataModule> evalutationData = new List<EvalutationDataModule>();
+                for (int i = 0; i <= rowCount; i++)
                 {
                     if (i == 0)//用户名
                     {
+                        timeCycle.UserName = sheet.GetRow(i).GetCell(1).StringCellValue;
+                        if (string.IsNullOrEmpty(timeCycle.UserName))
+                        {
+                            msg = "用户名为空";
+                            return;
+                        }
                     }
                     else if (i == 3)//评价周期
                     {
+                        row = sheet.GetRow(i);
+                        timeCycle.Name = row.GetCell(0).StringCellValue;
+                        timeCycle.StartTime = row.GetCell(1).DateCellValue;
+                        timeCycle.EndTime = row.GetCell(2).DateCellValue;
+                        timeCycle.CreateTime = row.GetCell(3).DateCellValue;
+                        timeCycle.LatestCommitTime = row.GetCell(4).DateCellValue;
+                        timeCycle.State = (int)TimeCycleState.Commit;
+                        SqliteHelper.Insert(TableName.TimeCycle, timeCycle, out msg);
+                        if (string.IsNullOrEmpty(msg))
+                        {
+                            timeCycleId = ((List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, TimeCycleState.Commit, timeCycle.Name, timeCycle.UserName))[0].ID;
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
                     else if (i > 6)
                     {
+                        row = sheet.GetRow(i);
+                        EvalutationDataModule evalutation = new EvalutationDataModule();
+                        evalutation.TimeCycle = timeCycleId;
+                        string currentFour = row.GetCell(3).StringCellValue;
+                        List<BasicFourModule> fourModules = (List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour, currentFour);
+                        if(fourModules.Count == 1)
+                        {
+                            evalutation.IndicatorFour = fourModules[0].ID;
+                        }
+                        else
+                        {
+                            msg = $"四级指标 {currentFour} 不存在";
+                            return;
+                        }                        
+                        evalutation.DataSource = row.GetCell(7).StringCellValue.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries);
+                        evalutation.Remark = row.GetCell(8).StringCellValue;
+                        evalutation.Grade = (int)row.GetCell(9).NumericCellValue;
+                        evalutationData.Add(evalutation);
                     }
                 }
+                SqliteHelper.Insert(TableName.EvalutationData, evalutationData, out msg);
             }
             catch (Exception ex)
             {

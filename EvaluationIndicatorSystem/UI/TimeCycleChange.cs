@@ -50,6 +50,7 @@ namespace EvaluationIndicatorSystem
             module.EndTime = this.dtp_endTime.Value.Date;
             module.CreateTime = DateTime.Now.Date;
             module.LatestCommitTime = module.CreateTime;
+            module.State = (int)TimeCycleState.Local;
             this.DialogResult = DialogResult.OK;
         }
     }//end of class

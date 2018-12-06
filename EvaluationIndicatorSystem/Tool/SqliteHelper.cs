@@ -130,13 +130,13 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.TimeCycle:
                     TimeCycleModule timeData = (TimeCycleModule)data;
-                    if (CheckRowData(tableName.ToString(), timeData.Name))
+                    if (CheckTimeData(tableName.ToString(), timeData.Name, timeData.UserName))
                     {
                         msg = "评价周期已存在";
                     }
                     else
                     {
-                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time, state, user_name) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}', 0, '{timeData.UserName}')";
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, start_time, end_time, create_time, latest_commit_time, state, user_name) VALUES('{timeData.Name}', '{timeData.StartTime}','{timeData.EndTime}','{timeData.CreateTime}','{timeData.LatestCommitTime}', {timeData.State}, '{timeData.UserName}')";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
                             msg = "数据写入失败";
@@ -362,6 +362,22 @@ namespace EvaluationIndicatorSystem
         }
 
         /// <summary>
+        /// check timecycle exit
+        /// </summary>
+        /// <param name="tableName">table name</param>
+        /// <param name="colData">column check data</param>
+        /// <returns>true:exist, false:not exist</returns>
+        private static bool CheckTimeData(string tableName, string colData, string userName)
+        {
+            cmd.CommandText = $"SELECT count(*) FROM '{tableName}' WHERE name = '{colData}' AND user_name='{userName}'";
+            if (Convert.ToInt32(cmd.ExecuteScalar()) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// check data exit
         /// </summary>
         /// <param name="tableName">table name</param>
@@ -424,6 +440,7 @@ namespace EvaluationIndicatorSystem
                         }
                     case TableName.BasicFour:
                         cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
+                        if (para.Length == 1) cmd.CommandText += $" WHERE name='{para[0]}'";
                         using (SQLiteDataReader fourReader = cmd.ExecuteReader())
                         {
                             List<BasicFourModule> fourModules = new List<BasicFourModule>();
@@ -457,6 +474,7 @@ namespace EvaluationIndicatorSystem
                             cmd.CommandText += $" AND name='{(string)para[1]}'";
                         } else if(para.Length == 3)
                         {
+                            if (para[1] != null) cmd.CommandText += $" AND name='{(string)para[1]}'";
                             cmd.CommandText += $" AND user_name='{(string)para[2]}'";
                         }
                         using (SQLiteDataReader timeReader = cmd.ExecuteReader())
@@ -491,7 +509,7 @@ namespace EvaluationIndicatorSystem
                                 evalutationModule.IndicatorFour = int.Parse(evalutationReader["indicator_four"].ToString());
                                 evalutationModule.DataSource = evalutationReader["data_source"].ToString().Split("|".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
                                 evalutationModule.Remark = evalutationReader["remark"].ToString();
-                                evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());
+                                evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());                                
                                 evalutationModule.Name = evalutationReader["name"].ToString();
                                 evalutationModule.ParentId = int.Parse(evalutationReader["parent_id"].ToString());
                                 evalutationModule.BasicRule = evalutationReader["basic_rule"].ToString();

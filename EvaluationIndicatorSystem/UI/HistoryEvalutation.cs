@@ -35,7 +35,13 @@ namespace EvaluationIndicatorSystem
             timeModules = new List<TimeCycleModule>();
             basicModules = new Dictionary<int, BasicDataModule>();
             evalutationModules = new Dictionary<int, EvalutationDataModule>();
+            UserRefresh();
+        }
 
+        private void UserRefresh()
+        {
+            users.Clear();
+            combo_user.Items.Clear();
             users = (List<string>)SqliteHelper.Select(TableName.User);
             if (users == null || users.Count == 0) return;
             combo_user.Items.Add("全部");
@@ -43,7 +49,7 @@ namespace EvaluationIndicatorSystem
             {
                 combo_user.Items.Add(item);
             }
-            combo_user.SelectedIndex = 0;            
+            combo_user.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -131,7 +137,7 @@ namespace EvaluationIndicatorSystem
         {
             if (basicModules.Count == 0) return;
             evalutationModules = ((List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, id)).ToDictionary(key => key.ID, data => data);
-            foreach(var item in basicModules)
+            foreach (var item in basicModules)
             {
                 if (item.Value.Level == 1)
                 {
@@ -275,10 +281,18 @@ namespace EvaluationIndicatorSystem
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Filter = "excel | *.xls; *.xlsx";
-                if(dialog.ShowDialog() == DialogResult.OK)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     ExcelHelper.ImportData(dialog.FileName, out string msg);
-                    MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (string.IsNullOrEmpty(msg))
+                    {
+                        MessageBox.Show("导入成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        UserRefresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
