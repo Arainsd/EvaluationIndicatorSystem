@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EvaluationIndicatorSystem
 {
@@ -85,15 +82,9 @@ namespace EvaluationIndicatorSystem
             listBox_remark.Items.Clear();
             evalutationModules?.Clear();
 
-            foreach (var item in timeModules)
-            {
-                if(item.Name == ((ComboBox)sender).SelectedItem.ToString())
-                {
-                    lbl_timePeriods.Text = item.StartTime.ToString("yyyy-MM-dd") + " / " + item.EndTime.ToString("yyyy-MM-dd");
-                    DataRefresh(item.ID);
-                    break;
-                }
-            }
+            TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
+            lbl_timePeriods.Text = currentTime.StartTime.ToString("yyyy-MM-dd") + " / " + currentTime.EndTime.ToString("yyyy-MM-dd");
+            DataRefresh(currentTime.ID);
         }
 
         /// <summary>
@@ -265,23 +256,17 @@ namespace EvaluationIndicatorSystem
             if (MessageBox.Show("提交后，改评价周期将不能修改，确认提交？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
-                foreach (var item in timeModules)
+                TimeCycleModule currentTime = timeModules[combo_timeCycle.SelectedIndex];
+                currentTime.State = 1;
+                SqliteHelper.Update(TableName.TimeCycle, currentTime.ID, currentTime, out string msg);
+                if (string.IsNullOrEmpty(msg))
                 {
-                    if (item.Name == combo_timeCycle.SelectedItem.ToString())
-                    {
-                        item.State = 1;
-                        SqliteHelper.Update(TableName.TimeCycle, item.ID, item, out string msg);
-                        if (string.IsNullOrEmpty(msg))
-                        {
-                            MessageBox.Show("提交成功，请在 往期评价 中查看", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            TimeCycleRefresh();
-                        }
-                        else
-                        {
-                            MessageBox.Show("周期提交失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
-                    }
+                    MessageBox.Show("提交成功，请在 往期评价 中查看", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TimeCycleRefresh();
+                }
+                else
+                {
+                    MessageBox.Show("周期提交失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -297,6 +282,15 @@ namespace EvaluationIndicatorSystem
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                 e.Handled = true;
+        }
+
+        private void listBox_remark_DoubleClick(object sender, EventArgs e)
+        {
+            string file = ((ListBox)sender).SelectedItem.ToString();
+            if (File.Exists(file))
+            {
+                System.Diagnostics.Process.Start(file);
+            }
         }
     }//end of class
 }

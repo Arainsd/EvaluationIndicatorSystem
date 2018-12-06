@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -276,21 +272,18 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void btn_export_Click(object sender, EventArgs e)
         {
-            TimeCycleModule currentTimeCycle = null;
-            foreach (var item in timeModules)
-            {
-                if (item.Name == combo_timeCycle.SelectedItem.ToString())
-                {
-                    currentTimeCycle = item;
-                    break;
-                }
-            }
-            if (currentTimeCycle == null || evalutationModules == null || evalutationModules.Count == 0) return;
+            TimeCycleModule currentTime = timeModules[combo_timeCycle.SelectedIndex];            
+            if (currentTime == null || evalutationModules == null || evalutationModules.Count == 0) return;
             Dictionary<int, BasicFourModule> fourModules = ((List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour)).ToDictionary(key => key.ID, fourModule => fourModule);
-            ExcelHelper.ExportData(currentTimeCycle, evalutationModules.Values.ToList(), basicModules, fourModules);
+            ExcelHelper.ExportData(currentTime, evalutationModules.Values.ToList(), basicModules, fourModules);
             MessageBox.Show("导出成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// 导入指定数据文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_import_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
