@@ -28,18 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbl_title = new System.Windows.Forms.Label();
-            this.panel_table = new System.Windows.Forms.Panel();
+            this.panel_chart = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.combo_one = new System.Windows.Forms.ComboBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel_chart.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -57,7 +63,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel_table);
+            this.splitContainer1.Panel2.Controls.Add(this.panel_chart);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(960, 640);
             this.splitContainer1.SplitterDistance = 60;
@@ -74,14 +80,15 @@
             this.lbl_title.TabIndex = 1;
             this.lbl_title.Text = "数据统计";
             // 
-            // panel_table
+            // panel_chart
             // 
-            this.panel_table.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_table.Location = new System.Drawing.Point(0, 60);
-            this.panel_table.Name = "panel_table";
-            this.panel_table.Padding = new System.Windows.Forms.Padding(10);
-            this.panel_table.Size = new System.Drawing.Size(960, 519);
-            this.panel_table.TabIndex = 1;
+            this.panel_chart.Controls.Add(this.chart1);
+            this.panel_chart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_chart.Location = new System.Drawing.Point(0, 60);
+            this.panel_chart.Name = "panel_chart";
+            this.panel_chart.Padding = new System.Windows.Forms.Padding(10);
+            this.panel_chart.Size = new System.Drawing.Size(960, 519);
+            this.panel_chart.TabIndex = 1;
             // 
             // panel1
             // 
@@ -125,6 +132,23 @@
             this.combo_one.TabIndex = 2;
             this.combo_one.SelectedIndexChanged += new System.EventHandler(this.combo_one_SelectedIndexChanged);
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(10, 10);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(940, 499);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
             // DataStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -139,7 +163,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel_chart.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,6 +178,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox combo_two;
         private System.Windows.Forms.ComboBox combo_three;
-        private System.Windows.Forms.Panel panel_table;
+        private System.Windows.Forms.Panel panel_chart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

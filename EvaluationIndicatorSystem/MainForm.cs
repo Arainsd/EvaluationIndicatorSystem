@@ -107,6 +107,7 @@ namespace EvaluationIndicatorSystem
             {
                 TabPage page = new TabPage();                
                 item.Value.Dock = DockStyle.Fill;
+                page.Height = item.Value.Height;
                 page.Controls.Add(item.Value);
                 page.Name = item.Key.ToString();                
                 tabControl1.Controls.Add(page);
