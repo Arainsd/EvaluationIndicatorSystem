@@ -45,7 +45,10 @@ namespace EvaluationIndicatorSystem
                     string[] fullPath = dialog.FileNames;
                     foreach(var item in fullPath)
                     {
-                        this.listBox_dataSource.Items.Add(item);
+                        if (!this.listBox_dataSource.Items.Contains(item))
+                        {
+                            this.listBox_dataSource.Items.Add(item);
+                        }
                     }
                 }
             }
