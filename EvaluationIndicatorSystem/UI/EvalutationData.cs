@@ -49,7 +49,7 @@ namespace EvaluationIndicatorSystem
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
             dataGridView1.DataSource = new List<EvalutationDataModule>();
-            listBox_remark.Items.Clear();
+            ClearLabelLink();
             basicModules.Clear();
             evalutationModules?.Clear();
 
@@ -79,7 +79,7 @@ namespace EvaluationIndicatorSystem
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
             dataGridView1.DataSource = new List<EvalutationDataModule>();
-            listBox_remark.Items.Clear();
+            ClearLabelLink();
             evalutationModules?.Clear();
 
             TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
@@ -133,7 +133,7 @@ namespace EvaluationIndicatorSystem
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
             dataGridView1.DataSource = new List<EvalutationDataModule>();
-            listBox_remark.Items.Clear();
+            ClearLabelLink();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_two, id);
@@ -149,7 +149,7 @@ namespace EvaluationIndicatorSystem
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
             dataGridView1.DataSource = new List<EvalutationDataModule>();
-            listBox_remark.Items.Clear();
+            ClearLabelLink();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_three, id);
@@ -163,7 +163,7 @@ namespace EvaluationIndicatorSystem
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridView1.DataSource = new List<EvalutationDataModule>();
-            listBox_remark.Items.Clear();
+            ClearLabelLink();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             var data = evalutationModules.Where(p => p.Value.ParentId == id).ToArray();
@@ -201,14 +201,72 @@ namespace EvaluationIndicatorSystem
         /// <param name="evalutationData"></param>
         private void RefreshRemark(EvalutationDataModule evalutationData)
         {
-            listBox_remark.Items.Clear();
-            listBox_remark.Items.Add("数据源：");
-            foreach (var item in evalutationData.DataSource)
+            lbl_tblNameData.Text = evalutationData.Name;
+            lbl_tblBasicData.Text = evalutationData.BasicRule;
+            lbl_tblSubData.Text = evalutationData.BasicSub;
+            lbl_tblAddData.Text = evalutationData.BasicAdd;
+            lbl_tblGradeData.Text = evalutationData.Grade.ToString();
+            lbl_tblRemarkData.Text = evalutationData.Remark;
+            ClearLabelLink();
+            CreateLabelLink(evalutationData.DataSource);
+        }
+
+        /// <summary>
+        /// 清理数据源链接
+        /// </summary>
+        private void ClearLabelLink()
+        {
+            List<LinkLabel> linkLabels = new List<LinkLabel>();
+            foreach (var item in splitContainer2.Panel2.Controls)
             {
-                listBox_remark.Items.Add(item);
+                if (item is LinkLabel)
+                {
+                    linkLabels.Add((LinkLabel)item);                                                         
+                }
             }
-            listBox_remark.Items.Add("备注：");
-            listBox_remark.Items.Add(evalutationData.Remark);
+            foreach(var ite in linkLabels)
+            {
+                splitContainer2.Panel2.Controls.Remove(ite);
+            }
+        }
+
+        /// <summary>
+        /// 创建数据源链接
+        /// </summary>
+        /// <param name="value"></param>
+        private void CreateLabelLink(string[] value)
+        {
+            for (int i = 0; i < value.Length; i++)
+            {
+                LinkLabel linkItem = new LinkLabel();
+                splitContainer2.Panel2.Controls.Add(linkItem);
+                linkItem.AutoSize = true;
+                linkItem.Location = new System.Drawing.Point(5, 210 + i * 30);
+                linkItem.Name = "linkLabel" + i;
+                linkItem.Size = new System.Drawing.Size(78, 20);
+                linkItem.TabIndex = 7;
+                linkItem.TabStop = true;
+                linkItem.Text = value[i];
+                linkItem.Click += LinkItem_Click;
+            }
+        }
+
+        /// <summary>
+        /// 数据源点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LinkItem_Click(object sender, EventArgs e)
+        {
+            string file = ((LinkLabel)sender).Text;
+            if (File.Exists(file))
+            {
+                System.Diagnostics.Process.Start(file);
+            }
+            else
+            {
+                MessageBox.Show("文件不存在", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         /// <summary>
@@ -282,15 +340,6 @@ namespace EvaluationIndicatorSystem
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
                 e.Handled = true;
-        }
-
-        private void listBox_remark_DoubleClick(object sender, EventArgs e)
-        {
-            string file = ((ListBox)sender).SelectedItem.ToString();
-            if (File.Exists(file))
-            {
-                System.Diagnostics.Process.Start(file);
-            }
         }
     }//end of class
 }

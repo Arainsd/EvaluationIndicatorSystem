@@ -59,7 +59,19 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.listBox_remark = new System.Windows.Forms.ListBox();
+            this.lbl_tblRemarkData = new System.Windows.Forms.Label();
+            this.lbl_tblBasicData = new System.Windows.Forms.Label();
+            this.lbl_tblSubData = new System.Windows.Forms.Label();
+            this.lbl_tblAddData = new System.Windows.Forms.Label();
+            this.lbl_tblGradeData = new System.Windows.Forms.Label();
+            this.lbl_tblNameData = new System.Windows.Forms.Label();
+            this.lbl_tblSource = new System.Windows.Forms.Label();
+            this.lbl_tblRemark = new System.Windows.Forms.Label();
+            this.lbl_tblBasic = new System.Windows.Forms.Label();
+            this.lbl_tblSub = new System.Windows.Forms.Label();
+            this.lbl_tblAdd = new System.Windows.Forms.Label();
+            this.lbl_tblGrade = new System.Windows.Forms.Label();
+            this.lbl_tblName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -260,9 +272,21 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.listBox_remark);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblRemarkData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblBasicData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSubData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblAddData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblGradeData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblNameData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSource);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblRemark);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblBasic);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSub);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblAdd);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblGrade);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblName);
             this.splitContainer2.Size = new System.Drawing.Size(940, 439);
-            this.splitContainer2.SplitterDistance = 300;
+            this.splitContainer2.SplitterDistance = 200;
             this.splitContainer2.TabIndex = 4;
             // 
             // dataGridView1
@@ -298,8 +322,10 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(940, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(940, 200);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -402,15 +428,116 @@
             this.Operate.Name = "Operate";
             this.Operate.ReadOnly = true;
             // 
-            // listBox_remark
+            // lbl_tblRemarkData
             // 
-            this.listBox_remark.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox_remark.FormattingEnabled = true;
-            this.listBox_remark.ItemHeight = 19;
-            this.listBox_remark.Location = new System.Drawing.Point(0, 0);
-            this.listBox_remark.Name = "listBox_remark";
-            this.listBox_remark.Size = new System.Drawing.Size(940, 135);
-            this.listBox_remark.TabIndex = 1;
+            this.lbl_tblRemarkData.AutoSize = true;
+            this.lbl_tblRemarkData.Location = new System.Drawing.Point(118, 160);
+            this.lbl_tblRemarkData.Name = "lbl_tblRemarkData";
+            this.lbl_tblRemarkData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblRemarkData.TabIndex = 12;
+            // 
+            // lbl_tblBasicData
+            // 
+            this.lbl_tblBasicData.AutoSize = true;
+            this.lbl_tblBasicData.Location = new System.Drawing.Point(118, 40);
+            this.lbl_tblBasicData.Name = "lbl_tblBasicData";
+            this.lbl_tblBasicData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblBasicData.TabIndex = 11;
+            // 
+            // lbl_tblSubData
+            // 
+            this.lbl_tblSubData.AutoSize = true;
+            this.lbl_tblSubData.Location = new System.Drawing.Point(118, 70);
+            this.lbl_tblSubData.Name = "lbl_tblSubData";
+            this.lbl_tblSubData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblSubData.TabIndex = 10;
+            // 
+            // lbl_tblAddData
+            // 
+            this.lbl_tblAddData.AutoSize = true;
+            this.lbl_tblAddData.Location = new System.Drawing.Point(118, 100);
+            this.lbl_tblAddData.Name = "lbl_tblAddData";
+            this.lbl_tblAddData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblAddData.TabIndex = 9;
+            // 
+            // lbl_tblGradeData
+            // 
+            this.lbl_tblGradeData.AutoSize = true;
+            this.lbl_tblGradeData.Location = new System.Drawing.Point(118, 130);
+            this.lbl_tblGradeData.Name = "lbl_tblGradeData";
+            this.lbl_tblGradeData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblGradeData.TabIndex = 8;
+            // 
+            // lbl_tblNameData
+            // 
+            this.lbl_tblNameData.AutoSize = true;
+            this.lbl_tblNameData.Location = new System.Drawing.Point(118, 10);
+            this.lbl_tblNameData.Name = "lbl_tblNameData";
+            this.lbl_tblNameData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblNameData.TabIndex = 7;
+            // 
+            // lbl_tblSource
+            // 
+            this.lbl_tblSource.AutoSize = true;
+            this.lbl_tblSource.Location = new System.Drawing.Point(5, 190);
+            this.lbl_tblSource.Name = "lbl_tblSource";
+            this.lbl_tblSource.Size = new System.Drawing.Size(65, 20);
+            this.lbl_tblSource.TabIndex = 6;
+            this.lbl_tblSource.Text = "数据源：";
+            // 
+            // lbl_tblRemark
+            // 
+            this.lbl_tblRemark.AutoSize = true;
+            this.lbl_tblRemark.Location = new System.Drawing.Point(5, 160);
+            this.lbl_tblRemark.Name = "lbl_tblRemark";
+            this.lbl_tblRemark.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblRemark.TabIndex = 5;
+            this.lbl_tblRemark.Text = "备注：";
+            // 
+            // lbl_tblBasic
+            // 
+            this.lbl_tblBasic.AutoSize = true;
+            this.lbl_tblBasic.Location = new System.Drawing.Point(5, 40);
+            this.lbl_tblBasic.Name = "lbl_tblBasic";
+            this.lbl_tblBasic.Size = new System.Drawing.Size(79, 20);
+            this.lbl_tblBasic.TabIndex = 4;
+            this.lbl_tblBasic.Text = "基础分值：";
+            // 
+            // lbl_tblSub
+            // 
+            this.lbl_tblSub.AutoSize = true;
+            this.lbl_tblSub.Location = new System.Drawing.Point(5, 70);
+            this.lbl_tblSub.Name = "lbl_tblSub";
+            this.lbl_tblSub.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblSub.TabIndex = 3;
+            this.lbl_tblSub.Text = "扣分：";
+            // 
+            // lbl_tblAdd
+            // 
+            this.lbl_tblAdd.AutoSize = true;
+            this.lbl_tblAdd.Location = new System.Drawing.Point(5, 100);
+            this.lbl_tblAdd.Name = "lbl_tblAdd";
+            this.lbl_tblAdd.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblAdd.TabIndex = 2;
+            this.lbl_tblAdd.Text = "加分：";
+            // 
+            // lbl_tblGrade
+            // 
+            this.lbl_tblGrade.AutoSize = true;
+            this.lbl_tblGrade.Location = new System.Drawing.Point(5, 130);
+            this.lbl_tblGrade.Name = "lbl_tblGrade";
+            this.lbl_tblGrade.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblGrade.TabIndex = 1;
+            this.lbl_tblGrade.Text = "得分：";
+            // 
+            // lbl_tblName
+            // 
+            this.lbl_tblName.AutoSize = true;
+            this.lbl_tblName.Location = new System.Drawing.Point(5, 10);
+            this.lbl_tblName.Name = "lbl_tblName";
+            this.lbl_tblName.Size = new System.Drawing.Size(107, 20);
+            this.lbl_tblName.TabIndex = 0;
+            this.lbl_tblName.Text = "评价准则内容：";
             // 
             // EvalutationData
             // 
@@ -430,6 +557,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -469,6 +597,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewButtonColumn Operate;
-        private System.Windows.Forms.ListBox listBox_remark;
+        private System.Windows.Forms.Label lbl_tblName;
+        private System.Windows.Forms.Label lbl_tblBasic;
+        private System.Windows.Forms.Label lbl_tblSub;
+        private System.Windows.Forms.Label lbl_tblAdd;
+        private System.Windows.Forms.Label lbl_tblGrade;
+        private System.Windows.Forms.Label lbl_tblRemark;
+        private System.Windows.Forms.Label lbl_tblSource;
+        private System.Windows.Forms.Label lbl_tblRemarkData;
+        private System.Windows.Forms.Label lbl_tblBasicData;
+        private System.Windows.Forms.Label lbl_tblSubData;
+        private System.Windows.Forms.Label lbl_tblAddData;
+        private System.Windows.Forms.Label lbl_tblGradeData;
+        private System.Windows.Forms.Label lbl_tblNameData;
     }
 }
