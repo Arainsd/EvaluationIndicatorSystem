@@ -66,17 +66,7 @@ namespace EvaluationIndicatorSystem
             combo_timeCycle.Items.Clear();
             combo_timeCycle.Text = string.Empty;
             this.lbl_timePeriods.Text = string.Empty;
-            this.combo_one.Items.Clear();
-            combo_one.Text = string.Empty;
-            this.combo_two.Items.Clear();
-            combo_two.Text = string.Empty;
-            this.combo_three.Items.Clear();
-            combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
-            ClearLabelLink();
-            basicModules.Clear();
-            evalutationModules?.Clear();
-            
+
             if (userName == "全部")
             {
                 timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
@@ -86,7 +76,20 @@ namespace EvaluationIndicatorSystem
                 timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit, null, userName);
             }
 
-            if (timeModules.Count == 0) return;
+            if (timeModules.Count == 0)
+            {                
+                this.combo_one.Items.Clear();
+                combo_one.Text = string.Empty;
+                this.combo_two.Items.Clear();
+                combo_two.Text = string.Empty;
+                this.combo_three.Items.Clear();
+                combo_three.Text = string.Empty;
+                dataGridView1.DataSource = new List<EvalutationDataModule>();
+                ClearLabel();
+                basicModules.Clear();
+                evalutationModules?.Clear();
+                return;
+            }
             
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
 
@@ -104,16 +107,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_timeCycle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.lbl_timePeriods.Text = string.Empty;
-            this.combo_one.Items.Clear();
-            combo_one.Text = string.Empty;
-            this.combo_two.Items.Clear();
-            combo_two.Text = string.Empty;
-            this.combo_three.Items.Clear();
-            combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
-            ClearLabelLink();
-            evalutationModules?.Clear();
+            this.lbl_timePeriods.Text = string.Empty;            
 
             TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
             lbl_timePeriods.Text = currentTime.StartTime.ToString("yyyy-MM-dd") + " / " + currentTime.EndTime.ToString("yyyy-MM-dd");
@@ -125,8 +119,22 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         private void DataRefresh(int id)
         {
-            if (basicModules.Count == 0) return;
+            this.combo_one.Items.Clear();
+            combo_one.Text = string.Empty;
+
+            if (basicModules.Count == 0)
+            {                
+                this.combo_two.Items.Clear();
+                combo_two.Text = string.Empty;
+                this.combo_three.Items.Clear();
+                combo_three.Text = string.Empty;
+                dataGridView1.DataSource = new List<EvalutationDataModule>();
+                ClearLabel();
+                evalutationModules?.Clear();
+                return;
+            }
             evalutationModules = ((List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, id)).ToDictionary(key => key.ID, data => data);
+
             foreach (var item in basicModules)
             {
                 if (item.Value.Level == 1)
@@ -149,12 +157,16 @@ namespace EvaluationIndicatorSystem
         {
             combo_two.Items.Clear();
             combo_two.Text = string.Empty;
-            combo_three.Items.Clear();
-            combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
-            ClearLabelLink();
+            
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
-            if (id == -1) return;
+            if (id == -1)
+            {
+                combo_three.Items.Clear();
+                combo_three.Text = string.Empty;
+                dataGridView1.DataSource = new List<EvalutationDataModule>();
+                ClearLabel();
+                return;
+            }
             dataHelper.SetComboItem(basicModules, combo_two, id);
         }
 
@@ -167,10 +179,14 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            dataGridView1.DataSource = new List<EvalutationDataModule>();
-            ClearLabelLink();
+            
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
-            if (id == -1) return;
+            if (id == -1)
+            {
+                dataGridView1.DataSource = new List<EvalutationDataModule>();
+                ClearLabel();
+                return;
+            }
             dataHelper.SetComboItem(basicModules, combo_three, id);
         }
 
@@ -182,7 +198,7 @@ namespace EvaluationIndicatorSystem
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridView1.DataSource = new List<EvalutationDataModule>();
-            ClearLabelLink();
+            ClearLabel();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             var data = evalutationModules.Where(p => p.Value.ParentId == id).ToArray();
@@ -220,21 +236,28 @@ namespace EvaluationIndicatorSystem
         /// <param name="evalutationData"></param>
         private void RefreshRemark(EvalutationDataModule evalutationData)
         {
+            ClearLabel();
             lbl_tblNameData.Text = evalutationData.Name;
             lbl_tblBasicData.Text = evalutationData.BasicRule;
             lbl_tblSubData.Text = evalutationData.BasicSub;
             lbl_tblAddData.Text = evalutationData.BasicAdd;
             lbl_tblGradeData.Text = evalutationData.Grade.ToString();
-            lbl_tblRemarkData.Text = evalutationData.Remark;
-            ClearLabelLink();
+            lbl_tblRemarkData.Text = evalutationData.Remark;            
             CreateLabelLink(evalutationData.DataSource);
         }
-
+        
         /// <summary>
         /// 清理数据源链接
         /// </summary>
-        private void ClearLabelLink()
+        private void ClearLabel()
         {
+            lbl_tblNameData.Text = string.Empty;
+            lbl_tblBasicData.Text = string.Empty;
+            lbl_tblSubData.Text = string.Empty;
+            lbl_tblAddData.Text = string.Empty;
+            lbl_tblGradeData.Text = string.Empty;
+            lbl_tblRemarkData.Text = string.Empty;
+
             List<LinkLabel> linkLabels = new List<LinkLabel>();
             foreach (var item in splitContainer2.Panel2.Controls)
             {
