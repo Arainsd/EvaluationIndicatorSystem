@@ -29,6 +29,8 @@ namespace EvaluationIndicatorSystem
         EvalutationData evalutationData = null;
         //往期评价
         HistoryEvalutation historyEvalutation = null;
+        //数据统计
+        DataStatistics dataStatistics = null;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -65,6 +67,8 @@ namespace EvaluationIndicatorSystem
             tabDictionary.Add(TabName.EvalutationData, evalutationData);
             historyEvalutation = new HistoryEvalutation();
             tabDictionary.Add(TabName.HistoryEvalutation, historyEvalutation);
+            dataStatistics = new DataStatistics();
+            tabDictionary.Add(TabName.DataStatistics, dataStatistics);
         }
 
         private void LeftMenu_ChangePasswordClick(object sender, EventArgs e)
@@ -135,6 +139,9 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TabName.HistoryEvalutation:
                     historyEvalutation.UserRefresh();
+                    break;
+                case TabName.DataStatistics:
+                    dataStatistics.DataRefresh();
                     break;
             }
         }

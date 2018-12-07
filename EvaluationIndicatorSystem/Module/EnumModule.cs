@@ -16,7 +16,8 @@
         BasicIndicatorThree = 3,
         BasicIndicatorFour = 4,
         EvalutationData = 5,
-        HistoryEvalutation = 6
+        HistoryEvalutation = 6,
+        DataStatistics = 7
     }//end of enum TabName
 
     public enum CalModule

@@ -180,6 +180,9 @@ namespace EvaluationIndicatorSystem
                 case "panel_historyEvalutation":
                     sender = TabName.HistoryEvalutation;
                     break;
+                case "panel_dataStatistics":
+                    sender = TabName.DataStatistics;
+                    break;
             }
             if (sender == null)
                 return;

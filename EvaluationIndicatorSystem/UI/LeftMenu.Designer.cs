@@ -49,6 +49,8 @@
             this.lbl_basic_two = new System.Windows.Forms.Label();
             this.panel_basic_one = new System.Windows.Forms.Panel();
             this.lbl_basic_one = new System.Windows.Forms.Label();
+            this.panel_dataStatistics = new System.Windows.Forms.Panel();
+            this.lbl_dataStatistics = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +68,7 @@
             this.panel_basic_three.SuspendLayout();
             this.panel_basic_two.SuspendLayout();
             this.panel_basic_one.SuspendLayout();
+            this.panel_dataStatistics.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -87,6 +90,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.panel_dataStatistics);
             this.splitContainer1.Panel2.Controls.Add(this.panel_historyEvalutation);
             this.splitContainer1.Panel2.Controls.Add(this.panel_evalutationData);
             this.splitContainer1.Panel2.Controls.Add(this.panel_basicPara);
@@ -283,6 +287,24 @@
             this.lbl_basic_one.TabIndex = 0;
             this.lbl_basic_one.Text = "一级指标";
             // 
+            // panel_dataStatistics
+            // 
+            this.panel_dataStatistics.Controls.Add(this.lbl_dataStatistics);
+            this.panel_dataStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_dataStatistics.Location = new System.Drawing.Point(0, 310);
+            this.panel_dataStatistics.Name = "panel_dataStatistics";
+            this.panel_dataStatistics.Size = new System.Drawing.Size(200, 50);
+            this.panel_dataStatistics.TabIndex = 4;
+            // 
+            // lbl_dataStatistics
+            // 
+            this.lbl_dataStatistics.AutoSize = true;
+            this.lbl_dataStatistics.Location = new System.Drawing.Point(60, 14);
+            this.lbl_dataStatistics.Name = "lbl_dataStatistics";
+            this.lbl_dataStatistics.Size = new System.Drawing.Size(65, 20);
+            this.lbl_dataStatistics.TabIndex = 0;
+            this.lbl_dataStatistics.Text = "数据统计";
+            // 
             // LeftMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -320,6 +342,8 @@
             this.panel_basic_two.PerformLayout();
             this.panel_basic_one.ResumeLayout(false);
             this.panel_basic_one.PerformLayout();
+            this.panel_dataStatistics.ResumeLayout(false);
+            this.panel_dataStatistics.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -346,5 +370,7 @@
         private System.Windows.Forms.Label lbl_user;
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel_dataStatistics;
+        private System.Windows.Forms.Label lbl_dataStatistics;
     }
 }
