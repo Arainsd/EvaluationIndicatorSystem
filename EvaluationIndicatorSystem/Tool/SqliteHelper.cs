@@ -494,6 +494,10 @@ namespace EvaluationIndicatorSystem
                         }
                     case TableName.EvalutationData:
                         cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
+                        if (para.Length == 2)
+                        {
+                            cmd.CommandText += $" AND b.parent_id={(int)para[1]}";
+                        }
                         using (SQLiteDataReader evalutationReader = cmd.ExecuteReader())//reader is active exception
                         {                            
                             List<EvalutationDataModule> evalutationModules = new List<EvalutationDataModule>();

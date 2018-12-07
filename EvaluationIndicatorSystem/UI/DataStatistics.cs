@@ -156,9 +156,11 @@ namespace EvaluationIndicatorSystem
             //dataGridView1.DataSource = new List<EvalutationDataModule>();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            //List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, TimeCycleState.Commit, currentTimeCycleId);
-                //dataGridView1.DataSource = currentTableData;
-                //dataGridView1.Refresh();
+            List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, currentTimeCycleId, id);
+            if (evalutationDatas == null || evalutationDatas.Count == 0) return;
+            //ChartRefresh(evalutationDatas);
+            //dataGridView1.DataSource = currentTableData;
+            //dataGridView1.Refresh();
         }
 
         private void InitChartLegend()
@@ -175,8 +177,14 @@ namespace EvaluationIndicatorSystem
             }            
         }
 
-        private void ChartRefresh()
+        private void ChartRefresh(List<EvalutationDataModule> data)
         {
+            //foreach (var item in data)
+            //{
+            //    CustomLabel label = new CustomLabel();
+            //    label.Text = item.Name;
+            //    label.po
+            //}
             //for (int i = 1; i <= 5; i++)
             //{
             //    CustomLabel label = new CustomLabel();
