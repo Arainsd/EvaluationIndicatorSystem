@@ -45,6 +45,19 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbl_tblRemarkData = new System.Windows.Forms.Label();
+            this.lbl_tblBasicData = new System.Windows.Forms.Label();
+            this.lbl_tblSubData = new System.Windows.Forms.Label();
+            this.lbl_tblAddData = new System.Windows.Forms.Label();
+            this.lbl_tblGradeData = new System.Windows.Forms.Label();
+            this.lbl_tblNameData = new System.Windows.Forms.Label();
+            this.lbl_tblSource = new System.Windows.Forms.Label();
+            this.lbl_tblRemark = new System.Windows.Forms.Label();
+            this.lbl_tblBasic = new System.Windows.Forms.Label();
+            this.lbl_tblSub = new System.Windows.Forms.Label();
+            this.lbl_tblAdd = new System.Windows.Forms.Label();
+            this.lbl_tblGrade = new System.Windows.Forms.Label();
+            this.lbl_tblName = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,19 +72,6 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lbl_tblRemarkData = new System.Windows.Forms.Label();
-            this.lbl_tblBasicData = new System.Windows.Forms.Label();
-            this.lbl_tblSubData = new System.Windows.Forms.Label();
-            this.lbl_tblAddData = new System.Windows.Forms.Label();
-            this.lbl_tblGradeData = new System.Windows.Forms.Label();
-            this.lbl_tblNameData = new System.Windows.Forms.Label();
-            this.lbl_tblSource = new System.Windows.Forms.Label();
-            this.lbl_tblRemark = new System.Windows.Forms.Label();
-            this.lbl_tblBasic = new System.Windows.Forms.Label();
-            this.lbl_tblSub = new System.Windows.Forms.Label();
-            this.lbl_tblAdd = new System.Windows.Forms.Label();
-            this.lbl_tblGrade = new System.Windows.Forms.Label();
-            this.lbl_tblName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -327,107 +327,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Name";
-            this.Column1.HeaderText = "评价准则内容";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "BasicRule";
-            this.Column2.HeaderText = "基础分值";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "BasicSub";
-            this.Column3.HeaderText = "扣分";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "BasicAdd";
-            this.Column4.HeaderText = "加分";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "StrCalModules";
-            this.Column5.HeaderText = "计算模型";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 150;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Grade";
-            this.Column6.HeaderText = "得分";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 60;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "TimeCycle";
-            this.Column8.HeaderText = "TimeCycle";
-            this.Column8.Name = "Column8";
-            this.Column8.Visible = false;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "IndicatorFour";
-            this.Column9.HeaderText = "IndicatorFour";
-            this.Column9.Name = "Column9";
-            this.Column9.Visible = false;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "DataSource";
-            this.Column10.HeaderText = "DataSource";
-            this.Column10.Name = "Column10";
-            this.Column10.Visible = false;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Remark";
-            this.Column11.HeaderText = "Remark";
-            this.Column11.Name = "Column11";
-            this.Column11.Visible = false;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "ParentId";
-            this.Column12.HeaderText = "ParentId";
-            this.Column12.Name = "Column12";
-            this.Column12.Visible = false;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "CalModules";
-            this.Column13.HeaderText = "CalModules";
-            this.Column13.Name = "Column13";
-            this.Column13.Visible = false;
-            // 
-            // Operate
-            // 
-            this.Operate.DataPropertyName = "Operate";
-            this.Operate.HeaderText = "附件";
-            this.Operate.Name = "Operate";
-            this.Operate.ReadOnly = true;
-            // 
             // lbl_tblRemarkData
             // 
             this.lbl_tblRemarkData.AutoSize = true;
@@ -539,6 +438,108 @@
             this.lbl_tblName.TabIndex = 0;
             this.lbl_tblName.Text = "评价准则内容：";
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.HeaderText = "评价准则内容";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BasicRule";
+            this.Column2.HeaderText = "基础分值";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "BasicSub";
+            this.Column3.HeaderText = "扣分";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "BasicAdd";
+            this.Column4.HeaderText = "加分";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "StrCalModules";
+            this.Column5.HeaderText = "StrCalModules";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            this.Column5.Width = 150;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Grade";
+            this.Column6.HeaderText = "得分";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 60;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "TimeCycle";
+            this.Column8.HeaderText = "TimeCycle";
+            this.Column8.Name = "Column8";
+            this.Column8.Visible = false;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "IndicatorFour";
+            this.Column9.HeaderText = "IndicatorFour";
+            this.Column9.Name = "Column9";
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "DataSource";
+            this.Column10.HeaderText = "DataSource";
+            this.Column10.Name = "Column10";
+            this.Column10.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Remark";
+            this.Column11.HeaderText = "Remark";
+            this.Column11.Name = "Column11";
+            this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "ParentId";
+            this.Column12.HeaderText = "ParentId";
+            this.Column12.Name = "Column12";
+            this.Column12.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "CalModules";
+            this.Column13.HeaderText = "CalModules";
+            this.Column13.Name = "Column13";
+            this.Column13.Visible = false;
+            // 
+            // Operate
+            // 
+            this.Operate.DataPropertyName = "Operate";
+            this.Operate.HeaderText = "附件";
+            this.Operate.Name = "Operate";
+            this.Operate.ReadOnly = true;
+            // 
             // EvalutationData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -583,6 +584,19 @@
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lbl_tblName;
+        private System.Windows.Forms.Label lbl_tblBasic;
+        private System.Windows.Forms.Label lbl_tblSub;
+        private System.Windows.Forms.Label lbl_tblAdd;
+        private System.Windows.Forms.Label lbl_tblGrade;
+        private System.Windows.Forms.Label lbl_tblRemark;
+        private System.Windows.Forms.Label lbl_tblSource;
+        private System.Windows.Forms.Label lbl_tblRemarkData;
+        private System.Windows.Forms.Label lbl_tblBasicData;
+        private System.Windows.Forms.Label lbl_tblSubData;
+        private System.Windows.Forms.Label lbl_tblAddData;
+        private System.Windows.Forms.Label lbl_tblGradeData;
+        private System.Windows.Forms.Label lbl_tblNameData;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -597,18 +611,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewButtonColumn Operate;
-        private System.Windows.Forms.Label lbl_tblName;
-        private System.Windows.Forms.Label lbl_tblBasic;
-        private System.Windows.Forms.Label lbl_tblSub;
-        private System.Windows.Forms.Label lbl_tblAdd;
-        private System.Windows.Forms.Label lbl_tblGrade;
-        private System.Windows.Forms.Label lbl_tblRemark;
-        private System.Windows.Forms.Label lbl_tblSource;
-        private System.Windows.Forms.Label lbl_tblRemarkData;
-        private System.Windows.Forms.Label lbl_tblBasicData;
-        private System.Windows.Forms.Label lbl_tblSubData;
-        private System.Windows.Forms.Label lbl_tblAddData;
-        private System.Windows.Forms.Label lbl_tblGradeData;
-        private System.Windows.Forms.Label lbl_tblNameData;
     }
 }
