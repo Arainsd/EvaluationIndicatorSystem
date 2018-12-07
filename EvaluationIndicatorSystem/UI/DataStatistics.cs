@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace EvaluationIndicatorSystem
 {
@@ -19,7 +20,6 @@ namespace EvaluationIndicatorSystem
         List<string> users = null;
         List<TimeCycleModule> timeModules = null;
         Dictionary<int, BasicDataModule> basicModules = null;
-        Dictionary<int, EvalutationDataModule> evalutationModules = null;
 
         /// <summary>
         /// initialize
@@ -30,7 +30,6 @@ namespace EvaluationIndicatorSystem
             users = new List<string>();
             timeModules = new List<TimeCycleModule>();
             basicModules = new Dictionary<int, BasicDataModule>();
-            evalutationModules = new Dictionary<int, EvalutationDataModule>();
             InitChartLegend();
         }        
 
@@ -50,13 +49,10 @@ namespace EvaluationIndicatorSystem
             combo_three.Text = string.Empty;
             //dataGridView1.DataSource = new List<EvalutationDataModule>();
             basicModules.Clear();
-            evalutationModules?.Clear();
             
             timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);           
-            if (timeModules.Count == 0) return;
-            
+            if (timeModules.Count == 0) return;            
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
-
             foreach (var item in timeModules)
             {
                 combo_timeCycle.Items.Add(item.Name);
@@ -64,6 +60,7 @@ namespace EvaluationIndicatorSystem
             combo_timeCycle.SelectedIndex = 0;
         }
 
+        int currentTimeCycleId = -1;
         /// <summary>
         /// 评价周期改变事件
         /// </summary>
@@ -79,10 +76,10 @@ namespace EvaluationIndicatorSystem
             this.combo_three.Items.Clear();
             combo_three.Text = string.Empty;
             //dataGridView1.DataSource = new List<EvalutationDataModule>();
-            evalutationModules?.Clear();
 
             TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
             lbl_timePeriods.Text = currentTime.StartTime.ToString("yyyy-MM-dd") + " / " + currentTime.EndTime.ToString("yyyy-MM-dd");
+            currentTimeCycleId = currentTime.ID;
             DataRefresh(currentTime.ID);
         }
 
@@ -92,7 +89,6 @@ namespace EvaluationIndicatorSystem
         private void DataRefresh(int id)
         {
             if (basicModules.Count == 0) return;
-            evalutationModules = ((List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, id)).ToDictionary(key => key.ID, data => data);
             foreach (var item in basicModules)
             {
                 if (item.Value.Level == 1)
@@ -148,29 +144,38 @@ namespace EvaluationIndicatorSystem
             //dataGridView1.DataSource = new List<EvalutationDataModule>();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            var data = evalutationModules.Where(p => p.Value.ParentId == id).ToArray();
-            if (data != null && data.Length > 0)
-            {
-                List<EvalutationDataModule> currentTableData = new List<EvalutationDataModule>();
-                foreach (var item in data)
-                {
-                    currentTableData.Add(item.Value);
-                }
+            //List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, TimeCycleState.Commit, currentTimeCycleId);
                 //dataGridView1.DataSource = currentTableData;
                 //dataGridView1.Refresh();
-            }            
         }
 
         private void InitChartLegend()
         {
             foreach (var item in users)
             {
-                System.Windows.Forms.DataVisualization.Charting.Series series_user = new System.Windows.Forms.DataVisualization.Charting.Series();
+                Series series_user = new Series();
                 series_user.ChartArea = "ChartArea1";
                 series_user.Legend = "Legend_user";
                 series_user.Name = item;
+                series_user.XValueType = ChartValueType.String;//设置X轴类型为字符串
+                series_user.ChartType = SeriesChartType.Column;  //设置Y轴为柱状图
                 this.chart1.Series.Add(series_user);
             }            
+        }
+
+        private void ChartRefresh()
+        {
+            //for (int i = 1; i <= 5; i++)
+            //{
+            //    CustomLabel label = new CustomLabel();
+            //    label.Text = "指标" + i;
+            //    label.ToPosition = 2D * i;
+            //    chart1.ChartAreas[0].AxisX.CustomLabels.Add(label);
+            //}
+
+            //Series dataTable3Series = new Series("dataTable3");
+            //dataTable3Series.Points.DataBind((new int[] { 1, 2, 3, 4, 5 }).AsEnumerable(), "", "", "");
+            //chart1.Series.Add(dataTable3Series);
         }
     }//end of class
 }

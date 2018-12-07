@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -54,7 +54,7 @@
             // 
             this.combo_three.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_three.FormattingEnabled = true;
-            this.combo_three.Location = new System.Drawing.Point(535, 74);
+            this.combo_three.Location = new System.Drawing.Point(530, 74);
             this.combo_three.Name = "combo_three";
             this.combo_three.Size = new System.Drawing.Size(200, 31);
             this.combo_three.TabIndex = 4;
@@ -64,7 +64,7 @@
             // 
             this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(310, 74);
+            this.combo_two.Location = new System.Drawing.Point(305, 74);
             this.combo_two.Name = "combo_two";
             this.combo_two.Size = new System.Drawing.Size(200, 31);
             this.combo_two.TabIndex = 3;
@@ -119,7 +119,7 @@
             // 
             this.combo_timeCycle.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_timeCycle.FormattingEnabled = true;
-            this.combo_timeCycle.Location = new System.Drawing.Point(87, 19);
+            this.combo_timeCycle.Location = new System.Drawing.Point(85, 19);
             this.combo_timeCycle.Name = "combo_timeCycle";
             this.combo_timeCycle.Size = new System.Drawing.Size(200, 31);
             this.combo_timeCycle.TabIndex = 5;
@@ -139,7 +139,7 @@
             // 
             this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_one.FormattingEnabled = true;
-            this.combo_one.Location = new System.Drawing.Point(87, 74);
+            this.combo_one.Location = new System.Drawing.Point(85, 74);
             this.combo_one.Name = "combo_one";
             this.combo_one.Size = new System.Drawing.Size(200, 31);
             this.combo_one.TabIndex = 2;
@@ -180,11 +180,11 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend_user";
-            this.chart1.Legends.Add(legend1);
+            legend5.Name = "Legend_user";
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(10, 130);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(940, 439);
