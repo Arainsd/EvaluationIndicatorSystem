@@ -40,18 +40,22 @@ namespace EvaluationIndicatorSystem
         {
             combo_timeCycle.Items.Clear();
             combo_timeCycle.Text = string.Empty;
-            this.lbl_timePeriods.Text = string.Empty;
-            this.combo_one.Items.Clear();
-            combo_one.Text = string.Empty;
-            this.combo_two.Items.Clear();
-            combo_two.Text = string.Empty;
-            this.combo_three.Items.Clear();
-            combo_three.Text = string.Empty;
-            //dataGridView1.DataSource = new List<EvalutationDataModule>();
-            basicModules.Clear();
+            this.lbl_timePeriods.Text = string.Empty;            
             
-            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);           
-            if (timeModules.Count == 0) return;            
+            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
+            if (timeModules.Count == 0)
+            {
+                this.combo_one.Items.Clear();
+                combo_one.Text = string.Empty;
+                this.combo_two.Items.Clear();
+                combo_two.Text = string.Empty;
+                this.combo_three.Items.Clear();
+                combo_three.Text = string.Empty;
+                //dataGridView1.DataSource = new List<EvalutationDataModule>();
+                basicModules.Clear();
+                return;
+            }
+
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
             foreach (var item in timeModules)
             {
@@ -68,14 +72,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_timeCycle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.lbl_timePeriods.Text = string.Empty;
-            this.combo_one.Items.Clear();
-            combo_one.Text = string.Empty;
-            this.combo_two.Items.Clear();
-            combo_two.Text = string.Empty;
-            this.combo_three.Items.Clear();
-            combo_three.Text = string.Empty;
-            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            this.lbl_timePeriods.Text = string.Empty;           
 
             TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
             lbl_timePeriods.Text = currentTime.StartTime.ToString("yyyy-MM-dd") + " / " + currentTime.EndTime.ToString("yyyy-MM-dd");
@@ -88,7 +85,18 @@ namespace EvaluationIndicatorSystem
         /// </summary>
         private void DataRefresh(int id)
         {
-            if (basicModules.Count == 0) return;
+            this.combo_one.Items.Clear();
+            combo_one.Text = string.Empty;
+
+            if (basicModules.Count == 0)
+            {                
+                this.combo_two.Items.Clear();
+                combo_two.Text = string.Empty;
+                this.combo_three.Items.Clear();
+                combo_three.Text = string.Empty;
+                //dataGridView1.DataSource = new List<EvalutationDataModule>();
+                return;
+            }
             foreach (var item in basicModules)
             {
                 if (item.Value.Level == 1)
@@ -111,11 +119,15 @@ namespace EvaluationIndicatorSystem
         {
             combo_two.Items.Clear();
             combo_two.Text = string.Empty;
-            combo_three.Items.Clear();
-            combo_three.Text = string.Empty;
-            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
-            if (id == -1) return;
+            if (id == -1)
+            {
+                combo_three.Items.Clear();
+                combo_three.Text = string.Empty;
+                //dataGridView1.DataSource = new List<EvalutationDataModule>();
+                return;
+            }
             dataHelper.SetComboItem(basicModules, combo_two, id);
         }
 
