@@ -60,6 +60,7 @@
             // 
             this.listBox_dataSource.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.listBox_dataSource.FormattingEnabled = true;
+            this.listBox_dataSource.HorizontalScrollbar = true;
             this.listBox_dataSource.ItemHeight = 23;
             this.listBox_dataSource.Location = new System.Drawing.Point(110, 125);
             this.listBox_dataSource.Name = "listBox_dataSource";
