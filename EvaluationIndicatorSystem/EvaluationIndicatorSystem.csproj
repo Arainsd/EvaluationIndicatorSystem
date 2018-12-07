@@ -101,12 +101,6 @@
     <Compile Include="Tool\ExcelHelper.cs" />
     <Compile Include="Tool\JsonHelper.cs" />
     <Compile Include="Tool\SqliteHelper.cs" />
-    <Compile Include="UI\DataStatistics.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\DataStatistics.Designer.cs">
-      <DependentUpon>DataStatistics.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\BasicIndicatorOne.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -154,6 +148,12 @@
     </Compile>
     <Compile Include="UI\ChangeIndicatorOne.Designer.cs">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DataStatistics.Designer.cs">
+      <DependentUpon>DataStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\HistoryEvalutation.cs">
       <SubType>UserControl</SubType>
@@ -228,9 +228,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\DataStatistics.resx">
-      <DependentUpon>DataStatistics.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\BasicIndicatorOne.resx">
       <DependentUpon>BasicIndicatorOne.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangeIndicatorOne.resx">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataStatistics.resx">
+      <DependentUpon>DataStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\HistoryEvalutation.resx">
       <DependentUpon>HistoryEvalutation.cs</DependentUpon>

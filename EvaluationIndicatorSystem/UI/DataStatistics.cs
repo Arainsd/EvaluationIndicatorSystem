@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EvaluationIndicatorSystem
 {
@@ -12,45 +15,94 @@ namespace EvaluationIndicatorSystem
             Init();
         }
 
-        Dictionary<int, BasicDataModule> modules = null;
-        List<BasicFourModule> fourModules = null;
         DataHelper dataHelper = null;
-        string[] calModule = { "开关型", "单一比较型", "多重比较型", "分段计数型", "单一比例比较型" };
+        List<string> users = null;
+        List<TimeCycleModule> timeModules = null;
+        Dictionary<int, BasicDataModule> basicModules = null;
+        Dictionary<int, EvalutationDataModule> evalutationModules = null;
 
+        /// <summary>
+        /// initialize
+        /// </summary>
         private void Init()
         {
             dataHelper = new DataHelper();
-            modules = new Dictionary<int, BasicDataModule>();
-            fourModules = new List<BasicFourModule>();
-            DataRefresh();
+            users = new List<string>();
+            timeModules = new List<TimeCycleModule>();
+            basicModules = new Dictionary<int, BasicDataModule>();
+            evalutationModules = new Dictionary<int, EvalutationDataModule>();
+            InitChartLegend();
+        }        
+
+        /// <summary>
+        /// 刷新评价周期
+        /// </summary>
+        public void TimeCycleRefresh()
+        {
+            combo_timeCycle.Items.Clear();
+            combo_timeCycle.Text = string.Empty;
+            this.lbl_timePeriods.Text = string.Empty;
+            this.combo_one.Items.Clear();
+            combo_one.Text = string.Empty;
+            this.combo_two.Items.Clear();
+            combo_two.Text = string.Empty;
+            this.combo_three.Items.Clear();
+            combo_three.Text = string.Empty;
+            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            basicModules.Clear();
+            evalutationModules?.Clear();
+            
+            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);           
+            if (timeModules.Count == 0) return;
+            
+            basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
+
+            foreach (var item in timeModules)
+            {
+                combo_timeCycle.Items.Add(item.Name);
+            }
+            combo_timeCycle.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// 评价周期改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void combo_timeCycle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.lbl_timePeriods.Text = string.Empty;
+            this.combo_one.Items.Clear();
+            combo_one.Text = string.Empty;
+            this.combo_two.Items.Clear();
+            combo_two.Text = string.Empty;
+            this.combo_three.Items.Clear();
+            combo_three.Text = string.Empty;
+            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            evalutationModules?.Clear();
+
+            TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
+            lbl_timePeriods.Text = currentTime.StartTime.ToString("yyyy-MM-dd") + " / " + currentTime.EndTime.ToString("yyyy-MM-dd");
+            DataRefresh(currentTime.ID);
         }
 
         /// <summary>
         /// 刷新数据
         /// </summary>
-        public void DataRefresh()
+        private void DataRefresh(int id)
         {
-            modules.Clear();
-            combo_one.Items.Clear();
-            combo_two.Items.Clear();
-            combo_three.Items.Clear();
-            //dataGridView1.DataSource = new List<BasicFourModule>();
-            fourModules = (List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour);
-            List<BasicDataModule> obj = (List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData);
-            if (obj != null && obj.Count > 0)
+            if (basicModules.Count == 0) return;
+            evalutationModules = ((List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, id)).ToDictionary(key => key.ID, data => data);
+            foreach (var item in basicModules)
             {
-                foreach (var item in obj)
-                {                         
-                    modules.Add(item.ID, item);
-                    if (item.Level == 1)
-                    {
-                        combo_one.Items.Add(item.Name);
-                    }
-                }
-                if(combo_one.Items.Count > 0)
+                if (item.Value.Level == 1)
                 {
-                    combo_one.SelectedIndex = 0;
+                    combo_one.Items.Add(item.Value.Name);
                 }
+            }
+            if (combo_one.Items.Count > 0)
+            {
+                combo_one.SelectedIndex = 0;
             }
         }
 
@@ -65,11 +117,10 @@ namespace EvaluationIndicatorSystem
             combo_two.Text = string.Empty;
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            //dataGridView1.DataSource = new List<BasicFourModule>();
-            int id = -1;
-            id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
+            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            dataHelper.SetComboItem(modules, combo_two, id);
+            dataHelper.SetComboItem(basicModules, combo_two, id);
         }
 
         /// <summary>
@@ -81,11 +132,10 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            //dataGridView1.DataSource = new List<BasicFourModule>();
-            int id = -1;
-            id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
+            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            dataHelper.SetComboItem(modules, combo_three, id);
+            dataHelper.SetComboItem(basicModules, combo_three, id);
         }
 
         /// <summary>
@@ -95,21 +145,32 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //dataGridView1.DataSource = new List<BasicFourModule>();
-            int id = -1;
-            id = dataHelper.GetCurrentId(modules, ((ComboBox)sender).SelectedItem.ToString());
+            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            List<BasicFourModule> currentModule = new List<BasicFourModule>();
-            for(int i  = 0;i < fourModules.Count;i ++)
+            var data = evalutationModules.Where(p => p.Value.ParentId == id).ToArray();
+            if (data != null && data.Length > 0)
             {
-                if (fourModules[i].ParentId == id)
+                List<EvalutationDataModule> currentTableData = new List<EvalutationDataModule>();
+                foreach (var item in data)
                 {
-                    currentModule.Add(fourModules[i]);
+                    currentTableData.Add(item.Value);
                 }
-            }
-            //dataGridView1.DataSource = currentModule;
-            //dataGridView1.Refresh();
+                //dataGridView1.DataSource = currentTableData;
+                //dataGridView1.Refresh();
+            }            
+        }
+
+        private void InitChartLegend()
+        {
+            foreach (var item in users)
+            {
+                System.Windows.Forms.DataVisualization.Charting.Series series_user = new System.Windows.Forms.DataVisualization.Charting.Series();
+                series_user.ChartArea = "ChartArea1";
+                series_user.Legend = "Legend_user";
+                series_user.Name = item;
+                this.chart1.Series.Add(series_user);
+            }            
         }
     }//end of class
 }
-

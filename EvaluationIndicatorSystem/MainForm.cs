@@ -142,7 +142,7 @@ namespace EvaluationIndicatorSystem
                     historyEvalutation.UserRefresh();
                     break;
                 case TabName.DataStatistics:
-                    dataStatistics.DataRefresh();
+                    dataStatistics.TimeCycleRefresh();
                     break;
             }
         }
