@@ -162,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(494, 287);
+            this.ClientSize = new System.Drawing.Size(494, 286);
             this.Controls.Add(this.lbl_pw_msg2);
             this.Controls.Add(this.lbl_pw_msg);
             this.Controls.Add(this.lbl_name_msg);

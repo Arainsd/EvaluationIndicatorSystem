@@ -66,7 +66,7 @@
             this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
             this.txt_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_name.Size = new System.Drawing.Size(220, 60);
+            this.txt_name.Size = new System.Drawing.Size(420, 60);
             this.txt_name.TabIndex = 3;
             // 
             // txt_grade
@@ -75,7 +75,7 @@
             this.txt_grade.Location = new System.Drawing.Point(145, 131);
             this.txt_grade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_grade.Name = "txt_grade";
-            this.txt_grade.Size = new System.Drawing.Size(220, 30);
+            this.txt_grade.Size = new System.Drawing.Size(420, 30);
             this.txt_grade.TabIndex = 4;
             // 
             // btn_cancel
@@ -85,7 +85,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(285, 197);
+            this.btn_cancel.Location = new System.Drawing.Point(485, 197);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -131,7 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(419, 262);
+            this.ClientSize = new System.Drawing.Size(634, 261);
             this.Controls.Add(this.lbl_grade_msg);
             this.Controls.Add(this.lbl_name_msg);
             this.Controls.Add(this.btn_cancel);

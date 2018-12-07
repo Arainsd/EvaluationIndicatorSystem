@@ -68,7 +68,7 @@
             this.txt_name.Multiline = true;
             this.txt_name.Name = "txt_name";
             this.txt_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_name.Size = new System.Drawing.Size(220, 60);
+            this.txt_name.Size = new System.Drawing.Size(420, 60);
             this.txt_name.TabIndex = 3;
             // 
             // txt_grade
@@ -77,7 +77,7 @@
             this.txt_grade.Location = new System.Drawing.Point(145, 179);
             this.txt_grade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_grade.Name = "txt_grade";
-            this.txt_grade.Size = new System.Drawing.Size(220, 30);
+            this.txt_grade.Size = new System.Drawing.Size(420, 30);
             this.txt_grade.TabIndex = 4;
             // 
             // btn_cancel
@@ -87,7 +87,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(285, 245);
+            this.btn_cancel.Location = new System.Drawing.Point(485, 245);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -143,7 +143,7 @@
             this.comb_one.FormattingEnabled = true;
             this.comb_one.Location = new System.Drawing.Point(145, 29);
             this.comb_one.Name = "comb_one";
-            this.comb_one.Size = new System.Drawing.Size(220, 31);
+            this.comb_one.Size = new System.Drawing.Size(420, 31);
             this.comb_one.TabIndex = 18;
             // 
             // ChangeIndicatorTwo
@@ -151,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(419, 302);
+            this.ClientSize = new System.Drawing.Size(634, 301);
             this.Controls.Add(this.comb_one);
             this.Controls.Add(this.lbl_one);
             this.Controls.Add(this.lbl_grade_msg);

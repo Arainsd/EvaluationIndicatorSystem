@@ -45,7 +45,7 @@
             this.txt_name.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.txt_name.Location = new System.Drawing.Point(140, 34);
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(300, 30);
+            this.txt_name.Size = new System.Drawing.Size(450, 30);
             this.txt_name.TabIndex = 0;
             // 
             // lbl_name
@@ -64,7 +64,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(360, 245);
+            this.btn_cancel.Location = new System.Drawing.Point(510, 240);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -78,7 +78,7 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(45, 245);
+            this.btn_ok.Location = new System.Drawing.Point(45, 240);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
@@ -122,7 +122,7 @@
             this.dtp_startTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_startTime.Location = new System.Drawing.Point(140, 100);
             this.dtp_startTime.Name = "dtp_startTime";
-            this.dtp_startTime.Size = new System.Drawing.Size(300, 30);
+            this.dtp_startTime.Size = new System.Drawing.Size(450, 30);
             this.dtp_startTime.TabIndex = 18;
             // 
             // dtp_endTime
@@ -132,7 +132,7 @@
             this.dtp_endTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_endTime.Location = new System.Drawing.Point(140, 161);
             this.dtp_endTime.Name = "dtp_endTime";
-            this.dtp_endTime.Size = new System.Drawing.Size(300, 30);
+            this.dtp_endTime.Size = new System.Drawing.Size(450, 30);
             this.dtp_endTime.TabIndex = 19;
             // 
             // lbl_time_msg
@@ -149,7 +149,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(520, 316);
+            this.ClientSize = new System.Drawing.Size(634, 311);
             this.Controls.Add(this.lbl_time_msg);
             this.Controls.Add(this.dtp_endTime);
             this.Controls.Add(this.dtp_startTime);

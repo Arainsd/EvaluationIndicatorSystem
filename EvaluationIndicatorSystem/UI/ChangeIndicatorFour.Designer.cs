@@ -201,7 +201,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(634, 552);
+            this.ClientSize = new System.Drawing.Size(634, 551);
             this.Controls.Add(this.clb_calModule);
             this.Controls.Add(this.lbl_calModule_msg);
             this.Controls.Add(this.lbl_calModule);

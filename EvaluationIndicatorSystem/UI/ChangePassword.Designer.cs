@@ -185,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(494, 322);
+            this.ClientSize = new System.Drawing.Size(494, 326);
             this.Controls.Add(this.lbl_prePassword_msg);
             this.Controls.Add(this.txt_prePassword);
             this.Controls.Add(this.lbl_prePassword);
