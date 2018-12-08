@@ -126,7 +126,7 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.TimeCycle:
                     TimeCycleModule timeData = (TimeCycleModule)data;
-                    if (CheckTimeData(tableName.ToString(), timeData.Name, timeData.UserName, -1))
+                    if (CheckTimeData(tableName.ToString(), timeData, -1))
                     {
                         msg = "评价周期已存在";
                     }
@@ -233,7 +233,7 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.TimeCycle:
                     TimeCycleModule timeData = (TimeCycleModule)data;
-                    if (CheckTimeData(tableName.ToString(), timeData.Name, timeData.UserName, id))
+                    if (CheckTimeData(tableName.ToString(), timeData, id))
                     {
                         msg = "评价周期已存在";
                     }
@@ -363,9 +363,9 @@ namespace EvaluationIndicatorSystem
         /// <param name="tableName">table name</param>
         /// <param name="colData">column check data</param>
         /// <returns>true:exist, false:not exist</returns>
-        private static bool CheckTimeData(string tableName, string colData, string userName, int id)
+        private static bool CheckTimeData(string tableName, TimeCycleModule data, int id)
         {           
-            cmd.CommandText = $"SELECT count(*) FROM '{tableName}' WHERE name = '{colData}' AND user_name='{userName}'";
+            cmd.CommandText = $"SELECT count(*) FROM '{tableName}' WHERE name='{data.Name}' AND start_time='{data.StartTime}' AND end_time='{data.EndTime}' AND user_name='{data.UserName}'";
             if (id != -1)
             {
                 cmd.CommandText += $" AND id!={id}";
@@ -497,11 +497,16 @@ namespace EvaluationIndicatorSystem
                             return timeModules.OrderByDescending(p => p.StartTime).ToList();
                         }
                     case TableName.EvalutationData:
-                        cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
-                        if (para.Length == 2)
+                        if ((int)para[0] == -1)
                         {
-                            cmd.CommandText += $" AND b.parent_id={(int)para[1]}";
+                            TimeCycleModule timeCycle = (TimeCycleModule)para[2];
+                            cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE b.parent_id={(int)para[1]} AND a.time_cycle in (SELECT id FROM TimeCycle WHERE name='{timeCycle.Name}' AND start_time='{timeCycle.StartTime}' AND end_time='{timeCycle.EndTime}' AND state=1)";
                         }
+                        else
+                        {
+                            cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
+                        }
+                                                
                         using (SQLiteDataReader evalutationReader = cmd.ExecuteReader())//reader is active exception
                         {                            
                             List<EvalutationDataModule> evalutationModules = new List<EvalutationDataModule>();

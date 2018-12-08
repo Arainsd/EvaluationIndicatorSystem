@@ -64,7 +64,7 @@ namespace EvaluationIndicatorSystem
             combo_timeCycle.SelectedIndex = 0;
         }
 
-        int currentTimeCycleId = -1;
+        TimeCycleModule currentTime = null;
         /// <summary>
         /// 评价周期改变事件
         /// </summary>
@@ -74,16 +74,15 @@ namespace EvaluationIndicatorSystem
         {
             this.lbl_timePeriods.Text = string.Empty;           
 
-            TimeCycleModule currentTime = timeModules[((ComboBox)sender).SelectedIndex];
+            currentTime = timeModules[((ComboBox)sender).SelectedIndex];
             lbl_timePeriods.Text = currentTime.StartTime.ToString("yyyy-MM-dd") + " / " + currentTime.EndTime.ToString("yyyy-MM-dd");
-            currentTimeCycleId = currentTime.ID;
-            DataRefresh(currentTime.ID);
+            DataRefresh();
         }
 
         /// <summary>
         /// 刷新数据
         /// </summary>
-        private void DataRefresh(int id)
+        private void DataRefresh()
         {
             this.combo_one.Items.Clear();
             combo_one.Text = string.Empty;
@@ -156,9 +155,9 @@ namespace EvaluationIndicatorSystem
             //dataGridView1.DataSource = new List<EvalutationDataModule>();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
-            List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, currentTimeCycleId, id);
+            List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, -1, id, currentTime);
             if (evalutationDatas == null || evalutationDatas.Count == 0) return;
-            //ChartRefresh(evalutationDatas);
+            ChartRefresh(evalutationDatas);
             //dataGridView1.DataSource = currentTableData;
             //dataGridView1.Refresh();
         }
@@ -179,20 +178,13 @@ namespace EvaluationIndicatorSystem
 
         private void ChartRefresh(List<EvalutationDataModule> data)
         {
-            //foreach (var item in data)
-            //{
-            //    CustomLabel label = new CustomLabel();
-            //    label.Text = item.Name;
-            //    label.po
-            //}
-            //for (int i = 1; i <= 5; i++)
-            //{
-            //    CustomLabel label = new CustomLabel();
-            //    label.Text = "指标" + i;
-            //    label.ToPosition = 2D * i;
-            //    chart1.ChartAreas[0].AxisX.CustomLabels.Add(label);
-            //}
-
+            for (int i = 0; i < data.Count; i++)
+            {
+                CustomLabel label = new CustomLabel();
+                label.Text = data[i].Name;
+                label.ToPosition = 2D * (i + 1);
+                chart1.ChartAreas[0].AxisX.CustomLabels.Add(label);
+            }            
             //Series dataTable3Series = new Series("dataTable3");
             //dataTable3Series.Points.DataBind((new int[] { 1, 2, 3, 4, 5 }).AsEnumerable(), "", "", "");
             //chart1.Series.Add(dataTable3Series);
