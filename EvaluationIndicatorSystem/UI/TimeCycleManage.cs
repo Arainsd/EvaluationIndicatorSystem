@@ -52,7 +52,7 @@ namespace EvaluationIndicatorSystem
                         MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    List<TimeCycleModule> timeModule = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, TimeCycleState.Local, module.Name);
+                    List<TimeCycleModule> timeModule = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, TimeCycleState.Local, module.Name, currentUser.UserName);
                     if (timeModule.Count > 0)
                     {
                         InitEvalutationData(timeModule[0].ID);

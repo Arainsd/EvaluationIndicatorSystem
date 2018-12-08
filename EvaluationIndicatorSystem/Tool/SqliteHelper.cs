@@ -126,7 +126,7 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.TimeCycle:
                     TimeCycleModule timeData = (TimeCycleModule)data;
-                    if (CheckTimeData(tableName.ToString(), timeData.Name, timeData.UserName))
+                    if (CheckTimeData(tableName.ToString(), timeData.Name, timeData.UserName, -1))
                     {
                         msg = "评价周期已存在";
                     }
@@ -233,7 +233,7 @@ namespace EvaluationIndicatorSystem
                     break;
                 case TableName.TimeCycle:
                     TimeCycleModule timeData = (TimeCycleModule)data;
-                    if (CheckRowDataUpdate(tableName.ToString(), timeData.Name, id))
+                    if (CheckTimeData(tableName.ToString(), timeData.Name, timeData.UserName, id))
                     {
                         msg = "评价周期已存在";
                     }
@@ -363,9 +363,13 @@ namespace EvaluationIndicatorSystem
         /// <param name="tableName">table name</param>
         /// <param name="colData">column check data</param>
         /// <returns>true:exist, false:not exist</returns>
-        private static bool CheckTimeData(string tableName, string colData, string userName)
-        {
+        private static bool CheckTimeData(string tableName, string colData, string userName, int id)
+        {           
             cmd.CommandText = $"SELECT count(*) FROM '{tableName}' WHERE name = '{colData}' AND user_name='{userName}'";
+            if (id != -1)
+            {
+                cmd.CommandText += $" AND id!={id}";
+            }
             if (Convert.ToInt32(cmd.ExecuteScalar()) > 0)
             {
                 return true;

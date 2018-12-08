@@ -351,7 +351,7 @@ namespace EvaluationIndicatorSystem
                 }
                 else
                 {
-                    MessageBox.Show("周期提交失败", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
