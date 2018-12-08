@@ -78,7 +78,7 @@ namespace EvaluationIndicatorSystem
                         cmd.CommandText = $"INSERT INTO '{tableName.ToString()}' VALUES('{user.UserName}', '{user.PassWord}')";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            msg = "数据写入失败";
+                            msg = "注册失败";
                         }
                     }
                     break;
