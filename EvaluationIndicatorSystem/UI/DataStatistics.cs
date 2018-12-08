@@ -42,7 +42,7 @@ namespace EvaluationIndicatorSystem
             combo_timeCycle.Text = string.Empty;
             this.lbl_timePeriods.Text = string.Empty;            
             
-            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
+            timeModules = (List<TimeCycleModule>)SqliteHelper.SelectTimeCycle();
             if (timeModules.Count == 0)
             {
                 this.combo_one.Items.Clear();

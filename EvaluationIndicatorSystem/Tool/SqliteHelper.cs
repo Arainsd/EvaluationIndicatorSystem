@@ -546,6 +546,38 @@ namespace EvaluationIndicatorSystem
             return null;
         }
 
+        public static object SelectTimeCycle()
+        {
+            try
+            {
+                cmd.CommandText = $"SELECT * FROM TimeCycle WHERE state=1 GROUP BY  name, start_time, end_time";
+                using (SQLiteDataReader timeReader = cmd.ExecuteReader())
+                {
+                    List<TimeCycleModule> timeModules = new List<TimeCycleModule>();
+                    while (timeReader.Read())
+                    {
+                        TimeCycleModule timeModule = new TimeCycleModule();
+                        timeModule.ID = int.Parse(timeReader["id"].ToString());
+                        timeModule.Name = timeReader["name"].ToString();
+                        timeModule.StartTime = DateTime.Parse(timeReader["start_time"].ToString());
+                        timeModule.EndTime = DateTime.Parse(timeReader["end_time"].ToString());
+                        timeModule.CreateTime = DateTime.Parse(timeReader["create_time"].ToString());
+                        timeModule.LatestCommitTime = DateTime.Parse(timeReader["latest_commit_time"].ToString());
+                        timeModule.State = int.Parse(timeReader["state"].ToString());
+                        timeModule.UserName = timeReader["user_name"].ToString();
+                        timeModules.Add(timeModule);
+                    }
+                    timeReader.Close();
+                    return timeModules.OrderByDescending(p => p.StartTime).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return null;
+        }
+
         private static string GetCalModuleStr(CalModule[] data)
         {
             string str = string.Empty;
