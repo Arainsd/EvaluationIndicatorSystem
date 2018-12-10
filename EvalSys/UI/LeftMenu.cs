@@ -12,13 +12,15 @@ namespace EvalSys
         }
         
         Color hoverColor = Color.FromArgb(63, 81, 112);
-        Color defaultColor = Color.FromArgb(51, 66, 91); 
+        Color defaultColor = Color.FromArgb(51, 66, 91);
         //用户名
         public string LblUserName { get => lbl_name.Text; set => lbl_name.Text = value; }
 
         private void LeftMenu_Load(object sender, EventArgs e)
         {            
             AddMenuEvent();
+            panel_basic_one.BackColor = hoverColor;
+            prePanel = panel_basic_one;
         }
 
         /// <summary>
@@ -109,25 +111,29 @@ namespace EvalSys
 
         void Label_MouseHover(object sender, EventArgs e)
         {
-            Label label = (Label)sender;            
+            Label label = (Label)sender;
+            if (prePanel == (Panel)label.Parent) return;
             label.Parent.BackColor = hoverColor;          
         }
 
         void Label_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
+            if (prePanel == (Panel)label.Parent) return;
             label.Parent.BackColor = defaultColor;
         }
 
         void Panel_MouseHover(object sender, EventArgs e)
         {
             Panel panel = (Panel)sender;
+            if (prePanel == panel) return;
             panel.BackColor = hoverColor;           
         }
 
         void Panel_MouseLeave(object sender, EventArgs e)
         {
             Panel panel = (Panel)sender;
+            if (prePanel == panel) return;
             panel.BackColor = defaultColor;            
         }
 
@@ -144,15 +150,28 @@ namespace EvalSys
             }
         }
 
+        Panel prePanel = null;
         void Label_Click(object sender, EventArgs e)
-        {
+        {            
             Label label = (Label)sender;
+            if (prePanel != null)
+            {
+                prePanel.BackColor = defaultColor;
+            }
+            prePanel = (Panel)label.Parent;
+            prePanel.BackColor = hoverColor;
             MenuClickEvent((Panel)label.Parent, e);
         }
 
         void Panel_Click(object sender, EventArgs e)
         {
             Panel panel = (Panel)sender;
+            if (prePanel != null)
+            {
+                prePanel.BackColor = defaultColor;
+            }
+            prePanel = panel;
+            prePanel.BackColor = hoverColor;
             MenuClickEvent(panel, e);
         }
 
