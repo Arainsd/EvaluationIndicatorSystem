@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -88,6 +88,7 @@
             // 
             // combo_three
             // 
+            this.combo_three.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_three.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_three.FormattingEnabled = true;
             this.combo_three.Location = new System.Drawing.Point(525, 74);
@@ -98,6 +99,7 @@
             // 
             // combo_two
             // 
+            this.combo_two.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
             this.combo_two.Location = new System.Drawing.Point(305, 74);
@@ -155,6 +157,7 @@
             // 
             // combo_user
             // 
+            this.combo_user.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_user.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_user.FormattingEnabled = true;
             this.combo_user.Location = new System.Drawing.Point(85, 19);
@@ -223,6 +226,7 @@
             // 
             // combo_timeCycle
             // 
+            this.combo_timeCycle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_timeCycle.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_timeCycle.FormattingEnabled = true;
             this.combo_timeCycle.Location = new System.Drawing.Point(387, 19);
@@ -243,6 +247,7 @@
             // 
             // combo_one
             // 
+            this.combo_one.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_one.FormattingEnabled = true;
             this.combo_one.Location = new System.Drawing.Point(85, 74);
@@ -334,14 +339,14 @@
             this.Column12,
             this.Column13,
             this.Operate});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;

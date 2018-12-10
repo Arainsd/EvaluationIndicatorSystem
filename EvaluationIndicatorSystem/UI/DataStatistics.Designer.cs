@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,6 +52,7 @@
             // 
             // combo_three
             // 
+            this.combo_three.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_three.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_three.FormattingEnabled = true;
             this.combo_three.Location = new System.Drawing.Point(530, 74);
@@ -62,6 +63,7 @@
             // 
             // combo_two
             // 
+            this.combo_two.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
             this.combo_two.Location = new System.Drawing.Point(305, 74);
@@ -117,6 +119,7 @@
             // 
             // combo_timeCycle
             // 
+            this.combo_timeCycle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_timeCycle.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_timeCycle.FormattingEnabled = true;
             this.combo_timeCycle.Location = new System.Drawing.Point(85, 19);
@@ -137,6 +140,7 @@
             // 
             // combo_one
             // 
+            this.combo_one.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_one.FormattingEnabled = true;
             this.combo_one.Location = new System.Drawing.Point(85, 74);
@@ -180,11 +184,11 @@
             // 
             // chart1
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend_user";
-            this.chart1.Legends.Add(legend5);
+            legend1.Name = "Legend_user";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(10, 130);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(940, 439);

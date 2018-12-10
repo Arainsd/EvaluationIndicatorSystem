@@ -104,6 +104,7 @@
             // 
             // combo_two
             // 
+            this.combo_two.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_two.FormattingEnabled = true;
             this.combo_two.Location = new System.Drawing.Point(270, 14);
@@ -114,6 +115,7 @@
             // 
             // combo_one
             // 
+            this.combo_one.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.combo_one.FormattingEnabled = true;
             this.combo_one.Location = new System.Drawing.Point(20, 14);

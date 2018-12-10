@@ -139,6 +139,7 @@
             // 
             // comb_one
             // 
+            this.comb_one.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comb_one.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.comb_one.FormattingEnabled = true;
             this.comb_one.Location = new System.Drawing.Point(145, 29);
