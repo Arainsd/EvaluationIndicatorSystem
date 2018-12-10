@@ -32,6 +32,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbl_title = new System.Windows.Forms.Label();
             this.panel_table = new System.Windows.Forms.Panel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +45,16 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_tblBasicData = new System.Windows.Forms.Label();
+            this.lbl_tblSubData = new System.Windows.Forms.Label();
+            this.lbl_tblAddData = new System.Windows.Forms.Label();
+            this.lbl_tblCalModuleData = new System.Windows.Forms.Label();
+            this.lbl_tblNameData = new System.Windows.Forms.Label();
+            this.lbl_tblBasic = new System.Windows.Forms.Label();
+            this.lbl_tblSub = new System.Windows.Forms.Label();
+            this.lbl_tblAdd = new System.Windows.Forms.Label();
+            this.lbl_tblCalModule = new System.Windows.Forms.Label();
+            this.lbl_tblName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
@@ -54,6 +65,10 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel_table.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -92,13 +107,40 @@
             // 
             // panel_table
             // 
-            this.panel_table.Controls.Add(this.dataGridView1);
+            this.panel_table.Controls.Add(this.splitContainer2);
             this.panel_table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_table.Location = new System.Drawing.Point(0, 60);
             this.panel_table.Name = "panel_table";
             this.panel_table.Padding = new System.Windows.Forms.Padding(10);
             this.panel_table.Size = new System.Drawing.Size(960, 519);
             this.panel_table.TabIndex = 1;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(10, 10);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblBasicData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSubData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblAddData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblCalModuleData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblNameData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblBasic);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSub);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblAdd);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblCalModule);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblName);
+            this.splitContainer2.Size = new System.Drawing.Size(940, 499);
+            this.splitContainer2.SplitterDistance = 330;
+            this.splitContainer2.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -127,13 +169,13 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 10);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(940, 499);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.Size = new System.Drawing.Size(940, 330);
+            this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
@@ -225,6 +267,91 @@
             this.Column9.Name = "Column9";
             this.Column9.Visible = false;
             // 
+            // lbl_tblBasicData
+            // 
+            this.lbl_tblBasicData.AutoSize = true;
+            this.lbl_tblBasicData.Location = new System.Drawing.Point(118, 40);
+            this.lbl_tblBasicData.Name = "lbl_tblBasicData";
+            this.lbl_tblBasicData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblBasicData.TabIndex = 24;
+            // 
+            // lbl_tblSubData
+            // 
+            this.lbl_tblSubData.AutoSize = true;
+            this.lbl_tblSubData.Location = new System.Drawing.Point(118, 70);
+            this.lbl_tblSubData.Name = "lbl_tblSubData";
+            this.lbl_tblSubData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblSubData.TabIndex = 23;
+            // 
+            // lbl_tblAddData
+            // 
+            this.lbl_tblAddData.AutoSize = true;
+            this.lbl_tblAddData.Location = new System.Drawing.Point(118, 100);
+            this.lbl_tblAddData.Name = "lbl_tblAddData";
+            this.lbl_tblAddData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblAddData.TabIndex = 22;
+            // 
+            // lbl_tblCalModuleData
+            // 
+            this.lbl_tblCalModuleData.AutoSize = true;
+            this.lbl_tblCalModuleData.Location = new System.Drawing.Point(118, 130);
+            this.lbl_tblCalModuleData.Name = "lbl_tblCalModuleData";
+            this.lbl_tblCalModuleData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblCalModuleData.TabIndex = 21;
+            // 
+            // lbl_tblNameData
+            // 
+            this.lbl_tblNameData.AutoSize = true;
+            this.lbl_tblNameData.Location = new System.Drawing.Point(118, 10);
+            this.lbl_tblNameData.Name = "lbl_tblNameData";
+            this.lbl_tblNameData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblNameData.TabIndex = 20;
+            // 
+            // lbl_tblBasic
+            // 
+            this.lbl_tblBasic.AutoSize = true;
+            this.lbl_tblBasic.Location = new System.Drawing.Point(5, 40);
+            this.lbl_tblBasic.Name = "lbl_tblBasic";
+            this.lbl_tblBasic.Size = new System.Drawing.Size(79, 20);
+            this.lbl_tblBasic.TabIndex = 17;
+            this.lbl_tblBasic.Text = "基础分值：";
+            // 
+            // lbl_tblSub
+            // 
+            this.lbl_tblSub.AutoSize = true;
+            this.lbl_tblSub.Location = new System.Drawing.Point(5, 70);
+            this.lbl_tblSub.Name = "lbl_tblSub";
+            this.lbl_tblSub.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblSub.TabIndex = 16;
+            this.lbl_tblSub.Text = "扣分：";
+            // 
+            // lbl_tblAdd
+            // 
+            this.lbl_tblAdd.AutoSize = true;
+            this.lbl_tblAdd.Location = new System.Drawing.Point(5, 100);
+            this.lbl_tblAdd.Name = "lbl_tblAdd";
+            this.lbl_tblAdd.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblAdd.TabIndex = 15;
+            this.lbl_tblAdd.Text = "加分：";
+            // 
+            // lbl_tblCalModule
+            // 
+            this.lbl_tblCalModule.AutoSize = true;
+            this.lbl_tblCalModule.Location = new System.Drawing.Point(5, 130);
+            this.lbl_tblCalModule.Name = "lbl_tblCalModule";
+            this.lbl_tblCalModule.Size = new System.Drawing.Size(79, 20);
+            this.lbl_tblCalModule.TabIndex = 14;
+            this.lbl_tblCalModule.Text = "计算模型：";
+            // 
+            // lbl_tblName
+            // 
+            this.lbl_tblName.AutoSize = true;
+            this.lbl_tblName.Location = new System.Drawing.Point(5, 10);
+            this.lbl_tblName.Name = "lbl_tblName";
+            this.lbl_tblName.Size = new System.Drawing.Size(107, 20);
+            this.lbl_tblName.TabIndex = 13;
+            this.lbl_tblName.Text = "评价准则内容：";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -300,6 +427,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel_table.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -316,6 +448,7 @@
         private System.Windows.Forms.ComboBox combo_two;
         private System.Windows.Forms.ComboBox combo_three;
         private System.Windows.Forms.Panel panel_table;
+        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -328,5 +461,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.Label lbl_tblBasicData;
+        private System.Windows.Forms.Label lbl_tblSubData;
+        private System.Windows.Forms.Label lbl_tblAddData;
+        private System.Windows.Forms.Label lbl_tblCalModuleData;
+        private System.Windows.Forms.Label lbl_tblNameData;
+        private System.Windows.Forms.Label lbl_tblBasic;
+        private System.Windows.Forms.Label lbl_tblSub;
+        private System.Windows.Forms.Label lbl_tblAdd;
+        private System.Windows.Forms.Label lbl_tblCalModule;
+        private System.Windows.Forms.Label lbl_tblName;
     }
 }

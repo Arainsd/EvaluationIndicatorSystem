@@ -109,6 +109,7 @@ namespace EvaluationIndicatorSystem
             }
             dataGridView1.DataSource = currentModule;
             dataGridView1.Refresh();
+            RefreshRemark(currentModule[0]);
         }
         
         /// <summary>
@@ -183,6 +184,7 @@ namespace EvaluationIndicatorSystem
             }
             if (preModule == null)
                 return;
+            RefreshRemark(preModule);
             using (ChangeIndicatorFour dialog = new ChangeIndicatorFour(preModule))
             {
                 dialog.ChangeTitle = "修改 四级级指标";
@@ -215,6 +217,35 @@ namespace EvaluationIndicatorSystem
                 SqliteHelper.Delete(TableName.BasicFour, id);
                 DataRefresh();
             }
+        }
+
+        int preIndex = -1;
+        /// <summary>
+        /// 行点击事件，更新备注
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            int currentRow = ((DataGridView)sender).CurrentRow.Index;
+            if (preIndex == currentRow) return;
+            preIndex = currentRow;
+            int currentId = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
+            RefreshRemark(fourModules[currentId]);
+        }
+
+        /// <summary>
+        /// 更新备注展示内容
+        /// </summary>
+        /// <param name="data"></param>
+        private void RefreshRemark(BasicFourModule data)
+        {
+            lbl_tblNameData.Text = data.Name;
+            lbl_tblBasicData.Text = data.BasicRule;
+            lbl_tblSubData.Text = data.BasicSub;
+            lbl_tblAddData.Text = data.BasicAdd;
+            lbl_tblCalModuleData.Text = data.StrCalModules;
         }
     }//end of class
 }
