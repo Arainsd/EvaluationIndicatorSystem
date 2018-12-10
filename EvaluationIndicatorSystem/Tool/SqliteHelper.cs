@@ -19,12 +19,12 @@ namespace EvaluationIndicatorSystem
         public static void InitDBFile(out string msg)
         {
             msg = string.Empty;
-            path = AppDomain.CurrentDomain.BaseDirectory + "Data";
+            path = AppDomain.CurrentDomain.BaseDirectory;
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            path += "/data.sqlite";
+            path += @"\data.sqlite";
             if (!File.Exists(path))
             {
                 msg = "数据库文件不存在";
