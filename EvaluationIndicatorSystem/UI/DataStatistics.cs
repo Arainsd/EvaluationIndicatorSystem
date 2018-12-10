@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing;
 
 namespace EvaluationIndicatorSystem
 {
@@ -42,7 +43,7 @@ namespace EvaluationIndicatorSystem
             combo_timeCycle.Text = string.Empty;
             this.lbl_timePeriods.Text = string.Empty;            
             
-            timeModules = (List<TimeCycleModule>)SqliteHelper.SelectTimeCycle();
+            timeModules = (List<TimeCycleModule>)SqliteHelper.Select(TableName.TimeCycle, (int)TimeCycleState.Commit);
             if (timeModules.Count == 0)
             {
                 this.combo_one.Items.Clear();
@@ -51,15 +52,27 @@ namespace EvaluationIndicatorSystem
                 combo_two.Text = string.Empty;
                 this.combo_three.Items.Clear();
                 combo_three.Text = string.Empty;
-                //dataGridView1.DataSource = new List<EvalutationDataModule>();
+                ClearChart();
                 basicModules.Clear();
                 return;
             }
 
             basicModules = ((List<BasicDataModule>)SqliteHelper.Select(TableName.BasicData)).ToDictionary(key => key.ID, basicModule => basicModule);
-            foreach (var item in timeModules)
+            for (int i = 0; i < timeModules.Count; i++)
             {
-                combo_timeCycle.Items.Add(item.Name);
+                bool isSame = false;
+                for(int j = i + 1; j < timeModules.Count; j++)
+                {
+                    if (timeModules[i].Name == timeModules[j].Name && timeModules[i].StartTime == timeModules[j].StartTime && timeModules[i].EndTime == timeModules[j].EndTime)
+                    {
+                        isSame = true;
+                        break;
+                    }
+                }
+                if (!isSame)
+                {
+                    combo_timeCycle.Items.Add(timeModules[i].Name);
+                }
             }
             combo_timeCycle.SelectedIndex = 0;
         }
@@ -93,7 +106,7 @@ namespace EvaluationIndicatorSystem
                 combo_two.Text = string.Empty;
                 this.combo_three.Items.Clear();
                 combo_three.Text = string.Empty;
-                //dataGridView1.DataSource = new List<EvalutationDataModule>();
+                ClearChart();
                 return;
             }
             foreach (var item in basicModules)
@@ -124,7 +137,7 @@ namespace EvaluationIndicatorSystem
             {
                 combo_three.Items.Clear();
                 combo_three.Text = string.Empty;
-                //dataGridView1.DataSource = new List<EvalutationDataModule>();
+                ClearChart();
                 return;
             }
             dataHelper.SetComboItem(basicModules, combo_two, id);
@@ -139,7 +152,7 @@ namespace EvaluationIndicatorSystem
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            ClearChart();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_three, id);
@@ -152,16 +165,17 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //dataGridView1.DataSource = new List<EvalutationDataModule>();
+            ClearChart();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, -1, id, currentTime);
             if (evalutationDatas == null || evalutationDatas.Count == 0) return;
-            ChartRefresh(evalutationDatas);
-            //dataGridView1.DataSource = currentTableData;
-            //dataGridView1.Refresh();
+            ChartRefresh(evalutationDatas);           
         }
 
+        /// <summary>
+        /// 初始化图例
+        /// </summary>
         private void InitChartLegend()
         {
             foreach (var item in users)
@@ -176,18 +190,62 @@ namespace EvaluationIndicatorSystem
             }            
         }
 
+        /// <summary>
+        /// 清理图数据
+        /// </summary>
+        private void ClearChart()
+        {
+            chart1.ChartAreas[0].AxisX.CustomLabels.Clear();
+            chart1.Series.Clear();
+        }
+
+        /// <summary>
+        /// 刷新图数据
+        /// </summary>
+        /// <param name="data"></param>
         private void ChartRefresh(List<EvalutationDataModule> data)
         {
-            for (int i = 0; i < data.Count; i++)
+            ClearChart();
+            List<TimeCycleModule> times = timeModules.Where(p => p.Name == currentTime.Name && p.StartTime == currentTime.StartTime && p.EndTime == currentTime.EndTime).ToList();
+            bool isFirst = true;
+            int maxY = 100;
+            foreach (var item in times)
             {
-                CustomLabel label = new CustomLabel();
-                label.Text = data[i].Name;
-                label.ToPosition = 2D * (i + 1);
-                chart1.ChartAreas[0].AxisX.CustomLabels.Add(label);
-            }            
-            //Series dataTable3Series = new Series("dataTable3");
-            //dataTable3Series.Points.DataBind((new int[] { 1, 2, 3, 4, 5 }).AsEnumerable(), "", "", "");
-            //chart1.Series.Add(dataTable3Series);
+                Series series = new Series(item.UserName);
+                List<int> grades = new List<int>();
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (item.ID == data[i].TimeCycle)
+                    {
+                        if (isFirst)
+                        {
+                            CustomLabel label = new CustomLabel();
+                            label.Text = data[i].Name;
+                            label.ToPosition = 2D * (i + 1);
+                            if (i % 2 == 0)
+                            {
+                                label.RowIndex = 0;
+                            }
+                            else
+                            {
+                                label.RowIndex = 1;
+                            }
+                            chart1.ChartAreas[0].AxisX.CustomLabels.Add(label);
+                            chart1.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 9f, FontStyle.Regular);
+                        }
+                        grades.Add(data[i].Grade);
+                        if (data[i].Grade > maxY)
+                        {
+                            maxY = data[i].Grade;
+                        }
+                    }
+                }
+                if (maxY % 100 != 0) maxY = (maxY / 100 + 1) * 100;
+                chart1.ChartAreas[0].AxisY.Maximum = maxY;
+                series.Points.DataBind(grades, "", "", "");
+                chart1.Series.Add(series);
+                isFirst = false;
+            }
         }
     }//end of class
 }
