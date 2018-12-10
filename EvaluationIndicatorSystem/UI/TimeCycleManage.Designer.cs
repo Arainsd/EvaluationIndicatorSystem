@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -47,6 +47,7 @@
             this.LatestCommitTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_close = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -54,6 +55,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_close);
             this.panel1.Controls.Add(this.btn_update);
             this.panel1.Controls.Add(this.btn_delete);
             this.panel1.Controls.Add(this.btn_add);
@@ -69,7 +71,7 @@
             this.btn_update.FlatAppearance.BorderSize = 0;
             this.btn_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_update.ForeColor = System.Drawing.Color.White;
-            this.btn_update.Location = new System.Drawing.Point(465, 12);
+            this.btn_update.Location = new System.Drawing.Point(370, 12);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(75, 35);
             this.btn_update.TabIndex = 13;
@@ -83,7 +85,7 @@
             this.btn_delete.FlatAppearance.BorderSize = 0;
             this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(565, 12);
+            this.btn_delete.Location = new System.Drawing.Point(470, 12);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 35);
             this.btn_delete.TabIndex = 12;
@@ -97,7 +99,7 @@
             this.btn_add.FlatAppearance.BorderSize = 0;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(365, 12);
+            this.btn_add.Location = new System.Drawing.Point(270, 12);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 35);
             this.btn_add.TabIndex = 11;
@@ -130,14 +132,14 @@
             this.LatestCommitTime,
             this.State,
             this.UserName});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 10);
             this.dataGridView1.MultiSelect = false;
@@ -166,8 +168,8 @@
             // StartTime
             // 
             this.StartTime.DataPropertyName = "StartTime";
-            dataGridViewCellStyle1.Format = "yyyy-MM-dd";
-            this.StartTime.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Format = "yyyy-MM-dd";
+            this.StartTime.DefaultCellStyle = dataGridViewCellStyle11;
             this.StartTime.HeaderText = "开始时间";
             this.StartTime.Name = "StartTime";
             this.StartTime.ReadOnly = true;
@@ -175,8 +177,8 @@
             // EndTime
             // 
             this.EndTime.DataPropertyName = "EndTime";
-            dataGridViewCellStyle2.Format = "yyyy-MM-dd";
-            this.EndTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Format = "yyyy-MM-dd";
+            this.EndTime.DefaultCellStyle = dataGridViewCellStyle12;
             this.EndTime.HeaderText = "截止时间";
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
@@ -184,8 +186,8 @@
             // CreateTime
             // 
             this.CreateTime.DataPropertyName = "CreateTime";
-            dataGridViewCellStyle3.Format = "yyyy-MM-dd";
-            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Format = "yyyy-MM-dd";
+            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle13;
             this.CreateTime.HeaderText = "创建时间";
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.ReadOnly = true;
@@ -193,8 +195,8 @@
             // LatestCommitTime
             // 
             this.LatestCommitTime.DataPropertyName = "LatestCommitTime";
-            dataGridViewCellStyle4.Format = "yyyy-MM-dd";
-            this.LatestCommitTime.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Format = "yyyy-MM-dd";
+            this.LatestCommitTime.DefaultCellStyle = dataGridViewCellStyle14;
             this.LatestCommitTime.HeaderText = "最近提交时间";
             this.LatestCommitTime.Name = "LatestCommitTime";
             this.LatestCommitTime.ReadOnly = true;
@@ -212,6 +214,20 @@
             this.UserName.HeaderText = "UserName";
             this.UserName.Name = "UserName";
             this.UserName.Visible = false;
+            // 
+            // btn_close
+            // 
+            this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_close.FlatAppearance.BorderSize = 0;
+            this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_close.ForeColor = System.Drawing.Color.White;
+            this.btn_close.Location = new System.Drawing.Point(570, 13);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(75, 35);
+            this.btn_close.TabIndex = 14;
+            this.btn_close.Text = "关闭";
+            this.btn_close.UseVisualStyleBackColor = false;
             // 
             // TimeCycleManage
             // 
@@ -249,5 +265,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LatestCommitTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.Button btn_close;
     }
 }

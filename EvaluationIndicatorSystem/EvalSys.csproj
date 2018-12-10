@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{92650E48-83E4-40DD-8A31-78F6F03C6E2A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>EvaluationIndicatorSystem</RootNamespace>
-    <AssemblyName>EvaluationIndicatorSystem</AssemblyName>
+    <RootNamespace>EvalSys</RootNamespace>
+    <AssemblyName>EvalSys</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
