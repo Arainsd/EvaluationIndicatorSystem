@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_close = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.LatestCommitTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_close = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -64,6 +64,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(654, 60);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_close
+            // 
+            this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_close.FlatAppearance.BorderSize = 0;
+            this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_close.ForeColor = System.Drawing.Color.White;
+            this.btn_close.Location = new System.Drawing.Point(570, 13);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(75, 35);
+            this.btn_close.TabIndex = 14;
+            this.btn_close.Text = "关闭";
+            this.btn_close.UseVisualStyleBackColor = false;
             // 
             // btn_update
             // 
@@ -132,19 +146,18 @@
             this.LatestCommitTime,
             this.State,
             this.UserName});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 10);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(634, 324);
             this.dataGridView1.TabIndex = 3;
@@ -168,8 +181,8 @@
             // StartTime
             // 
             this.StartTime.DataPropertyName = "StartTime";
-            dataGridViewCellStyle11.Format = "yyyy-MM-dd";
-            this.StartTime.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Format = "yyyy-MM-dd";
+            this.StartTime.DefaultCellStyle = dataGridViewCellStyle1;
             this.StartTime.HeaderText = "开始时间";
             this.StartTime.Name = "StartTime";
             this.StartTime.ReadOnly = true;
@@ -177,8 +190,8 @@
             // EndTime
             // 
             this.EndTime.DataPropertyName = "EndTime";
-            dataGridViewCellStyle12.Format = "yyyy-MM-dd";
-            this.EndTime.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Format = "yyyy-MM-dd";
+            this.EndTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.EndTime.HeaderText = "截止时间";
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
@@ -186,8 +199,8 @@
             // CreateTime
             // 
             this.CreateTime.DataPropertyName = "CreateTime";
-            dataGridViewCellStyle13.Format = "yyyy-MM-dd";
-            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Format = "yyyy-MM-dd";
+            this.CreateTime.DefaultCellStyle = dataGridViewCellStyle3;
             this.CreateTime.HeaderText = "创建时间";
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.ReadOnly = true;
@@ -195,8 +208,8 @@
             // LatestCommitTime
             // 
             this.LatestCommitTime.DataPropertyName = "LatestCommitTime";
-            dataGridViewCellStyle14.Format = "yyyy-MM-dd";
-            this.LatestCommitTime.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Format = "yyyy-MM-dd";
+            this.LatestCommitTime.DefaultCellStyle = dataGridViewCellStyle4;
             this.LatestCommitTime.HeaderText = "最近提交时间";
             this.LatestCommitTime.Name = "LatestCommitTime";
             this.LatestCommitTime.ReadOnly = true;
@@ -214,20 +227,6 @@
             this.UserName.HeaderText = "UserName";
             this.UserName.Name = "UserName";
             this.UserName.Visible = false;
-            // 
-            // btn_close
-            // 
-            this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.btn_close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_close.FlatAppearance.BorderSize = 0;
-            this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(570, 13);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(75, 35);
-            this.btn_close.TabIndex = 14;
-            this.btn_close.Text = "关闭";
-            this.btn_close.UseVisualStyleBackColor = false;
             // 
             // TimeCycleManage
             // 
