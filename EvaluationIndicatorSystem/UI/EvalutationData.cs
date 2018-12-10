@@ -208,6 +208,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             int currentRow = ((DataGridView)sender).CurrentRow.Index;
             if (preIndex == currentRow) return;
             preIndex = currentRow;            
@@ -303,6 +304,7 @@ namespace EvaluationIndicatorSystem
         /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             if (((DataGridView)sender).CurrentCell.OwningColumn.Name == "Operate")
             {
                 int id = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;

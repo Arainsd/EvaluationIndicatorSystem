@@ -153,6 +153,7 @@ namespace EvaluationIndicatorSystem
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             if (((DataGridView)sender).CurrentCell.Value.ToString() == "修改")
             {
                 RowUpdateClick(sender, e);
