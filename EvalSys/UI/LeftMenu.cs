@@ -19,7 +19,6 @@ namespace EvalSys
         private void LeftMenu_Load(object sender, EventArgs e)
         {            
             AddMenuEvent();
-            MenuOneClick(this.splitContainer2.Panel1);
         }
 
         /// <summary>

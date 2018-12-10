@@ -36,6 +36,7 @@ namespace EvalSys
         {
             Init();
             AddTabs();
+            SetActiveTab(TabName.BasicIndicatorOne);
         }
 
         //用户控件字典
