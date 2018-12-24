@@ -94,6 +94,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tool\DataHelper.cs" />
+    <Compile Include="Tool\WordHelper.cs" />
     <Compile Include="Tool\ExcelHelper.cs" />
     <Compile Include="Tool\JsonHelper.cs" />
     <Compile Include="Tool\SqliteHelper.cs" />

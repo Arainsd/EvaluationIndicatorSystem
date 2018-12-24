@@ -74,6 +74,7 @@
             this.lbl_tblAdd = new System.Windows.Forms.Label();
             this.lbl_tblGrade = new System.Windows.Forms.Label();
             this.lbl_tblName = new System.Windows.Forms.Label();
+            this.btn_exportWord = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -277,6 +278,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(192)))), ((int)(((byte)(211)))));
+            this.splitContainer1.Panel1.Controls.Add(this.btn_exportWord);
             this.splitContainer1.Panel1.Controls.Add(this.lbl_title);
             // 
             // splitContainer1.Panel2
@@ -573,6 +575,21 @@
             this.lbl_tblName.TabIndex = 13;
             this.lbl_tblName.Text = "评价准则内容：";
             // 
+            // btn_exportWord
+            // 
+            this.btn_exportWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_exportWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_exportWord.FlatAppearance.BorderSize = 0;
+            this.btn_exportWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_exportWord.ForeColor = System.Drawing.Color.White;
+            this.btn_exportWord.Location = new System.Drawing.Point(860, 9);
+            this.btn_exportWord.Name = "btn_exportWord";
+            this.btn_exportWord.Size = new System.Drawing.Size(75, 35);
+            this.btn_exportWord.TabIndex = 20;
+            this.btn_exportWord.Text = "生成报表";
+            this.btn_exportWord.UseVisualStyleBackColor = false;
+            this.btn_exportWord.Click += new System.EventHandler(this.btn_exportWord_Click);
+            // 
             // HistoryEvalutation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -646,5 +663,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewButtonColumn Operate;
+        private System.Windows.Forms.Button btn_exportWord;
     }
 }

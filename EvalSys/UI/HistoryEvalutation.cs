@@ -372,5 +372,19 @@ namespace EvalSys
                 }
             }
         }
+
+        /// <summary>
+        /// 导出当前周期数据为WORD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_exportWord_Click(object sender, EventArgs e)
+        {
+            TimeCycleModule currentTime = timeModules[combo_timeCycle.SelectedIndex];
+            if (currentTime == null || evalutationModules == null || evalutationModules.Count == 0) return;
+            Dictionary<int, BasicFourModule> fourModules = ((List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour)).ToDictionary(key => key.ID, fourModule => fourModule);
+            WordHelper.ExportData(currentTime, evalutationModules.Values.ToList(), basicModules, fourModules);
+            MessageBox.Show("导出成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }//end of class
 }
