@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace EvalSys
@@ -12,10 +13,24 @@ namespace EvalSys
             {
                 linkLabel1.Visible = false;
             }
+            Init();
         }
 
         private UserModule user = null;
         public UserModule User { get => user; set => user = value; }
+
+        private void Init()
+        {
+            List<SysRoleModule> sysRoles = (List<SysRoleModule>)SqliteHelper.Select(TableName.SysRole);
+            if (sysRoles != null && sysRoles.Count > 0)
+            {
+                foreach (var item in sysRoles)
+                {
+                    combo_role.Items.Add(item.RoleName);
+                }
+                combo_role.SelectedIndex = 0;
+            }
+        }
 
         /// <summary>
         /// button log in
@@ -43,9 +58,8 @@ namespace EvalSys
                 lbl_password_msg.Text = "密码错误";
                 return;
             }
-            user = new UserModule();
-            user.UserName = userName;
-            user.PassWord = passWord;
+            List<UserModule> users = (List<UserModule>)SqliteHelper.Select(TableName.User, userName);
+            user = users[0];
             this.DialogResult = DialogResult.OK;
         }
 

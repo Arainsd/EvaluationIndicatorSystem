@@ -16,7 +16,7 @@ namespace EvalSys
         }
 
         DataHelper dataHelper = null;
-        List<string> users = null;
+        List<UserModule> users = null;
         List<TimeCycleModule> timeModules = null;
         Dictionary<int, BasicDataModule> basicModules = null;
         Dictionary<int, EvalutationDataModule> evalutationModules = null;
@@ -27,7 +27,7 @@ namespace EvalSys
         private void Init()
         {
             dataHelper = new DataHelper();
-            users = new List<string>();
+            users = new List<UserModule>();
             timeModules = new List<TimeCycleModule>();
             basicModules = new Dictionary<int, BasicDataModule>();
             evalutationModules = new Dictionary<int, EvalutationDataModule>();
@@ -38,12 +38,12 @@ namespace EvalSys
         {
             users.Clear();
             combo_user.Items.Clear();
-            users = (List<string>)SqliteHelper.Select(TableName.User);
+            users = (List<UserModule>)SqliteHelper.Select(TableName.User);
             if (users == null || users.Count == 0) return;
             combo_user.Items.Add("全部");
             foreach (var item in users)
             {
-                combo_user.Items.Add(item);
+                combo_user.Items.Add(item.UserName);
             }
             combo_user.SelectedIndex = 0;
         }
@@ -243,7 +243,7 @@ namespace EvalSys
             lbl_tblSubData.Text = evalutationData.BasicSub;
             lbl_tblAddData.Text = evalutationData.BasicAdd;
             lbl_tblGradeData.Text = evalutationData.Grade.ToString();
-            lbl_tblRemarkData.Text = evalutationData.Remark;            
+            lbl_tblRemarkData.Text = evalutationData.Description;            
             CreateLabelLink(evalutationData.DataSource);
         }
         

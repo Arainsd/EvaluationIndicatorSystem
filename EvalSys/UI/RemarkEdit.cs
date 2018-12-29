@@ -17,7 +17,7 @@ namespace EvalSys
 
         private void Init()
         {
-            this.txt_remark.Text = CurrentModule.Remark;
+            this.txt_remark.Text = CurrentModule.Description;
             foreach(var item in CurrentModule.DataSource)
             {
                 this.listBox_dataSource.Items.Add(item);
@@ -26,7 +26,7 @@ namespace EvalSys
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            CurrentModule.Remark = this.txt_remark.Text.Trim();
+            CurrentModule.Description = this.txt_remark.Text.Trim();
             currentModule.DataSource = new string[listBox_dataSource.Items.Count];
             for(int i = 0;i < listBox_dataSource.Items.Count;i++)
             {

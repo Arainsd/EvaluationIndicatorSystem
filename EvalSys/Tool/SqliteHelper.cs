@@ -150,7 +150,7 @@ namespace EvalSys
                             {
                                 dataSource = string.Join("|", item.DataSource);
                             }
-                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_four, data_source, remark, grade) VALUES({item.TimeCycle}, {item.IndicatorFour},'{dataSource}','{item.Remark}',{item.Grade})";
+                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_four, data_source, remark, grade) VALUES({item.TimeCycle}, {item.IndicatorFour},'{dataSource}','{item.Description}',{item.Grade})";
                             cmd.ExecuteNonQuery();
                         }
                         transaction.Commit();
@@ -271,7 +271,7 @@ namespace EvalSys
                             {
                                 dataSource = string.Join("|", item.Value.DataSource);
                             }
-                            cmd.CommandText = $"UPDATE {tableName.ToString()} SET data_source='{dataSource}', remark='{item.Value.Remark}', grade={item.Value.Grade} WHERE id={item.Key}";
+                            cmd.CommandText = $"UPDATE {tableName.ToString()} SET data_source='{dataSource}', remark='{item.Value.Description}', grade={item.Value.Grade} WHERE id={item.Key}";
                             cmd.ExecuteNonQuery();
                         }
                         transaction.Commit();
@@ -404,14 +404,40 @@ namespace EvalSys
             {
                 switch (tableName)
                 {
-                    case TableName.User:
-                        cmd.CommandText = $"SELECT name FROM {tableName.ToString()}";
-                        List<string> users = new List<string>();
+                    case TableName.SysRole:
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()}";
+                        List<SysRoleModule> sysRoles = new List<SysRoleModule>();
                         using (SQLiteDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                users.Add(reader["name"].ToString());
+                                SysRoleModule sysRole = new SysRoleModule();
+                                sysRole.RoleId = int.Parse(reader["Role_Id"].ToString());
+                                sysRole.RoleName = reader["Role_Name"].ToString();
+                                sysRoles.Add(sysRole);
+                            }
+                            reader.Close();
+                        }
+                        return sysRoles;
+                    case TableName.User:
+                        cmd.CommandText = $"SELECT * FROM User left join SysRole on User.Role_Id = SysRole.Role_Id";
+                        if (para.Length == 1)
+                        {
+                            cmd.CommandText += $" WHERE User.name='{para[0].ToString()}'";
+                        }
+                        List<UserModule> users = new List<UserModule>();
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                UserModule user = new UserModule();
+                                user.UserName = reader["name"].ToString();
+                                user.RoleId = int.Parse(reader["Role_Id"].ToString());
+                                user.RoleName = reader["Role_Name"].ToString();
+                                user.ContractPerson = reader["Contract_Person"].ToString();
+                                user.ContractTelPhone = reader["Contract_TelPhone"].ToString();
+                                user.CompanyAddress = reader["Company_Address"].ToString();
+                                users.Add(user);
                             }
                             reader.Close();
                         }
@@ -517,7 +543,7 @@ namespace EvalSys
                                 evalutationModule.TimeCycle = int.Parse(evalutationReader["time_cycle"].ToString());
                                 evalutationModule.IndicatorFour = int.Parse(evalutationReader["indicator_four"].ToString());
                                 evalutationModule.DataSource = evalutationReader["data_source"].ToString().Split("|".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
-                                evalutationModule.Remark = evalutationReader["remark"].ToString();
+                                evalutationModule.Description = evalutationReader["description"].ToString();
                                 evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());                                
                                 evalutationModule.Name = evalutationReader["name"].ToString();
                                 evalutationModule.ParentId = int.Parse(evalutationReader["parent_id"].ToString());

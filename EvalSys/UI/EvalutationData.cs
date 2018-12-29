@@ -228,7 +228,7 @@ namespace EvalSys
             lbl_tblSubData.Text = evalutationData.BasicSub;
             lbl_tblAddData.Text = evalutationData.BasicAdd;
             lbl_tblGradeData.Text = evalutationData.Grade.ToString();
-            lbl_tblRemarkData.Text = evalutationData.Remark;
+            lbl_tblRemarkData.Text = evalutationData.Description;
             CreateLabelLink(evalutationData.DataSource);
         }
 

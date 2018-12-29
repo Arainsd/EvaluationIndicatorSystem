@@ -78,7 +78,7 @@ namespace EvalSys
                 dataModule.TimeCycle = id;
                 dataModule.IndicatorFour = four.ID;
                 dataModule.DataSource = null;
-                dataModule.Remark = string.Empty;
+                dataModule.Description = string.Empty;
                 dataModule.Grade = 0;
                 datas.Add(dataModule);
             }

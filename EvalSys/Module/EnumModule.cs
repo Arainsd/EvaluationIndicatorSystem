@@ -6,7 +6,8 @@
         BasicData = 1,
         BasicFour = 2,
         TimeCycle = 3,
-        EvalutationData = 4
+        EvalutationData = 4,
+        SysRole = 5
     }//end of enum TableName
 
     public enum TabName
@@ -17,7 +18,10 @@
         BasicIndicatorFour = 4,
         EvalutationData = 5,
         HistoryEvalutation = 6,
-        DataStatistics = 7
+        DataStatistics = 7,
+        CompanyManage = 8,
+        SingleStatistics = 9,
+        UserStatistics = 10
     }//end of enum TabName
 
     public enum CalModule

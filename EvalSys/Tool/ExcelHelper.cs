@@ -98,7 +98,7 @@ namespace EvalSys
                             return;
                         }                        
                         evalutation.DataSource = row.GetCell(7).StringCellValue.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries);
-                        evalutation.Remark = row.GetCell(8).StringCellValue;
+                        evalutation.Description = row.GetCell(8).StringCellValue;
                         evalutation.Grade = (int)row.GetCell(9).NumericCellValue;
                         evalutationData.Add(evalutation);
                     }
@@ -364,7 +364,7 @@ namespace EvalSys
                             cell.SetCellValue(string.Join("\r\n", data[i].DataSource));
                             break;
                         case 8:
-                            cell.SetCellValue(data[i].Remark);
+                            cell.SetCellValue(data[i].Description);
                             break;
                         case 9:
                             cell.SetCellValue(data[i].Grade);

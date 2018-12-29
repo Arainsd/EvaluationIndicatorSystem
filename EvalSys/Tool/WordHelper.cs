@@ -120,7 +120,7 @@ namespace EvalSys
                 CreateText(table.GetRow(i + 1).GetCell(0), fourModules[data[i].IndicatorFour].Name, false);
                 CreateText(table.GetRow(i + 1).GetCell(1), data[i].Grade.ToString(), false);
                 CreateText(table.GetRow(i + 1).GetCell(2), string.Join("\r\n", data[i].DataSource), false);
-                CreateText(table.GetRow(i + 1).GetCell(3), data[i].Remark, false);
+                CreateText(table.GetRow(i + 1).GetCell(3), data[i].Description, false);
             }
         }
 

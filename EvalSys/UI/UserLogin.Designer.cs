@@ -36,13 +36,15 @@
             this.lbl_name_msg = new System.Windows.Forms.Label();
             this.lbl_password_msg = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lbl_role = new System.Windows.Forms.Label();
+            this.combo_role = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
             this.lbl_name.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_name.Location = new System.Drawing.Point(80, 50);
+            this.lbl_name.Location = new System.Drawing.Point(80, 120);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(62, 20);
             this.lbl_name.TabIndex = 0;
@@ -52,7 +54,7 @@
             // 
             this.lbl_password.AutoSize = true;
             this.lbl_password.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password.Location = new System.Drawing.Point(80, 120);
+            this.lbl_password.Location = new System.Drawing.Point(80, 190);
             this.lbl_password.Name = "lbl_password";
             this.lbl_password.Size = new System.Drawing.Size(48, 20);
             this.lbl_password.TabIndex = 1;
@@ -61,7 +63,7 @@
             // txt_name
             // 
             this.txt_name.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.txt_name.Location = new System.Drawing.Point(185, 44);
+            this.txt_name.Location = new System.Drawing.Point(185, 114);
             this.txt_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(220, 30);
@@ -71,7 +73,7 @@
             // txt_password
             // 
             this.txt_password.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.txt_password.Location = new System.Drawing.Point(185, 114);
+            this.txt_password.Location = new System.Drawing.Point(185, 184);
             this.txt_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
@@ -85,7 +87,7 @@
             this.btn_login.FlatAppearance.BorderSize = 0;
             this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_login.ForeColor = System.Drawing.Color.White;
-            this.btn_login.Location = new System.Drawing.Point(84, 201);
+            this.btn_login.Location = new System.Drawing.Point(84, 271);
             this.btn_login.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(321, 35);
@@ -98,7 +100,7 @@
             // 
             this.lbl_name_msg.AutoSize = true;
             this.lbl_name_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_name_msg.Location = new System.Drawing.Point(70, 70);
+            this.lbl_name_msg.Location = new System.Drawing.Point(70, 140);
             this.lbl_name_msg.Name = "lbl_name_msg";
             this.lbl_name_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_name_msg.TabIndex = 7;
@@ -107,7 +109,7 @@
             // 
             this.lbl_password_msg.AutoSize = true;
             this.lbl_password_msg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_password_msg.Location = new System.Drawing.Point(70, 140);
+            this.lbl_password_msg.Location = new System.Drawing.Point(70, 210);
             this.lbl_password_msg.Name = "lbl_password_msg";
             this.lbl_password_msg.Size = new System.Drawing.Size(0, 20);
             this.lbl_password_msg.TabIndex = 8;
@@ -117,20 +119,41 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.linkLabel1.Location = new System.Drawing.Point(368, 165);
+            this.linkLabel1.Location = new System.Drawing.Point(368, 235);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(37, 20);
             this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "注册";
+            this.linkLabel1.Visible = false;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // lbl_role
+            // 
+            this.lbl_role.AutoSize = true;
+            this.lbl_role.Location = new System.Drawing.Point(80, 50);
+            this.lbl_role.Name = "lbl_role";
+            this.lbl_role.Size = new System.Drawing.Size(48, 20);
+            this.lbl_role.TabIndex = 12;
+            this.lbl_role.Text = "角色 : ";
+            // 
+            // combo_role
+            // 
+            this.combo_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_role.FormattingEnabled = true;
+            this.combo_role.Location = new System.Drawing.Point(185, 49);
+            this.combo_role.Name = "combo_role";
+            this.combo_role.Size = new System.Drawing.Size(220, 27);
+            this.combo_role.TabIndex = 13;
             // 
             // UserLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(494, 286);
+            this.ClientSize = new System.Drawing.Size(494, 371);
+            this.Controls.Add(this.combo_role);
+            this.Controls.Add(this.lbl_role);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.lbl_password_msg);
             this.Controls.Add(this.lbl_name_msg);
@@ -141,6 +164,8 @@
             this.Controls.Add(this.lbl_name);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UserLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "登录";
@@ -159,5 +184,7 @@
         private System.Windows.Forms.Label lbl_name_msg;
         private System.Windows.Forms.Label lbl_password_msg;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label lbl_role;
+        private System.Windows.Forms.ComboBox combo_role;
     }
 }
