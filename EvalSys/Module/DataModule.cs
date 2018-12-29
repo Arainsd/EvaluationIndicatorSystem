@@ -69,6 +69,7 @@ namespace EvalSys
         public int Grade { get; set; }
         public string Name { get; set; }
         public int ParentId { get; set; }
+        public int BasicScore { get; set; }
         public string BasicRule { get; set; }
         public string BasicSub { get; set; }
         public string BasicAdd { get; set; }

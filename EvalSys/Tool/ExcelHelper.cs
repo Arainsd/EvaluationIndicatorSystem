@@ -62,7 +62,7 @@ namespace EvalSys
                             return;
                         }
                     }
-                    else if (i == 3)//评价周期
+                    else if (i == 3)//评价阶段
                     {
                         row = sheet.GetRow(i);
                         timeCycle.Name = row.GetCell(0).StringCellValue;
@@ -87,8 +87,9 @@ namespace EvalSys
                         EvalutationDataModule evalutation = new EvalutationDataModule();
                         evalutation.TimeCycle = timeCycleId;
                         string currentFour = row.GetCell(3).StringCellValue;
+                        currentFour = currentFour.Substring(0, currentFour.LastIndexOf("("));
                         List<BasicFourModule> fourModules = (List<BasicFourModule>)SqliteHelper.Select(TableName.BasicFour, currentFour);
-                        if(fourModules.Count == 1)
+                        if (fourModules.Count == 1)
                         {
                             evalutation.IndicatorFour = fourModules[0].ID;
                         }
@@ -96,10 +97,10 @@ namespace EvalSys
                         {
                             msg = $"四级指标 {currentFour} 不存在";
                             return;
-                        }                        
-                        evalutation.DataSource = row.GetCell(7).StringCellValue.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries);
-                        evalutation.Description = row.GetCell(8).StringCellValue;
-                        evalutation.Grade = (int)row.GetCell(9).NumericCellValue;
+                        }
+                        evalutation.Description = row.GetCell(7).StringCellValue;
+                        evalutation.Grade = (int)row.GetCell(8).NumericCellValue;
+                        evalutation.DataSource = row.GetCell(9).StringCellValue.Split("\r\n".ToArray(), StringSplitOptions.RemoveEmptyEntries);
                         evalutationData.Add(evalutation);
                     }
                 }
@@ -120,7 +121,7 @@ namespace EvalSys
             {
                 workbook = new HSSFWorkbook();
                 sheet = workbook.CreateSheet("sheet1");
-                ICellStyle titleStyle = SetTitleStyle(workbook);                
+                ICellStyle titleStyle = SetTitleStyle(workbook);
 
                 IRow row = sheet.CreateRow(0);
                 ICell cell = row.CreateCell(0);
@@ -132,7 +133,7 @@ namespace EvalSys
 
                 CreateTimeRows(timeCycle, sheet, workbook, titleStyle);
                 CreateDataTitleRows(sheet, workbook, titleStyle);
-                CreateDataRows(workbook,sheet, data, basicModules, fourModules);
+                CreateDataRows(workbook, sheet, data, basicModules, fourModules);
 
                 sheet.SetColumnWidth(0, 35 * 256);
                 sheet.SetColumnWidth(1, 35 * 256);
@@ -163,7 +164,7 @@ namespace EvalSys
             IRow row = sheet.CreateRow(2);
             ICell cell = row.CreateCell(0);
             cell.CellStyle = titleStyle;
-            cell.SetCellValue("评价周期");
+            cell.SetCellValue("评价阶段");
             cell = row.CreateCell(1);
             cell.CellStyle = titleStyle;
             cell.SetCellValue("开始时间");
@@ -253,13 +254,13 @@ namespace EvalSys
             sheet.AddMergedRegion(new CellRangeAddress(5, 5, 4, 6));
             cell = row.CreateCell(7);
             cell.CellStyle = titleStyle;
-            cell.SetCellValue("数据来源");
+            cell.SetCellValue("评价依据");
             cell = row.CreateCell(8);
             cell.CellStyle = titleStyle;
-            cell.SetCellValue("备注");
+            cell.SetCellValue("得分");
             cell = row.CreateCell(9);
             cell.CellStyle = titleStyle;
-            cell.SetCellValue("得分");
+            cell.SetCellValue("附件");
 
             row = sheet.CreateRow(6);
             cell = row.CreateCell(0);
@@ -304,12 +305,12 @@ namespace EvalSys
             ICellStyle cellStyle = SetDataStyle(workbook);
 
             int[] rowIndex = new int[] { 7, 7, 7 };//one first row, two first row, three first row
-            int[] ids = new int[] { -1, -1, -1 ,-1};//current one id, current two id, current three id, current four id;
+            int[] ids = new int[] { -1, -1, -1, -1 };//current one id, current two id, current three id, current four id;
 
             for (int i = 0; i < data.Count; i++)
-            {                
+            {
                 row = sheet.CreateRow(i + 7);
-                
+
                 ids[3] = data[i].IndicatorFour;
                 if (ids[2] != -1 && ids[2] != fourModules[ids[3]].ParentId)
                 {
@@ -337,19 +338,19 @@ namespace EvalSys
                     switch (j)
                     {
                         case 0:
-                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 7, 0, 0));
+                            if (i == data.Count - 1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[0], i + 7, 0, 0));
                             cell.SetCellValue($"{basicModules[ids[0]].Name}({basicModules[ids[0]].Grade})");
                             break;
                         case 1:
-                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 7, 1, 1));
+                            if (i == data.Count - 1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[1], i + 7, 1, 1));
                             cell.SetCellValue($"{basicModules[ids[1]].Name}({basicModules[ids[1]].Grade})");
                             break;
                         case 2:
-                            if(i == data.Count -1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 7, 2, 2));
+                            if (i == data.Count - 1) sheet.AddMergedRegion(new CellRangeAddress(rowIndex[2], i + 7, 2, 2));
                             cell.SetCellValue($"{basicModules[ids[2]].Name}({basicModules[ids[2]].Grade})");
                             break;
-                        case 3:                            
-                            cell.SetCellValue(fourModules[data[i].IndicatorFour].Name);
+                        case 3:
+                            cell.SetCellValue($"{fourModules[data[i].IndicatorFour].Name}({fourModules[data[i].IndicatorFour].BasicScore})");
                             break;
                         case 4:
                             cell.SetCellValue(data[i].BasicRule);
@@ -361,13 +362,13 @@ namespace EvalSys
                             cell.SetCellValue(data[i].BasicAdd);
                             break;
                         case 7:
-                            cell.SetCellValue(string.Join("\r\n", data[i].DataSource));
-                            break;
-                        case 8:
                             cell.SetCellValue(data[i].Description);
                             break;
-                        case 9:
+                        case 8:
                             cell.SetCellValue(data[i].Grade);
+                            break;
+                        case 9:
+                            cell.SetCellValue(string.Join("\r\n", data[i].DataSource));
                             break;
                         default:
                             cell.SetCellValue("");

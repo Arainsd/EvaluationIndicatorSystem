@@ -28,23 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbl_title = new System.Windows.Forms.Label();
             this.panel_table = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_tblBasicData = new System.Windows.Forms.Label();
             this.lbl_tblSubData = new System.Windows.Forms.Label();
             this.lbl_tblAddData = new System.Windows.Forms.Label();
@@ -60,6 +49,18 @@
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.combo_one = new System.Windows.Forms.ComboBox();
             this.btn_add = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -153,6 +154,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
+            this.Column5,
             this.Column3,
             this.Column4,
             this.Column8,
@@ -162,14 +164,14 @@
             this.Column6,
             this.Column7,
             this.Column9});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
@@ -179,95 +181,6 @@
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Name";
-            this.Column1.FillWeight = 415.3284F;
-            this.Column1.HeaderText = "评价准则内容";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "BasicRule";
-            this.Column2.FillWeight = 41.89048F;
-            this.Column2.HeaderText = "基础分值";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "BasicSub";
-            this.Column3.FillWeight = 36.60332F;
-            this.Column3.HeaderText = "扣分";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "BasicAdd";
-            this.Column4.FillWeight = 44.69057F;
-            this.Column4.HeaderText = "加分";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "StrCalModules";
-            this.Column8.FillWeight = 75.854F;
-            this.Column8.HeaderText = "计算模型";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 150;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "Update";
-            this.Column10.FillWeight = 40.09032F;
-            this.Column10.HeaderText = "修改";
-            this.Column10.Name = "Column10";
-            this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column10.Text = "";
-            this.Column10.Width = 60;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Delete";
-            this.Column11.FillWeight = 45.54287F;
-            this.Column11.HeaderText = "删除";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 60;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Level";
-            this.Column6.HeaderText = "Level";
-            this.Column6.Name = "Column6";
-            this.Column6.Visible = false;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "ParentId";
-            this.Column7.HeaderText = "ParentId";
-            this.Column7.Name = "Column7";
-            this.Column7.Visible = false;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "CalModules";
-            this.Column9.HeaderText = "CalModules";
-            this.Column9.Name = "Column9";
-            this.Column9.Visible = false;
             // 
             // lbl_tblBasicData
             // 
@@ -414,6 +327,102 @@
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.FillWeight = 415.3284F;
+            this.Column1.HeaderText = "评价准则内容";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BasicRule";
+            this.Column2.FillWeight = 41.89048F;
+            this.Column2.HeaderText = "基础分值";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "BasicScore";
+            this.Column5.HeaderText = "标准分值";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "BasicSub";
+            this.Column3.FillWeight = 36.60332F;
+            this.Column3.HeaderText = "扣分";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "BasicAdd";
+            this.Column4.FillWeight = 44.69057F;
+            this.Column4.HeaderText = "加分";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "StrCalModules";
+            this.Column8.FillWeight = 75.854F;
+            this.Column8.HeaderText = "计算模型";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 150;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "Update";
+            this.Column10.FillWeight = 40.09032F;
+            this.Column10.HeaderText = "修改";
+            this.Column10.Name = "Column10";
+            this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column10.Text = "";
+            this.Column10.Width = 60;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Delete";
+            this.Column11.FillWeight = 45.54287F;
+            this.Column11.HeaderText = "删除";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 60;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Level";
+            this.Column6.HeaderText = "Level";
+            this.Column6.Name = "Column6";
+            this.Column6.Visible = false;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "ParentId";
+            this.Column7.HeaderText = "ParentId";
+            this.Column7.Name = "Column7";
+            this.Column7.Visible = false;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "CalModules";
+            this.Column9.HeaderText = "CalModules";
+            this.Column9.Name = "Column9";
+            this.Column9.Visible = false;
+            // 
             // BasicIndicatorFour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -452,17 +461,6 @@
         private System.Windows.Forms.Panel panel_table;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewButtonColumn Column10;
-        private System.Windows.Forms.DataGridViewButtonColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.Label lbl_tblBasicData;
         private System.Windows.Forms.Label lbl_tblSubData;
         private System.Windows.Forms.Label lbl_tblAddData;
@@ -473,5 +471,17 @@
         private System.Windows.Forms.Label lbl_tblAdd;
         private System.Windows.Forms.Label lbl_tblCalModule;
         private System.Windows.Forms.Label lbl_tblName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewButtonColumn Column10;
+        private System.Windows.Forms.DataGridViewButtonColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

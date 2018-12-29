@@ -24,6 +24,7 @@ namespace EvalSys
                 {
                     clb_calModule.SetItemChecked((int)item - 1, true);
                 }
+                this.txt_basicScore.Text = module[0].BasicScore.ToString();
             }
         }
 
@@ -39,6 +40,12 @@ namespace EvalSys
                 lbl_name_msg.Text = "请输入评价准则内容";
                 return;
             }
+            int.TryParse(txt_basicScore.Text.Trim(), out int grade);
+            if (grade <= 0)
+            {
+                lbl_basicScore_msg.Text = "请输入正整数";
+                return;
+            }
             var selectedCalModule = clb_calModule.CheckedIndices;
             if (selectedCalModule.Count == 0)
             {
@@ -49,6 +56,7 @@ namespace EvalSys
             fourModule = new BasicFourModule();
             fourModule.Name = indicator;
             fourModule.Level = 4;
+            fourModule.BasicScore = grade;
             fourModule.BasicRule = txt_basicRule.Text.Trim();
             fourModule.BasicSub = txt_sub.Text.Trim();
             fourModule.BasicAdd = txt_add.Text.Trim();

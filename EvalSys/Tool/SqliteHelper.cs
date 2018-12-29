@@ -71,14 +71,14 @@ namespace EvalSys
                     UserModule user = (UserModule)data;
                     if (CheckRowData(tableName.ToString(), user.UserName))
                     {
-                        msg = "用户名已存在";
+                        msg = "单位已存在";
                     }
                     else
                     {
-                        cmd.CommandText = $"INSERT INTO '{tableName.ToString()}' VALUES('{user.UserName}', '{user.PassWord}')";
+                        cmd.CommandText = $"INSERT INTO '{tableName.ToString()}' VALUES('{user.UserName}','{user.PassWord}',{user.RoleId},'{user.ContractPerson}','{user.ContractTelPhone}','{user.CompanyAddress}')";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
-                            msg = "注册失败";
+                            msg = "新增单位失败";
                         }
                     }
                     break;
@@ -117,7 +117,7 @@ namespace EvalSys
                                 strCalModule += "," + (int)fourData.CalModules[i];
                             }
                         }
-                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, level, parent_id, basic_rule, basic_sub, basic_add, cal_module) VALUES('{fourData.Name}', {fourData.Level}, {fourData.ParentId}, '{fourData.BasicRule}', '{fourData.BasicSub}', '{fourData.BasicAdd}', '{strCalModule}')";
+                        cmd.CommandText = $"INSERT INTO {tableName.ToString()} (name, level, parent_id, basic_score, basic_rule, basic_sub, basic_add, cal_module) VALUES('{fourData.Name}', {fourData.Level}, {fourData.ParentId}, {fourData.BasicScore}, '{fourData.BasicRule}', '{fourData.BasicSub}', '{fourData.BasicAdd}', '{strCalModule}')";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
                             msg = "数据写入失败";
@@ -128,7 +128,7 @@ namespace EvalSys
                     TimeCycleModule timeData = (TimeCycleModule)data;
                     if (CheckTimeData(tableName.ToString(), timeData, -1))
                     {
-                        msg = "评价周期已存在";
+                        msg = "评价阶段已存在";
                     }
                     else
                     {
@@ -150,7 +150,7 @@ namespace EvalSys
                             {
                                 dataSource = string.Join("|", item.DataSource);
                             }
-                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_four, data_source, remark, grade) VALUES({item.TimeCycle}, {item.IndicatorFour},'{dataSource}','{item.Description}',{item.Grade})";
+                            cmd.CommandText = $"INSERT INTO {tableName.ToString()} (time_cycle, indicator_four, data_source, description, grade) VALUES({item.TimeCycle}, {item.IndicatorFour},'{dataSource}','{item.Description}',{item.Grade})";
                             cmd.ExecuteNonQuery();
                         }
                         transaction.Commit();
@@ -176,13 +176,13 @@ namespace EvalSys
             {
                 case TableName.User:
                     UserModule user = (UserModule)data;
-                    if (CheckRowDataUpdate(tableName.ToString(), user.UserName, id))
+                    if (CheckRowDataUpdate(tableName, user.UserName, id))
                     {
-                        msg = "用户名已存在";
+                        msg = "单位名称已存在";
                     }
                     else
                     {
-                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET password='{user.PassWord}' WHERE name='{user.UserName}'";
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET password='{user.PassWord}',Role_Id={user.RoleId},Contract_Person='{user.ContractPerson}',Contract_TelPhone='{user.ContractTelPhone}',Company_Address='{user.CompanyAddress}' WHERE name='{user.UserName}'";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
                             msg = "更新失败";
@@ -191,7 +191,7 @@ namespace EvalSys
                     break;
                 case TableName.BasicData:
                     BasicDataModule basicData = (BasicDataModule)data;
-                    if (CheckRowDataUpdate(tableName.ToString(), basicData.Name, id))
+                    if (CheckRowDataUpdate(tableName, basicData.Name, id))
                     {
                         msg = "指标已存在";
                     }
@@ -206,7 +206,7 @@ namespace EvalSys
                     break;
                 case TableName.BasicFour:
                     BasicFourModule fourData = (BasicFourModule)data;
-                    if (CheckRowDataUpdate(tableName.ToString(), fourData.Name, id))
+                    if (CheckRowDataUpdate(tableName, fourData.Name, id))
                     {
                         msg = "指标已存在";
                     }
@@ -224,7 +224,7 @@ namespace EvalSys
                                 strCalModule += "," + (int)fourData.CalModules[i];
                             }
                         }
-                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{fourData.Name}', basic_rule='{fourData.BasicRule}', basic_sub='{fourData.BasicSub}', basic_add='{fourData.BasicAdd}', cal_module='{strCalModule}' WHERE id={id}";
+                        cmd.CommandText = $"UPDATE {tableName.ToString()} SET name='{fourData.Name}', basic_score={fourData.BasicScore}, basic_rule='{fourData.BasicRule}', basic_sub='{fourData.BasicSub}', basic_add='{fourData.BasicAdd}', cal_module='{strCalModule}' WHERE id={id}";
                         if (cmd.ExecuteNonQuery() <= 0)
                         {
                             msg = "更新失败";
@@ -235,7 +235,7 @@ namespace EvalSys
                     TimeCycleModule timeData = (TimeCycleModule)data;
                     if (CheckTimeData(tableName.ToString(), timeData, id))
                     {
-                        msg = "评价周期已存在";
+                        msg = "评价阶段已存在";
                     }
                     else
                     {
@@ -258,7 +258,7 @@ namespace EvalSys
         /// <param name="data"></param>
         public static void Update(TableName tableName, object data)
         {
-            switch(tableName)
+            switch (tableName)
             {
                 case TableName.EvalutationData:
                     using (SQLiteTransaction transaction = conn.BeginTransaction())
@@ -271,7 +271,7 @@ namespace EvalSys
                             {
                                 dataSource = string.Join("|", item.Value.DataSource);
                             }
-                            cmd.CommandText = $"UPDATE {tableName.ToString()} SET data_source='{dataSource}', remark='{item.Value.Description}', grade={item.Value.Grade} WHERE id={item.Key}";
+                            cmd.CommandText = $"UPDATE {tableName.ToString()} SET data_source='{dataSource}', description='{item.Value.Description}', grade={item.Value.Grade} WHERE id={item.Key}";
                             cmd.ExecuteNonQuery();
                         }
                         transaction.Commit();
@@ -309,24 +309,31 @@ namespace EvalSys
         /// delete data
         /// </summary>
         /// <param name="tableName"></param>
-        /// <param name="id"></param>
+        /// <param name="para"></param>
         /// <returns></returns>
-        public static bool Delete(TableName tableName, int id)
+        public static bool Delete(TableName tableName, object para)
         {
             bool result = false;
             try
             {
                 switch (tableName)
                 {
+                    case TableName.User:
+                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE name={(string)para}";
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            result = true;
+                        }
+                        break;
                     case TableName.EvalutationData:
-                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE time_cycle={id}";
+                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE time_cycle={(int)para}";
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             result = true;
                         }
                         break;
                     default:
-                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={id}";
+                        cmd.CommandText = $"DELETE FROM {tableName.ToString()} WHERE id={(int)para}";
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             result = true;
@@ -364,7 +371,7 @@ namespace EvalSys
         /// <param name="colData">column check data</param>
         /// <returns>true:exist, false:not exist</returns>
         private static bool CheckTimeData(string tableName, TimeCycleModule data, int id)
-        {           
+        {
             cmd.CommandText = $"SELECT count(*) FROM '{tableName}' WHERE name='{data.Name}' AND start_time='{data.StartTime}' AND end_time='{data.EndTime}' AND user_name='{data.UserName}'";
             if (id != -1)
             {
@@ -383,9 +390,18 @@ namespace EvalSys
         /// <param name="tableName">table name</param>
         /// <param name="colData">column check data</param>
         /// <returns>true:exist, false:not exist</returns>
-        private static bool CheckRowDataUpdate(string tableName, string colData, int id)
+        private static bool CheckRowDataUpdate(TableName tableName, string colData, int id)
         {
-            cmd.CommandText = $"SELECT count(*) FROM '{tableName}' WHERE name = '{colData}' and id != {id}";
+            if (tableName == TableName.User)
+            {
+                cmd.CommandText = $"SELECT count(*) FROM '{tableName.ToString()}' WHERE name = '{colData}'";
+                if (Convert.ToInt32(cmd.ExecuteScalar()) > 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            cmd.CommandText = $"SELECT count(*) FROM '{tableName.ToString()}' WHERE name = '{colData}' and id != {id}";
             if (Convert.ToInt32(cmd.ExecuteScalar()) > 0)
             {
                 return true;
@@ -477,6 +493,7 @@ namespace EvalSys
                                 fourModule.Name = fourReader["name"].ToString();
                                 fourModule.Level = int.Parse(fourReader["level"].ToString());
                                 fourModule.ParentId = int.Parse(fourReader["parent_id"].ToString());
+                                fourModule.BasicScore = int.Parse(fourReader["basic_score"].ToString());
                                 fourModule.BasicRule = fourReader["basic_rule"].ToString();
                                 fourModule.BasicAdd = fourReader["basic_sub"].ToString();
                                 fourModule.BasicSub = fourReader["basic_add"].ToString();
@@ -494,11 +511,12 @@ namespace EvalSys
                             return fourModules;
                         }
                     case TableName.TimeCycle:
-                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE state={(int)para[0]}";                       
+                        cmd.CommandText = $"SELECT * FROM {tableName.ToString()} WHERE state={(int)para[0]}";
                         if (para.Length == 2)
                         {
                             cmd.CommandText += $" AND name='{(string)para[1]}'";
-                        } else if(para.Length == 3)
+                        }
+                        else if (para.Length == 3)
                         {
                             if (para[1] != null) cmd.CommandText += $" AND name='{(string)para[1]}'";
                             cmd.CommandText += $" AND user_name='{(string)para[2]}'";
@@ -526,15 +544,19 @@ namespace EvalSys
                         if ((int)para[0] == -1)
                         {
                             TimeCycleModule timeCycle = (TimeCycleModule)para[2];
-                            cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE b.parent_id={(int)para[1]} AND a.time_cycle in (SELECT id FROM TimeCycle WHERE name='{timeCycle.Name}' AND start_time='{timeCycle.StartTime}' AND end_time='{timeCycle.EndTime}' AND state=1)";
+                            cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.description, a.grade, b.name, b.parent_id, b.basic_score, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE b.parent_id={(int)para[1]} AND a.time_cycle in (SELECT id FROM TimeCycle WHERE name='{timeCycle.Name}' AND start_time='{timeCycle.StartTime}' AND end_time='{timeCycle.EndTime}' AND state=1)";
+                        }
+                        else if ((int)para[0] == -2)
+                        {
+                            cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.description, a.grade, b.name, b.parent_id, b.basic_score, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE b.parent_id={(int)para[1]} AND a.time_cycle={(int)para[2]}";
                         }
                         else
                         {
-                            cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.remark, a.grade, b.name, b.parent_id, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
+                            cmd.CommandText = $"SELECT a.id, a.time_cycle, a.indicator_four, a.data_source, a.description, a.grade, b.name, b.parent_id, b.basic_score, b.basic_rule, b.basic_sub, b.basic_add, b.cal_module FROM EvalutationData as a left outer join BasicFour as b on a.indicator_four = b.id WHERE time_cycle={(int)para[0]}";
                         }
-                                                
+
                         using (SQLiteDataReader evalutationReader = cmd.ExecuteReader())//reader is active exception
-                        {                            
+                        {
                             List<EvalutationDataModule> evalutationModules = new List<EvalutationDataModule>();
                             while (evalutationReader.Read())
                             {
@@ -544,9 +566,10 @@ namespace EvalSys
                                 evalutationModule.IndicatorFour = int.Parse(evalutationReader["indicator_four"].ToString());
                                 evalutationModule.DataSource = evalutationReader["data_source"].ToString().Split("|".ToArray(), StringSplitOptions.RemoveEmptyEntries).ToArray();
                                 evalutationModule.Description = evalutationReader["description"].ToString();
-                                evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());                                
+                                evalutationModule.Grade = int.Parse(evalutationReader["grade"].ToString());
                                 evalutationModule.Name = evalutationReader["name"].ToString();
                                 evalutationModule.ParentId = int.Parse(evalutationReader["parent_id"].ToString());
+                                evalutationModule.BasicScore = int.Parse(evalutationReader["basic_score"].ToString());
                                 evalutationModule.BasicRule = evalutationReader["basic_rule"].ToString();
                                 evalutationModule.BasicAdd = evalutationReader["basic_sub"].ToString();
                                 evalutationModule.BasicSub = evalutationReader["basic_add"].ToString();
@@ -565,7 +588,7 @@ namespace EvalSys
                         }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }

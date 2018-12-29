@@ -42,6 +42,9 @@
             this.lbl_calModule = new System.Windows.Forms.Label();
             this.lbl_calModule_msg = new System.Windows.Forms.Label();
             this.clb_calModule = new System.Windows.Forms.CheckedListBox();
+            this.lbl_basicScore_msg = new System.Windows.Forms.Label();
+            this.txt_basicScore = new System.Windows.Forms.TextBox();
+            this.lbl_basicScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_name
@@ -72,7 +75,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(490, 500);
+            this.btn_cancel.Location = new System.Drawing.Point(490, 590);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(80, 35);
@@ -86,7 +89,7 @@
             this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ok.ForeColor = System.Drawing.Color.White;
-            this.btn_ok.Location = new System.Drawing.Point(45, 500);
+            this.btn_ok.Location = new System.Drawing.Point(45, 590);
             this.btn_ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(80, 35);
@@ -196,12 +199,44 @@
             this.clb_calModule.Size = new System.Drawing.Size(400, 79);
             this.clb_calModule.TabIndex = 27;
             // 
+            // lbl_basicScore_msg
+            // 
+            this.lbl_basicScore_msg.AutoSize = true;
+            this.lbl_basicScore_msg.ForeColor = System.Drawing.Color.Red;
+            this.lbl_basicScore_msg.Location = new System.Drawing.Point(30, 537);
+            this.lbl_basicScore_msg.Name = "lbl_basicScore_msg";
+            this.lbl_basicScore_msg.Size = new System.Drawing.Size(0, 20);
+            this.lbl_basicScore_msg.TabIndex = 33;
+            // 
+            // txt_basicScore
+            // 
+            this.txt_basicScore.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_basicScore.Location = new System.Drawing.Point(170, 506);
+            this.txt_basicScore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_basicScore.Name = "txt_basicScore";
+            this.txt_basicScore.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_basicScore.Size = new System.Drawing.Size(400, 30);
+            this.txt_basicScore.TabIndex = 32;
+            // 
+            // lbl_basicScore
+            // 
+            this.lbl_basicScore.AutoSize = true;
+            this.lbl_basicScore.Location = new System.Drawing.Point(45, 512);
+            this.lbl_basicScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_basicScore.Name = "lbl_basicScore";
+            this.lbl_basicScore.Size = new System.Drawing.Size(76, 20);
+            this.lbl_basicScore.TabIndex = 31;
+            this.lbl_basicScore.Text = "标准分值 : ";
+            // 
             // ChangeIndicatorFour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(634, 551);
+            this.ClientSize = new System.Drawing.Size(634, 651);
+            this.Controls.Add(this.lbl_basicScore_msg);
+            this.Controls.Add(this.txt_basicScore);
+            this.Controls.Add(this.lbl_basicScore);
             this.Controls.Add(this.clb_calModule);
             this.Controls.Add(this.lbl_calModule_msg);
             this.Controls.Add(this.lbl_calModule);
@@ -242,5 +277,8 @@
         private System.Windows.Forms.Label lbl_calModule;
         private System.Windows.Forms.Label lbl_calModule_msg;
         private System.Windows.Forms.CheckedListBox clb_calModule;
+        private System.Windows.Forms.Label lbl_basicScore_msg;
+        private System.Windows.Forms.TextBox txt_basicScore;
+        private System.Windows.Forms.Label lbl_basicScore;
     }
 }

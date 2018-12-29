@@ -35,7 +35,7 @@ namespace EvalSys
             int[] ids = new int[] { -1, -1, -1 };
             int preParentId = -1;
             for (int i = 0; i < data.Count; i++)
-            {                
+            {
                 int parentId = data[i].ParentId;
                 if (parentId == preParentId) continue;
                 preParentId = parentId;
@@ -55,7 +55,7 @@ namespace EvalSys
                     CreateTitle(doc, $"{currentNum[0]}.{currentNum[1]} {two.Name}", 2);
                     CreateTitle(doc, $"{currentNum[0]}.{currentNum[1]}.{currentNum[2]} {three.Name}", 2);
                 }
-                else if(ids[1] != two.ID)
+                else if (ids[1] != two.ID)
                 {
                     ids[1] = two.ID;
                     ids[2] = three.ID;
@@ -63,12 +63,13 @@ namespace EvalSys
                     currentNum[2] = 1;
                     CreateTitle(doc, $"{currentNum[0]}.{currentNum[1]} {two.Name}", 2);
                     CreateTitle(doc, $"{currentNum[0]}.{currentNum[1]}.{currentNum[2]} {three.Name}", 2);
-                } else if(ids[2] != three.ID)
+                }
+                else if (ids[2] != three.ID)
                 {
                     ids[2] = three.ID;
                     currentNum[2]++;
                     CreateTitle(doc, $"{currentNum[0]}.{currentNum[1]}.{currentNum[2]} {three.Name}", 2);
-                }                
+                }
                 CreateTable(doc, currentData, fourModules);
             }
         }
@@ -76,7 +77,7 @@ namespace EvalSys
         private static void CreateTitle(XWPFDocument doc, string title, int titleNum)
         {
             XWPFParagraph paragraph = doc.CreateParagraph();
-            paragraph.Alignment = ParagraphAlignment.LEFT;            
+            paragraph.Alignment = ParagraphAlignment.LEFT;
             XWPFRun run = paragraph.CreateRun();
             run.SetText(title);
             run.SetFontFamily("宋体", FontCharRange.None);
@@ -86,7 +87,7 @@ namespace EvalSys
                 case 1:
                     run.FontSize = 22;
                     paragraph.SpacingBefore = 24 * 20;
-                    paragraph.SpacingAfter = 24 * 20;                    
+                    paragraph.SpacingAfter = 24 * 20;
                     break;
                 case 2:
                     run.FontSize = 18;
@@ -105,22 +106,27 @@ namespace EvalSys
 
         private static void CreateTable(XWPFDocument doc, List<EvalutationDataModule> data, Dictionary<int, BasicFourModule> fourModules)
         {
-            XWPFTable table = doc.CreateTable(data.Count + 1, 4);
-            table.SetCellMargins(50, 50, 50, 50);           
-            table.SetColumnWidth(0, 256 * 14);
-            table.SetColumnWidth(1, 256 * 5);
-            table.SetColumnWidth(2, 256 * 5);
-            table.SetColumnWidth(3, 256 * 8);
-            CreateText(table.GetRow(0).GetCell(0), "四级指标/评价准则内容", true);
-            CreateText(table.GetRow(0).GetCell(1), "得分", true);
-            CreateText(table.GetRow(0).GetCell(2), "数据源", true);
-            CreateText(table.GetRow(0).GetCell(3), "备注", true);            
+            XWPFTable table = doc.CreateTable(data.Count + 1, 5);
+            table.SetCellMargins(50, 50, 50, 50);
+            table.SetColumnWidth(0, 256 * 10);
+            table.SetColumnWidth(1, 256 * 4);
+            table.SetColumnWidth(2, 256 * 10);
+            table.SetColumnWidth(3, 256 * 4);
+            table.SetColumnWidth(4, 256 * 4);
+            CreateText(table.GetRow(0).GetCell(0), "评价内容", true);
+            CreateText(table.GetRow(0).GetCell(1), "标准分值", true);
+            CreateText(table.GetRow(0).GetCell(2), "评价依据", true);
+            CreateText(table.GetRow(0).GetCell(3), "得分", true);
+            CreateText(table.GetRow(0).GetCell(4), "附件", true);
+
             for (int i = 0; i < data.Count; i++)
             {
                 CreateText(table.GetRow(i + 1).GetCell(0), fourModules[data[i].IndicatorFour].Name, false);
-                CreateText(table.GetRow(i + 1).GetCell(1), data[i].Grade.ToString(), false);
-                CreateText(table.GetRow(i + 1).GetCell(2), string.Join("\r\n", data[i].DataSource), false);
-                CreateText(table.GetRow(i + 1).GetCell(3), data[i].Description, false);
+                CreateText(table.GetRow(i + 1).GetCell(1), fourModules[data[i].IndicatorFour].BasicScore.ToString(), false);
+                CreateText(table.GetRow(i + 1).GetCell(2), data[i].Description, false);
+                CreateText(table.GetRow(i + 1).GetCell(3), data[i].Grade.ToString(), false);
+                CreateText(table.GetRow(i + 1).GetCell(4), string.Join("\r\n", data[i].DataSource), false);
+
             }
         }
 
