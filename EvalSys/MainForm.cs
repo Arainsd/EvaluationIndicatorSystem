@@ -31,6 +31,8 @@ namespace EvalSys
         HistoryEvalutation historyEvalutation = null;
         //数据统计
         DataStatistics dataStatistics = null;
+        //单位管理
+        CompanyManage companyManage = null;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -70,6 +72,8 @@ namespace EvalSys
             tabDictionary.Add(TabName.HistoryEvalutation, historyEvalutation);
             dataStatistics = new DataStatistics();
             tabDictionary.Add(TabName.DataStatistics, dataStatistics);
+            companyManage = new CompanyManage();
+            tabDictionary.Add(TabName.CompanyManage, companyManage);
         }
 
         private void LeftMenu_ChangePasswordClick(object sender, EventArgs e)

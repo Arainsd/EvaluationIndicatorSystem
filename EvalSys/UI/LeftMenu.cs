@@ -201,6 +201,9 @@ namespace EvalSys
                 case "panel_dataStatistics":
                     sender = TabName.DataStatistics;
                     break;
+                case "panel_companyManage":
+                    sender = TabName.CompanyManage;
+                    break;
             }
             if (sender == null)
                 return;
