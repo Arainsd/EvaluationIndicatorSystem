@@ -232,7 +232,14 @@ namespace EvalSys
             if (preIndex == currentRow) return;
             preIndex = currentRow;
             int currentId = (int)((DataGridView)sender).CurrentRow.Cells["ID"].Value;
-            RefreshRemark(fourModules[currentId]);
+            foreach (var item in fourModules)
+            {
+                if (item.ID == currentId)
+                {
+                    RefreshRemark(item);
+                    break;
+                }
+            }            
         }
 
         /// <summary>
@@ -243,6 +250,7 @@ namespace EvalSys
         {
             lbl_tblNameData.Text = data.Name;
             lbl_tblBasicData.Text = data.BasicRule;
+            lbl_tblScoreData.Text = data.BasicScore.ToString();
             lbl_tblSubData.Text = data.BasicSub;
             lbl_tblAddData.Text = data.BasicAdd;
             lbl_tblCalModuleData.Text = data.StrCalModules;

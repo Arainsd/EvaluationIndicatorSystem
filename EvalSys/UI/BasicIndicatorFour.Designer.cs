@@ -28,27 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbl_title = new System.Windows.Forms.Label();
             this.panel_table = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lbl_tblBasicData = new System.Windows.Forms.Label();
-            this.lbl_tblSubData = new System.Windows.Forms.Label();
-            this.lbl_tblAddData = new System.Windows.Forms.Label();
-            this.lbl_tblCalModuleData = new System.Windows.Forms.Label();
-            this.lbl_tblNameData = new System.Windows.Forms.Label();
-            this.lbl_tblBasic = new System.Windows.Forms.Label();
-            this.lbl_tblSub = new System.Windows.Forms.Label();
-            this.lbl_tblAdd = new System.Windows.Forms.Label();
-            this.lbl_tblCalModule = new System.Windows.Forms.Label();
-            this.lbl_tblName = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.combo_three = new System.Windows.Forms.ComboBox();
-            this.combo_two = new System.Windows.Forms.ComboBox();
-            this.combo_one = new System.Windows.Forms.ComboBox();
-            this.btn_add = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +46,23 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.combo_three = new System.Windows.Forms.ComboBox();
+            this.combo_two = new System.Windows.Forms.ComboBox();
+            this.combo_one = new System.Windows.Forms.ComboBox();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.lbl_tblScoreData = new System.Windows.Forms.Label();
+            this.lbl_tblScore = new System.Windows.Forms.Label();
+            this.lbl_tblBasicData = new System.Windows.Forms.Label();
+            this.lbl_tblSubData = new System.Windows.Forms.Label();
+            this.lbl_tblAddData = new System.Windows.Forms.Label();
+            this.lbl_tblCalModuleData = new System.Windows.Forms.Label();
+            this.lbl_tblNameData = new System.Windows.Forms.Label();
+            this.lbl_tblBasic = new System.Windows.Forms.Label();
+            this.lbl_tblSub = new System.Windows.Forms.Label();
+            this.lbl_tblAdd = new System.Windows.Forms.Label();
+            this.lbl_tblCalModule = new System.Windows.Forms.Label();
+            this.lbl_tblName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -131,6 +133,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblScoreData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblScore);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblBasicData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSubData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblAddData);
@@ -142,7 +146,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblCalModule);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblName);
             this.splitContainer2.Size = new System.Drawing.Size(940, 499);
-            this.splitContainer2.SplitterDistance = 330;
+            this.splitContainer2.SplitterDistance = 300;
             this.splitContainer2.TabIndex = 0;
             // 
             // dataGridView1
@@ -164,168 +168,23 @@
             this.Column6,
             this.Column7,
             this.Column9});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(940, 330);
+            this.dataGridView1.Size = new System.Drawing.Size(940, 300);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // lbl_tblBasicData
-            // 
-            this.lbl_tblBasicData.AutoSize = true;
-            this.lbl_tblBasicData.Location = new System.Drawing.Point(118, 40);
-            this.lbl_tblBasicData.Name = "lbl_tblBasicData";
-            this.lbl_tblBasicData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblBasicData.TabIndex = 24;
-            // 
-            // lbl_tblSubData
-            // 
-            this.lbl_tblSubData.AutoSize = true;
-            this.lbl_tblSubData.Location = new System.Drawing.Point(118, 70);
-            this.lbl_tblSubData.Name = "lbl_tblSubData";
-            this.lbl_tblSubData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblSubData.TabIndex = 23;
-            // 
-            // lbl_tblAddData
-            // 
-            this.lbl_tblAddData.AutoSize = true;
-            this.lbl_tblAddData.Location = new System.Drawing.Point(118, 100);
-            this.lbl_tblAddData.Name = "lbl_tblAddData";
-            this.lbl_tblAddData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblAddData.TabIndex = 22;
-            // 
-            // lbl_tblCalModuleData
-            // 
-            this.lbl_tblCalModuleData.AutoSize = true;
-            this.lbl_tblCalModuleData.Location = new System.Drawing.Point(118, 130);
-            this.lbl_tblCalModuleData.Name = "lbl_tblCalModuleData";
-            this.lbl_tblCalModuleData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblCalModuleData.TabIndex = 21;
-            // 
-            // lbl_tblNameData
-            // 
-            this.lbl_tblNameData.AutoSize = true;
-            this.lbl_tblNameData.Location = new System.Drawing.Point(118, 10);
-            this.lbl_tblNameData.Name = "lbl_tblNameData";
-            this.lbl_tblNameData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblNameData.TabIndex = 20;
-            // 
-            // lbl_tblBasic
-            // 
-            this.lbl_tblBasic.AutoSize = true;
-            this.lbl_tblBasic.Location = new System.Drawing.Point(5, 40);
-            this.lbl_tblBasic.Name = "lbl_tblBasic";
-            this.lbl_tblBasic.Size = new System.Drawing.Size(79, 20);
-            this.lbl_tblBasic.TabIndex = 17;
-            this.lbl_tblBasic.Text = "基础分值：";
-            // 
-            // lbl_tblSub
-            // 
-            this.lbl_tblSub.AutoSize = true;
-            this.lbl_tblSub.Location = new System.Drawing.Point(5, 70);
-            this.lbl_tblSub.Name = "lbl_tblSub";
-            this.lbl_tblSub.Size = new System.Drawing.Size(51, 20);
-            this.lbl_tblSub.TabIndex = 16;
-            this.lbl_tblSub.Text = "扣分：";
-            // 
-            // lbl_tblAdd
-            // 
-            this.lbl_tblAdd.AutoSize = true;
-            this.lbl_tblAdd.Location = new System.Drawing.Point(5, 100);
-            this.lbl_tblAdd.Name = "lbl_tblAdd";
-            this.lbl_tblAdd.Size = new System.Drawing.Size(51, 20);
-            this.lbl_tblAdd.TabIndex = 15;
-            this.lbl_tblAdd.Text = "加分：";
-            // 
-            // lbl_tblCalModule
-            // 
-            this.lbl_tblCalModule.AutoSize = true;
-            this.lbl_tblCalModule.Location = new System.Drawing.Point(5, 130);
-            this.lbl_tblCalModule.Name = "lbl_tblCalModule";
-            this.lbl_tblCalModule.Size = new System.Drawing.Size(79, 20);
-            this.lbl_tblCalModule.TabIndex = 14;
-            this.lbl_tblCalModule.Text = "计算模型：";
-            // 
-            // lbl_tblName
-            // 
-            this.lbl_tblName.AutoSize = true;
-            this.lbl_tblName.Location = new System.Drawing.Point(5, 10);
-            this.lbl_tblName.Name = "lbl_tblName";
-            this.lbl_tblName.Size = new System.Drawing.Size(107, 20);
-            this.lbl_tblName.TabIndex = 13;
-            this.lbl_tblName.Text = "评价准则内容：";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.combo_three);
-            this.panel1.Controls.Add(this.combo_two);
-            this.panel1.Controls.Add(this.combo_one);
-            this.panel1.Controls.Add(this.btn_add);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(960, 60);
-            this.panel1.TabIndex = 0;
-            // 
-            // combo_three
-            // 
-            this.combo_three.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo_three.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.combo_three.FormattingEnabled = true;
-            this.combo_three.Location = new System.Drawing.Point(520, 14);
-            this.combo_three.Name = "combo_three";
-            this.combo_three.Size = new System.Drawing.Size(200, 31);
-            this.combo_three.TabIndex = 4;
-            this.combo_three.SelectedIndexChanged += new System.EventHandler(this.combo_three_SelectedIndexChanged);
-            // 
-            // combo_two
-            // 
-            this.combo_two.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.combo_two.FormattingEnabled = true;
-            this.combo_two.Location = new System.Drawing.Point(270, 14);
-            this.combo_two.Name = "combo_two";
-            this.combo_two.Size = new System.Drawing.Size(200, 31);
-            this.combo_two.TabIndex = 3;
-            this.combo_two.SelectedIndexChanged += new System.EventHandler(this.combo_two_SelectedIndexChanged);
-            // 
-            // combo_one
-            // 
-            this.combo_one.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.combo_one.FormattingEnabled = true;
-            this.combo_one.Location = new System.Drawing.Point(20, 14);
-            this.combo_one.Name = "combo_one";
-            this.combo_one.Size = new System.Drawing.Size(200, 31);
-            this.combo_one.TabIndex = 2;
-            this.combo_one.SelectedIndexChanged += new System.EventHandler(this.combo_one_SelectedIndexChanged);
-            // 
-            // btn_add
-            // 
-            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.btn_add.FlatAppearance.BorderSize = 0;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(760, 12);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(75, 35);
-            this.btn_add.TabIndex = 1;
-            this.btn_add.Text = "添加指标";
-            this.btn_add.UseVisualStyleBackColor = false;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // Column1
             // 
@@ -423,6 +282,168 @@
             this.Column9.Name = "Column9";
             this.Column9.Visible = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.combo_three);
+            this.panel1.Controls.Add(this.combo_two);
+            this.panel1.Controls.Add(this.combo_one);
+            this.panel1.Controls.Add(this.btn_add);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(960, 60);
+            this.panel1.TabIndex = 0;
+            // 
+            // combo_three
+            // 
+            this.combo_three.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_three.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.combo_three.FormattingEnabled = true;
+            this.combo_three.Location = new System.Drawing.Point(520, 14);
+            this.combo_three.Name = "combo_three";
+            this.combo_three.Size = new System.Drawing.Size(200, 31);
+            this.combo_three.TabIndex = 4;
+            this.combo_three.SelectedIndexChanged += new System.EventHandler(this.combo_three_SelectedIndexChanged);
+            // 
+            // combo_two
+            // 
+            this.combo_two.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_two.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.combo_two.FormattingEnabled = true;
+            this.combo_two.Location = new System.Drawing.Point(270, 14);
+            this.combo_two.Name = "combo_two";
+            this.combo_two.Size = new System.Drawing.Size(200, 31);
+            this.combo_two.TabIndex = 3;
+            this.combo_two.SelectedIndexChanged += new System.EventHandler(this.combo_two_SelectedIndexChanged);
+            // 
+            // combo_one
+            // 
+            this.combo_one.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_one.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.combo_one.FormattingEnabled = true;
+            this.combo_one.Location = new System.Drawing.Point(20, 14);
+            this.combo_one.Name = "combo_one";
+            this.combo_one.Size = new System.Drawing.Size(200, 31);
+            this.combo_one.TabIndex = 2;
+            this.combo_one.SelectedIndexChanged += new System.EventHandler(this.combo_one_SelectedIndexChanged);
+            // 
+            // btn_add
+            // 
+            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_add.FlatAppearance.BorderSize = 0;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.ForeColor = System.Drawing.Color.White;
+            this.btn_add.Location = new System.Drawing.Point(760, 12);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 35);
+            this.btn_add.TabIndex = 1;
+            this.btn_add.Text = "添加指标";
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // lbl_tblScoreData
+            // 
+            this.lbl_tblScoreData.AutoSize = true;
+            this.lbl_tblScoreData.Location = new System.Drawing.Point(119, 70);
+            this.lbl_tblScoreData.Name = "lbl_tblScoreData";
+            this.lbl_tblScoreData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblScoreData.TabIndex = 38;
+            // 
+            // lbl_tblScore
+            // 
+            this.lbl_tblScore.AutoSize = true;
+            this.lbl_tblScore.Location = new System.Drawing.Point(6, 70);
+            this.lbl_tblScore.Name = "lbl_tblScore";
+            this.lbl_tblScore.Size = new System.Drawing.Size(79, 20);
+            this.lbl_tblScore.TabIndex = 37;
+            this.lbl_tblScore.Text = "标准分值：";
+            // 
+            // lbl_tblBasicData
+            // 
+            this.lbl_tblBasicData.AutoSize = true;
+            this.lbl_tblBasicData.Location = new System.Drawing.Point(118, 40);
+            this.lbl_tblBasicData.Name = "lbl_tblBasicData";
+            this.lbl_tblBasicData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblBasicData.TabIndex = 36;
+            // 
+            // lbl_tblSubData
+            // 
+            this.lbl_tblSubData.AutoSize = true;
+            this.lbl_tblSubData.Location = new System.Drawing.Point(118, 100);
+            this.lbl_tblSubData.Name = "lbl_tblSubData";
+            this.lbl_tblSubData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblSubData.TabIndex = 35;
+            // 
+            // lbl_tblAddData
+            // 
+            this.lbl_tblAddData.AutoSize = true;
+            this.lbl_tblAddData.Location = new System.Drawing.Point(118, 130);
+            this.lbl_tblAddData.Name = "lbl_tblAddData";
+            this.lbl_tblAddData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblAddData.TabIndex = 34;
+            // 
+            // lbl_tblCalModuleData
+            // 
+            this.lbl_tblCalModuleData.AutoSize = true;
+            this.lbl_tblCalModuleData.Location = new System.Drawing.Point(118, 160);
+            this.lbl_tblCalModuleData.Name = "lbl_tblCalModuleData";
+            this.lbl_tblCalModuleData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblCalModuleData.TabIndex = 33;
+            // 
+            // lbl_tblNameData
+            // 
+            this.lbl_tblNameData.AutoSize = true;
+            this.lbl_tblNameData.Location = new System.Drawing.Point(118, 10);
+            this.lbl_tblNameData.Name = "lbl_tblNameData";
+            this.lbl_tblNameData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblNameData.TabIndex = 32;
+            // 
+            // lbl_tblBasic
+            // 
+            this.lbl_tblBasic.AutoSize = true;
+            this.lbl_tblBasic.Location = new System.Drawing.Point(5, 40);
+            this.lbl_tblBasic.Name = "lbl_tblBasic";
+            this.lbl_tblBasic.Size = new System.Drawing.Size(79, 20);
+            this.lbl_tblBasic.TabIndex = 31;
+            this.lbl_tblBasic.Text = "基础分值：";
+            // 
+            // lbl_tblSub
+            // 
+            this.lbl_tblSub.AutoSize = true;
+            this.lbl_tblSub.Location = new System.Drawing.Point(5, 100);
+            this.lbl_tblSub.Name = "lbl_tblSub";
+            this.lbl_tblSub.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblSub.TabIndex = 30;
+            this.lbl_tblSub.Text = "扣分：";
+            // 
+            // lbl_tblAdd
+            // 
+            this.lbl_tblAdd.AutoSize = true;
+            this.lbl_tblAdd.Location = new System.Drawing.Point(5, 130);
+            this.lbl_tblAdd.Name = "lbl_tblAdd";
+            this.lbl_tblAdd.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblAdd.TabIndex = 29;
+            this.lbl_tblAdd.Text = "加分：";
+            // 
+            // lbl_tblCalModule
+            // 
+            this.lbl_tblCalModule.AutoSize = true;
+            this.lbl_tblCalModule.Location = new System.Drawing.Point(5, 160);
+            this.lbl_tblCalModule.Name = "lbl_tblCalModule";
+            this.lbl_tblCalModule.Size = new System.Drawing.Size(79, 20);
+            this.lbl_tblCalModule.TabIndex = 28;
+            this.lbl_tblCalModule.Text = "计算模型：";
+            // 
+            // lbl_tblName
+            // 
+            this.lbl_tblName.AutoSize = true;
+            this.lbl_tblName.Location = new System.Drawing.Point(5, 10);
+            this.lbl_tblName.Name = "lbl_tblName";
+            this.lbl_tblName.Size = new System.Drawing.Size(107, 20);
+            this.lbl_tblName.TabIndex = 27;
+            this.lbl_tblName.Text = "评价准则内容：";
+            // 
             // BasicIndicatorFour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -461,16 +482,6 @@
         private System.Windows.Forms.Panel panel_table;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label lbl_tblBasicData;
-        private System.Windows.Forms.Label lbl_tblSubData;
-        private System.Windows.Forms.Label lbl_tblAddData;
-        private System.Windows.Forms.Label lbl_tblCalModuleData;
-        private System.Windows.Forms.Label lbl_tblNameData;
-        private System.Windows.Forms.Label lbl_tblBasic;
-        private System.Windows.Forms.Label lbl_tblSub;
-        private System.Windows.Forms.Label lbl_tblAdd;
-        private System.Windows.Forms.Label lbl_tblCalModule;
-        private System.Windows.Forms.Label lbl_tblName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -483,5 +494,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.Label lbl_tblScoreData;
+        private System.Windows.Forms.Label lbl_tblScore;
+        private System.Windows.Forms.Label lbl_tblBasicData;
+        private System.Windows.Forms.Label lbl_tblSubData;
+        private System.Windows.Forms.Label lbl_tblAddData;
+        private System.Windows.Forms.Label lbl_tblCalModuleData;
+        private System.Windows.Forms.Label lbl_tblNameData;
+        private System.Windows.Forms.Label lbl_tblBasic;
+        private System.Windows.Forms.Label lbl_tblSub;
+        private System.Windows.Forms.Label lbl_tblAdd;
+        private System.Windows.Forms.Label lbl_tblCalModule;
+        private System.Windows.Forms.Label lbl_tblName;
     }
 }

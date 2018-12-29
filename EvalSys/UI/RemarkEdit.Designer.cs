@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.lbl_dataSource = new System.Windows.Forms.Label();
-            this.lbl_remark = new System.Windows.Forms.Label();
+            this.lbl_description = new System.Windows.Forms.Label();
             this.listBox_dataSource = new System.Windows.Forms.ListBox();
-            this.txt_remark = new System.Windows.Forms.TextBox();
+            this.txt_description = new System.Windows.Forms.TextBox();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
@@ -47,14 +47,14 @@
             this.lbl_dataSource.TabIndex = 0;
             this.lbl_dataSource.Text = "数据源 : ";
             // 
-            // lbl_remark
+            // lbl_description
             // 
-            this.lbl_remark.AutoSize = true;
-            this.lbl_remark.Location = new System.Drawing.Point(40, 30);
-            this.lbl_remark.Name = "lbl_remark";
-            this.lbl_remark.Size = new System.Drawing.Size(48, 20);
-            this.lbl_remark.TabIndex = 1;
-            this.lbl_remark.Text = "备注 : ";
+            this.lbl_description.AutoSize = true;
+            this.lbl_description.Location = new System.Drawing.Point(40, 30);
+            this.lbl_description.Name = "lbl_description";
+            this.lbl_description.Size = new System.Drawing.Size(76, 20);
+            this.lbl_description.TabIndex = 1;
+            this.lbl_description.Text = "评价依据 : ";
             // 
             // listBox_dataSource
             // 
@@ -62,20 +62,20 @@
             this.listBox_dataSource.FormattingEnabled = true;
             this.listBox_dataSource.HorizontalScrollbar = true;
             this.listBox_dataSource.ItemHeight = 23;
-            this.listBox_dataSource.Location = new System.Drawing.Point(110, 125);
+            this.listBox_dataSource.Location = new System.Drawing.Point(115, 125);
             this.listBox_dataSource.Name = "listBox_dataSource";
             this.listBox_dataSource.Size = new System.Drawing.Size(450, 96);
             this.listBox_dataSource.TabIndex = 2;
             // 
-            // txt_remark
+            // txt_description
             // 
-            this.txt_remark.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.txt_remark.Location = new System.Drawing.Point(110, 25);
-            this.txt_remark.Multiline = true;
-            this.txt_remark.Name = "txt_remark";
-            this.txt_remark.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_remark.Size = new System.Drawing.Size(450, 68);
-            this.txt_remark.TabIndex = 3;
+            this.txt_description.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.txt_description.Location = new System.Drawing.Point(115, 25);
+            this.txt_description.Multiline = true;
+            this.txt_description.Name = "txt_description";
+            this.txt_description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txt_description.Size = new System.Drawing.Size(450, 68);
+            this.txt_description.TabIndex = 3;
             // 
             // btn_add
             // 
@@ -83,7 +83,7 @@
             this.btn_add.FlatAppearance.BorderSize = 0;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(563, 140);
+            this.btn_add.Location = new System.Drawing.Point(568, 140);
             this.btn_add.Margin = new System.Windows.Forms.Padding(0);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(25, 25);
@@ -99,7 +99,7 @@
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(485, 243);
+            this.btn_cancel.Location = new System.Drawing.Point(490, 243);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 35);
             this.btn_cancel.TabIndex = 13;
@@ -126,7 +126,7 @@
             this.btn_delete.FlatAppearance.BorderSize = 0;
             this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(563, 182);
+            this.btn_delete.Location = new System.Drawing.Point(568, 182);
             this.btn_delete.Margin = new System.Windows.Forms.Padding(0);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(25, 25);
@@ -140,14 +140,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(634, 306);
+            this.ClientSize = new System.Drawing.Size(639, 311);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_add);
-            this.Controls.Add(this.txt_remark);
+            this.Controls.Add(this.txt_description);
             this.Controls.Add(this.listBox_dataSource);
-            this.Controls.Add(this.lbl_remark);
+            this.Controls.Add(this.lbl_description);
             this.Controls.Add(this.lbl_dataSource);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -162,9 +162,9 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_dataSource;
-        private System.Windows.Forms.Label lbl_remark;
+        private System.Windows.Forms.Label lbl_description;
         private System.Windows.Forms.ListBox listBox_dataSource;
-        private System.Windows.Forms.TextBox txt_remark;
+        private System.Windows.Forms.TextBox txt_description;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button btn_ok;
