@@ -85,7 +85,7 @@ namespace EvalSys
             {
                 item.Height += height;
             }
-            control2.Parent.Height += 4 * height;
+            control2.Parent.Height += panels.Count * height;
         }
         #endregion
 
@@ -198,7 +198,13 @@ namespace EvalSys
                 case "panel_historyEvalutation":
                     sender = TabName.HistoryEvalutation;
                     break;
-                case "panel_dataStatistics":
+                case "panel_singleStatistics":
+                    sender = TabName.SingleStatistics;
+                    break;
+                case "panel_userStatistics":
+                    sender = TabName.UserStatistics;
+                    break;
+                case "panel_timeStatistics":
                     sender = TabName.DataStatistics;
                     break;
                 case "panel_companyManage":

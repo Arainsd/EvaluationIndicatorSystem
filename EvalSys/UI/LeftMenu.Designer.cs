@@ -34,8 +34,9 @@
             this.lbl_name = new System.Windows.Forms.Label();
             this.lbl_user = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel_companyManage = new System.Windows.Forms.Panel();
+            this.label_companyManage = new System.Windows.Forms.Label();
             this.panel_dataStatistics = new System.Windows.Forms.Panel();
-            this.lbl_dataStatistics = new System.Windows.Forms.Label();
             this.panel_historyEvalutation = new System.Windows.Forms.Panel();
             this.lbl_historyEvalutation = new System.Windows.Forms.Label();
             this.panel_evalutationData = new System.Windows.Forms.Panel();
@@ -51,14 +52,21 @@
             this.lbl_basic_two = new System.Windows.Forms.Label();
             this.panel_basic_one = new System.Windows.Forms.Panel();
             this.lbl_basic_one = new System.Windows.Forms.Label();
-            this.panel_companyManage = new System.Windows.Forms.Panel();
-            this.label_companyManage = new System.Windows.Forms.Label();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.lbl_dataStatistics = new System.Windows.Forms.Label();
+            this.panel_timeStatistics = new System.Windows.Forms.Panel();
+            this.lbl_timeStatistics = new System.Windows.Forms.Label();
+            this.panel_userStatistics = new System.Windows.Forms.Panel();
+            this.lbl_userStatistics = new System.Windows.Forms.Label();
+            this.panel_singleStatistics = new System.Windows.Forms.Panel();
+            this.lbl_singleStatistics = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel_companyManage.SuspendLayout();
             this.panel_dataStatistics.SuspendLayout();
             this.panel_historyEvalutation.SuspendLayout();
             this.panel_evalutationData.SuspendLayout();
@@ -71,7 +79,13 @@
             this.panel_basic_three.SuspendLayout();
             this.panel_basic_two.SuspendLayout();
             this.panel_basic_one.SuspendLayout();
-            this.panel_companyManage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.panel_timeStatistics.SuspendLayout();
+            this.panel_userStatistics.SuspendLayout();
+            this.panel_singleStatistics.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -98,8 +112,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel_historyEvalutation);
             this.splitContainer1.Panel2.Controls.Add(this.panel_evalutationData);
             this.splitContainer1.Panel2.Controls.Add(this.panel_basicPara);
-            this.splitContainer1.Size = new System.Drawing.Size(200, 600);
-            this.splitContainer1.SplitterDistance = 120;
+            this.splitContainer1.Size = new System.Drawing.Size(200, 700);
+            this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -140,23 +154,32 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panel_companyManage
+            // 
+            this.panel_companyManage.Controls.Add(this.label_companyManage);
+            this.panel_companyManage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_companyManage.Location = new System.Drawing.Point(0, 480);
+            this.panel_companyManage.Name = "panel_companyManage";
+            this.panel_companyManage.Size = new System.Drawing.Size(200, 50);
+            this.panel_companyManage.TabIndex = 5;
+            // 
+            // label_companyManage
+            // 
+            this.label_companyManage.AutoSize = true;
+            this.label_companyManage.Location = new System.Drawing.Point(60, 14);
+            this.label_companyManage.Name = "label_companyManage";
+            this.label_companyManage.Size = new System.Drawing.Size(65, 20);
+            this.label_companyManage.TabIndex = 0;
+            this.label_companyManage.Text = "单位信息";
+            // 
             // panel_dataStatistics
             // 
-            this.panel_dataStatistics.Controls.Add(this.lbl_dataStatistics);
+            this.panel_dataStatistics.Controls.Add(this.splitContainer3);
             this.panel_dataStatistics.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_dataStatistics.Location = new System.Drawing.Point(0, 310);
             this.panel_dataStatistics.Name = "panel_dataStatistics";
-            this.panel_dataStatistics.Size = new System.Drawing.Size(200, 50);
+            this.panel_dataStatistics.Size = new System.Drawing.Size(200, 170);
             this.panel_dataStatistics.TabIndex = 4;
-            // 
-            // lbl_dataStatistics
-            // 
-            this.lbl_dataStatistics.AutoSize = true;
-            this.lbl_dataStatistics.Location = new System.Drawing.Point(60, 14);
-            this.lbl_dataStatistics.Name = "lbl_dataStatistics";
-            this.lbl_dataStatistics.Size = new System.Drawing.Size(65, 20);
-            this.lbl_dataStatistics.TabIndex = 0;
-            this.lbl_dataStatistics.Text = "数据统计";
             // 
             // panel_historyEvalutation
             // 
@@ -192,7 +215,7 @@
             this.lbl_indicatorData.Name = "lbl_indicatorData";
             this.lbl_indicatorData.Size = new System.Drawing.Size(65, 20);
             this.lbl_indicatorData.TabIndex = 0;
-            this.lbl_indicatorData.Text = "指标数据";
+            this.lbl_indicatorData.Text = "能力评价";
             // 
             // panel_basicPara
             // 
@@ -231,7 +254,7 @@
             this.lbl_basicPara.Name = "lbl_basicPara";
             this.lbl_basicPara.Size = new System.Drawing.Size(65, 20);
             this.lbl_basicPara.TabIndex = 1;
-            this.lbl_basicPara.Text = "基本参数";
+            this.lbl_basicPara.Text = "参数设置";
             // 
             // panel_basic_four
             // 
@@ -309,23 +332,91 @@
             this.lbl_basic_one.TabIndex = 0;
             this.lbl_basic_one.Text = "一级指标";
             // 
-            // panel_companyManage
+            // splitContainer3
             // 
-            this.panel_companyManage.Controls.Add(this.label_companyManage);
-            this.panel_companyManage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_companyManage.Location = new System.Drawing.Point(0, 360);
-            this.panel_companyManage.Name = "panel_companyManage";
-            this.panel_companyManage.Size = new System.Drawing.Size(200, 50);
-            this.panel_companyManage.TabIndex = 5;
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // label_companyManage
+            // splitContainer3.Panel1
             // 
-            this.label_companyManage.AutoSize = true;
-            this.label_companyManage.Location = new System.Drawing.Point(60, 14);
-            this.label_companyManage.Name = "label_companyManage";
-            this.label_companyManage.Size = new System.Drawing.Size(65, 20);
-            this.label_companyManage.TabIndex = 0;
-            this.label_companyManage.Text = "单位信息";
+            this.splitContainer3.Panel1.Controls.Add(this.lbl_dataStatistics);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.panel_timeStatistics);
+            this.splitContainer3.Panel2.Controls.Add(this.panel_userStatistics);
+            this.splitContainer3.Panel2.Controls.Add(this.panel_singleStatistics);
+            this.splitContainer3.Size = new System.Drawing.Size(200, 170);
+            this.splitContainer3.SplitterDistance = 47;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // lbl_dataStatistics
+            // 
+            this.lbl_dataStatistics.AutoSize = true;
+            this.lbl_dataStatistics.Location = new System.Drawing.Point(60, 14);
+            this.lbl_dataStatistics.Name = "lbl_dataStatistics";
+            this.lbl_dataStatistics.Size = new System.Drawing.Size(65, 20);
+            this.lbl_dataStatistics.TabIndex = 2;
+            this.lbl_dataStatistics.Text = "数据统计";
+            // 
+            // panel_timeStatistics
+            // 
+            this.panel_timeStatistics.Controls.Add(this.lbl_timeStatistics);
+            this.panel_timeStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_timeStatistics.Location = new System.Drawing.Point(0, 80);
+            this.panel_timeStatistics.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_timeStatistics.Name = "panel_timeStatistics";
+            this.panel_timeStatistics.Size = new System.Drawing.Size(200, 40);
+            this.panel_timeStatistics.TabIndex = 5;
+            // 
+            // lbl_timeStatistics
+            // 
+            this.lbl_timeStatistics.AutoSize = true;
+            this.lbl_timeStatistics.Location = new System.Drawing.Point(97, 11);
+            this.lbl_timeStatistics.Name = "lbl_timeStatistics";
+            this.lbl_timeStatistics.Size = new System.Drawing.Size(65, 20);
+            this.lbl_timeStatistics.TabIndex = 0;
+            this.lbl_timeStatistics.Text = "周期统计";
+            // 
+            // panel_userStatistics
+            // 
+            this.panel_userStatistics.Controls.Add(this.lbl_userStatistics);
+            this.panel_userStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_userStatistics.Location = new System.Drawing.Point(0, 40);
+            this.panel_userStatistics.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_userStatistics.Name = "panel_userStatistics";
+            this.panel_userStatistics.Size = new System.Drawing.Size(200, 40);
+            this.panel_userStatistics.TabIndex = 4;
+            // 
+            // lbl_userStatistics
+            // 
+            this.lbl_userStatistics.AutoSize = true;
+            this.lbl_userStatistics.Location = new System.Drawing.Point(97, 11);
+            this.lbl_userStatistics.Name = "lbl_userStatistics";
+            this.lbl_userStatistics.Size = new System.Drawing.Size(65, 20);
+            this.lbl_userStatistics.TabIndex = 0;
+            this.lbl_userStatistics.Text = "用户统计";
+            // 
+            // panel_singleStatistics
+            // 
+            this.panel_singleStatistics.Controls.Add(this.lbl_singleStatistics);
+            this.panel_singleStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_singleStatistics.Location = new System.Drawing.Point(0, 0);
+            this.panel_singleStatistics.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_singleStatistics.Name = "panel_singleStatistics";
+            this.panel_singleStatistics.Size = new System.Drawing.Size(200, 40);
+            this.panel_singleStatistics.TabIndex = 3;
+            // 
+            // lbl_singleStatistics
+            // 
+            this.lbl_singleStatistics.AutoSize = true;
+            this.lbl_singleStatistics.Location = new System.Drawing.Point(97, 11);
+            this.lbl_singleStatistics.Name = "lbl_singleStatistics";
+            this.lbl_singleStatistics.Size = new System.Drawing.Size(65, 20);
+            this.lbl_singleStatistics.TabIndex = 0;
+            this.lbl_singleStatistics.Text = "单个统计";
             // 
             // LeftMenu
             // 
@@ -337,7 +428,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LeftMenu";
-            this.Size = new System.Drawing.Size(200, 600);
+            this.Size = new System.Drawing.Size(200, 700);
             this.Load += new System.EventHandler(this.LeftMenu_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -346,8 +437,9 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel_companyManage.ResumeLayout(false);
+            this.panel_companyManage.PerformLayout();
             this.panel_dataStatistics.ResumeLayout(false);
-            this.panel_dataStatistics.PerformLayout();
             this.panel_historyEvalutation.ResumeLayout(false);
             this.panel_historyEvalutation.PerformLayout();
             this.panel_evalutationData.ResumeLayout(false);
@@ -366,8 +458,17 @@
             this.panel_basic_two.PerformLayout();
             this.panel_basic_one.ResumeLayout(false);
             this.panel_basic_one.PerformLayout();
-            this.panel_companyManage.ResumeLayout(false);
-            this.panel_companyManage.PerformLayout();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.panel_timeStatistics.ResumeLayout(false);
+            this.panel_timeStatistics.PerformLayout();
+            this.panel_userStatistics.ResumeLayout(false);
+            this.panel_userStatistics.PerformLayout();
+            this.panel_singleStatistics.ResumeLayout(false);
+            this.panel_singleStatistics.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -395,8 +496,15 @@
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel_dataStatistics;
-        private System.Windows.Forms.Label lbl_dataStatistics;
         private System.Windows.Forms.Panel panel_companyManage;
         private System.Windows.Forms.Label label_companyManage;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.Label lbl_dataStatistics;
+        private System.Windows.Forms.Panel panel_timeStatistics;
+        private System.Windows.Forms.Label lbl_timeStatistics;
+        private System.Windows.Forms.Panel panel_userStatistics;
+        private System.Windows.Forms.Label lbl_userStatistics;
+        private System.Windows.Forms.Panel panel_singleStatistics;
+        private System.Windows.Forms.Label lbl_singleStatistics;
     }
 }
