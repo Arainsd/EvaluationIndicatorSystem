@@ -162,6 +162,8 @@
             this.Controls.Add(this.txt_name);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TimeCycleChange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "新增评价阶段";

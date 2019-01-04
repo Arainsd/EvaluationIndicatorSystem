@@ -253,6 +253,8 @@
             this.Controls.Add(this.lbl_name);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChangeIndicatorFour";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "新增/修改";

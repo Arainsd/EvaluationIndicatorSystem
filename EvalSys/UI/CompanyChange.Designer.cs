@@ -230,7 +230,7 @@
             this.MinimizeBox = false;
             this.Name = "CompanyChange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "新增评价阶段";
+            this.Text = "单位信息";
             this.ResumeLayout(false);
             this.PerformLayout();
 

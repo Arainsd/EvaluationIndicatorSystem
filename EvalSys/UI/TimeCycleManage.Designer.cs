@@ -238,6 +238,8 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TimeCycleManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "评价阶段管理";
