@@ -59,7 +59,7 @@ namespace EvalSys
         }
 
         /// <summary>
-        /// 刷新评价周期
+        /// 刷新评价阶段
         /// </summary>
         private void TimeCycleRefresh(string userName)
         {
@@ -101,7 +101,7 @@ namespace EvalSys
         }
 
         /// <summary>
-        /// 评价周期改变事件
+        /// 评价阶段改变事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -243,7 +243,7 @@ namespace EvalSys
             lbl_tblSubData.Text = evalutationData.BasicSub;
             lbl_tblAddData.Text = evalutationData.BasicAdd;
             lbl_tblGradeData.Text = evalutationData.Grade.ToString();
-            lbl_tblRemarkData.Text = evalutationData.Description;            
+            lbl_tblDescriptionData.Text = evalutationData.Description;            
             CreateLabelLink(evalutationData.DataSource);
         }
         
@@ -257,7 +257,7 @@ namespace EvalSys
             lbl_tblSubData.Text = string.Empty;
             lbl_tblAddData.Text = string.Empty;
             lbl_tblGradeData.Text = string.Empty;
-            lbl_tblRemarkData.Text = string.Empty;
+            lbl_tblDescriptionData.Text = string.Empty;
 
             List<LinkLabel> linkLabels = new List<LinkLabel>();
             foreach (var item in splitContainer2.Panel2.Controls)

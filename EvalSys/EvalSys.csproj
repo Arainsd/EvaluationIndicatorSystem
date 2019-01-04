@@ -152,6 +152,24 @@
     <Compile Include="UI\ChangeIndicatorOne.Designer.cs">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
     </Compile>
+	<Compile Include="UI\StatisticsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\StatisticsDetails.Designer.cs">
+      <DependentUpon>StatisticsDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserStatistics.Designer.cs">
+      <DependentUpon>UserStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SingleStatistics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SingleStatistics.Designer.cs">
+      <DependentUpon>SingleStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\DataStatistics.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,6 +281,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChangeIndicatorOne.resx">
       <DependentUpon>ChangeIndicatorOne.cs</DependentUpon>
+    </EmbeddedResource>
+	<EmbeddedResource Include="UI\StatisticsDetails.resx">
+      <DependentUpon>StatisticsDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserStatistics.resx">
+      <DependentUpon>UserStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SingleStatistics.resx">
+      <DependentUpon>SingleStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DataStatistics.resx">
       <DependentUpon>DataStatistics.cs</DependentUpon>

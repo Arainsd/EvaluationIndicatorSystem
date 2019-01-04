@@ -55,7 +55,7 @@
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(76, 20);
             this.lbl_name.TabIndex = 1;
-            this.lbl_name.Text = "评价周期 : ";
+            this.lbl_name.Text = "评价阶段 : ";
             // 
             // btn_cancel
             // 
@@ -164,7 +164,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TimeCycleChange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "新增评价周期";
+            this.Text = "新增评价阶段";
             this.ResumeLayout(false);
             this.PerformLayout();
 

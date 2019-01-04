@@ -35,7 +35,7 @@ namespace EvalSys
         }
 
         /// <summary>
-        /// 刷新评价周期
+        /// 刷新评价阶段
         /// </summary>
         private void TimeCycleRefresh()
         {
@@ -68,7 +68,7 @@ namespace EvalSys
         }
 
         /// <summary>
-        /// 评价周期改变事件
+        /// 评价阶段改变事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -82,7 +82,7 @@ namespace EvalSys
         }
 
         /// <summary>
-        /// 评价周期管理
+        /// 评价阶段管理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -228,7 +228,7 @@ namespace EvalSys
             lbl_tblSubData.Text = evalutationData.BasicSub;
             lbl_tblAddData.Text = evalutationData.BasicAdd;
             lbl_tblGradeData.Text = evalutationData.Grade.ToString();
-            lbl_tblRemarkData.Text = evalutationData.Description;
+            lbl_tblDescriptionData.Text = evalutationData.Description;
             CreateLabelLink(evalutationData.DataSource);
         }
 
@@ -242,7 +242,7 @@ namespace EvalSys
             lbl_tblSubData.Text = string.Empty;
             lbl_tblAddData.Text = string.Empty;
             lbl_tblGradeData.Text = string.Empty;
-            lbl_tblRemarkData.Text = string.Empty;
+            lbl_tblDescriptionData.Text = string.Empty;
 
             List<LinkLabel> linkLabels = new List<LinkLabel>();
             foreach (var item in splitContainer2.Panel2.Controls)
@@ -340,7 +340,7 @@ namespace EvalSys
         private void btn_commit_Click(object sender, EventArgs e)
         {
             if (evalutationModules == null || evalutationModules.Count == 0) return;
-            if (MessageBox.Show("提交后，改评价周期将不能修改，确认提交？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("提交后，改评价阶段将不能修改，确认提交？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 SqliteHelper.Update(TableName.EvalutationData, evalutationModules);
                 TimeCycleModule currentTime = timeModules[combo_timeCycle.SelectedIndex];

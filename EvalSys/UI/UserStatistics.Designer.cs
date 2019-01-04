@@ -1,6 +1,6 @@
 ﻿namespace EvalSys
 {
-    partial class DataStatistics
+    partial class UserStatistics
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_timePeriods = new System.Windows.Forms.Label();
             this.lbl_indicator = new System.Windows.Forms.Label();
-            this.lbl_timePeriod = new System.Windows.Forms.Label();
-            this.combo_timeCycle = new System.Windows.Forms.ComboBox();
-            this.lbl_timeCycle = new System.Windows.Forms.Label();
+            this.combo_user = new System.Windows.Forms.ComboBox();
+            this.lbl_user = new System.Windows.Forms.Label();
             this.combo_one = new System.Windows.Forms.ComboBox();
             this.lbl_title = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -47,6 +45,9 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -84,11 +85,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lbl_timePeriods);
             this.panel1.Controls.Add(this.lbl_indicator);
-            this.panel1.Controls.Add(this.lbl_timePeriod);
-            this.panel1.Controls.Add(this.combo_timeCycle);
-            this.panel1.Controls.Add(this.lbl_timeCycle);
+            this.panel1.Controls.Add(this.combo_user);
+            this.panel1.Controls.Add(this.lbl_user);
             this.panel1.Controls.Add(this.combo_three);
             this.panel1.Controls.Add(this.combo_two);
             this.panel1.Controls.Add(this.combo_one);
@@ -97,14 +96,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(940, 120);
             this.panel1.TabIndex = 0;
-            // 
-            // lbl_timePeriods
-            // 
-            this.lbl_timePeriods.AutoSize = true;
-            this.lbl_timePeriods.Location = new System.Drawing.Point(368, 25);
-            this.lbl_timePeriods.Name = "lbl_timePeriods";
-            this.lbl_timePeriods.Size = new System.Drawing.Size(0, 20);
-            this.lbl_timePeriods.TabIndex = 14;
             // 
             // lbl_indicator
             // 
@@ -116,36 +107,26 @@
             this.lbl_indicator.TabIndex = 9;
             this.lbl_indicator.Text = "评价指标 : ";
             // 
-            // lbl_timePeriod
+            // combo_user
             // 
-            this.lbl_timePeriod.AutoSize = true;
-            this.lbl_timePeriod.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_timePeriod.Location = new System.Drawing.Point(300, 25);
-            this.lbl_timePeriod.Name = "lbl_timePeriod";
-            this.lbl_timePeriod.Size = new System.Drawing.Size(62, 20);
-            this.lbl_timePeriod.TabIndex = 6;
-            this.lbl_timePeriod.Text = "时间段 : ";
+            this.combo_user.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_user.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.combo_user.FormattingEnabled = true;
+            this.combo_user.Location = new System.Drawing.Point(85, 19);
+            this.combo_user.Name = "combo_user";
+            this.combo_user.Size = new System.Drawing.Size(200, 31);
+            this.combo_user.TabIndex = 5;
+            this.combo_user.SelectedIndexChanged += new System.EventHandler(this.combo_user_SelectedIndexChanged);
             // 
-            // combo_timeCycle
+            // lbl_user
             // 
-            this.combo_timeCycle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo_timeCycle.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.combo_timeCycle.FormattingEnabled = true;
-            this.combo_timeCycle.Location = new System.Drawing.Point(85, 19);
-            this.combo_timeCycle.Name = "combo_timeCycle";
-            this.combo_timeCycle.Size = new System.Drawing.Size(200, 31);
-            this.combo_timeCycle.TabIndex = 5;
-            this.combo_timeCycle.SelectedIndexChanged += new System.EventHandler(this.combo_timeCycle_SelectedIndexChanged);
-            // 
-            // lbl_timeCycle
-            // 
-            this.lbl_timeCycle.AutoSize = true;
-            this.lbl_timeCycle.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.lbl_timeCycle.Location = new System.Drawing.Point(5, 25);
-            this.lbl_timeCycle.Name = "lbl_timeCycle";
-            this.lbl_timeCycle.Size = new System.Drawing.Size(76, 20);
-            this.lbl_timeCycle.TabIndex = 2;
-            this.lbl_timeCycle.Text = "评级周期 : ";
+            this.lbl_user.AutoSize = true;
+            this.lbl_user.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.lbl_user.Location = new System.Drawing.Point(5, 25);
+            this.lbl_user.Name = "lbl_user";
+            this.lbl_user.Size = new System.Drawing.Size(76, 20);
+            this.lbl_user.TabIndex = 2;
+            this.lbl_user.Text = "单位名称 : ";
             // 
             // combo_one
             // 
@@ -163,10 +144,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.lbl_title.Location = new System.Drawing.Point(10, 10);
+            this.lbl_title.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(139, 20);
             this.lbl_title.TabIndex = 1;
-            this.lbl_title.Text = "数据统计 > 周期统计";
+            this.lbl_title.Text = "数据统计 > 用户统计";
             // 
             // splitContainer1
             // 
@@ -218,11 +200,11 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend_user";
-            this.chart1.Legends.Add(legend2);
+            legend4.Name = "Legend_user";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(926, 421);
@@ -245,32 +227,58 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.TimeName,
+            this.Column6});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(926, 407);
-            this.dataGridView1.TabIndex = 7;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.TabIndex = 5;
             // 
-            // DataStatistics
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "FourName";
+            this.Column1.HeaderText = "评价内容";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // TimeName
+            // 
+            this.TimeName.DataPropertyName = "TimeName";
+            this.TimeName.HeaderText = "评价阶段";
+            this.TimeName.Name = "TimeName";
+            this.TimeName.ReadOnly = true;
+            this.TimeName.Width = 200;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Grade";
+            this.Column6.HeaderText = "得分";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 60;
+            // 
+            // UserStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "DataStatistics";
+            this.Name = "UserStatistics";
             this.Size = new System.Drawing.Size(960, 640);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -296,19 +304,16 @@
         private System.Windows.Forms.ComboBox combo_one;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label lbl_timeCycle;
-        private System.Windows.Forms.ComboBox combo_timeCycle;
-        private System.Windows.Forms.Label lbl_timePeriod;
+        private System.Windows.Forms.Label lbl_user;
+        private System.Windows.Forms.ComboBox combo_user;
         private System.Windows.Forms.Label lbl_indicator;
-        private System.Windows.Forms.Label lbl_timePeriods;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

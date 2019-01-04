@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_three = new System.Windows.Forms.ComboBox();
             this.combo_two = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,13 +45,29 @@
             this.combo_one = new System.Windows.Forms.ComboBox();
             this.lbl_title = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_exportWord = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbl_tblDescriptionData = new System.Windows.Forms.Label();
+            this.lbl_tblBasicData = new System.Windows.Forms.Label();
+            this.lbl_tblSubData = new System.Windows.Forms.Label();
+            this.lbl_tblAddData = new System.Windows.Forms.Label();
+            this.lbl_tblGradeData = new System.Windows.Forms.Label();
+            this.lbl_tblNameData = new System.Windows.Forms.Label();
+            this.lbl_tblSource = new System.Windows.Forms.Label();
+            this.lbl_tblDescription = new System.Windows.Forms.Label();
+            this.lbl_tblBasic = new System.Windows.Forms.Label();
+            this.lbl_tblSub = new System.Windows.Forms.Label();
+            this.lbl_tblAdd = new System.Windows.Forms.Label();
+            this.lbl_tblGrade = new System.Windows.Forms.Label();
+            this.lbl_tblName = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BasicScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,20 +77,6 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lbl_tblRemarkData = new System.Windows.Forms.Label();
-            this.lbl_tblBasicData = new System.Windows.Forms.Label();
-            this.lbl_tblSubData = new System.Windows.Forms.Label();
-            this.lbl_tblAddData = new System.Windows.Forms.Label();
-            this.lbl_tblGradeData = new System.Windows.Forms.Label();
-            this.lbl_tblNameData = new System.Windows.Forms.Label();
-            this.lbl_tblSource = new System.Windows.Forms.Label();
-            this.lbl_tblRemark = new System.Windows.Forms.Label();
-            this.lbl_tblBasic = new System.Windows.Forms.Label();
-            this.lbl_tblSub = new System.Windows.Forms.Label();
-            this.lbl_tblAdd = new System.Windows.Forms.Label();
-            this.lbl_tblGrade = new System.Windows.Forms.Label();
-            this.lbl_tblName = new System.Windows.Forms.Label();
-            this.btn_exportWord = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -291,6 +293,21 @@
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 1;
             // 
+            // btn_exportWord
+            // 
+            this.btn_exportWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_exportWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.btn_exportWord.FlatAppearance.BorderSize = 0;
+            this.btn_exportWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_exportWord.ForeColor = System.Drawing.Color.White;
+            this.btn_exportWord.Location = new System.Drawing.Point(860, 9);
+            this.btn_exportWord.Name = "btn_exportWord";
+            this.btn_exportWord.Size = new System.Drawing.Size(75, 35);
+            this.btn_exportWord.TabIndex = 20;
+            this.btn_exportWord.Text = "生成报表";
+            this.btn_exportWord.UseVisualStyleBackColor = false;
+            this.btn_exportWord.Click += new System.EventHandler(this.btn_exportWord_Click);
+            // 
             // splitContainer2
             // 
             this.splitContainer2.BackColor = System.Drawing.SystemColors.Control;
@@ -306,14 +323,14 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblRemarkData);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblDescriptionData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblBasicData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSubData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblAddData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblGradeData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblNameData);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSource);
-            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblRemark);
+            this.splitContainer2.Panel2.Controls.Add(this.lbl_tblDescription);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblBasic);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblSub);
             this.splitContainer2.Panel2.Controls.Add(this.lbl_tblAdd);
@@ -330,10 +347,12 @@
             this.dataGridView1.ColumnHeadersHeight = 40;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.BasicScore,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Column5,
+            this.Description,
             this.Column6,
             this.ID,
             this.Column8,
@@ -343,14 +362,14 @@
             this.Column12,
             this.Column13,
             this.Operate});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
@@ -360,6 +379,117 @@
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // lbl_tblDescriptionData
+            // 
+            this.lbl_tblDescriptionData.AutoSize = true;
+            this.lbl_tblDescriptionData.Location = new System.Drawing.Point(118, 160);
+            this.lbl_tblDescriptionData.Name = "lbl_tblDescriptionData";
+            this.lbl_tblDescriptionData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblDescriptionData.TabIndex = 25;
+            // 
+            // lbl_tblBasicData
+            // 
+            this.lbl_tblBasicData.AutoSize = true;
+            this.lbl_tblBasicData.Location = new System.Drawing.Point(118, 40);
+            this.lbl_tblBasicData.Name = "lbl_tblBasicData";
+            this.lbl_tblBasicData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblBasicData.TabIndex = 24;
+            // 
+            // lbl_tblSubData
+            // 
+            this.lbl_tblSubData.AutoSize = true;
+            this.lbl_tblSubData.Location = new System.Drawing.Point(118, 70);
+            this.lbl_tblSubData.Name = "lbl_tblSubData";
+            this.lbl_tblSubData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblSubData.TabIndex = 23;
+            // 
+            // lbl_tblAddData
+            // 
+            this.lbl_tblAddData.AutoSize = true;
+            this.lbl_tblAddData.Location = new System.Drawing.Point(118, 100);
+            this.lbl_tblAddData.Name = "lbl_tblAddData";
+            this.lbl_tblAddData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblAddData.TabIndex = 22;
+            // 
+            // lbl_tblGradeData
+            // 
+            this.lbl_tblGradeData.AutoSize = true;
+            this.lbl_tblGradeData.Location = new System.Drawing.Point(118, 130);
+            this.lbl_tblGradeData.Name = "lbl_tblGradeData";
+            this.lbl_tblGradeData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblGradeData.TabIndex = 21;
+            // 
+            // lbl_tblNameData
+            // 
+            this.lbl_tblNameData.AutoSize = true;
+            this.lbl_tblNameData.Location = new System.Drawing.Point(118, 10);
+            this.lbl_tblNameData.Name = "lbl_tblNameData";
+            this.lbl_tblNameData.Size = new System.Drawing.Size(0, 20);
+            this.lbl_tblNameData.TabIndex = 20;
+            // 
+            // lbl_tblSource
+            // 
+            this.lbl_tblSource.AutoSize = true;
+            this.lbl_tblSource.Location = new System.Drawing.Point(5, 190);
+            this.lbl_tblSource.Name = "lbl_tblSource";
+            this.lbl_tblSource.Size = new System.Drawing.Size(65, 20);
+            this.lbl_tblSource.TabIndex = 19;
+            this.lbl_tblSource.Text = "数据源：";
+            // 
+            // lbl_tblDescription
+            // 
+            this.lbl_tblDescription.AutoSize = true;
+            this.lbl_tblDescription.Location = new System.Drawing.Point(5, 160);
+            this.lbl_tblDescription.Name = "lbl_tblDescription";
+            this.lbl_tblDescription.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblDescription.TabIndex = 18;
+            this.lbl_tblDescription.Text = "备注：";
+            // 
+            // lbl_tblBasic
+            // 
+            this.lbl_tblBasic.AutoSize = true;
+            this.lbl_tblBasic.Location = new System.Drawing.Point(5, 40);
+            this.lbl_tblBasic.Name = "lbl_tblBasic";
+            this.lbl_tblBasic.Size = new System.Drawing.Size(79, 20);
+            this.lbl_tblBasic.TabIndex = 17;
+            this.lbl_tblBasic.Text = "基础分值：";
+            // 
+            // lbl_tblSub
+            // 
+            this.lbl_tblSub.AutoSize = true;
+            this.lbl_tblSub.Location = new System.Drawing.Point(5, 70);
+            this.lbl_tblSub.Name = "lbl_tblSub";
+            this.lbl_tblSub.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblSub.TabIndex = 16;
+            this.lbl_tblSub.Text = "扣分：";
+            // 
+            // lbl_tblAdd
+            // 
+            this.lbl_tblAdd.AutoSize = true;
+            this.lbl_tblAdd.Location = new System.Drawing.Point(5, 100);
+            this.lbl_tblAdd.Name = "lbl_tblAdd";
+            this.lbl_tblAdd.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblAdd.TabIndex = 15;
+            this.lbl_tblAdd.Text = "加分：";
+            // 
+            // lbl_tblGrade
+            // 
+            this.lbl_tblGrade.AutoSize = true;
+            this.lbl_tblGrade.Location = new System.Drawing.Point(5, 130);
+            this.lbl_tblGrade.Name = "lbl_tblGrade";
+            this.lbl_tblGrade.Size = new System.Drawing.Size(51, 20);
+            this.lbl_tblGrade.TabIndex = 14;
+            this.lbl_tblGrade.Text = "得分：";
+            // 
+            // lbl_tblName
+            // 
+            this.lbl_tblName.AutoSize = true;
+            this.lbl_tblName.Location = new System.Drawing.Point(5, 10);
+            this.lbl_tblName.Name = "lbl_tblName";
+            this.lbl_tblName.Size = new System.Drawing.Size(107, 20);
+            this.lbl_tblName.TabIndex = 13;
+            this.lbl_tblName.Text = "评价准则内容：";
+            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -368,12 +498,20 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
+            // BasicScore
+            // 
+            this.BasicScore.DataPropertyName = "BasicScore";
+            this.BasicScore.HeaderText = "标准分值";
+            this.BasicScore.Name = "BasicScore";
+            this.BasicScore.ReadOnly = true;
+            // 
             // Column2
             // 
             this.Column2.DataPropertyName = "BasicRule";
             this.Column2.HeaderText = "基础分值";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
             this.Column2.Width = 200;
             // 
             // Column3
@@ -382,6 +520,7 @@
             this.Column3.HeaderText = "扣分";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
             // 
             // Column4
             // 
@@ -389,6 +528,7 @@
             this.Column4.HeaderText = "加分";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
             // 
             // Column5
             // 
@@ -398,6 +538,13 @@
             this.Column5.ReadOnly = true;
             this.Column5.Visible = false;
             this.Column5.Width = 150;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "评价依据";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             // 
             // Column6
             // 
@@ -464,132 +611,6 @@
             this.Operate.ReadOnly = true;
             this.Operate.Visible = false;
             // 
-            // lbl_tblRemarkData
-            // 
-            this.lbl_tblRemarkData.AutoSize = true;
-            this.lbl_tblRemarkData.Location = new System.Drawing.Point(118, 160);
-            this.lbl_tblRemarkData.Name = "lbl_tblRemarkData";
-            this.lbl_tblRemarkData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblRemarkData.TabIndex = 25;
-            // 
-            // lbl_tblBasicData
-            // 
-            this.lbl_tblBasicData.AutoSize = true;
-            this.lbl_tblBasicData.Location = new System.Drawing.Point(118, 40);
-            this.lbl_tblBasicData.Name = "lbl_tblBasicData";
-            this.lbl_tblBasicData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblBasicData.TabIndex = 24;
-            // 
-            // lbl_tblSubData
-            // 
-            this.lbl_tblSubData.AutoSize = true;
-            this.lbl_tblSubData.Location = new System.Drawing.Point(118, 70);
-            this.lbl_tblSubData.Name = "lbl_tblSubData";
-            this.lbl_tblSubData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblSubData.TabIndex = 23;
-            // 
-            // lbl_tblAddData
-            // 
-            this.lbl_tblAddData.AutoSize = true;
-            this.lbl_tblAddData.Location = new System.Drawing.Point(118, 100);
-            this.lbl_tblAddData.Name = "lbl_tblAddData";
-            this.lbl_tblAddData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblAddData.TabIndex = 22;
-            // 
-            // lbl_tblGradeData
-            // 
-            this.lbl_tblGradeData.AutoSize = true;
-            this.lbl_tblGradeData.Location = new System.Drawing.Point(118, 130);
-            this.lbl_tblGradeData.Name = "lbl_tblGradeData";
-            this.lbl_tblGradeData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblGradeData.TabIndex = 21;
-            // 
-            // lbl_tblNameData
-            // 
-            this.lbl_tblNameData.AutoSize = true;
-            this.lbl_tblNameData.Location = new System.Drawing.Point(118, 10);
-            this.lbl_tblNameData.Name = "lbl_tblNameData";
-            this.lbl_tblNameData.Size = new System.Drawing.Size(0, 20);
-            this.lbl_tblNameData.TabIndex = 20;
-            // 
-            // lbl_tblSource
-            // 
-            this.lbl_tblSource.AutoSize = true;
-            this.lbl_tblSource.Location = new System.Drawing.Point(5, 190);
-            this.lbl_tblSource.Name = "lbl_tblSource";
-            this.lbl_tblSource.Size = new System.Drawing.Size(65, 20);
-            this.lbl_tblSource.TabIndex = 19;
-            this.lbl_tblSource.Text = "数据源：";
-            // 
-            // lbl_tblRemark
-            // 
-            this.lbl_tblRemark.AutoSize = true;
-            this.lbl_tblRemark.Location = new System.Drawing.Point(5, 160);
-            this.lbl_tblRemark.Name = "lbl_tblRemark";
-            this.lbl_tblRemark.Size = new System.Drawing.Size(51, 20);
-            this.lbl_tblRemark.TabIndex = 18;
-            this.lbl_tblRemark.Text = "备注：";
-            // 
-            // lbl_tblBasic
-            // 
-            this.lbl_tblBasic.AutoSize = true;
-            this.lbl_tblBasic.Location = new System.Drawing.Point(5, 40);
-            this.lbl_tblBasic.Name = "lbl_tblBasic";
-            this.lbl_tblBasic.Size = new System.Drawing.Size(79, 20);
-            this.lbl_tblBasic.TabIndex = 17;
-            this.lbl_tblBasic.Text = "基础分值：";
-            // 
-            // lbl_tblSub
-            // 
-            this.lbl_tblSub.AutoSize = true;
-            this.lbl_tblSub.Location = new System.Drawing.Point(5, 70);
-            this.lbl_tblSub.Name = "lbl_tblSub";
-            this.lbl_tblSub.Size = new System.Drawing.Size(51, 20);
-            this.lbl_tblSub.TabIndex = 16;
-            this.lbl_tblSub.Text = "扣分：";
-            // 
-            // lbl_tblAdd
-            // 
-            this.lbl_tblAdd.AutoSize = true;
-            this.lbl_tblAdd.Location = new System.Drawing.Point(5, 100);
-            this.lbl_tblAdd.Name = "lbl_tblAdd";
-            this.lbl_tblAdd.Size = new System.Drawing.Size(51, 20);
-            this.lbl_tblAdd.TabIndex = 15;
-            this.lbl_tblAdd.Text = "加分：";
-            // 
-            // lbl_tblGrade
-            // 
-            this.lbl_tblGrade.AutoSize = true;
-            this.lbl_tblGrade.Location = new System.Drawing.Point(5, 130);
-            this.lbl_tblGrade.Name = "lbl_tblGrade";
-            this.lbl_tblGrade.Size = new System.Drawing.Size(51, 20);
-            this.lbl_tblGrade.TabIndex = 14;
-            this.lbl_tblGrade.Text = "得分：";
-            // 
-            // lbl_tblName
-            // 
-            this.lbl_tblName.AutoSize = true;
-            this.lbl_tblName.Location = new System.Drawing.Point(5, 10);
-            this.lbl_tblName.Name = "lbl_tblName";
-            this.lbl_tblName.Size = new System.Drawing.Size(107, 20);
-            this.lbl_tblName.TabIndex = 13;
-            this.lbl_tblName.Text = "评价准则内容：";
-            // 
-            // btn_exportWord
-            // 
-            this.btn_exportWord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_exportWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.btn_exportWord.FlatAppearance.BorderSize = 0;
-            this.btn_exportWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_exportWord.ForeColor = System.Drawing.Color.White;
-            this.btn_exportWord.Location = new System.Drawing.Point(860, 9);
-            this.btn_exportWord.Name = "btn_exportWord";
-            this.btn_exportWord.Size = new System.Drawing.Size(75, 35);
-            this.btn_exportWord.TabIndex = 20;
-            this.btn_exportWord.Text = "生成报表";
-            this.btn_exportWord.UseVisualStyleBackColor = false;
-            this.btn_exportWord.Click += new System.EventHandler(this.btn_exportWord_Click);
-            // 
             // HistoryEvalutation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -636,24 +657,27 @@
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label lbl_tblRemarkData;
+        private System.Windows.Forms.Label lbl_tblDescriptionData;
         private System.Windows.Forms.Label lbl_tblBasicData;
         private System.Windows.Forms.Label lbl_tblSubData;
         private System.Windows.Forms.Label lbl_tblAddData;
         private System.Windows.Forms.Label lbl_tblGradeData;
         private System.Windows.Forms.Label lbl_tblNameData;
         private System.Windows.Forms.Label lbl_tblSource;
-        private System.Windows.Forms.Label lbl_tblRemark;
+        private System.Windows.Forms.Label lbl_tblDescription;
         private System.Windows.Forms.Label lbl_tblBasic;
         private System.Windows.Forms.Label lbl_tblSub;
         private System.Windows.Forms.Label lbl_tblAdd;
         private System.Windows.Forms.Label lbl_tblGrade;
         private System.Windows.Forms.Label lbl_tblName;
+        private System.Windows.Forms.Button btn_exportWord;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BasicScore;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
@@ -663,6 +687,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewButtonColumn Operate;
-        private System.Windows.Forms.Button btn_exportWord;
     }
 }

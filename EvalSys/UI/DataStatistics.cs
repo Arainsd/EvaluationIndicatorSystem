@@ -18,7 +18,6 @@ namespace EvalSys
         }
 
         DataHelper dataHelper = null;
-        List<string> users = null;
         List<TimeCycleModule> timeModules = null;
         Dictionary<int, BasicDataModule> basicModules = null;
 
@@ -28,14 +27,12 @@ namespace EvalSys
         private void Init()
         {
             dataHelper = new DataHelper();
-            users = new List<string>();
             timeModules = new List<TimeCycleModule>();
             basicModules = new Dictionary<int, BasicDataModule>();
-            InitChartLegend();
         }        
 
         /// <summary>
-        /// 刷新评价周期
+        /// 刷新评价阶段
         /// </summary>
         public void TimeCycleRefresh()
         {
@@ -52,7 +49,7 @@ namespace EvalSys
                 combo_two.Text = string.Empty;
                 this.combo_three.Items.Clear();
                 combo_three.Text = string.Empty;
-                ClearChart();
+                ClearData();
                 basicModules.Clear();
                 return;
             }
@@ -79,7 +76,7 @@ namespace EvalSys
 
         TimeCycleModule currentTime = null;
         /// <summary>
-        /// 评价周期改变事件
+        /// 评价阶段改变事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -106,7 +103,7 @@ namespace EvalSys
                 combo_two.Text = string.Empty;
                 this.combo_three.Items.Clear();
                 combo_three.Text = string.Empty;
-                ClearChart();
+                ClearData();
                 return;
             }
             foreach (var item in basicModules)
@@ -137,7 +134,7 @@ namespace EvalSys
             {
                 combo_three.Items.Clear();
                 combo_three.Text = string.Empty;
-                ClearChart();
+                ClearData();
                 return;
             }
             dataHelper.SetComboItem(basicModules, combo_two, id);
@@ -152,7 +149,7 @@ namespace EvalSys
         {
             combo_three.Items.Clear();
             combo_three.Text = string.Empty;
-            ClearChart();
+            ClearData();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             dataHelper.SetComboItem(basicModules, combo_three, id);
@@ -165,7 +162,7 @@ namespace EvalSys
         /// <param name="e"></param>
         private void combo_three_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClearChart();
+            ClearData();
             int id = dataHelper.GetCurrentId(basicModules, ((ComboBox)sender).SelectedItem.ToString());
             if (id == -1) return;
             List<EvalutationDataModule> evalutationDatas = (List<EvalutationDataModule>)SqliteHelper.Select(TableName.EvalutationData, -1, id, currentTime);
@@ -174,29 +171,14 @@ namespace EvalSys
         }
 
         /// <summary>
-        /// 初始化图例
-        /// </summary>
-        private void InitChartLegend()
-        {
-            foreach (var item in users)
-            {
-                Series series_user = new Series();
-                series_user.ChartArea = "ChartArea1";
-                series_user.Legend = "Legend_user";
-                series_user.Name = item;
-                series_user.XValueType = ChartValueType.String;//设置X轴类型为字符串
-                series_user.ChartType = SeriesChartType.Column;  //设置Y轴为柱状图
-                this.chart1.Series.Add(series_user);
-            }            
-        }
-
-        /// <summary>
         /// 清理图数据
         /// </summary>
-        private void ClearChart()
+        private void ClearData()
         {
             chart1.ChartAreas[0].AxisX.CustomLabels.Clear();
             chart1.Series.Clear();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
         }
 
         /// <summary>
@@ -205,12 +187,13 @@ namespace EvalSys
         /// <param name="data"></param>
         private void ChartRefresh(List<EvalutationDataModule> data)
         {
-            ClearChart();
+            ClearData();
             List<TimeCycleModule> times = timeModules.Where(p => p.Name == currentTime.Name && p.StartTime == currentTime.StartTime && p.EndTime == currentTime.EndTime).ToList();
+            //List<TableData> tableDatas = new List<TableData>();
             bool isFirst = true;
             int maxY = 100;
             foreach (var item in times)
-            {
+            {               
                 Series series = new Series(item.UserName);
                 List<int> grades = new List<int>();
                 for (int i = 0; i < data.Count; i++)
@@ -233,6 +216,14 @@ namespace EvalSys
                             chart1.ChartAreas[0].AxisX.CustomLabels.Add(label);
                             chart1.ChartAreas[0].AxisX.LabelStyle.Font = new Font("微软雅黑", 9f, FontStyle.Regular);
                         }
+
+                        //TableData tableData = new TableData();
+                        //tableData.UserName = item.UserName;
+                        //tableData.FourName = data[i].Name;
+                        //tableData.Description = data[i].Description;
+                        //tableData.Grade = data[i].Grade;
+                        //tableDatas.Add(tableData);
+
                         grades.Add(data[i].Grade);
                         if (data[i].Grade > maxY)
                         {
@@ -246,6 +237,132 @@ namespace EvalSys
                 chart1.Series.Add(series);
                 isFirst = false;
             }
+
+            //dataGridView1.DataSource = tableDatas.OrderBy(p => p.FourName).ToList();
+            TableRefresh(data, times);
         }
+
+        /// <summary>
+        /// 刷新表格
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="times"></param>
+        private void TableRefresh(List<EvalutationDataModule> data, List<TimeCycleModule> times)
+        {
+            AddHeader(times);
+            AddRow(data, times);
+        }
+
+        /// <summary>
+        /// 添加表头
+        /// </summary>
+        /// <param name="times"></param>
+        private void AddHeader(List<TimeCycleModule> times)
+        {
+            for (int i = -1; i < times.Count; i++)
+            {
+                string name = string.Empty;
+                string text = string.Empty;
+                if (i == -1)
+                {
+                    name = "four";
+                    text = "";
+                }
+                else
+                {
+                    name = times[i].ID.ToString();
+                    text = times[i].UserName;
+                }                
+                CreateColumn(name, text);
+                if (i == times.Count - 1)
+                {
+                    CreateColumn("avg", "平均值");
+                    CreateColumn("stdev", "均方差");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 创建表头
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="text"></param>
+        private void CreateColumn(string name, string text)
+        {
+            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            column.HeaderText = text;
+            column.Name = name;
+            column.ReadOnly = true;
+            dataGridView1.Columns.AddRange(column);
+        }
+
+        /// <summary>
+        /// 添加行
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="times"></param>
+        private void AddRow(List<EvalutationDataModule> data, List<TimeCycleModule> times)
+        {            
+            string[] rowHeader = data.Select(p => p.Name).Distinct().ToArray();
+            for (int i = 0; i < rowHeader.Length; i++)
+            {
+                int rowIndex = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIndex].Cells[0].Value = rowHeader[i];
+
+                int k = 1;
+                int[] grade = new int[times.Count];
+                for (int j = 0; j < times.Count; j++)
+                {                    
+                    foreach (var item in data)
+                    {
+                        if (times[j].ID == item.TimeCycle && rowHeader[i] == item.Name)
+                        {                            
+                            grade[k - 1] = item.Grade;
+                            DataGridViewLinkCell cell = new DataGridViewLinkCell();
+                            cell.Value = item.Grade;
+                            cell.Tag = item;
+                            dataGridView1.Rows[rowIndex].Cells[k] = cell;
+                            //dataGridView1.Rows[rowIndex].Cells[k].Value = item.Grade;
+                            //dataGridView1.Rows[rowIndex].Cells[k].Tag = item;                           
+                            if (k == times.Count)
+                            {
+                                double avg = grade.Average();
+                                dataGridView1.Rows[rowIndex].Cells[k + 1].Value = avg;                                                             
+                                double sum = grade.Sum(p => Math.Pow(p - avg, 2));                                
+                                dataGridView1.Rows[rowIndex].Cells[k + 2].Value = Math.Sqrt(sum / grade.Count());
+                            }
+                            k++;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 单元格点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;            
+            int columnIndex = ((DataGridView)sender).CurrentCell.ColumnIndex;
+            int count = ((DataGridView)sender).ColumnCount;
+            if (columnIndex == 0 || columnIndex >= count - 2) return;//排除行头和最后两行
+            EvalutationDataModule currentData = (EvalutationDataModule)((DataGridView)sender).CurrentCell.Tag;
+            using (StatisticsDetails dialog = new StatisticsDetails(currentData, dataGridView1.Columns[columnIndex].HeaderText, currentTime.Name))
+            {
+                dialog.ShowDialog();
+            }
+        }
+    }//end of class
+    class TableData
+    {
+        public string UserName { get; set; }
+        public string FourName { get; set; }
+        public string Description { get; set; }
+        public int Grade { get; set; }
     }//end of class
 }

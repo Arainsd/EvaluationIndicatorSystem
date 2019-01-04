@@ -31,6 +31,8 @@ namespace EvalSys
         HistoryEvalutation historyEvalutation = null;
         //数据统计
         DataStatistics dataStatistics = null;
+        SingleStatistics singleStatistics = null;
+        UserStatistics userStatistics = null;
         //单位管理
         CompanyManage companyManage = null;
 
@@ -74,6 +76,10 @@ namespace EvalSys
             tabDictionary.Add(TabName.DataStatistics, dataStatistics);
             companyManage = new CompanyManage();
             tabDictionary.Add(TabName.CompanyManage, companyManage);
+            singleStatistics = new SingleStatistics(currentUser);
+            tabDictionary.Add(TabName.SingleStatistics, singleStatistics);
+            userStatistics = new UserStatistics();
+            tabDictionary.Add(TabName.UserStatistics, userStatistics);
         }
 
         private void LeftMenu_ChangePasswordClick(object sender, EventArgs e)
@@ -148,6 +154,12 @@ namespace EvalSys
                     break;
                 case TabName.DataStatistics:
                     dataStatistics.TimeCycleRefresh();
+                    break;
+                case TabName.SingleStatistics:
+                    singleStatistics.TimeCycleRefresh();
+                    break;
+                case TabName.UserStatistics:
+                    userStatistics.TimeCycleRefresh();
                     break;
             }
         }

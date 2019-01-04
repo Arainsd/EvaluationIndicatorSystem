@@ -27,7 +27,7 @@ namespace EvalSys
 
             if (string.IsNullOrEmpty(this.txt_name.Text.Trim()))
             {
-                this.lbl_name_msg.Text = "请输入评价周期";
+                this.lbl_name_msg.Text = "请输入评价阶段";
                 return;
             }
 

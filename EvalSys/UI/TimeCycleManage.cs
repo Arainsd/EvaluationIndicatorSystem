@@ -41,7 +41,7 @@ namespace EvalSys
         {
             using (TimeCycleChange dialog = new TimeCycleChange())
             {
-                dialog.ChangeTitle = "新增评价周期";
+                dialog.ChangeTitle = "新增评价阶段";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     TimeCycleModule module = dialog.GetModule;
